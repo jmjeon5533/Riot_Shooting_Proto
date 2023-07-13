@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
+    
     public float MoveSpeed;
     Vector3 MoveRange;
     void Start()
     {
         MoveRange = GameManager.instance.MoveRange;
+        if (Instance == null) Instance = this;
+        else Destroy(this.gameObject);
     }
     void Update()
     {

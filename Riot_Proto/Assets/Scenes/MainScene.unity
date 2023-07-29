@@ -645,7 +645,7 @@ MonoBehaviour:
   explain: 
   ability: {fileID: 0}
   explainView: {fileID: 1425529206}
-  offset: {x: 50, y: -70}
+  offset: {x: 100, y: -75}
 --- !u!1 &822612283
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +741,7 @@ MonoBehaviour:
   explain: 
   ability: {fileID: 0}
   explainView: {fileID: 1425529206}
-  offset: {x: 50, y: -70}
+  offset: {x: 100, y: -75}
 --- !u!1 &859785824
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,7 +998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1425529206
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1107,7 +1107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1814,7 +1814,7 @@ MonoBehaviour:
   explain: 
   ability: {fileID: 0}
   explainView: {fileID: 1425529206}
-  offset: {x: 50, y: -70}
+  offset: {x: 100, y: -75}
 --- !u!1001 &3688697062452418036
 PrefabInstance:
   m_ObjectHideFlags: 0

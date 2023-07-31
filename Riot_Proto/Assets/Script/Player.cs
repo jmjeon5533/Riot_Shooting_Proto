@@ -4,57 +4,82 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Player Instance { get; private set; }
-    
+
+    public int HP;
+    public int damage;
+    public int bulletSpeed;
+
     public float MoveSpeed;
 
-    public int atkDamage;
-
-    public bool isAttack = true;
-
-    public bool isCool = false;
-
-    [SerializeField] float maxAttackCooltime;
-    [SerializeField] float curAttackCooltime = 0;
-    [SerializeField] float curAttacktime = 0;
-
-    public GameObject bullet;
+    public GameObject bulletPrefab;
 
     Vector3 MoveRange;
+    public float AttackCooltime;
+    private float AttackCurtime;
+
+    bool IsMove = false;
     void Start()
     {
         MoveRange = GameManager.instance.MoveRange;
-        if (Instance == null) Instance = this;
-        else Destroy(this.gameObject);
+        GameManager.instance.player = transform;
+        StartCoroutine(Started());
     }
     void Update()
     {
-        Movement();
-        Attack();
+        if(IsMove)
+        {
+            Movement();
+            Attack();
+        }
     }
 
     void Attack()
     {
-        curAttackCooltime += Time.deltaTime;
-        curAttacktime += Time.deltaTime;
-        if(curAttacktime > maxAttackCooltime)
+        if(AttackCurtime >= AttackCooltime)
         {
-            isCool = false;
-            curAttacktime = 0;
+            AttackCurtime -= AttackCooltime;
+            var b = Instantiate(bulletPrefab,transform.position,Quaternion.identity).GetComponent<PlayerBullet>();
+            b.Damage = damage;
+            b.dir = Vector3.right;
         }
-        if(curAttackCooltime > maxAttackCooltime)
+        else
         {
-            curAttackCooltime = 0;
-            isAttack = false;
-           
+            AttackCurtime += Time.deltaTime;
         }
-        if(Input.GetButton("Fire1") && !isCool)
+    }
+
+    public void Damage()
+    {
+        HP--;
+        StartCoroutine(Dead());
+    }
+
+    IEnumerator Dead()
+    {
+        IsMove = false;
+        var r = gameObject.AddComponent<Rigidbody>();
+        GetComponent<CapsuleCollider>().enabled = false;
+        r.AddForce(Vector3.left,ForceMode.Impulse);
+        yield return new WaitForSeconds(2);
+        Destroy(r);
+        StartCoroutine(Spawned());
+    }
+    IEnumerator Started()
+    {
+        yield return StartCoroutine(Spawned());
+        GameManager.instance.IsGame = true;
+    }
+    IEnumerator Spawned()
+    {
+        transform.position = new Vector3(-12,0,0);
+        while(Vector3.Distance(transform.position,new Vector3(-8,0,0)) >= 0.1f)
         {
-            Instantiate(bullet,transform.position, Quaternion.identity);
-            curAttackCooltime = 0;
-            isAttack = true;
-            isCool = true;
+            yield return null;
+            transform.position = Vector3.MoveTowards(transform.position,new Vector3(-8,0,0), 2 * Time.deltaTime);
         }
+        IsMove = true;
+        yield return new WaitForSeconds(2f);
+        GetComponent<CapsuleCollider>().enabled = true;
     }
 
     void Movement()

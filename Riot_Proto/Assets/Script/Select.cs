@@ -37,7 +37,7 @@ public class Select : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public void SelectAbility()
     {
         if (!AbilityCard.Instance.isSelect) return;
-        Instantiate(ability.gameObject, Player.Instance.transform);
+        //Instantiate(ability.gameObject, Player.Instance.transform);
         AbilityCard.Instance.SelectEnd();
 
     }

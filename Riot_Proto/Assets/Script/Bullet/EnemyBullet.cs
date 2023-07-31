@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBullet : BulletBase
+public class EnemyBullet : BulletBase
 {
     protected override void Update()
     {
         base.Update();
-        var hit = Physics.OverlapSphere(transform.position, radius);
+        var hit = Physics.OverlapSphere(transform.position,radius);
         foreach (var h in hit)
         {
-            if (h.CompareTag("Enemy"))
+            if (h.CompareTag("Player"))
             {
-                h.GetComponent<EnemyBase>().Damage(Damage);
+                h.GetComponent<Player>().Damage();
                 Destroy(gameObject);
             }
         }

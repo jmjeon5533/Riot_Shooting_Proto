@@ -4,55 +4,27 @@ using UnityEngine;
 
 public class BulletBase : MonoBehaviour
 {
-    public int atkDamage;
-
-    public float moveSpeed;
-
-    public bool isEnemyBullet = false;
-    
-    // Start is called before the first frame update
-    void Start()
+    public float MoveSpeed;
+    public Vector3 dir;
+    [SerializeField] protected float radius;
+    [HideInInspector] public int Damage;
+    protected virtual void Start()
     {
-        
+
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        Movement();   
-    }
-
-    public virtual void Movement()
-    {
-        transform.Translate(transform.right * moveSpeed * ((isEnemyBullet) ? -1 : 1) * Time.deltaTime);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Attack(other.gameObject);
-    }
-
-    public virtual void Attack(GameObject target)
-    {
-        if (!isEnemyBullet)
+        transform.Translate(dir * MoveSpeed * Time.deltaTime);
+        if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 1
+        || Mathf.Abs(transform.position.y) >= GameManager.instance.MoveRange.y + 1)
         {
-            if (target.CompareTag("Enemy"))
-            {
-                EnemyBase enemy = target.GetComponent<EnemyBase>();
-                enemy.Damaged(atkDamage);
-            }
-        }
-        else
-        {
-            if (target == Player.Instance.gameObject)
-            {
-                //데미지 받는곳
-            }
+            Destroy(gameObject);
         }
     }
-
-    public void SetDmaage(int value)
+    private void OnDrawGizmos()
     {
-        atkDamage = value;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

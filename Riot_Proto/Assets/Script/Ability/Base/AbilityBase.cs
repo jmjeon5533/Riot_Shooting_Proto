@@ -24,12 +24,12 @@ public abstract class AbilityBase : MonoBehaviour
 
     void Update()
     {
-        Ability();
+       
     }
 
     public virtual void Initalize()
     {
-
+        
     }
 
     public abstract void Ability();

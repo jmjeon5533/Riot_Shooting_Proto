@@ -10,6 +10,8 @@ public abstract class AbilityBase : MonoBehaviour
         Passive, Active, Stats
     }
 
+    public int level = 1;
+
     public AbilityType type;
 
     public Sprite skillImage;

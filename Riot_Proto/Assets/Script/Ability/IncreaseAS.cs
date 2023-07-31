@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IncreaseDamage : AbilityBase
+public class IncreaseAS : AbilityBase
 {
 
     public int increaseValue;
 
     bool isOne = false;
-    
+
     public override void Ability()
     {
-       GameManager.instance.player.damage += increaseValue * level;
+        GameManager.instance.player.AttackCooltime -= increaseValue * level;
     }
 
     // Start is called before the first frame update
@@ -29,6 +29,6 @@ public class IncreaseDamage : AbilityBase
     // Update is called once per frame
     void Update()
     {
-        //if(!isOne) Ability();
+        //if (!isOne) Ability();
     }
 }

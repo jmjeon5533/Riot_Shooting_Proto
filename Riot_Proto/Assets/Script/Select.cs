@@ -14,6 +14,8 @@ public class Select : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     [SerializeField] Transform explainView;
 
+    [SerializeField] Text nameText;
+
     [SerializeField] Vector2 offset;
     // Start is called before the first frame update
     void Start()
@@ -32,13 +34,37 @@ public class Select : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         ability = ab;
         abilityName = ab.skillName;
         explain = ab.skillDescription;
+        nameText.text = abilityName + " " + GetLevelText(ab.level);
     }
+
+    string GetLevelText(int lv)
+    {
+        switch(lv)
+        {
+            case 1:
+                return "I";
+            case 2:
+                return "II";
+            case 3:
+                return "III";
+
+            case 4:
+                return "IV";
+            case 5:
+                return "V";
+            default:
+                Debug.LogError("This is an unusual level");
+                return "Error";
+
+        }
+    }
+
 
     public void SelectAbility()
     {
         if (!AbilityCard.Instance.isSelect) return;
-        //Instantiate(ability.gameObject, Player.Instance.transform);
-        AbilityCard.Instance.SelectEnd();
+        Instantiate(ability.gameObject, GameManager.instance.player.transform);
+        AbilityCard.Instance.SelectEnd(ability);
 
     }
 

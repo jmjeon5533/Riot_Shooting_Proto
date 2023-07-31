@@ -17,6 +17,6 @@ public class Enemy1 : EnemyBase
 
         yield return new WaitUntil(()=>Vector3.Distance(transform.position,MovePos) <= 0.1f);
         var b = Instantiate(Bullet,transform.position,Quaternion.identity).GetComponent<BulletBase>();
-        b.dir = (GameManager.instance.player.position - transform.position).normalized;
+        b.dir = (GameManager.instance.player.transform.position - transform.position).normalized;
     }
 }

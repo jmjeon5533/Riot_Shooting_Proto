@@ -8,6 +8,8 @@ public class BulletBase : MonoBehaviour
     public Vector3 dir;
     [SerializeField] protected float radius;
     [HideInInspector] public int Damage;
+    [HideInInspector] public int CritRate;
+    [HideInInspector] public int CritDamage;
     protected virtual void Start()
     {
 

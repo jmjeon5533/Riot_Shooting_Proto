@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance {get; private set;}
-    public Transform player;
+    public Player player;
     public Vector2 MoveRange;
     public List<GameObject> playerPrefab = new List<GameObject>();
     public List<GameObject> StagePrefab = new List<GameObject>();

@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
 
     public int HP;
     public int damage;
+
+    public int CritRate;
+    public int CritDamage = 2;
+
     public int bulletSpeed;
 
     public float MoveSpeed;
@@ -21,7 +25,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         MoveRange = GameManager.instance.MoveRange;
-        GameManager.instance.player = transform;
+        GameManager.instance.player = this;
         StartCoroutine(Started());
     }
     void Update()
@@ -41,6 +45,8 @@ public class Player : MonoBehaviour
             var b = Instantiate(bulletPrefab,transform.position,Quaternion.identity).GetComponent<PlayerBullet>();
             b.Damage = damage;
             b.dir = Vector3.right;
+            b.CritRate = CritRate;
+            b.CritDamage = CritDamage;
         }
         else
         {

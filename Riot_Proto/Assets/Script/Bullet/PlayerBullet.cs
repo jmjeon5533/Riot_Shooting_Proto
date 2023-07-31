@@ -12,7 +12,9 @@ public class PlayerBullet : BulletBase
         {
             if (h.CompareTag("Enemy"))
             {
-                h.GetComponent<EnemyBase>().Damage(Damage);
+
+                h.GetComponent<EnemyBase>().Damage((Random.Range(0,100f) <= CritRate) 
+                    ? (int)(Damage * CritDamage) : Damage);
                 Destroy(gameObject);
             }
         }

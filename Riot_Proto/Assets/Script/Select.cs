@@ -15,6 +15,7 @@ public class Select : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     [SerializeField] Transform explainView;
 
     [SerializeField] Text nameText;
+    [SerializeField] Text description;
 
     [SerializeField] Vector2 offset;
     // Start is called before the first frame update
@@ -34,6 +35,7 @@ public class Select : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         ability = ab;
         abilityName = ab.skillName;
         explain = ab.skillDescription;
+        description.text = explain;
         nameText.text = abilityName + " " + GetLevelText(ab.level);
     }
 
@@ -70,20 +72,20 @@ public class Select : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        explainView.gameObject.SetActive(true);
-        explainView.GetChild(0).GetComponent<Text>().text = abilityName;
-        explainView.GetChild(1).GetComponent<Text>().text = explain;
-        explainView.position = eventData.position + offset;
+        //explainView.gameObject.SetActive(true);
+        //explainView.GetChild(0).GetComponent<Text>().text = abilityName;
+        //explainView.GetChild(1).GetComponent<Text>().text = explain;
+        //explainView.position = eventData.position + offset;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        explainView.gameObject.SetActive(false);
+        //explainView.gameObject.SetActive(false);
     }
 
     public void OnPointerMove(PointerEventData eventData)
     {
-        explainView.position = eventData.position + offset;
+        //explainView.position = eventData.position + offset;
 
     }
 }

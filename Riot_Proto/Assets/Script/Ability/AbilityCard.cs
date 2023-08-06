@@ -23,7 +23,7 @@ public class AbilityCard : MonoBehaviour
     [SerializeField] float downPosY = -550;
 
     //[SerializeField] Transform targetPos;
-
+    List<AbilityBase> selectabs = new List<AbilityBase>();
     //[SerializeField] float width;
     [Header("Card Select State")]
     public bool isSelect = false;
@@ -73,12 +73,14 @@ public class AbilityCard : MonoBehaviour
     //카드에 능력을 배정하고 등장시키는 함수
     IEnumerator ISelect(bool end)
     {
+        selectabs.Clear();       
         for (int i = 0; i < cards.Length; i++)
         {
             if (!end)
             {
-                
-                cards[i].GetComponent<Select>().SetAbility(GetRandomAbility());
+                AbilityBase ab = GetRandomAbility();
+                selectabs.Add(ab);
+                cards[i].GetComponent<Select>().SetAbility(ab);
                 StartCoroutine(ICardSpawn(cards[i], cards[i].position, new Vector3(cards[i].position.x, upPosY, 0), 1f));
             }
             else StartCoroutine(ICardEnd(cards[i], cards[i].position, new Vector3(cards[i].position.x, downPosY, 0), 1f));
@@ -92,12 +94,29 @@ public class AbilityCard : MonoBehaviour
     //레벨 5가 아닌 능력 중 랜덤으로 가져오는 함수
     AbilityBase GetRandomAbility()
     {
-        AbilityBase ab = abilities[Random.Range(0, abilities.Count)];
-
-        while (abilityLevels.ContainsKey(ab.skillName) && abilityLevels[ab.skillName] >= 5)
+        List<AbilityBase> abs = abilities;
+        foreach(AbilityBase a in abs)
         {
-            ab = abilities[Random.Range(0, abilities.Count)];
+            if((abilityLevels.ContainsKey(a.skillName) && abilityLevels[a.skillName] >= 5)) {
+                abs.Remove(a);
+            }
         }
+        Debug.Log(abs.Count);
+        
+        AbilityBase ab = abs[Random.Range(0, abs.Count)];
+        if(abs.Count - cards.Length > 0)
+        {
+            while(selectabs.Contains(ab))
+            {
+                ab = abs[Random.Range(0, abs.Count)];
+            }
+        }
+        //while (abilityLevels.ContainsKey(ab.skillName) && abilityLevels[ab.skillName] >= 5)
+        //{
+        //    ab = abilities[Random.Range(0, abilities.Count)];
+        //    if ( && selectabs.Contains(ab)) continue;
+           
+        //}
         ab.level = (abilityLevels.ContainsKey(ab.skillName)) ? abilityLevels[ab.skillName] : 1;
         return ab;
 

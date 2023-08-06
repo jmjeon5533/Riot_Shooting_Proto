@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance {get; private set;}
     public Player player;
     public Vector2 MoveRange;
+    public Vector2 MovePivot;
     public List<GameObject> playerPrefab = new List<GameObject>();
     public List<GameObject> StagePrefab = new List<GameObject>();
     
@@ -24,6 +25,6 @@ public class GameManager : MonoBehaviour
     private void OnDrawGizmos() 
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(Vector3.zero, MoveRange * 2);
+        Gizmos.DrawWireCube(MovePivot, MoveRange * 2);
     }
 }

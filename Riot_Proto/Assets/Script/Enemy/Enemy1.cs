@@ -11,8 +11,9 @@ public class Enemy1 : EnemyBase
     }
     IEnumerator AttackMove()
     {
-        var x = Random.Range(0f,10f);
-        var y = Random.Range(-5f,5f);
+        var g = GameManager.instance;
+        var x = Random.Range(0,g.MoveRange.x + g.MovePivot.x);
+        var y = Random.Range(-g.MoveRange.y + g.MovePivot.y, g.MoveRange.y + g.MovePivot.y);
         MovePos = new Vector3(x,y,0);
 
         yield return new WaitUntil(()=>Vector3.Distance(transform.position,MovePos) <= 0.1f);

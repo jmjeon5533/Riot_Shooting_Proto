@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public GameObject bulletPrefab;
 
     Vector3 MoveRange;
+    Vector3 MovePivot;
     public float AttackCooltime;
     private float AttackCurtime;
 
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         MoveRange = GameManager.instance.MoveRange;
+        MovePivot = GameManager.instance.MovePivot;
         GameManager.instance.player = this;
         StartCoroutine(Started());
     }
@@ -97,8 +99,8 @@ public class Player : MonoBehaviour
         transform.Translate(input * MoveSpeed * Time.deltaTime);
 
         transform.position
-         = new Vector3(Mathf.Clamp(transform.position.x, -MoveRange.x, MoveRange.x),
-         Mathf.Clamp(transform.position.y, -MoveRange.y, MoveRange.y));
+         = new Vector3(Mathf.Clamp(transform.position.x, (-MoveRange.x + MovePivot.x), (MoveRange.x + MovePivot.x)),
+         Mathf.Clamp(transform.position.y, (-MoveRange.y + MovePivot.y), (MoveRange.y + MovePivot.y)));
     }
 
 

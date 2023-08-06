@@ -19,9 +19,15 @@ public abstract class AbilityBase : MonoBehaviour
     public string skillName;
     public string skillDescription;
 
+
     public virtual void Start()
     {
         
+    }
+
+    public virtual void LevelUp()
+    {
+        level++;
     }
 
     void Update()

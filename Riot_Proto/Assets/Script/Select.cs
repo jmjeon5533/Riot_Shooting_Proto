@@ -64,9 +64,22 @@ public class Select : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     public void SelectAbility()
     {
-        if (!AbilityCard.Instance.isSelect) return;
-        Instantiate(ability.gameObject, GameManager.instance.player.transform);
-        AbilityCard.Instance.SelectEnd(ability);
+        if (!AbilityCard.Instance.isSelect) {
+            return;
+        }
+
+        AbilityBase ab;
+        if (AbilityCard.Instance.curAbilityDic.ContainsKey(ability.skillName)) { 
+            ab = AbilityCard.Instance.curAbilityDic[ability.skillName];
+        } else {
+            ab = Instantiate(ability.gameObject, GameManager.instance.player.transform).GetComponent<AbilityBase>();
+
+        }
+        
+
+        
+
+        AbilityCard.Instance.SelectEnd(ab);
 
     }
 

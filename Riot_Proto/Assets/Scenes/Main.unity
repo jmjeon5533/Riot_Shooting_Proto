@@ -1825,6 +1825,7 @@ MonoBehaviour:
   - {fileID: 6332685398307081435, guid: c63eed9c18d0ed34f8f2d208ba702ad0, type: 3}
   StagePrefab:
   - {fileID: 528095202017406949, guid: 51bab8ddd387aac45b96b22a9dcb68de, type: 3}
+  curEnemys: []
   IsGame: 0
 --- !u!114 &1679633663
 MonoBehaviour:
@@ -1835,22 +1836,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1679633659}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 435cb241e37e05f408b5dc7367013bc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f9fcd3292021bf4fb366939a65034ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   abilities:
-  - {fileID: 4532925901132915841, guid: e43fe6169409070499fbf52400ce2211, type: 3}
+  - {fileID: 781309847383982491, guid: 809fcac603cf0904dacacfebca4237f1, type: 3}
   - {fileID: 1439470320093489558, guid: 3866da409a9143d41977a5ae15ef482f, type: 3}
   - {fileID: 966537126603244401, guid: 5f04875b64f51fb449ffb63fb7637440, type: 3}
-  - {fileID: 781309847383982491, guid: 809fcac603cf0904dacacfebca4237f1, type: 3}
+  - {fileID: 4532925901132915841, guid: e43fe6169409070499fbf52400ce2211, type: 3}
+  - {fileID: 2419495779614173311, guid: fa050543c07fafa44bb38846b9c300ae, type: 3}
   curAbilityList: []
   cards:
   - {fileID: 822612284}
   - {fileID: 2016229397}
   - {fileID: 723747235}
   bounceHeight: 70
-  upPosY: 450
-  downPosY: -500
+  upPosY: 400
+  downPosY: -550
   isSelect: 0
 --- !u!1 &1686146291
 GameObject:

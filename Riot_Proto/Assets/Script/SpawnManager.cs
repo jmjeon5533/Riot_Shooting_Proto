@@ -26,7 +26,8 @@ public class SpawnManager : MonoBehaviour
     {
         if (Curtime >= 3)
         {
-            Instantiate(enemys[Random.Range(0, enemys.Length)], new Vector3(15, Random.Range(-5, 6), 0), Quaternion.identity);
+            GameObject enemy =Instantiate(enemys[Random.Range(0, enemys.Length)], new Vector3(15, Random.Range(-5, 6), 0), Quaternion.identity);
+            GameManager.instance.curEnemys.Add(enemy);
             //Instantiate(enemys[Random.Range(0, enemys.Length)], new Vector3(15, Random.Range(-5, 6), 0), Quaternion.identity);
             Curtime -= 3;
         }

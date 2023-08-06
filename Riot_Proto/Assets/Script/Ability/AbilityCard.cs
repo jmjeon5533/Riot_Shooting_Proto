@@ -12,6 +12,7 @@ public class AbilityCard : MonoBehaviour
     public Dictionary<string, int> abilityLevels = new Dictionary<string, int>();
 
     public List<AbilityBase> curAbilityList;
+    public Dictionary<string, AbilityBase> curAbilityDic = new Dictionary<string, AbilityBase>();   
 
     public Transform[] cards;
 
@@ -73,7 +74,7 @@ public class AbilityCard : MonoBehaviour
     //카드에 능력을 배정하고 등장시키는 함수
     IEnumerator ISelect(bool end)
     {
-        selectabs.Clear();       
+        selectabs.Clear();         
         for (int i = 0; i < cards.Length; i++)
         {
             if (!end)
@@ -145,13 +146,16 @@ public class AbilityCard : MonoBehaviour
     //선택한 카드를 현재 능력 배열에 추가시키고 선택을 종료하는 함수
     public void SelectEnd(AbilityBase abi)
     {
-        curAbilityList.Add(abi);
+
         if(abilityLevels.ContainsKey(abi.skillName))
         {
             abilityLevels[abi.skillName]++;
+            curAbilityDic[abi.skillName].LevelUp();
         } else
         {
+            curAbilityList.Add(abi);
             abilityLevels.Add(abi.skillName, 2);
+            curAbilityDic.Add(abi.skillName, abi);
         }
         
         StartCoroutine(ISelect(true));

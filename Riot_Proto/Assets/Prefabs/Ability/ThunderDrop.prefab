@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2419495779614173296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2419495779614173310}
+  - component: {fileID: 2419495779614173311}
+  m_Layer: 0
+  m_Name: ThunderDrop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2419495779614173310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419495779614173296}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.52127147, y: 8.466123, z: 0.61834323}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2419495779614173311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419495779614173296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cfa5242fb4847b49a3b3790d5c4642b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  type: 0
+  skillImage: {fileID: 0}
+  skillName: "\uC36C\uB354 \uBE0C\uB808\uC774\uD06C"
+  skillDescription: "\uAC15\uB825\uD55C \uBC88\uAC1C \uAE30\uB465\uC744 \uC18C\uD658\uD569\uB2C8\uB2E4.
+    \uB808\uBCA8\uC5D0 \uB530\uB77C \uAC1C\uC218\uAC00 \uB2EC\uB77C\uC9D1\uB2C8\uB2E4"
+  maxCooltime: 3
+  curCooltime: 0
+  defaultDamage: 10
+  thunder: {fileID: 4165927229280656042, guid: 696f4ac8bc718f34a8f7156b76da0e16, type: 3}

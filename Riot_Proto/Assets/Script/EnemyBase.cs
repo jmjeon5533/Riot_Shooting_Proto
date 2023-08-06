@@ -38,7 +38,11 @@ public abstract class EnemyBase : MonoBehaviour
     public void Damage(int damage)
     {
         HP -= damage;
-        if(HP <= 0) Destroy(gameObject);
+        if (HP <= 0)
+        {
+            GameManager.instance.curEnemys.Remove(this.gameObject);
+            Destroy(gameObject);
+        }
     }
     protected abstract void Attack();
 }

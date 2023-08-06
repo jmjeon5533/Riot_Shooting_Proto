@@ -8,6 +8,6 @@ public abstract class ItemBase : MonoBehaviour
 
     void Start()
     {
-        target = GameManager.instance.player;
+        target = GameManager.instance.player.transform;
     }
 }

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public Vector2 MovePivot;
     public List<GameObject> playerPrefab = new List<GameObject>();
     public List<GameObject> StagePrefab = new List<GameObject>();
+
+    public List<GameObject> curEnemys = new List<GameObject>();
     
     public bool IsGame = false;
 

@@ -39,15 +39,26 @@ public class GameManager : MonoBehaviour
     }
     public void AddXP(int Value)
     {
+        var ab = AbilityCard.Instance;
         XP += Value;
         if(XP >= MaxXP)
         {
             XP -= MaxXP;
             MaxXP += AddMaxXP;
             Level++;
-            AbilityCard.Instance.Select();
+            if (!ab.IsAbilityLimit()) ab.Select();
+            _ = StartCoroutine(FadeTime(0));
         }
         UIManager.instance.XPBarUpdate();
+    }
+    IEnumerator FadeTime(float target)
+    {
+        var wait = new WaitForSecondsRealtime(0);
+        while(Mathf.Abs(Time.timeScale - target) >= 0.01f)
+        {
+            Time.timeScale = Mathf.MoveTowards(Time.timeScale, target, 2 * Time.deltaTime);
+            yield return wait;
+        }
     }
     public static Vector3 CalculateBezier(Vector3 pos1, Vector3 pos2, Vector3 pos3, float t)
     {

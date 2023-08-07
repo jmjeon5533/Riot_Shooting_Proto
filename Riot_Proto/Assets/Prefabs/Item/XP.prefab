@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AddValue: 3
-  moveRate: 1
+  moveRate: 2
   dirPower: 10
 --- !u!65 &7859698871027311982
 BoxCollider:

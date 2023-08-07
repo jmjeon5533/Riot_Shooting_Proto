@@ -23,6 +23,8 @@ public class AbilityCard : MonoBehaviour
     [SerializeField] float upPosY = 200;
     [SerializeField] float downPosY = -550;
 
+    [SerializeField] GameObject panel;
+
     //[SerializeField] Transform targetPos;
     List<AbilityBase> selectabs = new List<AbilityBase>();
     //[SerializeField] float width;
@@ -71,6 +73,7 @@ public class AbilityCard : MonoBehaviour
     //ī�忡 �ɷ��� �����ϰ� �����Ű�� �Լ�
     IEnumerator ISelect(bool end)
     {
+        panel.SetActive(true);
         selectabs.Clear();
         for (int i = 0; i < cards.Length; i++)
         {
@@ -89,6 +92,8 @@ public class AbilityCard : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.15f);
         }
         yield return new WaitForSecondsRealtime(1.5f);
+        
+        if(end) panel.SetActive(false);
         isSelect = !end;
     }
 
@@ -138,7 +143,7 @@ public class AbilityCard : MonoBehaviour
         Time.timeScale = 1;
         t.position = startPos;
         t.DOMove(startPos + Vector3.up * bounceHeight, duration / 2).SetUpdate(true);
-        yield return new WaitForSecondsRealtime(duration);
+        yield return new WaitForSecondsRealtime(duration/2);
         t.DOMove(endPos, duration).SetUpdate(true).WaitForCompletion();
     }
     //������ ī�带 ���� �ɷ� �迭�� �߰���Ű�� ������ �����ϴ� �Լ�

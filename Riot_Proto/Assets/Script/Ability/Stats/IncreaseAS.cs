@@ -28,8 +28,8 @@ public class IncreaseAS : AbilityBase
 
     public override void LevelUp()
     {
-        Ability();
         base.LevelUp();
+        Ability();
     }
 
     // Update is called once per frame

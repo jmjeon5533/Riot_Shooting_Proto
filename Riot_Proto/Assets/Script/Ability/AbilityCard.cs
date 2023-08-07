@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class AbilityCard : MonoBehaviour
 {
@@ -74,6 +75,13 @@ public class AbilityCard : MonoBehaviour
     IEnumerator ISelect(bool end)
     {
         panel.SetActive(true);
+        if(!end)
+        {
+            panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0);
+            panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0.5f), 0.5f);
+
+        }
+
         selectabs.Clear();
         for (int i = 0; i < cards.Length; i++)
         {
@@ -91,9 +99,18 @@ public class AbilityCard : MonoBehaviour
 
             yield return new WaitForSecondsRealtime(0.15f);
         }
+        if(end)
+        {
+            panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0f), 1f);
+        }
         yield return new WaitForSecondsRealtime(1.5f);
-        
-        if(end) panel.SetActive(false);
+
+        if (end)
+        {
+            
+           // panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0.5f);
+            panel.SetActive(false);
+        }
         isSelect = !end;
     }
 

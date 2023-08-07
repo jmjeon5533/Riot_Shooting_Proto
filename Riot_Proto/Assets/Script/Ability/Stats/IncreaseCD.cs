@@ -33,7 +33,7 @@ public class IncreaseCD : AbilityBase
     }
     public override void LevelUp()
     {
-        Ability();
         base.LevelUp();
+        Ability();
     }
 }

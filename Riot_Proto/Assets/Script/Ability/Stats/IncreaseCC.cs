@@ -34,7 +34,7 @@ public class IncreaseCC : AbilityBase
 
     public override void LevelUp()
     {
-        Ability();
         base.LevelUp();
+        Ability();
     }
 }

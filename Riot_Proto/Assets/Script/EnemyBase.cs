@@ -10,6 +10,7 @@ public abstract class EnemyBase : MonoBehaviour
     public float AttackCooltime;
     private float AttackCurtime;
     public Vector3 MovePos;
+    public int XPRate;
 
     void Start()
     {
@@ -42,6 +43,10 @@ public abstract class EnemyBase : MonoBehaviour
         {
             GameManager.instance.curEnemys.Remove(this.gameObject);
             Destroy(gameObject);
+            for (int i = 0; i < XPRate; i++)
+            {
+                Instantiate(GameManager.instance.XPPrefab,transform.position,Quaternion.identity);
+            }
         }
     }
     protected abstract void Attack();

@@ -8,6 +8,14 @@ public class GameManager : MonoBehaviour
     public Player player;
     public Vector2 MoveRange;
     public Vector2 MovePivot;
+
+    [Space(10)]
+    public GameObject XPPrefab;
+    public int MaxXP;
+    public int AddMaxXP;
+    public int XP;
+    public int Level;
+
     public List<GameObject> playerPrefab = new List<GameObject>();
     public List<GameObject> StagePrefab = new List<GameObject>();
 
@@ -28,5 +36,26 @@ public class GameManager : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(MovePivot, MoveRange * 2);
+    }
+    public void AddXP(int Value)
+    {
+        XP += Value;
+        if(XP >= MaxXP)
+        {
+            XP -= MaxXP;
+            MaxXP += AddMaxXP;
+            Level++;
+            AbilityCard.Instance.Select();
+        }
+        UIManager.instance.XPBarUpdate();
+    }
+    public static Vector3 CalculateBezier(Vector3 pos1, Vector3 pos2, Vector3 pos3, float t)
+    {
+        var p12 = Vector3.Lerp(pos1, pos2, t);
+        var p23 = Vector3.Lerp(pos2, pos3, t);
+
+        var p1223 = Vector3.Lerp(p12, p23, t);
+
+        return p1223;
     }
 }

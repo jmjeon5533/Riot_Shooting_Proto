@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
     public int HP;
     public int damage;
 
@@ -23,8 +22,11 @@ public class Player : MonoBehaviour
     private float AttackCurtime;
 
     bool IsMove = false;
+
+    Rigidbody rigid;
     void Start()
     {
+        rigid = GetComponent<Rigidbody>();
         MoveRange = GameManager.instance.MoveRange;
         MovePivot = GameManager.instance.MovePivot;
         GameManager.instance.player = this;
@@ -65,11 +67,12 @@ public class Player : MonoBehaviour
     IEnumerator Dead()
     {
         IsMove = false;
-        var r = gameObject.AddComponent<Rigidbody>();
+        rigid.useGravity = true;
         GetComponent<CapsuleCollider>().enabled = false;
-        r.AddForce(Vector3.left,ForceMode.Impulse);
+        rigid.AddForce(Vector3.left,ForceMode.Impulse);
         yield return new WaitForSeconds(2);
-        Destroy(r);
+        rigid.useGravity = false;
+        rigid.velocity = Vector3.zero;
         StartCoroutine(Spawned());
     }
     IEnumerator Started()

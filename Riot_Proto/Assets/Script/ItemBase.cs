@@ -4,10 +4,16 @@ using UnityEngine;
 
 public abstract class ItemBase : MonoBehaviour
 {
-    public Transform target;
-
     void Start()
     {
-        target = GameManager.instance.player.transform;
+        
+    }
+    protected abstract void GetItem();
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            GetItem();
+        }
     }
 }

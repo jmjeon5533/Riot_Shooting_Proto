@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8339991442943732071}
   - component: {fileID: 8339991442943732068}
   - component: {fileID: 8339991442943732069}
-  - component: {fileID: 8339991442943732090}
+  - component: {fileID: 4702201269722671556}
+  - component: {fileID: 7859698871027311982}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: XP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +85,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8339991442943732090
+--- !u!114 &4702201269722671556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8339991442943732091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e9e176f9c49a54a84a8e0a9f0c0c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AddValue: 3
+  moveRate: 1
+  dirPower: 10
+--- !u!65 &7859698871027311982
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

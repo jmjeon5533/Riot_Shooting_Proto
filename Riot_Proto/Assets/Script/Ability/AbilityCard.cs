@@ -39,36 +39,28 @@ public class AbilityCard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) )
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(!IsAbilityLimit())
-                Select();
+            Select();
         }
     }
 
     
 
     //능력들이 모두 강화되었는지 확인하는 함수
-    bool IsAbilityLimit()
+    public void Select()
     {
         foreach(AbilityBase ability in abilities)
         {
             if(!abilityLevels.ContainsKey(ability.skillName))
             {
-                return false;
+                StartCoroutine(ISelect(false));
             }
             if(abilityLevels[ability.skillName] < 5)
             {
-                return false;
+                StartCoroutine(ISelect(false));
             }
-            
         }
-        return true;
-    }
-
-    private void Select()
-    {
-        StartCoroutine(ISelect(false));
     }
 
     //카드에 능력을 배정하고 등장시키는 함수

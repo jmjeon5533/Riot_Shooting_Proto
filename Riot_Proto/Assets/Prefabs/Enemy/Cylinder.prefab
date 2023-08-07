@@ -115,4 +115,5 @@ MonoBehaviour:
   MoveSpeed: 10
   AttackCooltime: 2.5
   MovePos: {x: 0, y: 0, z: 0}
+  XPRate: 3
   Bullet: {fileID: 269225301555661974, guid: 77a3fadfd0297b64db4d4d36bc443111, type: 3}

@@ -9,10 +9,10 @@ public class AbilityCard : MonoBehaviour
 
     public List<AbilityBase> abilities;
 
-    public Dictionary<string, int> abilityLevels = new Dictionary<string, int>();
+    public Dictionary<string, int> abilityLevels = new();
 
     public List<AbilityBase> curAbilityList;
-    public Dictionary<string, AbilityBase> curAbilityDic = new Dictionary<string, AbilityBase>();   
+    public Dictionary<string, AbilityBase> curAbilityDic = new();
 
     public Transform[] cards;
 
@@ -32,7 +32,7 @@ public class AbilityCard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(Instance == null) Instance = this;
+        if (Instance == null) Instance = this;
         else Destroy(this.gameObject);
     }
 
@@ -41,32 +41,37 @@ public class AbilityCard : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Select();
+            if (!IsAbilityLimit()) Select();
         }
     }
 
-    
 
-    //´É·ÂµéÀÌ ¸ðµÎ °­È­µÇ¾ú´ÂÁö È®ÀÎÇÏ´Â ÇÔ¼ö
+
+    //ï¿½É·Âµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È­ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
+    public bool IsAbilityLimit()
+    {
+        foreach (AbilityBase ability in abilities)
+        {
+            if (!abilityLevels.ContainsKey(ability.skillName))
+            {
+                return false;
+            }
+            if (abilityLevels[ability.skillName] < 5)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     public void Select()
     {
-        foreach(AbilityBase ability in abilities)
-        {
-            if(!abilityLevels.ContainsKey(ability.skillName))
-            {
-                StartCoroutine(ISelect(false));
-            }
-            if(abilityLevels[ability.skillName] < 5)
-            {
-                StartCoroutine(ISelect(false));
-            }
-        }
+        StartCoroutine(ISelect(false));
     }
 
-    //Ä«µå¿¡ ´É·ÂÀ» ¹èÁ¤ÇÏ°í µîÀå½ÃÅ°´Â ÇÔ¼ö
+    //Ä«ï¿½å¿¡ ï¿½É·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½Ô¼ï¿½
     IEnumerator ISelect(bool end)
     {
-        selectabs.Clear();         
+        selectabs.Clear();
         for (int i = 0; i < cards.Length; i++)
         {
             if (!end)
@@ -76,30 +81,35 @@ public class AbilityCard : MonoBehaviour
                 cards[i].GetComponent<Select>().SetAbility(ab);
                 StartCoroutine(ICardSpawn(cards[i], cards[i].position, new Vector3(cards[i].position.x, upPosY, 0), 1f));
             }
-            else StartCoroutine(ICardEnd(cards[i], cards[i].position, new Vector3(cards[i].position.x, downPosY, 0), 1f));
-            yield return new WaitForSeconds(0.15f);
+            else
+            {
+                StartCoroutine(ICardEnd(cards[i], cards[i].position, new Vector3(cards[i].position.x, downPosY, 0), 1f));
+            }
+
+            yield return new WaitForSecondsRealtime(0.15f);
         }
-        yield return new WaitForSeconds(1.5f);
-        isSelect = (end) ? false : true;
+        yield return new WaitForSecondsRealtime(1.5f);
+        isSelect = !end;
     }
 
 
-    //·¹º§ 5°¡ ¾Æ´Ñ ´É·Â Áß ·£´ýÀ¸·Î °¡Á®¿À´Â ÇÔ¼ö
+    //ï¿½ï¿½ï¿½ï¿½ 5ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½É·ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     AbilityBase GetRandomAbility()
     {
         List<AbilityBase> abs = abilities;
-        foreach(AbilityBase a in abs)
+        foreach (AbilityBase a in abs)
         {
-            if((abilityLevels.ContainsKey(a.skillName) && abilityLevels[a.skillName] >= 5)) {
+            if ((abilityLevels.ContainsKey(a.skillName) && abilityLevels[a.skillName] >= 5))
+            {
                 abs.Remove(a);
             }
         }
         Debug.Log(abs.Count);
-        
+
         AbilityBase ab = abs[Random.Range(0, abs.Count)];
-        if(abs.Count - cards.Length > 0)
+        if (abs.Count - cards.Length > 0)
         {
-            while(selectabs.Contains(ab))
+            while (selectabs.Contains(ab))
             {
                 ab = abs[Random.Range(0, abs.Count)];
             }
@@ -108,53 +118,44 @@ public class AbilityCard : MonoBehaviour
         //{
         //    ab = abilities[Random.Range(0, abilities.Count)];
         //    if ( && selectabs.Contains(ab)) continue;
-           
+
         //}
         ab.level = (abilityLevels.ContainsKey(ab.skillName)) ? abilityLevels[ab.skillName] : 1;
         return ab;
-
     }
 
-    //Ä«µå µîÀå ÇÔ¼ö
+    //Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     IEnumerator ICardSpawn(Transform t, Vector3 startPos, Vector3 endPos, float duration)
     {
         t.position = startPos;
-        yield return t.DOMove(endPos + transform.up * bounceHeight, duration).WaitForCompletion();
-        t.DOMove(endPos, duration / 2);
-
+        t.DOMove(endPos + transform.up * bounceHeight, duration).SetUpdate(true);
+        yield return new WaitForSecondsRealtime(duration);
+        t.DOMove(endPos, duration / 2).SetUpdate(true);
     }
-
-
-    //Ä«µå ÅðÀå ÇÔ¼ö
+    //Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     IEnumerator ICardEnd(Transform t, Vector3 startPos, Vector3 endPos, float duration)
     {
+        Time.timeScale = 1;
         t.position = startPos;
-        yield return t.DOMove(startPos + Vector3.up * bounceHeight, duration / 2).WaitForCompletion();
-        t.DOMove(endPos, duration).WaitForCompletion();
-
+        t.DOMove(startPos + Vector3.up * bounceHeight, duration / 2).SetUpdate(true);
+        yield return new WaitForSecondsRealtime(duration);
+        t.DOMove(endPos, duration).SetUpdate(true).WaitForCompletion();
     }
-
-
-    //¼±ÅÃÇÑ Ä«µå¸¦ ÇöÀç ´É·Â ¹è¿­¿¡ Ãß°¡½ÃÅ°°í ¼±ÅÃÀ» Á¾·áÇÏ´Â ÇÔ¼ö
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½É·ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     public void SelectEnd(AbilityBase abi)
     {
-
-        if(abilityLevels.ContainsKey(abi.skillName))
+        if (abilityLevels.ContainsKey(abi.skillName))
         {
             abilityLevels[abi.skillName]++;
             curAbilityDic[abi.skillName].LevelUp();
-        } else
+        }
+        else
         {
             curAbilityList.Add(abi);
             abilityLevels.Add(abi.skillName, 2);
             curAbilityDic.Add(abi.skillName, abi);
         }
-        
+
         StartCoroutine(ISelect(true));
     }
-
 }
-
-
-
-

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5978100db5b5b5043a640c9a50f9ce28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 2
+  level: 1
   type: 0
   skillImage: {fileID: 0}
   skillName: "\uB1CC\uC6B4"
@@ -53,7 +53,7 @@ MonoBehaviour:
     \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
   speed: 5
   cloud: {fileID: 4425488917986869762, guid: ec92e946d49ed424e926462e10638c42, type: 3}
-  defaultDamage: 5
+  defaultDamage: 2
   curCooltime: 0
   maxCooltime: 10
   livingDuration: 5

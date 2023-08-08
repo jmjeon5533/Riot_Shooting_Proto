@@ -42,7 +42,7 @@ public class AbilityCard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !isSelect)
         {
             if (!IsAbilityLimit()) Select();
         }
@@ -77,6 +77,7 @@ public class AbilityCard : MonoBehaviour
         panel.SetActive(true);
         if(!end)
         {
+            //isSelect = true;
             panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0);
             panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0.5f), 0.5f);
 
@@ -108,6 +109,7 @@ public class AbilityCard : MonoBehaviour
         if (end)
         {
             
+            //isSelect = false;
            // panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0.5f);
             panel.SetActive(false);
         }

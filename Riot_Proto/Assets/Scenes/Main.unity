@@ -1933,7 +1933,6 @@ MonoBehaviour:
   - {fileID: 966537126603244401, guid: 5f04875b64f51fb449ffb63fb7637440, type: 3}
   - {fileID: 4532925901132915841, guid: e43fe6169409070499fbf52400ce2211, type: 3}
   - {fileID: 2419495779614173311, guid: fa050543c07fafa44bb38846b9c300ae, type: 3}
-  - {fileID: 2359002189107339667, guid: 1435902663907b0428b18802b423ea37, type: 3}
   curAbilityList: []
   cards:
   - {fileID: 822612284}

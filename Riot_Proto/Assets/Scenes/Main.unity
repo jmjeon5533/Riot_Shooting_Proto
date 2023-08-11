@@ -2015,7 +2015,7 @@ MonoBehaviour:
   - {fileID: 6332685398307081435, guid: c63eed9c18d0ed34f8f2d208ba702ad0, type: 3}
   StagePrefab:
   - {fileID: 1221886862955168235, guid: 1d4a10627c2ac13448a6eecd660adc25, type: 3}
-  - {fileID: 1221886862955168235, guid: efb6b3fd720a39747b0fda9e191faa13, type: 3}
+  - {fileID: 1221886862955168235, guid: 1dc057906ef785845973f846d0836e71, type: 3}
   curEnemys: []
   IsGame: 0
 --- !u!114 &1679633663

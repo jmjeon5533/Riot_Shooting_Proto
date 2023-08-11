@@ -159,6 +159,7 @@ public class AbilityCard : MonoBehaviour
     //ī�� ���� �Լ�
     IEnumerator ICardEnd(Transform t, Vector3 startPos, Vector3 endPos, float duration)
     {
+        StopCoroutine(GameManager.instance.FadeCoroutine);
         Time.timeScale = 1;
         t.position = startPos;
         t.DOMove(startPos + Vector3.up * bounceHeight, duration / 2).SetUpdate(true);

@@ -6,14 +6,15 @@ public abstract class ItemBase : MonoBehaviour
 {
     void Start()
     {
-        
+
     }
     protected abstract void GetItem();
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             GetItem();
+            Destroy(gameObject);
         }
     }
 }

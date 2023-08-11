@@ -25,7 +25,6 @@ public class XP : ItemBase
     }
     protected override void GetItem()
     {
-        Destroy(gameObject);
         GameManager.instance.AddXP(AddValue);
     }
 }

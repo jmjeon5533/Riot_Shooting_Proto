@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     
     public bool IsGame = false;
 
+    [HideInInspector] public Coroutine FadeCoroutine;
+
     void Awake()
     {
         instance = this;
@@ -32,8 +34,8 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(playerPrefab[SceneManager.instance.CharIndex],new Vector3(-12f,0,0),Quaternion.identity);
         Instantiate(StagePrefab[SceneManager.instance.StageIndex],UIManager.instance.canvas);
-        var bg2 = Instantiate(StagePrefab[SceneManager.instance.StageIndex],UIManager.instance.canvas);
-        bg2.transform.localPosition += new Vector3(1920,0,0);
+        var bg2 = Instantiate(StagePrefab[SceneManager.instance.StageIndex],UIManager.instance.canvas).GetComponent<RectTransform>();
+        bg2.transform.localPosition += new Vector3(bg2.rect.width,0,0);
     }
     private void OnDrawGizmos() 
     {
@@ -50,7 +52,10 @@ public class GameManager : MonoBehaviour
             MaxXP += AddMaxXP;
             Level++;
             if (!ab.IsAbilityLimit()) ab.Select();
-            _ = StartCoroutine(FadeTime(0));
+            if(FadeCoroutine == null)
+            {
+                FadeCoroutine = StartCoroutine(FadeTime(0));
+            }
         }
         UIManager.instance.XPBarUpdate();
     }

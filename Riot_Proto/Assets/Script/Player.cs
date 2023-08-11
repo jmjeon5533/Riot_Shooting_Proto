@@ -90,6 +90,7 @@ public abstract class Player : MonoBehaviour
     }
     IEnumerator Spawned()
     {
+        anim.SetInteger("MoveState",1);
         transform.position = new Vector3(-12, 0, 0);
         while (Vector3.Distance(transform.position, new Vector3(-8, 0, 0)) >= 0.1f)
         {
@@ -107,11 +108,13 @@ public abstract class Player : MonoBehaviour
        = new Vector2(Input.GetAxisRaw("Horizontal"),
        Input.GetAxisRaw("Vertical"));
 
+        anim.SetInteger("MoveState",(int)input.x);
+
         transform.Translate(input * MoveSpeed * Time.deltaTime);
 
         transform.position
-         = new Vector3(Mathf.Clamp(transform.position.x, (-MoveRange.x + MovePivot.x), (MoveRange.x + MovePivot.x)),
-         Mathf.Clamp(transform.position.y, (-MoveRange.y + MovePivot.y), (MoveRange.y + MovePivot.y)));
+         = new Vector3(Mathf.Clamp(transform.position.x, -MoveRange.x + MovePivot.x, MoveRange.x + MovePivot.x),
+         Mathf.Clamp(transform.position.y, -MoveRange.y + MovePivot.y, MoveRange.y + MovePivot.y));
     }
 
 

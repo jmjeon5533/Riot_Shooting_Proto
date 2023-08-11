@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance { get; private set; }
 
     public Image XPBar;
+    public Transform canvas;
     private void Awake()
     {
         instance = this;

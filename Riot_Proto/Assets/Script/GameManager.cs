@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public Vector2 MoveRange;
     public Vector2 MovePivot;
+    public float BGSpeed;
 
     [Space(10)]
     public GameObject XPPrefab;
@@ -30,7 +31,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Instantiate(playerPrefab[SceneManager.instance.CharIndex],new Vector3(-12f,0,0),Quaternion.identity);
-        Instantiate(StagePrefab[SceneManager.instance.StageIndex],new Vector3(0,0,5f),Quaternion.identity);
+        Instantiate(StagePrefab[SceneManager.instance.StageIndex],UIManager.instance.canvas);
+        var bg2 = Instantiate(StagePrefab[SceneManager.instance.StageIndex],UIManager.instance.canvas);
+        bg2.transform.localPosition += new Vector3(1920,0,0);
     }
     private void OnDrawGizmos() 
     {

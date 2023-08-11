@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public int CritRate;
     public int CritDamage = 2;
 
+    public int bulletLevel;
     public int bulletSpeed;
 
     public float MoveSpeed;

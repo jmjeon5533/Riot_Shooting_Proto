@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public abstract class Player : MonoBehaviour
 {
     public int HP;
     public int damage;
@@ -10,12 +10,12 @@ public class Player : MonoBehaviour
     public int CritRate;
     public int CritDamage = 2;
 
-    public int bulletLevel;
+    public int bulletLevel = 1;
     public int bulletSpeed;
 
     public float MoveSpeed;
 
-    public GameObject bulletPrefab;
+    public PlayerBullet[] bulletPrefab;
 
     Vector3 MoveRange;
     Vector3 MovePivot;
@@ -25,9 +25,11 @@ public class Player : MonoBehaviour
     bool IsMove = false;
 
     Rigidbody rigid;
+    Animator anim;
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
+        anim = transform.GetChild(0).GetComponent<Animator>();
         MoveRange = GameManager.instance.MoveRange;
         MovePivot = GameManager.instance.MovePivot;
         GameManager.instance.player = this;
@@ -35,28 +37,33 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if(IsMove)
+        if (IsMove)
         {
             Movement();
-            Attack();
+            AttackInput();
         }
     }
 
-    void Attack()
+    void AttackInput()
     {
-        if(AttackCurtime >= AttackCooltime)
+        if (AttackCurtime >= AttackCooltime)
         {
             AttackCurtime -= AttackCooltime;
-            var b = Instantiate(bulletPrefab,transform.position,Quaternion.identity).GetComponent<PlayerBullet>();
-            b.Damage = damage;
-            b.dir = Vector3.right;
-            b.CritRate = CritRate;
-            b.CritDamage = CritDamage;
+            Attack();
         }
         else
         {
             AttackCurtime += Time.deltaTime;
         }
+    }
+    protected abstract void Attack();
+    protected void InitBullet(PlayerBullet bullet)
+    {
+        var b = bullet;
+        b.Damage = damage;
+        b.dir = Vector3.right;
+        b.CritRate = CritRate;
+        b.CritDamage = CritDamage;
     }
 
     public void Damage()
@@ -70,7 +77,7 @@ public class Player : MonoBehaviour
         IsMove = false;
         rigid.useGravity = true;
         GetComponent<CapsuleCollider>().enabled = false;
-        rigid.AddForce(Vector3.left,ForceMode.Impulse);
+        rigid.AddForce(Vector3.left, ForceMode.Impulse);
         yield return new WaitForSeconds(2);
         rigid.useGravity = false;
         rigid.velocity = Vector3.zero;
@@ -83,11 +90,11 @@ public class Player : MonoBehaviour
     }
     IEnumerator Spawned()
     {
-        transform.position = new Vector3(-12,0,0);
-        while(Vector3.Distance(transform.position,new Vector3(-8,0,0)) >= 0.1f)
+        transform.position = new Vector3(-12, 0, 0);
+        while (Vector3.Distance(transform.position, new Vector3(-8, 0, 0)) >= 0.1f)
         {
             yield return null;
-            transform.position = Vector3.MoveTowards(transform.position,new Vector3(-8,0,0), 2 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(-8, 0, 0), 2 * Time.deltaTime);
         }
         IsMove = true;
         yield return new WaitForSeconds(2f);

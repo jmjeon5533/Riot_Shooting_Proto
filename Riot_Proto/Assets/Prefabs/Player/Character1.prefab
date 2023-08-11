@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6332685398307081432}
   - component: {fileID: 6332685398307081433}
   - component: {fileID: 6332685398307081434}
-  - component: {fileID: 6332685398335192198}
   - component: {fileID: 5139616172709451010}
+  - component: {fileID: 7593105838133101328}
   m_Layer: 3
   m_Name: Character1
   m_TagString: Player
@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2730848877249324602}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: aa9d945c486d376469cf116a53d0d235, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,29 +98,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 1.76
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6332685398335192198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6332685398307081435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c7618c7626700a418edbcac4c1a052d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 1
-  damage: 5
-  CritRate: 0
-  CritDamage: 2
-  bulletSpeed: 10
-  MoveSpeed: 10
-  bulletPrefab: {fileID: 7488623435463272498, guid: b7c2e428f26f83343a39d3baa0b35720, type: 3}
-  AttackCooltime: 0.2
 --- !u!54 &5139616172709451010
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -136,3 +117,113 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &7593105838133101328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6332685398307081435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdabe7efed854b64b8d337849c64873e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 1
+  damage: 5
+  CritRate: 1
+  CritDamage: 2
+  bulletLevel: 1
+  bulletSpeed: 10
+  MoveSpeed: 10
+  bulletPrefab:
+  - {fileID: 7488623435463272499, guid: b7c2e428f26f83343a39d3baa0b35720, type: 3}
+  AttackCooltime: 0.2
+--- !u!1001 &2481296377595101649
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6332685398307081431}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.86
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+      propertyPath: m_Name
+      value: got_mainCharacter
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+--- !u!4 &2730848877249324602 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+  m_PrefabInstance: {fileID: 2481296377595101649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3363692188629744768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5f8104d49e240424fb053598319c0cb0, type: 3}
+  m_PrefabInstance: {fileID: 2481296377595101649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7272905594229492029
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3363692188629744768}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 960253fdd37af804386fc1dc7947e5c3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

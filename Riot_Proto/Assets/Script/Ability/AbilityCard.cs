@@ -144,7 +144,16 @@ public class AbilityCard : MonoBehaviour
         //    if ( && selectabs.Contains(ab)) continue;
 
         //}
-        ab.level = (abilityLevels.ContainsKey(ab.skillName)) ? abilityLevels[ab.skillName] : 1;
+        if(curAbilityDic.ContainsKey(ab.skillName))
+        {
+            ab = curAbilityDic[ab.skillName];
+            ab.level = abilityLevels[ab.skillName];
+        } else
+        {
+
+            ab.level = (abilityLevels.ContainsKey(ab.skillName)) ? abilityLevels[ab.skillName] : 1;
+        }
+        
         return ab;
     }
 

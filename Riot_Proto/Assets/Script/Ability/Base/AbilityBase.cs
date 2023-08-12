@@ -19,6 +19,10 @@ public abstract class AbilityBase : MonoBehaviour
     public string skillName;
     public string skillDescription;
 
+    public string stats;
+
+    public abstract string GetStatText();
+    
 
     public virtual void Start()
     {

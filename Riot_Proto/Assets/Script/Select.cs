@@ -17,6 +17,8 @@ public class Select : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     [SerializeField] Text nameText;
     [SerializeField] Text description;
 
+    [SerializeField] Text statText;
+
     [SerializeField] Vector2 offset;
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,14 @@ public class Select : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         abilityName = ab.skillName;
         explain = ab.skillDescription;
         description.text = explain;
+        if(ab.type == AbilityBase.AbilityType.Passive && !AbilityCard.Instance.curAbilityList.Contains(ab))
+        {
+            statText.text = "";
+        } else
+        {
+            statText.text = ab.GetStatText();
+
+        }
         nameText.text = abilityName + " " + GetLevelText(ab.level);
     }
 

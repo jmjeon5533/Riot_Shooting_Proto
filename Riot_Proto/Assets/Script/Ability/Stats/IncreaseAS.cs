@@ -11,7 +11,7 @@ public class IncreaseAS : AbilityBase
 
     public override void Ability()
     {
-        GameManager.instance.player.AttackCooltime -= increaseValue * level;
+        GameManager.instance.player.AttackCooltime -= GameManager.instance.player.AttackCooltime * (increaseValue * level);
     }
 
     // Start is called before the first frame update
@@ -36,5 +36,10 @@ public class IncreaseAS : AbilityBase
     void Update()
     {
         //if (!isOne) Ability();
+    }
+
+    public override string GetStatText()
+    {
+        return "공격 속도 " + (increaseValue * level) * 100 + "% 증가";
     }
 }

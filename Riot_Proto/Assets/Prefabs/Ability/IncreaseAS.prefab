@@ -49,4 +49,5 @@ MonoBehaviour:
   skillImage: {fileID: 0}
   skillName: "\uACF5\uACA9 \uC18D\uB3C4 \uC99D\uAC00"
   skillDescription: "\uACF5\uACA9 \uC18D\uB3C4\uB97C \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4"
-  increaseValue: 0.02
+  stats: 
+  increaseValue: 0.1

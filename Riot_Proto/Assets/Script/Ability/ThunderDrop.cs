@@ -65,4 +65,9 @@ public class ThunderDrop : AbilityBase
 
         return nearbyEnemies;
     }
+
+    public override string GetStatText()
+    {
+        return "";
+    }
 }

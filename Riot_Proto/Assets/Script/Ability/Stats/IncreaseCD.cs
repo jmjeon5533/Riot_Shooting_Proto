@@ -36,4 +36,9 @@ public class IncreaseCD : AbilityBase
         base.LevelUp();
         Ability();
     }
+
+    public override string GetStatText()
+    {
+        return "크리티컬 데미지 +" + increaseValue * level;
+    }
 }

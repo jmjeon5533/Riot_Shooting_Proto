@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] enemys;
-    float Curtime;
+    float curTime;
+    public float spawnTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,16 +25,16 @@ public class SpawnManager : MonoBehaviour
     }
     void Spawn()
     {
-        if (Curtime >= 3)
+        if (curTime >= spawnTime)
         {
             GameObject enemy =Instantiate(enemys[Random.Range(0, enemys.Length)], new Vector3(15, Random.Range(-5, 6), 0), Quaternion.identity);
             GameManager.instance.curEnemys.Add(enemy);
             //Instantiate(enemys[Random.Range(0, enemys.Length)], new Vector3(15, Random.Range(-5, 6), 0), Quaternion.identity);
-            Curtime -= 3;
+            curTime -= spawnTime;
         }
         else
         {
-            Curtime += Time.deltaTime;
+            curTime += Time.deltaTime;
         }
     }
 }

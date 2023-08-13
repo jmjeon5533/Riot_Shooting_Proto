@@ -13,6 +13,7 @@ public class XP : ItemBase
     Vector3 middlePos;
     private void Start()
     {
+        Destroy(gameObject,moveRate);
         player = GameManager.instance.player.transform;
         startPos = transform.position;
         middlePos = transform.position + ((Vector3)Random.insideUnitCircle * dirPower);

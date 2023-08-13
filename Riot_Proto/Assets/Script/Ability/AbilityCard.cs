@@ -75,7 +75,7 @@ public class AbilityCard : MonoBehaviour
     IEnumerator ISelect(bool end)
     {
         panel.SetActive(true);
-        if(!end)
+        if (!end)
         {
             //isSelect = true;
             panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0);
@@ -100,7 +100,7 @@ public class AbilityCard : MonoBehaviour
 
             yield return new WaitForSecondsRealtime(0.15f);
         }
-        if(end)
+        if (end)
         {
             panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0f), 1f);
         }
@@ -108,9 +108,9 @@ public class AbilityCard : MonoBehaviour
 
         if (end)
         {
-            
+
             //isSelect = false;
-           // panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0.5f);
+            // panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0.5f);
             panel.SetActive(false);
         }
         isSelect = !end;
@@ -144,16 +144,17 @@ public class AbilityCard : MonoBehaviour
         //    if ( && selectabs.Contains(ab)) continue;
 
         //}
-        if(curAbilityDic.ContainsKey(ab.skillName))
+        if (curAbilityDic.ContainsKey(ab.skillName))
         {
             ab = curAbilityDic[ab.skillName];
             ab.level = abilityLevels[ab.skillName];
-        } else
+        }
+        else
         {
 
             ab.level = (abilityLevels.ContainsKey(ab.skillName)) ? abilityLevels[ab.skillName] : 1;
         }
-        
+
         return ab;
     }
 
@@ -168,11 +169,10 @@ public class AbilityCard : MonoBehaviour
     //ī�� ���� �Լ�
     IEnumerator ICardEnd(Transform t, Vector3 startPos, Vector3 endPos, float duration)
     {
-        StopCoroutine(GameManager.instance.FadeCoroutine);
-        Time.timeScale = 1;
+
         t.position = startPos;
         t.DOMove(startPos + Vector3.up * bounceHeight, duration / 2).SetUpdate(true);
-        yield return new WaitForSecondsRealtime(duration/2);
+        yield return new WaitForSecondsRealtime(duration / 2);
         t.DOMove(endPos, duration).SetUpdate(true).WaitForCompletion();
     }
     //������ ī�带 ���� �ɷ� �迭�� �߰���Ű�� ������ �����ϴ� �Լ�
@@ -189,7 +189,9 @@ public class AbilityCard : MonoBehaviour
             abilityLevels.Add(abi.skillName, 2);
             curAbilityDic.Add(abi.skillName, abi);
         }
-
+        GameManager.instance.StopCoroutine(GameManager.instance.FadeCoroutine);
+        GameManager.instance.FadeCoroutine = null;
+        Time.timeScale = 1;
         StartCoroutine(ISelect(true));
     }
 }

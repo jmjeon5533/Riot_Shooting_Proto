@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     
     public bool IsGame = false;
 
-    [HideInInspector] public Coroutine FadeCoroutine;
+    public Coroutine FadeCoroutine;
 
     void Awake()
     {
@@ -52,10 +52,7 @@ public class GameManager : MonoBehaviour
             MaxXP += AddMaxXP;
             Level++;
             if (!ab.IsAbilityLimit()) ab.Select();
-            if(FadeCoroutine == null)
-            {
-                FadeCoroutine = StartCoroutine(FadeTime(0));
-            }
+            FadeCoroutine ??= StartCoroutine(FadeTime(0));
         }
         UIManager.instance.XPBarUpdate();
     }

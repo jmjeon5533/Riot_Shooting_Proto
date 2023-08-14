@@ -39,6 +39,6 @@ public class IncreaseCD : AbilityBase
 
     public override string GetStatText()
     {
-        return "크리티컬 데미지 " + GameManager.instance.player.CritDamage * 100 + "% → " + (GameManager.instance.player.CritDamage + increaseValue * level) * 100 + "%";
+        return "크리티컬 데미지 " + GameManager.instance.player.CritDamage * 100 + "% → " + (GameManager.instance.player.CritDamage + (0.5f * Mathf.Pow((1 + 0.2f), level))) * 100 + "%";
     }
 }

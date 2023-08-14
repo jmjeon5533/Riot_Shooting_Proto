@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &540240963720648905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 30512320796666329}
+  - component: {fileID: 4020386063931766963}
+  m_Layer: 0
+  m_Name: ElectricBullet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &30512320796666329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540240963720648905}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1067.8018, y: -724.99677, z: -12.865204}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4020386063931766963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540240963720648905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2bbe04126481c4ab7e151ee2866708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  type: 0
+  skillImage: {fileID: 0}
+  skillName: "\uB1CC\uC2E0 \uC2A4\uD0AC 1"
+  skillDescription: "\uC804\uBC29\uC5D0 \uBC88\uAC1C \uD0C4\uD658\uC744 \uBC1C\uC0AC\uD569\uB2C8\uB2E4.
+    \uC801\uC5D0\uAC8C \uC801\uC911 \uC2DC \uC801\uC911 \uC704\uCE58 \uAE30\uC900
+    \uBD80\uCC44\uAF34 \uBC94\uC704 \uC801\uB4E4\uC5D0\uAC8C \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4.
+    \uB808\uBCA8\uC5D0 \uB530\uB77C \uBC1C\uC0AC\uD558\uB294 \uAC1C\uC218\uAC00 \uB298\uC5B4\uB0A9\uB2C8\uB2E4."
+  stats: 
+  speed: 8
+  bullet: {fileID: 1049926176297283882, guid: d24d110f96e013240b62edabb8a70163, type: 3}
+  defaultDamage: 5
+  curCooltime: 0
+  maxCooltime: 5
+  angle: 50
+  livingDuration: 1

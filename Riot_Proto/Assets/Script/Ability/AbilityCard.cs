@@ -135,7 +135,7 @@ public class AbilityCard : MonoBehaviour
             abs.Remove(rem);
         } 
         removeToList.Clear();
-        Debug.Log(abs.Count + " test");
+        //Debug.Log(abs.Count + " test");
         if (abs.Count - cards.Length >= 0)
         {
 
@@ -152,7 +152,7 @@ public class AbilityCard : MonoBehaviour
             abs.Remove(rem);
         }
         removeToList.Clear();
-        Debug.Log(abs.Count);
+        //Debug.Log(abs.Count);
         
        
         AbilityBase ab = abs[Random.Range(0, abs.Count)];
@@ -166,9 +166,9 @@ public class AbilityCard : MonoBehaviour
         }
         if (curAbilityDic.ContainsKey(ab.skillName))
         {
-            Debug.Log(ab.gameObject.name);
+            //Debug.Log(ab.gameObject.name);
             ab = curAbilityDic[ab.skillName];
-            Debug.Log(curAbilityDic[ab.skillName].skillName);
+            //Debug.Log(curAbilityDic[ab.skillName].skillName);
             ab.level = abilityLevels[ab.skillName];
             
         }

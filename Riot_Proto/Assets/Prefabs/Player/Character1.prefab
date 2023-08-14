@@ -782,7 +782,7 @@ GameObject:
   - component: {fileID: 2166635607127448804}
   - component: {fileID: 8589854220523674166}
   - component: {fileID: 1967168986164677172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lighting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6847,7 +6847,7 @@ GameObject:
   - component: {fileID: 5227060824561209529}
   - component: {fileID: 1383562914752930827}
   - component: {fileID: 6940451800492651912}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LightingSub
   m_TagString: Untagged
   m_Icon: {fileID: 0}

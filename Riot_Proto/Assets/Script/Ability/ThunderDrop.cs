@@ -66,8 +66,17 @@ public class ThunderDrop : AbilityBase
         return nearbyEnemies;
     }
 
+    public override void LevelUp()
+    {
+        base.LevelUp();
+        defaultDamage += (int)(5 * Mathf.Pow((1 + 0.2f), level));
+        maxCooltime -= (0.2f * Mathf.Pow((1 + 0.2f), level));
+
+    }
+
     public override string GetStatText()
     {
-        return "";
+        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(5 * Mathf.Pow((1 + 0.2f), level))) + 
+            "\n스킬 쿨타임 " + maxCooltime + " → " + (maxCooltime - (0.2f * Mathf.Pow((1 + 0.2f), level)));
     }
 }

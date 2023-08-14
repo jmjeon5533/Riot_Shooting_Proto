@@ -27,7 +27,7 @@ public class AbilityCard : MonoBehaviour
     [SerializeField] GameObject panel;
 
     //[SerializeField] Transform targetPos;
-    List<AbilityBase> selectabs = new List<AbilityBase>();
+    [SerializeField] List<AbilityBase> selectabs = new List<AbilityBase>();
     //[SerializeField] float width;
     [Header("Card Select State")]
     public bool isSelect = false;
@@ -129,7 +129,11 @@ public class AbilityCard : MonoBehaviour
             }
         }
         Debug.Log(abs.Count);
-
+        Debug.Log(selectabs);
+        //foreach(AbilityBase a in abs)
+        //{
+        //    Debug.Log(a.skillName);
+        //}
         AbilityBase ab = abs[Random.Range(0, abs.Count)];
         if (abs.Count - cards.Length > 0)
         {
@@ -147,14 +151,14 @@ public class AbilityCard : MonoBehaviour
         if (curAbilityDic.ContainsKey(ab.skillName))
         {
             ab = curAbilityDic[ab.skillName];
+            Debug.Log(curAbilityDic[ab.skillName].skillName);
             ab.level = abilityLevels[ab.skillName];
         }
         else
         {
-
             ab.level = (abilityLevels.ContainsKey(ab.skillName)) ? abilityLevels[ab.skillName] : 1;
         }
-
+        
         return ab;
     }
 

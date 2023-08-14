@@ -40,6 +40,6 @@ public class IncreaseCC : AbilityBase
 
     public override string GetStatText()
     {
-        return "크리티컬 확률 +" + increaseValue * level;
+        return "크리티컬 확률 " + GameManager.instance.player.CritRate + "% → " + (GameManager.instance.player.CritRate + increaseValue * level) + "%";
     }
 }

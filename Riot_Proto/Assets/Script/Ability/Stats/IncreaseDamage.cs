@@ -28,7 +28,7 @@ public class IncreaseDamage : AbilityBase
 
     public override string GetStatText()
     {
-        return "데미지 +" + (int)(5 * Mathf.Pow((1 + 0.2f), level));
+        return "데미지 " + GameManager.instance.player.damage + " → " + (GameManager.instance.player.damage + (int)(5 * Mathf.Pow((1 + 0.2f), level)));
     }
 
     // Update is called once per frame

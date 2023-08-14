@@ -26,7 +26,7 @@ public class IncreaseWeapon : AbilityBase
 
     public override string GetStatText()
     {
-        return "무기 레벨 +" + 1;
+        return "무기 레벨 " + GameManager.instance.player.bulletLevel + " -> " + (GameManager.instance.player.bulletLevel + 1);
     }
 
     // Start is called before the first frame update

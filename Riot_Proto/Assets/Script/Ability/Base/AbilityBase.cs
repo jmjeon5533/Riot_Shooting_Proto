@@ -22,6 +22,11 @@ public abstract class AbilityBase : MonoBehaviour
     public string stats;
 
     public abstract string GetStatText();
+
+    protected virtual int GetCalculateDamage(int value)
+    {
+        return (int)(GameManager.instance.player.damage * 0.5f + value);
+    }
     
 
     public virtual void Start()

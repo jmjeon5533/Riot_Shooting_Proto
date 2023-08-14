@@ -120,39 +120,57 @@ public class AbilityCard : MonoBehaviour
     //���� 5�� �ƴ� �ɷ� �� �������� �������� �Լ�
     AbilityBase GetRandomAbility()
     {
-        List<AbilityBase> abs = abilities;
-        foreach (AbilityBase a in abs)
+        List<AbilityBase> abs = new List<AbilityBase>(abilities);
+        List<AbilityBase> removeToList = new List<AbilityBase>();
+        for(int i = 0; i < abs.Count; i++)
         {
-            if ((abilityLevels.ContainsKey(a.skillName) && abilityLevels[a.skillName] >= 5))
+            if ((abilityLevels.ContainsKey(abs[i].skillName) && abilityLevels[abs[i].skillName] >= 5))
             {
-                abs.Remove(a);
+                removeToList.Add(abs[i]);
+                
             }
         }
+        foreach(AbilityBase rem in removeToList)
+        {
+            abs.Remove(rem);
+        } 
+        removeToList.Clear();
+        Debug.Log(abs.Count + " test");
+        if (abs.Count - cards.Length >= 0)
+        {
+
+            for (int i = 0; i < abs.Count; i++)
+            {
+                foreach(AbilityBase ability in selectabs)
+                {
+                    if(ability.skillName == abs[i].skillName) removeToList.Add(abs[i]);
+                }
+            }
+        }
+        foreach (AbilityBase rem in removeToList)
+        {
+            abs.Remove(rem);
+        }
+        removeToList.Clear();
         Debug.Log(abs.Count);
-        Debug.Log(selectabs);
-        //foreach(AbilityBase a in abs)
-        //{
-        //    Debug.Log(a.skillName);
-        //}
+        
+       
         AbilityBase ab = abs[Random.Range(0, abs.Count)];
-        if (abs.Count - cards.Length > 0)
+        if (abs.Count - cards.Length >= 0)
         {
             while (selectabs.Contains(ab))
             {
+                
                 ab = abs[Random.Range(0, abs.Count)];
             }
         }
-        //while (abilityLevels.ContainsKey(ab.skillName) && abilityLevels[ab.skillName] >= 5)
-        //{
-        //    ab = abilities[Random.Range(0, abilities.Count)];
-        //    if ( && selectabs.Contains(ab)) continue;
-
-        //}
         if (curAbilityDic.ContainsKey(ab.skillName))
         {
+            Debug.Log(ab.gameObject.name);
             ab = curAbilityDic[ab.skillName];
             Debug.Log(curAbilityDic[ab.skillName].skillName);
             ab.level = abilityLevels[ab.skillName];
+            
         }
         else
         {

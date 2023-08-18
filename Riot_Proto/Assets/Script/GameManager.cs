@@ -61,6 +61,13 @@ public class GameManager : MonoBehaviour
         }
         UIManager.instance.XPBarUpdate();
     }
+
+    public bool IsLevelUP()
+    {
+        if (XP >= MaxXP) return true;
+        else return false;
+    }
+
     IEnumerator FadeTime(float target)
     {
         var wait = new WaitForSecondsRealtime(0);

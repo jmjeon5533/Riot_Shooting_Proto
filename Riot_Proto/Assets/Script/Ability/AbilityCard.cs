@@ -17,6 +17,8 @@ public class AbilityCard : MonoBehaviour
 
     public Transform[] cards;
 
+    bool isDuplicate = false;
+
 
     [Header("Card Show Panel")]
     [SerializeField] float bounceHeight = 70f;
@@ -75,7 +77,7 @@ public class AbilityCard : MonoBehaviour
     IEnumerator ISelect(bool end)
     {
         panel.SetActive(true);
-        if (!end)
+        if (!end && !isDuplicate)
         {
             //isSelect = true;
             panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0);
@@ -88,6 +90,7 @@ public class AbilityCard : MonoBehaviour
         {
             if (!end)
             {
+                
                 AbilityBase ab = GetRandomAbility();
                 selectabs.Add(ab);
                 cards[i].GetComponent<Select>().SetAbility(ab);
@@ -102,7 +105,8 @@ public class AbilityCard : MonoBehaviour
         }
         if (end)
         {
-            panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0f), 1f);
+            if (!GameManager.instance.IsLevelUP())
+                panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0f), 1f);
         }
         yield return new WaitForSecondsRealtime(1.5f);
 
@@ -110,8 +114,16 @@ public class AbilityCard : MonoBehaviour
         {
 
             //isSelect = false;
-            // panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0.5f);
-            panel.SetActive(false);
+            //panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0.5f);
+            if (GameManager.instance.IsLevelUP())
+            {
+                GameManager.instance.AddXP(0);
+                isDuplicate = true;
+            }else
+            {
+                panel.SetActive(false);
+                isDuplicate = false;
+            }
         }
         isSelect = !end;
     }
@@ -192,6 +204,7 @@ public class AbilityCard : MonoBehaviour
         t.DOMove(startPos + (Vector3.up * bounceHeight), duration / 2).SetUpdate(true);
         yield return new WaitForSecondsRealtime(duration / 2);
         t.DOMove(endPos, duration).SetUpdate(true).WaitForCompletion();
+       
     }
     //������ ī�带 ���� �ɷ� �迭�� �߰���Ű�� ������ �����ϴ� �Լ�
     public void SelectEnd(AbilityBase abi)

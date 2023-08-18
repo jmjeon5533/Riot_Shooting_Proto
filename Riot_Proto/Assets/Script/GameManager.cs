@@ -62,9 +62,9 @@ public class GameManager : MonoBehaviour
         UIManager.instance.XPBarUpdate();
     }
 
-    public bool IsLevelUP()
+    public bool IsLevelDupe()
     {
-        if (XP >= MaxXP) return true;
+        if (SelectChance >= 1) return true;
         else return false;
     }
 

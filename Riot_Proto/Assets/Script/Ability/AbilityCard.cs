@@ -17,7 +17,7 @@ public class AbilityCard : MonoBehaviour
 
     public Transform[] cards;
 
-    bool isDuplicate = false;
+    [SerializeField]bool isDuplicate = false;
 
 
     [Header("Card Show Panel")]
@@ -79,6 +79,7 @@ public class AbilityCard : MonoBehaviour
         panel.SetActive(true);
         if (!end && !isDuplicate)
         {
+            Debug.Log("0");
             //isSelect = true;
             panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0);
             panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0.5f), 0.5f);
@@ -105,7 +106,7 @@ public class AbilityCard : MonoBehaviour
         }
         if (end)
         {
-            if (!GameManager.instance.IsLevelUP())
+            if (!GameManager.instance.IsLevelDupe())
                 panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0f), 1f);
         }
         yield return new WaitForSecondsRealtime(1.5f);
@@ -115,14 +116,16 @@ public class AbilityCard : MonoBehaviour
 
             //isSelect = false;
             //panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0.5f);
-            if (GameManager.instance.IsLevelUP())
+            if (GameManager.instance.IsLevelDupe())
             {
-                GameManager.instance.AddXP(0);
                 isDuplicate = true;
+                GameManager.instance.AddXP(0);
+                Debug.Log("1");
             }else
             {
                 panel.SetActive(false);
                 isDuplicate = false;
+                Debug.Log("2");
             }
         }
         isSelect = !end;
@@ -164,7 +167,7 @@ public class AbilityCard : MonoBehaviour
             abs.Remove(rem);
         }
         removeToList.Clear();
-        //Debug.Log(abs.Count);
+        Debug.Log(abs.Count);
 
         AbilityBase ab = abs[Random.Range(0, abs.Count)];
         if (abs.Count - cards.Length >= 0)
@@ -223,7 +226,8 @@ public class AbilityCard : MonoBehaviour
         GameManager.instance.StopCoroutine(GameManager.instance.FadeCoroutine);
         GameManager.instance.FadeCoroutine = null;
         GameManager.instance.SelectChance--;
-        Time.timeScale = 1;
+        if (!GameManager.instance.IsLevelDupe())
+            Time.timeScale = 1;
         StartCoroutine(ISelect(true));
     }
 }

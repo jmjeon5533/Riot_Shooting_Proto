@@ -17,6 +17,8 @@ public class AbilityCard : MonoBehaviour
 
     public Transform[] cards;
 
+    [SerializeField]bool isDuplicate = false;
+
 
     [Header("Card Show Panel")]
     [SerializeField] float bounceHeight = 70f;
@@ -75,8 +77,9 @@ public class AbilityCard : MonoBehaviour
     IEnumerator ISelect(bool end)
     {
         panel.SetActive(true);
-        if (!end)
+        if (!end && !isDuplicate)
         {
+            Debug.Log("0");
             //isSelect = true;
             panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0);
             panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0.5f), 0.5f);
@@ -88,6 +91,7 @@ public class AbilityCard : MonoBehaviour
         {
             if (!end)
             {
+                
                 AbilityBase ab = GetRandomAbility();
                 selectabs.Add(ab);
                 cards[i].GetComponent<Select>().SetAbility(ab);
@@ -102,7 +106,8 @@ public class AbilityCard : MonoBehaviour
         }
         if (end)
         {
-            panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0f), 1f);
+            if (!GameManager.instance.IsLevelDupe())
+                panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0f), 1f);
         }
         yield return new WaitForSecondsRealtime(1.5f);
 
@@ -110,8 +115,18 @@ public class AbilityCard : MonoBehaviour
         {
 
             //isSelect = false;
-            // panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0.5f);
-            panel.SetActive(false);
+            //panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0.5f);
+            if (GameManager.instance.IsLevelDupe())
+            {
+                isDuplicate = true;
+                GameManager.instance.AddXP(0);
+                Debug.Log("1");
+            }else
+            {
+                panel.SetActive(false);
+                isDuplicate = false;
+                Debug.Log("2");
+            }
         }
         isSelect = !end;
     }
@@ -152,15 +167,13 @@ public class AbilityCard : MonoBehaviour
             abs.Remove(rem);
         }
         removeToList.Clear();
-        //Debug.Log(abs.Count);
-        
-       
+        Debug.Log(abs.Count);
+
         AbilityBase ab = abs[Random.Range(0, abs.Count)];
         if (abs.Count - cards.Length >= 0)
         {
             while (selectabs.Contains(ab))
             {
-                
                 ab = abs[Random.Range(0, abs.Count)];
             }
         }
@@ -170,13 +183,11 @@ public class AbilityCard : MonoBehaviour
             ab = curAbilityDic[ab.skillName];
             //Debug.Log(curAbilityDic[ab.skillName].skillName);
             ab.level = abilityLevels[ab.skillName];
-            
         }
         else
         {
-            ab.level = (abilityLevels.ContainsKey(ab.skillName)) ? abilityLevels[ab.skillName] : 1;
+            ab.level = abilityLevels.ContainsKey(ab.skillName) ? abilityLevels[ab.skillName] : 1;
         }
-        
         return ab;
     }
 
@@ -184,7 +195,7 @@ public class AbilityCard : MonoBehaviour
     IEnumerator ICardSpawn(Transform t, Vector3 startPos, Vector3 endPos, float duration)
     {
         t.position = startPos;
-        t.DOMove(endPos + transform.up * bounceHeight, duration).SetUpdate(true);
+        t.DOMove(endPos + (transform.up * bounceHeight), duration).SetUpdate(true);
         yield return new WaitForSecondsRealtime(duration);
         t.DOMove(endPos, duration / 2).SetUpdate(true);
     }
@@ -193,9 +204,10 @@ public class AbilityCard : MonoBehaviour
     {
 
         t.position = startPos;
-        t.DOMove(startPos + Vector3.up * bounceHeight, duration / 2).SetUpdate(true);
+        t.DOMove(startPos + (Vector3.up * bounceHeight), duration / 2).SetUpdate(true);
         yield return new WaitForSecondsRealtime(duration / 2);
         t.DOMove(endPos, duration).SetUpdate(true).WaitForCompletion();
+       
     }
     //������ ī�带 ���� �ɷ� �迭�� �߰���Ű�� ������ �����ϴ� �Լ�
     public void SelectEnd(AbilityBase abi)
@@ -213,7 +225,9 @@ public class AbilityCard : MonoBehaviour
         }
         GameManager.instance.StopCoroutine(GameManager.instance.FadeCoroutine);
         GameManager.instance.FadeCoroutine = null;
-        Time.timeScale = 1;
+        GameManager.instance.SelectChance--;
+        if (!GameManager.instance.IsLevelDupe())
+            Time.timeScale = 1;
         StartCoroutine(ISelect(true));
     }
 }

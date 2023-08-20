@@ -26,10 +26,12 @@ public abstract class Player : MonoBehaviour
 
     Rigidbody rigid;
     Animator anim;
+    Joystick joystick;
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
         anim = transform.GetChild(0).GetComponent<Animator>();
+        joystick = GameManager.instance.joystick;
         MoveRange = GameManager.instance.MoveRange;
         MovePivot = GameManager.instance.MovePivot;
         GameManager.instance.player = this;
@@ -104,11 +106,10 @@ public abstract class Player : MonoBehaviour
 
     void Movement()
     {
-        Vector2 input
-       = new Vector2(Input.GetAxisRaw("Horizontal"),
-       Input.GetAxisRaw("Vertical"));
+        Vector2 input = joystick.input.normalized;
+        print(Mathf.RoundToInt(input.x));
 
-        anim.SetInteger("MoveState",(int)input.x);
+        anim.SetInteger("MoveState",Mathf.RoundToInt(input.x));
 
         transform.Translate(input * MoveSpeed * Time.deltaTime);
 

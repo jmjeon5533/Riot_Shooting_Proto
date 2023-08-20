@@ -40,6 +40,6 @@ public class IncreaseAS : AbilityBase
 
     public override string GetStatText()
     {
-        return "공격 주기 " + GameManager.instance.player.AttackCooltime + "초 → " + (GameManager.instance.player.AttackCooltime - (GameManager.instance.player.AttackCooltime * (increaseValue * level))) + "초";
+        return "공격 주기 " + GameManager.instance.player.AttackCooltime + "초 → " + (Mathf.Round((GameManager.instance.player.AttackCooltime - (GameManager.instance.player.AttackCooltime * (increaseValue * level))) * 100) / 100) + "초";
     }
 }

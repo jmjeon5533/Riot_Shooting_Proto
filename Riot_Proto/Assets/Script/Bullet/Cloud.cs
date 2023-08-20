@@ -35,13 +35,13 @@ public class Cloud : MonoBehaviour
         if(curAttackTime > maxAttackTime)
         {
             curAttackTime = 0;
-            Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale * 2, Quaternion.identity, LayerMask.GetMask("Enemy"));
+            Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale, Quaternion.identity, LayerMask.GetMask("Enemy"));
             foreach(Collider collider in colliders)
             {
                 if(collider != null )
                 {
-                    StartCoroutine(Electric(collider.transform, maxAttackTime/2));
-                    //collider.GetComponent<EnemyBase>().Damage(damage);
+                    //StartCoroutine(Electric(collider.transform, maxAttackTime/2));
+                    collider.GetComponent<EnemyBase>().Damage(damage);
                     Debug.Log(collider.name);
                 }
             }

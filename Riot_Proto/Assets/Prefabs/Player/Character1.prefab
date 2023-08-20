@@ -14180,7 +14180,7 @@ MonoBehaviour:
   MoveSpeed: 10
   bulletPrefab:
   - {fileID: 7488623435463272499, guid: b7c2e428f26f83343a39d3baa0b35720, type: 3}
-  AttackCooltime: 0.2
+  AttackCooltime: 0.4
 --- !u!1 &6356903886199101005
 GameObject:
   m_ObjectHideFlags: 0

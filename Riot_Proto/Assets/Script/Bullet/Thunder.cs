@@ -13,10 +13,21 @@ public class Thunder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.DOScaleX(radius, time).SetEase(Ease.OutExpo);
-        transform.DOScaleZ(radius, time).SetEase(Ease.OutExpo);
-        Destroy(gameObject, time);
+        //transform.DOScaleX(radius, time).SetEase(Ease.OutExpo);
+        //transform.DOScaleZ(radius, time).SetEase(Ease.OutExpo);
+        var hit = Physics.OverlapBox(transform.position, new Vector3(radius,10, 2), Quaternion.identity);
         player = GameManager.instance.player;
+        foreach (var h in hit)
+        {
+            if (h.CompareTag("Enemy"))
+            {
+
+                h.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
+                    ? (int)(damage * player.CritDamage) : damage);
+                
+            }
+        }
+        Destroy(gameObject, time);
     }
 
     // Update is called once per frame
@@ -27,11 +38,11 @@ public class Thunder : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
-        {
-            other.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
-                    ? (int)(damage * player.CritDamage) : damage);
-        }
+        //if (other.CompareTag("Enemy"))
+        //{
+        //    other.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
+        //            ? (int)(damage * player.CritDamage) : damage);
+        //}
     }
 
     public void SetDamage(int value)

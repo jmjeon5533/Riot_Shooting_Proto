@@ -63,13 +63,13 @@ public class ThunderDrop : AbilityBase
     {
         base.LevelUp();
         defaultDamage += (int)(5 * Mathf.Pow((1 + 0.2f), level));
-        maxCooltime -= (0.2f * Mathf.Round((0.2f * Mathf.Pow((1 + 0.2f), level)) * 10.0f) / 10.0f);
+        maxCooltime -= (Mathf.Round((0.15f * Mathf.Pow((1 + 0.2f), level)) * 10.0f) / 10.0f);
 
     }
 
     public override string GetStatText()
     {
         return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(5 * Mathf.Pow((1 + 0.2f), level))) + 
-            "\n스킬 쿨타임 " + maxCooltime + " → " + (maxCooltime - Mathf.Round((0.2f * Mathf.Pow((1 + 0.2f), level)) * 10.0f) / 10.0f);
+            "\n스킬 쿨타임 " + maxCooltime + " → " + (maxCooltime - Mathf.Round((0.15f * Mathf.Pow((1 + 0.2f), level)) * 10.0f) / 10.0f);
     }
 }

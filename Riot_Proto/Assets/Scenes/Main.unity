@@ -3130,6 +3130,7 @@ MonoBehaviour:
   AddMaxXP: 5
   XP: 0
   Level: 1
+  SelectChance: 0
   playerPrefab:
   - {fileID: 6332685398307081435, guid: c63eed9c18d0ed34f8f2d208ba702ad0, type: 3}
   StagePrefab:
@@ -3157,11 +3158,13 @@ MonoBehaviour:
   - {fileID: 2419495779614173311, guid: fa050543c07fafa44bb38846b9c300ae, type: 3}
   - {fileID: 4020386063931766963, guid: 607d29e40bbc6ca4f90fc9596db86171, type: 3}
   - {fileID: 687124470000732324, guid: 775fe805a0aa23c4084611db968e8200, type: 3}
+  - {fileID: 2359002189107339667, guid: 1435902663907b0428b18802b423ea37, type: 3}
   curAbilityList: []
   cards:
   - {fileID: 822612284}
   - {fileID: 347048853}
   - {fileID: 1097778803}
+  isDuplicate: 0
   bounceHeight: 70
   upPosY: 400
   downPosY: -550

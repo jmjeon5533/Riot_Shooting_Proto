@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
     public Player player;
+    public Joystick joystick;
     public Vector2 MoveRange;
     public Vector2 MovePivot;
     public float BGSpeed;

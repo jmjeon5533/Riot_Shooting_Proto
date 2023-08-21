@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class TitleManager : MonoBehaviour
 {
-    [SerializeField] Transform canvas;
-    [HideInInspector] public List<GameObject> Panel = new List<GameObject>();
+    public static TitleManager instance { get; private set; }
+    public List<GameObject> Panel = new();
     [SerializeField] Transform CharButtonParant;
     [SerializeField] Transform StageButtonParant;
+    [SerializeField] Button OptionButton;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
-        for (int i = 0; i < canvas.childCount; i++)
-        {
-            Panel.Add(canvas.GetChild(i).gameObject);
-        }
+        OptionButton.onClick.AddListener(()=>SceneManager.instance.Option(0));
         CharButtonInit();
         StageButtonInit();
         InitPanel(0);
@@ -56,7 +59,6 @@ public class TitleManager : MonoBehaviour
             });
         }
     }
-
     public void Exit()
     {
         Application.Quit();

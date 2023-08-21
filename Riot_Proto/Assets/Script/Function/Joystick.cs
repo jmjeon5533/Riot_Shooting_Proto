@@ -33,7 +33,7 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if(!SceneManager.instance.CtrlLock) Stick.anchoredPosition = eventData.position;
         input = eventData.position - Stick.anchoredPosition;
         Lever.anchoredPosition = Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f);
-        AlphaTarget = 1;
+        AlphaTarget = 0.7f;
     }
     public void OnDrag(PointerEventData eventData)
     {

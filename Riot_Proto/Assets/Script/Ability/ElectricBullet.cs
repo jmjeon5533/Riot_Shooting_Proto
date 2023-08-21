@@ -24,8 +24,9 @@ public class ElectricBullet : AbilityBase
         {
             curCooltime = 0;
             float radius = angle;
-            float amount = radius / (5 - 1);
-            float z = radius / -2f;
+            int count = level;
+            float amount = radius / (level - 1);
+            float z = (level == 1) ? 0 : radius / -2f;
 
             for (int i = 0; i < level; i++)
             {

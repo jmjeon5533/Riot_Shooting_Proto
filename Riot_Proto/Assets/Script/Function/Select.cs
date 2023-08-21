@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Select : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerMoveHandler
+public class Select : MonoBehaviour, IPointerDownHandler
 {
     public string abilityName;
     
@@ -85,30 +85,13 @@ public class Select : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
             ab = Instantiate(ability.gameObject, GameManager.instance.player.transform).GetComponent<AbilityBase>();
 
         }
-        
-
-        
-
         AbilityCard.Instance.SelectEnd(ab);
 
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+   
+    public void OnPointerDown(PointerEventData eventData)
     {
-        //explainView.gameObject.SetActive(true);
-        //explainView.GetChild(0).GetComponent<Text>().text = abilityName;
-        //explainView.GetChild(1).GetComponent<Text>().text = explain;
-        //explainView.position = eventData.position + offset;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        //explainView.gameObject.SetActive(false);
-    }
-
-    public void OnPointerMove(PointerEventData eventData)
-    {
-        //explainView.position = eventData.position + offset;
-
+        SelectAbility();
     }
 }

@@ -8,13 +8,16 @@ public class ThunderBolt : BulletBase
     public Transform target;
 
     [SerializeField] float time;
-    [SerializeField] float moveSpeed;
+    
 
     [SerializeField] float damageRate;
 
     [SerializeField] float livingTime;
 
     [SerializeField] float power;
+
+    Vector3 startPos;
+    Vector3 middlePos;
 
     
 
@@ -23,6 +26,8 @@ public class ThunderBolt : BulletBase
     {
         base.Start();
         Destroy(gameObject, livingTime);
+        startPos = transform.position;
+        middlePos = transform.position + ((Vector3)Random.insideUnitCircle * power) + (transform.right * -1 * power);
     }
 
     // Update is called once per frame
@@ -31,15 +36,41 @@ public class ThunderBolt : BulletBase
         base.Update();
         Vector3 targetPos;
         if(target != null) targetPos = target.position;
-        else targetPos = transform.position;
-        time += Time.deltaTime * moveSpeed;
-        Vector3 up = (targetPos - transform.position).normalized;
-        Vector3 pos = GameManager.CalculateBezier(transform.position, ((transform.position + target.position) / 2) + (up * power), targetPos, time);
+        else
+        {
+            target = FindClosestEnemy();
+            targetPos = target.position;
+        }
+        time += Time.deltaTime * MoveSpeed;
+        Vector3 up = (targetPos - startPos).normalized;
+        //Vector3 middlePos = ((startPos + targetPos) / 2) + (up * power);
+        Vector3 pos = GameManager.CalculateBezier(startPos, middlePos, targetPos, time);
         transform.LookAt(pos);
         transform.position = pos;
         Attack();
 
     }
+
+    public Transform FindClosestEnemy()
+    {
+        Transform closestEnemy = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        
+        foreach (var enemyTransform in GameManager.instance.curEnemys)
+        {
+            Vector3 directionToEnemy = enemyTransform.transform.position - GameManager.instance.player.transform.position;
+            float distanceSqrToEnemy = directionToEnemy.sqrMagnitude;
+
+            if (distanceSqrToEnemy < closestDistanceSqr)
+            {
+                closestDistanceSqr = distanceSqrToEnemy;
+                closestEnemy = enemyTransform.transform;
+            }
+        }
+        if (closestEnemy == null) closestEnemy = transform;
+        return closestEnemy;
+    }
+
 
     void Attack()
     {
@@ -53,7 +84,7 @@ public class ThunderBolt : BulletBase
 
                 h.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
                     ? (int)(damage * player.CritDamage) : damage);
-
+                Destroy(gameObject);
             }
         }
         

@@ -11,7 +11,7 @@ public class IncreaseAS : AbilityBase
 
     public override void Ability()
     {
-        GameManager.instance.player.AttackCooltime -= GameManager.instance.player.AttackCooltime * (increaseValue * level);
+        GameManager.instance.player.AttackCooltime -= Mathf.Round((GameManager.instance.player.AttackCooltime * (increaseValue * level)) * 100) / 100;
     }
 
     // Start is called before the first frame update
@@ -40,6 +40,6 @@ public class IncreaseAS : AbilityBase
 
     public override string GetStatText()
     {
-        return "공격 주기 " + GameManager.instance.player.AttackCooltime + "초 → " + (Mathf.Round((GameManager.instance.player.AttackCooltime - (GameManager.instance.player.AttackCooltime * (increaseValue * level))) * 100) / 100) + "초";
+        return "공격 주기 " + Mathf.Round((1 / GameManager.instance.player.AttackCooltime) * 100) / 100 + "/s → " +  (Mathf.Round((1 / ((GameManager.instance.player.AttackCooltime - (GameManager.instance.player.AttackCooltime * (increaseValue * level)))) * 100)) / 100) + "/s";
     }
 }

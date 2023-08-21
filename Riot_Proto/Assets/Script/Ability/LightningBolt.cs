@@ -27,6 +27,8 @@ public class LightningBolt : AbilityBase
         }
     }
 
+    
+
     private List<GameObject> GetNearbyEnemies()
     {
         List<GameObject> nearbyEnemies = new List<GameObject>();

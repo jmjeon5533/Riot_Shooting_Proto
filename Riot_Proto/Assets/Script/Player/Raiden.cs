@@ -4,6 +4,69 @@ using UnityEngine;
 
 public class Raiden : Player
 {
+    [SerializeField] float maxCooltime;
+    [SerializeField] float curCooltime = 0;
+
+    [SerializeField] GameObject autoTargetBullet;
+
+    public int numClosestEnemies = 4;
+
+    protected override void Update()
+    {
+        base.Update();
+        curCooltime += Time.deltaTime;
+        if(curCooltime >= maxCooltime && bulletLevel >= 3 && GameManager.instance.curEnemys.Count > 0)
+        {
+            curCooltime = 0;
+            List<Transform> list = FindClosestEnemies();
+
+            for(int i = 0; i < 2 * (bulletLevel-2); i++)
+            {
+                var bullet = Instantiate(autoTargetBullet,transform.position,Quaternion.identity);
+                bullet.GetComponent<ThunderBolt>().target = list[Random.Range(0,list.Count)];
+            }
+        }
+    }
+
+
+    public List<Transform> FindClosestEnemies()
+    {
+        List<Transform> closestEnemies = new List<Transform>();
+
+        while (closestEnemies.Count < numClosestEnemies)
+        {
+            Transform closestEnemy = null;
+            float closestDistanceSqr = Mathf.Infinity;
+            
+            foreach (var enemyTransform in GameManager.instance.curEnemys)
+            {
+                if (!closestEnemies.Contains(enemyTransform.transform))
+                {
+                    Vector3 directionToEnemy = enemyTransform.transform.position - transform.position;
+                    float distanceSqrToEnemy = directionToEnemy.sqrMagnitude;
+
+                    if (distanceSqrToEnemy < closestDistanceSqr)
+                    {
+                        closestDistanceSqr = distanceSqrToEnemy;
+                        closestEnemy = enemyTransform.transform;
+                    }
+                }
+            }
+            if (closestEnemy != null)
+            {
+                closestEnemies.Add(closestEnemy);
+            }
+            else
+            {
+                // 적이 더 이상 없을 경우 종료
+                break;
+            }
+            if (closestEnemies.Count >= GameManager.instance.curEnemys.Count) break;
+        }
+
+        return closestEnemies;
+    }
+
     protected override void Attack()
     {
         switch(bulletLevel)

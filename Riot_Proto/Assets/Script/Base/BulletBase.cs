@@ -9,7 +9,7 @@ public class BulletBase : MonoBehaviour
     [SerializeField] protected float radius;
     [HideInInspector] public int Damage;
     [HideInInspector] public int CritRate;
-    [HideInInspector] public int CritDamage;
+    [HideInInspector] public float CritDamage;
     protected virtual void Start()
     {
 

@@ -8,7 +8,7 @@ public abstract class Player : MonoBehaviour
     public int damage;
 
     public int CritRate;
-    public int CritDamage = 2;
+    public float CritDamage = 2;
 
     public int bulletLevel = 1;
     public int bulletSpeed;
@@ -37,7 +37,7 @@ public abstract class Player : MonoBehaviour
         GameManager.instance.player = this;
         StartCoroutine(Started());
     }
-    void Update()
+    protected virtual void Update()
     {
         if (IsMove)
         {
@@ -107,7 +107,7 @@ public abstract class Player : MonoBehaviour
     void Movement()
     {
         Vector2 input = joystick.input.normalized;
-        print(Mathf.RoundToInt(input.x));
+        
 
         anim.SetInteger("MoveState",Mathf.RoundToInt(input.x));
 

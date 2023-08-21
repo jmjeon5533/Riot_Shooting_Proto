@@ -222,7 +222,7 @@ public class AbilityCard : MonoBehaviour
         else
         {
             curAbilityList.Add(abi);
-            abilityLevels.Add(abi.skillName, 2);
+            abilityLevels.Add(abi.skillName, 1);
             curAbilityDic.Add(abi.skillName, abi);
         }
         GameManager.instance.StopCoroutine(GameManager.instance.FadeCoroutine);

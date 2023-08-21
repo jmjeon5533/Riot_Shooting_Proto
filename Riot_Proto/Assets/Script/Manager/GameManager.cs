@@ -19,10 +19,11 @@ public class GameManager : MonoBehaviour
     public int Level;
     public int SelectChance;
 
-    public List<GameObject> playerPrefab = new List<GameObject>();
-    public List<GameObject> StagePrefab = new List<GameObject>();
+    public List<GameObject> playerPrefab = new();
+    public List<GameObject> StagePrefab = new();
+    public List<GameObject> ItemList = new();
 
-    public List<GameObject> curEnemys = new List<GameObject>();
+    public List<GameObject> curEnemys = new();
 
     public bool IsGame = false;
 

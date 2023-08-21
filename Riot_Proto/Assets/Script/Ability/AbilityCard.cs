@@ -17,7 +17,7 @@ public class AbilityCard : MonoBehaviour
 
     public Transform[] cards;
 
-    [SerializeField]bool isDuplicate = false;
+    [SerializeField] bool isDuplicate = false;
 
 
     [Header("Card Show Panel")]
@@ -91,7 +91,7 @@ public class AbilityCard : MonoBehaviour
         {
             if (!end)
             {
-                
+
                 AbilityBase ab = GetRandomAbility();
                 selectabs.Add(ab);
                 cards[i].GetComponent<Select>().SetAbility(ab);
@@ -121,7 +121,8 @@ public class AbilityCard : MonoBehaviour
                 isDuplicate = true;
                 GameManager.instance.AddXP(0);
                 Debug.Log("1");
-            }else
+            }
+            else
             {
                 panel.SetActive(false);
                 isDuplicate = false;
@@ -137,18 +138,18 @@ public class AbilityCard : MonoBehaviour
     {
         List<AbilityBase> abs = new List<AbilityBase>(abilities);
         List<AbilityBase> removeToList = new List<AbilityBase>();
-        for(int i = 0; i < abs.Count; i++)
+        for (int i = 0; i < abs.Count; i++)
         {
             if ((abilityLevels.ContainsKey(abs[i].skillName) && abilityLevels[abs[i].skillName] >= 5))
             {
                 removeToList.Add(abs[i]);
-                
+
             }
         }
-        foreach(AbilityBase rem in removeToList)
+        foreach (AbilityBase rem in removeToList)
         {
             abs.Remove(rem);
-        } 
+        }
         removeToList.Clear();
         //Debug.Log(abs.Count + " test");
         if (abs.Count - cards.Length >= 0)
@@ -156,9 +157,9 @@ public class AbilityCard : MonoBehaviour
 
             for (int i = 0; i < abs.Count; i++)
             {
-                foreach(AbilityBase ability in selectabs)
+                foreach (AbilityBase ability in selectabs)
                 {
-                    if(ability.skillName == abs[i].skillName) removeToList.Add(abs[i]);
+                    if (ability.skillName == abs[i].skillName) removeToList.Add(abs[i]);
                 }
             }
         }
@@ -206,8 +207,8 @@ public class AbilityCard : MonoBehaviour
         t.position = startPos;
         t.DOMove(startPos + (Vector3.up * bounceHeight), duration / 2).SetUpdate(true);
         yield return new WaitForSecondsRealtime(duration / 2);
-        t.DOMove(endPos, duration).SetUpdate(true).WaitForCompletion();
-       
+        t.DOMove(endPos, duration).SetUpdate(true).OnComplete(() => Time.timeScale = 1);
+        GameManager.instance.player.Shield(2f);
     }
     //������ ī�带 ���� �ɷ� �迭�� �߰���Ű�� ������ �����ϴ� �Լ�
     public void SelectEnd(AbilityBase abi)
@@ -227,7 +228,6 @@ public class AbilityCard : MonoBehaviour
         GameManager.instance.FadeCoroutine = null;
         GameManager.instance.SelectChance--;
         if (!GameManager.instance.IsLevelDupe())
-            Time.timeScale = 1;
-        StartCoroutine(ISelect(true));
+            StartCoroutine(ISelect(true));
     }
 }

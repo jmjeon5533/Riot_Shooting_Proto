@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6743134426349564623}
   - component: {fileID: 8030878183876671994}
   - component: {fileID: 2032236172303338514}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4881,7 +4881,7 @@ GameObject:
   - component: {fileID: 899355822609235324}
   - component: {fileID: 899355822609235322}
   - component: {fileID: 899355822609235323}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hit_root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9751,7 +9751,7 @@ GameObject:
   - component: {fileID: 899355823305880706}
   - component: {fileID: 899355823305880704}
   - component: {fileID: 899355823305880705}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: glow_h_long
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14621,7 +14621,7 @@ GameObject:
   - component: {fileID: 899355823598763507}
   - component: {fileID: 899355823598763505}
   - component: {fileID: 899355823598763506}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19491,7 +19491,7 @@ GameObject:
   - component: {fileID: 899355823675040000}
   - component: {fileID: 899355823675040030}
   - component: {fileID: 899355823675040031}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: crackDark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24361,7 +24361,7 @@ GameObject:
   - component: {fileID: 899355823787798398}
   - component: {fileID: 899355823787798396}
   - component: {fileID: 899355823787798397}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: glow_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29231,7 +29231,7 @@ GameObject:
   - component: {fileID: 899355823823169368}
   - component: {fileID: 899355823823169366}
   - component: {fileID: 899355823823169367}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: spark02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34101,7 +34101,7 @@ GameObject:
   - component: {fileID: 899355823997595064}
   - component: {fileID: 899355823997595062}
   - component: {fileID: 899355823997595063}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: spark01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38980,7 +38980,7 @@ GameObject:
   - component: {fileID: 899355824397518329}
   - component: {fileID: 899355824397518327}
   - component: {fileID: 899355824397518328}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: glow_h
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43864,7 +43864,7 @@ GameObject:
   - component: {fileID: 4113017833417357187}
   - component: {fileID: 8490008311000548999}
   - component: {fileID: 8420666996954743745}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LightningSub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48734,7 +48734,7 @@ GameObject:
   - component: {fileID: 2611162904228005787}
   - component: {fileID: 9222758258647808697}
   - component: {fileID: -3899631685078530461}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Thunder 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48795,7 +48795,7 @@ GameObject:
   - component: {fileID: 3563654441000810697}
   - component: {fileID: 6181548261817854664}
   - component: {fileID: 4985996695288230398}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53665,7 +53665,7 @@ GameObject:
   - component: {fileID: 1393371575021658559}
   - component: {fileID: 5602006500467759251}
   - component: {fileID: 2475134309068307861}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: lightningSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58535,7 +58535,7 @@ GameObject:
   - component: {fileID: 4997402810875976498}
   - component: {fileID: 4670913743450148816}
   - component: {fileID: 270511492685972983}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: crack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63405,7 +63405,7 @@ GameObject:
   - component: {fileID: 5462314656898656732}
   - component: {fileID: 510702942212448300}
   - component: {fileID: 3576856608969778522}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68284,7 +68284,7 @@ GameObject:
   - component: {fileID: 6343782847488826906}
   - component: {fileID: 5298366778859441040}
   - component: {fileID: 4071223051115251042}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73154,7 +73154,7 @@ GameObject:
   - component: {fileID: 2830800585992653071}
   - component: {fileID: 1220908100737297565}
   - component: {fileID: 5374648717439032125}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ray_sq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78024,7 +78024,7 @@ GameObject:
   - component: {fileID: 7631622698660851660}
   - component: {fileID: 1268658371570545419}
   - component: {fileID: 6209787116054956303}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}

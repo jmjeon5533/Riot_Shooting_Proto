@@ -16,6 +16,9 @@ public abstract class Player : MonoBehaviour
     public float MoveSpeed;
 
     public PlayerBullet[] bulletPrefab;
+    CapsuleCollider capsuleCollider;
+    Coroutine ShieldCoroutine;
+    [SerializeField] GameObject ShieldObj;
 
     Vector3 MoveRange;
     Vector3 MovePivot;
@@ -31,6 +34,7 @@ public abstract class Player : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         anim = transform.GetChild(0).GetComponent<Animator>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
         joystick = GameManager.instance.joystick;
         MoveRange = GameManager.instance.MoveRange;
         MovePivot = GameManager.instance.MovePivot;
@@ -78,7 +82,7 @@ public abstract class Player : MonoBehaviour
     {
         IsMove = false;
         rigid.useGravity = true;
-        GetComponent<CapsuleCollider>().enabled = false;
+        capsuleCollider.enabled = false;
         rigid.AddForce(Vector3.left, ForceMode.Impulse);
         yield return new WaitForSeconds(2);
         rigid.useGravity = false;
@@ -94,16 +98,27 @@ public abstract class Player : MonoBehaviour
     {
         anim.SetInteger("MoveState",1);
         transform.position = new Vector3(-12, 0, 0);
+        Shield(3f);
         while (Vector3.Distance(transform.position, new Vector3(-8, 0, 0)) >= 0.1f)
         {
             yield return null;
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(-8, 0, 0), 2 * Time.deltaTime);
         }
         IsMove = true;
-        yield return new WaitForSeconds(2f);
-        GetComponent<CapsuleCollider>().enabled = true;
     }
-
+    public void Shield(float time)
+    {
+        if(ShieldCoroutine != null) StopCoroutine(ShieldCoroutine);
+        ShieldCoroutine = StartCoroutine(Protect(time));
+    }
+    IEnumerator Protect(float time)
+    {
+        capsuleCollider.enabled = false;
+        ShieldObj.SetActive(true);
+        yield return new WaitForSeconds(time);
+        capsuleCollider.enabled = true;
+        ShieldObj.SetActive(false);
+    }
     void Movement()
     {
         Vector2 input = joystick.input.normalized;

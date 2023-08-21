@@ -43,11 +43,12 @@ public abstract class EnemyBase : MonoBehaviour
         if (HP <= 0)
         {
             GameManager.instance.curEnemys.Remove(this.gameObject);
-            Destroy(gameObject);
             for (int i = 0; i < XPRate; i++)
             {
                 Instantiate(GameManager.instance.XPPrefab,transform.position,Quaternion.identity);
             }
+            
+            Destroy(gameObject);
         }
         Instantiate(hitObj,transform.position,Quaternion.identity);
     }

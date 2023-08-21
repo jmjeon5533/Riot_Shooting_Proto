@@ -19,6 +19,10 @@ public class BulletBase : MonoBehaviour
     protected virtual void Update()
     {
         transform.Translate(dir * MoveSpeed * Time.deltaTime);
+        MapOut();
+    }
+    protected virtual void MapOut()
+    {
         if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 5
         || Mathf.Abs(transform.position.y) >= GameManager.instance.MoveRange.y + 5)
         {

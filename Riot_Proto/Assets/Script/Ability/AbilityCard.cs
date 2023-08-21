@@ -207,9 +207,8 @@ public class AbilityCard : MonoBehaviour
         t.position = startPos;
         t.DOMove(startPos + (Vector3.up * bounceHeight), duration / 2).SetUpdate(true);
         yield return new WaitForSecondsRealtime(duration / 2);
-        t.DOMove(endPos, duration).SetUpdate(true).WaitForCompletion();
-        Time.timeScale = 1;
-
+        t.DOMove(endPos, duration).SetUpdate(true).OnComplete(() => Time.timeScale = 1);
+        GameManager.instance.player.Shield(2f);
     }
     //������ ī�带 ���� �ɷ� �迭�� �߰���Ű�� ������ �����ϴ� �Լ�
     public void SelectEnd(AbilityBase abi)

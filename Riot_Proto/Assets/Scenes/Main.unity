@@ -1854,6 +1854,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WavePrefab:
   - {fileID: 11400000, guid: 213ccf80ba44f754e87dab95028fd118, type: 2}
+  - {fileID: 11400000, guid: 7f547d4255a7ba84da0d8cb40e025ce8, type: 2}
+  SpawnCount: 0
 --- !u!4 &1118154654
 Transform:
   m_ObjectHideFlags: 0
@@ -2872,6 +2874,7 @@ MonoBehaviour:
   StagePrefab:
   - {fileID: 1221886862955168235, guid: 1d4a10627c2ac13448a6eecd660adc25, type: 3}
   - {fileID: 1221886862955168235, guid: 1dc057906ef785845973f846d0836e71, type: 3}
+  ItemList: []
   curEnemys: []
   IsGame: 0
 --- !u!114 &1679633663

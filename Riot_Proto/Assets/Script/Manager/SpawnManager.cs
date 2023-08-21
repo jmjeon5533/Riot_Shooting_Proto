@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    public static SpawnManager instance { get; private set; }
     public List<WaveScriptObj> WavePrefab = new();
+    public int SpawnCount;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         StartCoroutine(Spawn());
@@ -13,18 +19,23 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
     IEnumerator Spawn()
     {
-        var wave = WavePrefab[Random.Range(0, WavePrefab.Count)];
-        yield return new WaitForSeconds(wave.startDelay);
-        for (int i = 0; i < wave.WaveList.Count; i++)
+        yield return new WaitForSeconds(2f);
+        while (SpawnCount <= 20)
         {
-            GameObject enemy = Instantiate(wave.WaveList[i].Enemy, new Vector3(15, Random.Range(-5, 6), 0), Quaternion.identity);
-            GameManager.instance.curEnemys.Add(enemy);
-            yield return new WaitForSeconds(wave.WaveList[i].SpawnDelay);
+            var wave = WavePrefab[Random.Range(0, WavePrefab.Count)];
+            yield return new WaitForSeconds(wave.startDelay);
+            for (int i = 0; i < wave.WaveList.Count; i++)
+            {
+                GameObject enemy = Instantiate(wave.WaveList[i].Enemy, new Vector3(15, Random.Range(-5, 6), 0), Quaternion.identity);
+                GameManager.instance.curEnemys.Add(enemy);
+                yield return new WaitForSeconds(wave.WaveList[i].SpawnDelay);
+            }
+            SpawnCount++;
         }
-        StartCoroutine(Spawn());
     }
 }
 [System.Serializable]

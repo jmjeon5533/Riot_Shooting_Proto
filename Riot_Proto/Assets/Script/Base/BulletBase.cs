@@ -19,8 +19,12 @@ public class BulletBase : MonoBehaviour
     protected virtual void Update()
     {
         transform.Translate(dir * MoveSpeed * Time.deltaTime);
-        if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 1
-        || Mathf.Abs(transform.position.y) >= GameManager.instance.MoveRange.y + 1)
+        MapOut();
+    }
+    protected virtual void MapOut()
+    {
+        if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 5
+        || Mathf.Abs(transform.position.y) >= GameManager.instance.MoveRange.y + 5)
         {
             Destroy(gameObject);
         }

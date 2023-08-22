@@ -26,7 +26,7 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         while (SpawnCount <= 20)
         {
-            var wave = WavePrefab[Random.Range(0, WavePrefab.Count)];
+            var wave = WavePrefab[Random.Range(0,WavePrefab.Count)];
             yield return new WaitForSeconds(wave.startDelay);
             for (int i = 0; i < wave.WaveList.Count; i++)
             {
@@ -37,6 +37,11 @@ public class SpawnManager : MonoBehaviour
             SpawnCount++;
         }
     }
+}
+[System.Serializable]
+public class StageLevel
+{
+    public List<WaveScriptObj> WaveList = new();
 }
 [System.Serializable]
 public class SpawnWave

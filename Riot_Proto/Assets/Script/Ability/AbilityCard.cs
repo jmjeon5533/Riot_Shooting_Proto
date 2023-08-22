@@ -195,6 +195,7 @@ public class AbilityCard : MonoBehaviour
     //ī�� ���� �Լ�
     IEnumerator ICardSpawn(Transform t, Vector3 startPos, Vector3 endPos, float duration)
     {
+        GameManager.instance.player.Shield(2f);
         t.position = startPos;
         t.DOMove(endPos + (transform.up * bounceHeight), duration).SetUpdate(true);
         yield return new WaitForSecondsRealtime(duration);
@@ -208,7 +209,6 @@ public class AbilityCard : MonoBehaviour
         t.DOMove(startPos + (Vector3.up * bounceHeight), duration / 2).SetUpdate(true);
         yield return new WaitForSecondsRealtime(duration / 2);
         t.DOMove(endPos, duration).SetUpdate(true).OnComplete(() => Time.timeScale = 1);
-        GameManager.instance.player.Shield(2f);
     }
     //������ ī�带 ���� �ɷ� �迭�� �߰���Ű�� ������ �����ϴ� �Լ�
     public void SelectEnd(AbilityBase abi)

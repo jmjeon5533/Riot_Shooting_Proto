@@ -13,6 +13,7 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public Vector2 input;
     float AlphaTarget;
+    Vector2 minusVec;
 
     private void Awake()
     {
@@ -30,14 +31,19 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if(!SceneManager.instance.CtrlLock) Stick.anchoredPosition = eventData.position;
-        input = eventData.position - Stick.anchoredPosition;
+        var s = SceneManager.instance;
+        var x = Mathf.Abs(s.ScreenArea.x - s.minusScreen.x) / 2;
+        var y = Mathf.Abs(s.ScreenArea.y - s.minusScreen.y) / 2;
+        minusVec = new Vector2(x, y);
+        
+        if(!SceneManager.instance.CtrlLock) Stick.anchoredPosition = eventData.position - minusVec;
+        input = eventData.position - Stick.anchoredPosition - minusVec;
         Lever.anchoredPosition = Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f);
         AlphaTarget = 0.7f;
     }
     public void OnDrag(PointerEventData eventData)
     {
-        input = eventData.position - Stick.anchoredPosition;
+        input = eventData.position - Stick.anchoredPosition - minusVec;
         Lever.anchoredPosition = Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f);
     }
     public void OnEndDrag(PointerEventData eventData)

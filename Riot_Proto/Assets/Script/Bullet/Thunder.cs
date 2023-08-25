@@ -6,7 +6,7 @@ using DG.Tweening;
 public class Thunder : MonoBehaviour
 {
     [SerializeField] float time;
-    [SerializeField] float radius;
+    public float radius;
     int damage;
 
     Player player;

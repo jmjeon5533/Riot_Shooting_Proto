@@ -36,6 +36,7 @@ public class Select : MonoBehaviour, IPointerDownHandler
     {
         ability = ab;
         abilityName = ab.skillName;
+        
         explain = ab.skillDescription;
         description.text = explain;
         if(ab.type == AbilityBase.AbilityType.Passive && !AbilityCard.Instance.curAbilityList.Contains(ab))

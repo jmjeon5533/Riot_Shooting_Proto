@@ -183,11 +183,11 @@ public class AbilityCard : MonoBehaviour
             //Debug.Log(ab.gameObject.name);
             ab = curAbilityDic[ab.skillName];
             //Debug.Log(curAbilityDic[ab.skillName].skillName);
-            ab.level = abilityLevels[ab.skillName];
+            ab.level = abilityLevels[ab.skillName] + 1;
         }
         else
         {
-            ab.level = abilityLevels.ContainsKey(ab.skillName) ? abilityLevels[ab.skillName] : 1;
+            ab.level = abilityLevels.ContainsKey(ab.skillName) ? abilityLevels[ab.skillName] + 1: 1;
         }
         return ab;
     }

@@ -26,7 +26,7 @@ public class ElectricBullet : AbilityBase
             float radius = angle;
             int count = level;
             float amount = radius / (level - 1);
-            float z = (level == 1) ? 0 : radius / -2f;
+            float z = (level == 1) ? 0 : ((radius /5) * level) / -2f;
 
             for (int i = 0; i < level; i++)
             {

@@ -8,6 +8,7 @@ using DG.Tweening;
 public class TitleManager : MonoBehaviour
 {
     public static TitleManager instance { get; private set; }
+    [SerializeField] Camera MainCamera, UICamera;
     public List<GameObject> Panel = new();
     [SerializeField] Transform CharButtonParant;
     [SerializeField] Transform StageButtonParant;
@@ -29,6 +30,8 @@ public class TitleManager : MonoBehaviour
     }
     private void Start()
     {
+        Camera[] camera = { MainCamera, UICamera};
+        SceneManager.instance.SetResolution(camera);
         explainImage = explainPanel.GetChild(0).GetComponent<Image>();
         explainPanel.gameObject.SetActive(false);
         OptionButton.onClick.AddListener(() => SceneManager.instance.Option(0));

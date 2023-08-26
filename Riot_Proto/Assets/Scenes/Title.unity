@@ -6302,6 +6302,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharIndex: 0
   StageIndex: 0
+  ScreenArea: {x: 0, y: 0}
+  minusScreen: {x: 0, y: 0}
   CtrlLock: 0
   OptionPanel: {fileID: 1759216702}
   CtrlToggle: {fileID: 78548350}

@@ -21,11 +21,11 @@ public class Flash : AbilityBase
     public override void Ability()
     {
         curCooltime+=Time.deltaTime;
-        if(curCooltime >= maxCooltime)
+        if(curCooltime >= maxCooltime && GameManager.instance.curEnemys.Count > 0)
         {
             curCooltime=0;
             Vector3 targetPos = GetEnemyPos();
-            Instantiate(explosion, targetPos, Quaternion.identity);
+            Destroy(Instantiate(explosion, targetPos, Quaternion.identity),0.7f);
             var hit = Physics.OverlapSphere(targetPos, radius);
             player = GameManager.instance.player;
             int damage = defaultDamage + (int)(player.damage * damageRate); 
@@ -87,6 +87,6 @@ public class Flash : AbilityBase
     // Update is called once per frame
     void Update()
     {
-        
+        Ability();
     }
 }

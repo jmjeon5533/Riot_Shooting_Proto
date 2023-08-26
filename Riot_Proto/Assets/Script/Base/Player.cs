@@ -34,7 +34,7 @@ public abstract class Player : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         anim = transform.GetChild(0).GetComponent<Animator>();
-        capsuleCollider = GetComponent<CapsuleCollider>();
+        capsuleCollider = GetComponent<CapsuleCollider>();  
         joystick = GameManager.instance.joystick;
         MoveRange = GameManager.instance.MoveRange;
         MovePivot = GameManager.instance.MovePivot;
@@ -56,6 +56,7 @@ public abstract class Player : MonoBehaviour
         {
             AttackCurtime -= AttackCooltime;
             Attack();
+            EventManager.Instance.PostNotification(Event_Type.PlayerAttack, this);
         }
         else
         {

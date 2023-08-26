@@ -48,12 +48,13 @@ public class ElectricCall : AbilityBase
 
     void ThunderDrop()
     {
-        List<GameObject> list = GameManager.instance.curEnemys;
+        List<GameObject> list = new List<GameObject>(GameManager.instance.curEnemys);
         int damage = defaultDamage + (int)(player.damage * damageRate);
         
             Transform target = list[Random.Range(0, list.Count)].transform;
-            while(target != null)
+            while(target == null)
             {
+                list = GameManager.instance.curEnemys;
                 target = list[Random.Range(0, list.Count)].transform;
             }
             Instantiate(thunder, new Vector3(target.position.x, 0, target.position.z), Quaternion.identity).GetComponent<Thunder>()
@@ -63,7 +64,7 @@ public class ElectricCall : AbilityBase
 
     void ThunderDrain()
     {
-        List<GameObject> list = GameManager.instance.curEnemys;
+        List<GameObject> list = new List<GameObject>(GameManager.instance.curEnemys);
         int damage = defaultDamage/2 + (int)(player.damage * damageRate);
         foreach (var enemy in list)
         {
@@ -97,6 +98,6 @@ public class ElectricCall : AbilityBase
     // Update is called once per frame
     void Update()
     {
-        
+        Ability();
     }
 }

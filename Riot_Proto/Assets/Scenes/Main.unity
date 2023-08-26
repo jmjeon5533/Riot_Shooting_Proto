@@ -2150,6 +2150,50 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00054026, y: 88}
   m_SizeDelta: {x: 179.72, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1178016758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1178016760}
+  - component: {fileID: 1178016759}
+  m_Layer: 0
+  m_Name: EventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1178016759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178016758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08b8baa5a18f830459995bb8fb0debb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1178016760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178016758}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.305244, y: 37.24641, z: 5.9890137}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1320167840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3106,15 +3150,19 @@ MonoBehaviour:
   - {fileID: 4020386063931766963, guid: 607d29e40bbc6ca4f90fc9596db86171, type: 3}
   - {fileID: 687124470000732324, guid: 775fe805a0aa23c4084611db968e8200, type: 3}
   - {fileID: 2359002189107339667, guid: 1435902663907b0428b18802b423ea37, type: 3}
+  - {fileID: 4038715788137894328, guid: f6b5d72bb580390409bf74ee012c728d, type: 3}
+  - {fileID: 4210700173288258556, guid: 28f48ee4eeaa694498c418bf76384825, type: 3}
+  - {fileID: 6135124214814187006, guid: 0c65a6282d4109e47a8192ba55a52c4d, type: 3}
+  - {fileID: 1260307834432912256, guid: bb22ea6c177d33e4b8c9aade8c7d1000, type: 3}
   curAbilityList: []
   cards:
   - {fileID: 822612284}
   - {fileID: 347048853}
   - {fileID: 1097778803}
   isDuplicate: 0
-  bounceHeight: 70
-  upPosY: 400
-  downPosY: -900
+  bounceHeight: 2
+  upPosY: -1.5
+  downPosY: -10
   panel: {fileID: 2008133726}
   selectabs: []
   isSelect: 0

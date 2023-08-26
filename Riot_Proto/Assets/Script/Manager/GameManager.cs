@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
+    [SerializeField] Camera MainCamera, UICamera, EffectCamera,BackCamera;
+    [Space(10)]
     public Player player;
     public Joystick joystick;
     public Vector2 MoveRange;
@@ -18,7 +20,7 @@ public class GameManager : MonoBehaviour
     public int XP;
     public int Level;
     public int SelectChance;
-
+    [Space(10)]
     public List<GameObject> playerPrefab = new();
     public List<GameObject> StagePrefab = new();
     public List<GameObject> ItemList = new();
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        Camera[] camera = { MainCamera, EffectCamera, UICamera, BackCamera};
+        SceneManager.instance.SetResolution(camera);
         Instantiate(playerPrefab[SceneManager.instance.CharIndex], new Vector3(-12f, 0, 0), Quaternion.identity);
         Instantiate(StagePrefab[SceneManager.instance.StageIndex], UIManager.instance.canvas);
         var bg2 = Instantiate(StagePrefab[SceneManager.instance.StageIndex], UIManager.instance.canvas).GetComponent<RectTransform>();

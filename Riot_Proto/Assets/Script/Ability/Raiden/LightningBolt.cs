@@ -9,7 +9,7 @@ public class LightningBolt : AbilityBase
     [SerializeField] float maxCooltime;
     [SerializeField] float curCooltime = 0;
 
-    [SerializeField] float distance;
+    //[SerializeField] float distance;
 
     Player player;
 
@@ -19,7 +19,7 @@ public class LightningBolt : AbilityBase
         if(curCooltime >= maxCooltime)
         {
             curCooltime = 0;
-            List<GameObject> list = GetNearbyEnemies();
+            //List<GameObject> list = GetNearbyEnemies();
             for(int i = 0; i < 4 + ((level -1) * 2); i++)
             {
                 Instantiate(bullet, player.transform.position, Quaternion.identity);
@@ -29,21 +29,23 @@ public class LightningBolt : AbilityBase
 
     
 
-    private List<GameObject> GetNearbyEnemies()
+    private GameObject GetNearbyEnemies()
     {
-        List<GameObject> nearbyEnemies = new List<GameObject>();
 
         GameObject player = GameManager.instance.player.gameObject;
+        GameObject nearbyEnemy = player;
+        float distance = Mathf.Infinity;
         foreach (GameObject enemy in GameManager.instance.curEnemys)
         {
-            float distance = Vector3.Distance(new Vector3(0, 0, 0), enemy.transform.position);
-            if (distance <= this.distance)
+            float newDist = Vector3.Distance(player.transform.position, enemy.transform.position);
+            if (newDist <= distance)
             {
-                nearbyEnemies.Add(enemy);
+                nearbyEnemy = enemy;
+                distance = newDist;
             }
         }
 
-        return nearbyEnemies;
+        return nearbyEnemy;
     }
 
     public override void Initalize()

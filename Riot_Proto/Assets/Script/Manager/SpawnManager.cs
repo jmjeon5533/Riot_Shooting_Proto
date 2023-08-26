@@ -23,6 +23,7 @@ public class SpawnManager : MonoBehaviour
     }
     IEnumerator Spawn()
     {
+        yield return new WaitUntil(() => GameManager.instance.IsGame);
         yield return new WaitForSeconds(2f);
         while (SpawnCount <= 20)
         {

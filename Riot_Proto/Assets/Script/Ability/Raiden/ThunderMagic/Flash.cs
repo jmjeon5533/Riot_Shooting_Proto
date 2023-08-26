@@ -1,0 +1,92 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Flash : AbilityBase
+{
+    [SerializeField] float curCooltime;
+    [SerializeField] float maxCooltime;
+
+    [SerializeField] int defaultDamage;
+
+    [SerializeField] GameObject explosion;
+    [SerializeField] float radius;
+
+    [SerializeField] int increaseValue;
+    [SerializeField] float damageRate;
+     
+
+    Player player;  
+    
+    public override void Ability()
+    {
+        curCooltime+=Time.deltaTime;
+        if(curCooltime >= maxCooltime)
+        {
+            curCooltime=0;
+            Vector3 targetPos = GetEnemyPos();
+            Instantiate(explosion, targetPos, Quaternion.identity);
+            var hit = Physics.OverlapSphere(targetPos, radius);
+            player = GameManager.instance.player;
+            int damage = defaultDamage + (int)(player.damage * damageRate); 
+            foreach (var h in hit)
+            {
+                if (h.CompareTag("Enemy"))
+                {
+
+                    h.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
+                        ? (int)(damage * player.CritDamage) : damage);
+
+                }
+            }
+
+        }
+    }
+
+    public override string GetStatText()
+    {
+        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level)));  
+    }
+
+    Vector3 GetEnemyPos()
+    {
+        var pos = GetNearbyEnemies().transform.position;
+        return pos;
+    }
+
+    private GameObject GetNearbyEnemies()
+    {
+
+        GameObject player = GameManager.instance.player.gameObject;
+        GameObject nearbyEnemy = player;
+        float distance = Mathf.Infinity;
+        foreach (GameObject enemy in GameManager.instance.curEnemys)
+        {
+            float newDist = Vector3.Distance(player.transform.position, enemy.transform.position);
+            if (newDist <= distance)
+            {
+                nearbyEnemy = enemy;
+                distance = newDist;
+            }
+        }
+        return nearbyEnemy;
+    }
+
+    public override void LevelUp()
+    {
+        base.LevelUp();
+        defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
+    }
+
+    // Start is called before the first frame update
+    public override void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}

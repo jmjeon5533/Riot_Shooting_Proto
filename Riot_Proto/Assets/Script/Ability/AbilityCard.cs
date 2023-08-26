@@ -61,7 +61,7 @@ public class AbilityCard : MonoBehaviour
             {
                 return false;
             }
-            if (abilityLevels[ability.skillName] < 5)
+            if (IsAbilityLevelCheck(ability.skillName))
             {
                 return false;
             }
@@ -133,6 +133,35 @@ public class AbilityCard : MonoBehaviour
     }
 
 
+    bool IsAbilityLevelCheck(string skillName)
+    {
+        if (curAbilityDic[skillName].type == AbilityBase.AbilityType.Stats)
+        {
+            if(abilityLevels[skillName] >= 5)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        } else if(curAbilityDic[skillName].type == AbilityBase.AbilityType.Passive)
+        {
+            if (abilityLevels[skillName] >= 3)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     //���� 5�� �ƴ� �ɷ� �� �������� �������� �Լ�
     AbilityBase GetRandomAbility()
     {
@@ -140,7 +169,7 @@ public class AbilityCard : MonoBehaviour
         List<AbilityBase> removeToList = new List<AbilityBase>();
         for (int i = 0; i < abs.Count; i++)
         {
-            if ((abilityLevels.ContainsKey(abs[i].skillName) && abilityLevels[abs[i].skillName] >= 5))
+            if ((abilityLevels.ContainsKey(abs[i].skillName) && !IsAbilityLevelCheck(abs[i].skillName)))
             {
                 removeToList.Add(abs[i]);
 
@@ -183,11 +212,11 @@ public class AbilityCard : MonoBehaviour
             //Debug.Log(ab.gameObject.name);
             ab = curAbilityDic[ab.skillName];
             //Debug.Log(curAbilityDic[ab.skillName].skillName);
-            ab.level = abilityLevels[ab.skillName];
+            ab.level = abilityLevels[ab.skillName] + 1;
         }
         else
         {
-            ab.level = abilityLevels.ContainsKey(ab.skillName) ? abilityLevels[ab.skillName] : 1;
+            ab.level = abilityLevels.ContainsKey(ab.skillName) ? abilityLevels[ab.skillName] + 1: 1;
         }
         return ab;
     }

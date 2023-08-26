@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DirectLightning : AbilityBase, IListener
+public class ElectricShock : AbilityBase, IListener
 {
     [SerializeField] int stack = 0;
     [SerializeField] int maxStack;
@@ -15,28 +15,28 @@ public class DirectLightning : AbilityBase, IListener
 
     [SerializeField] int increaseValue;
     [SerializeField] float damageRate;
-    
+
 
     public override void Ability()
     {
-        if(stack >= maxStack)
+        if (stack >= maxStack)
         {
             stack = 0;
             var b = Instantiate(bullet, player.transform.position, Quaternion.identity);
             b.GetComponent<BulletBase>().Damage = defaultDamage + (int)(player.damage * damageRate);
-           
+
         }
     }
 
     public override string GetStatText()
     {
         return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level))) +
-            " 필요 공격 횟수 " + maxStack + " → " + (maxStack-1);
+            " 필요 공격 횟수 " + maxStack + " → " + (maxStack - 1);
     }
 
     public void OnEvent(Event_Type type, Component sender, object param = null)
     {
-        if(type == Event_Type.PlayerAttack)
+        if (type == Event_Type.PlayerAttack)
         {
             stack++;
         }
@@ -59,6 +59,8 @@ public class DirectLightning : AbilityBase, IListener
     // Update is called once per frame
     void Update()
     {
+        
         Ability();
     }
+
 }

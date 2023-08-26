@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4100428802352330528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3150904696222965157}
+  - component: {fileID: 444332447070250323}
+  m_Layer: 0
+  m_Name: ElectricShock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3150904696222965157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4100428802352330528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.3738294, y: 2.0188894, z: 1.8184451}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &444332447070250323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4100428802352330528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f9eb2a144ab3464ca6602fbeb882244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  type: 0
+  skillImage: {fileID: 0}
+  skillName: "\uC950\uC5B4\uC9C0\uB294 \uC804\uACA9"
+  skillDescription: "\uAE30\uBCF8 \uACF5\uACA9\uC744 \uC77C\uC815 \uD69F\uC218 \uC2E4\uD589
+    \uC2DC \uC801\uC744 \uAD00\uD1B5\uD558\uB294 \uBC88\uAC1C \uCC3D\uC744 \uB358\uC9D1\uB2C8\uB2E4"
+  stats: 
+  stack: 0
+  maxStack: 15
+  defaultDamage: 15
+  bullet: {fileID: 2522670445940068824, guid: 6e30c8f9fc01b6e4f8ca9929e2efcd96, type: 3}
+  increaseValue: 3
+  damageRate: 0.3

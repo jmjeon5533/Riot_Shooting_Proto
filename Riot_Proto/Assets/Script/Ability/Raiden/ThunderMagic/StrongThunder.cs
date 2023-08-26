@@ -35,7 +35,7 @@ public class StrongThunder : AbilityBase
                 list = new List<GameObject>(GameManager.instance.curEnemys);
                 target = list[Random.Range(0, list.Count)].transform;
             }
-            Thunder t = Instantiate(thunders[level], new Vector3(target.position.x, 0, target.position.z), Quaternion.identity).GetComponent<Thunder>();
+            Thunder t = Instantiate(thunders[level-1], new Vector3(target.position.x, 0, target.position.z), Quaternion.identity).GetComponent<Thunder>();
              t.SetDamage(damage);
             t.radius = radius;
             t.transform.localScale = new Vector3(t.transform.localScale.x, t.transform.localScale.y, t.transform.localScale.z);

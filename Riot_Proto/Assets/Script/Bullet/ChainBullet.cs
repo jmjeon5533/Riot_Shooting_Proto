@@ -79,8 +79,7 @@ public class ChainBullet : BulletBase
                 {
                     if (targets[i] == null) continue;
                     line.SetPosition(i + 1, targets[i].transform.position);
-
-
+                    
                 }
                 yield return null;
                 time += Time.deltaTime;

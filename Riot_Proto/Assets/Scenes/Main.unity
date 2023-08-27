@@ -3155,6 +3155,7 @@ MonoBehaviour:
   - {fileID: 7366580311600104531, guid: b9c4d03f2ef91744eac189400ad7beb2, type: 3}
   - {fileID: 7883651356100267816, guid: c58228cd15bb3ae468e74476961569c8, type: 3}
   - {fileID: 1091152062516125674, guid: dc4517977c91c0a49b517ebc5d89a0bd, type: 3}
+  - {fileID: 6429657059573211761, guid: 09645bf7f68cbd24885b1ebbc34f7693, type: 3}
   curAbilityList: []
   cards:
   - {fileID: 822612284}

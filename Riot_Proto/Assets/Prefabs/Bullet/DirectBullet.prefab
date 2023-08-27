@@ -117,6 +117,7 @@ MonoBehaviour:
   Damage: 0
   CritRate: 0
   CritDamage: 0
+  BulletTag: DirectBullet
 --- !u!1001 &1608884860248642913
 PrefabInstance:
   m_ObjectHideFlags: 0

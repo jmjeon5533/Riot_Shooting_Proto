@@ -168,12 +168,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolInfo:
-  - key: Bullet
+  - key: XP
+    obj: {fileID: 8339991442943732091, guid: b379a882caa8ed14ba39e2a473ce3ce2, type: 3}
+    maxAmount: 100
+  - key: Hit
+    obj: {fileID: 7474502817962377300, guid: a86f3c687c7d6eb4480a8586826e5e82, type: 3}
+    maxAmount: 100
+  - key: PlayerBullet
     obj: {fileID: 7488623435463272498, guid: b7c2e428f26f83343a39d3baa0b35720, type: 3}
     maxAmount: 100
   - key: EnemyBullet
     obj: {fileID: 269225301555661974, guid: 77a3fadfd0297b64db4d4d36bc443111, type: 3}
     maxAmount: 100
+  - key: ElectricBullet
+    obj: {fileID: 1049926176297283882, guid: d24d110f96e013240b62edabb8a70163, type: 3}
+    maxAmount: 100
+  - key: AutoBullet
+    obj: {fileID: 2819709690657902326, guid: ac4605118bfab0c4e8af565366249595, type: 3}
+    maxAmount: 100
+  - key: DirectBullet
+    obj: {fileID: 7488623435463272498, guid: 54bb67ef9acf8c447bf9f4f2491c8920, type: 3}
+    maxAmount: 100
+  - key: ShorkBullet
+    obj: {fileID: 2522670445940068824, guid: 6e30c8f9fc01b6e4f8ca9929e2efcd96, type: 3}
+    maxAmount: 100
+  - key: Enemy1
+    obj: {fileID: 1661003693710212378, guid: 73dbeeb6ab51d964abbe44c8cbee6880, type: 3}
+    maxAmount: 50
+  - key: Enemy2
+    obj: {fileID: 1661003693710212378, guid: 0d32f102092e054428644eabf41cf27a, type: 3}
+    maxAmount: 50
+  - key: Boss1
+    obj: {fileID: 149849303624063132, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+    maxAmount: 1
 --- !u!1 &218593979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1906,7 +1933,7 @@ MonoBehaviour:
   WavePrefab:
   - {fileID: 11400000, guid: 213ccf80ba44f754e87dab95028fd118, type: 2}
   - {fileID: 11400000, guid: 7f547d4255a7ba84da0d8cb40e025ce8, type: 2}
-  SpawnCount: 0
+  BossSpawnWave: 10
 --- !u!4 &1118154654
 Transform:
   m_ObjectHideFlags: 0
@@ -3113,8 +3140,8 @@ MonoBehaviour:
   MovePivot: {x: 0, y: -1.1}
   BGSpeed: 5
   XPPrefab: {fileID: 8339991442943732091, guid: b379a882caa8ed14ba39e2a473ce3ce2, type: 3}
-  MaxXP: 50
-  AddMaxXP: 5
+  MaxXP: 10
+  AddMaxXP: 2
   XP: 0
   Level: 1
   SelectChance: 0
@@ -3492,6 +3519,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779019923}
   m_CullTransparentMesh: 1
+--- !u!1001 &1933623045
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 149849303624063122, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 149849303624063122, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 149849303624063122, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149849303624063122, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149849303624063122, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 149849303624063122, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149849303624063122, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149849303624063122, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149849303624063122, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149849303624063122, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149849303624063122, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149849303624063123, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: AttackPivot.x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 149849303624063123, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: AttackRange.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 149849303624063132, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: m_Name
+      value: Boss1
+      objectReference: {fileID: 0}
+    - target: {fileID: 149849303624063132, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
 --- !u!1 &1973138820
 GameObject:
   m_ObjectHideFlags: 0

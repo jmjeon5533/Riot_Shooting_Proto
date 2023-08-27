@@ -16,7 +16,7 @@ public abstract class Player : MonoBehaviour
     public float MoveSpeed;
 
     public PlayerBullet[] bulletPrefab;
-    CapsuleCollider capsuleCollider;
+    public bool IsShield;
     Coroutine ShieldCoroutine;
     [SerializeField] GameObject ShieldObj;
 
@@ -34,7 +34,6 @@ public abstract class Player : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         anim = transform.GetChild(0).GetComponent<Animator>();
-        capsuleCollider = GetComponent<CapsuleCollider>();  
         joystick = GameManager.instance.joystick;
         MoveRange = GameManager.instance.MoveRange;
         MovePivot = GameManager.instance.MovePivot;
@@ -75,6 +74,7 @@ public abstract class Player : MonoBehaviour
 
     public void Damage()
     {
+        if(IsShield) return;
         HP--;
         StartCoroutine(Dead());
     }
@@ -83,7 +83,7 @@ public abstract class Player : MonoBehaviour
     {
         IsMove = false;
         rigid.useGravity = true;
-        capsuleCollider.enabled = false;
+        IsShield = true;
         rigid.AddForce(Vector3.left, ForceMode.Impulse);
         yield return new WaitForSeconds(2);
         rigid.useGravity = false;
@@ -114,10 +114,10 @@ public abstract class Player : MonoBehaviour
     }
     IEnumerator Protect(float time)
     {
-        capsuleCollider.enabled = false;
+        IsShield = true;
         ShieldObj.SetActive(true);
         yield return new WaitForSeconds(time);
-        capsuleCollider.enabled = true;
+        IsShield = false;
         ShieldObj.SetActive(false);
     }
     void Movement()

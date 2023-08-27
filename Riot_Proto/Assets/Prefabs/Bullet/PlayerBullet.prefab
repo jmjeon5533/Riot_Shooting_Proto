@@ -19632,3 +19632,4 @@ MonoBehaviour:
   Damage: 0
   CritRate: 0
   CritDamage: 0
+  BulletTag: PlayerBullet

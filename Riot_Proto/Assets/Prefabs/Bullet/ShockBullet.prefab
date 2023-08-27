@@ -117,6 +117,7 @@ MonoBehaviour:
   Damage: 0
   CritRate: 0
   CritDamage: 0
+  BulletTag: ShorkBullet
   curTime: 0
   livingTime: 2
 --- !u!1 &2598866814222724643

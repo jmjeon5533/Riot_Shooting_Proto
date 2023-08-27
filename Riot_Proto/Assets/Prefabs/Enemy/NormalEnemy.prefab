@@ -116,9 +116,8 @@ MonoBehaviour:
   MoveSpeed: 10
   AttackCooltime: 2
   MovePos: {x: 0, y: 0, z: 0}
-  hitObj: {fileID: 7474502817962377300, guid: a86f3c687c7d6eb4480a8586826e5e82, type: 3}
   XPRate: 2
-  Bullet: {fileID: 269225301555661974, guid: 77a3fadfd0297b64db4d4d36bc443111, type: 3}
+  EnemyTag: Enemy1
 --- !u!1001 &6955839928181667569
 PrefabInstance:
   m_ObjectHideFlags: 0

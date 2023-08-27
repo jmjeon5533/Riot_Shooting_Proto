@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startDelay: 2
   WaveList:
-  - Enemy: {fileID: 1661003693710212378, guid: 73dbeeb6ab51d964abbe44c8cbee6880, type: 3}
+  - Enemy: Enemy2
     SpawnDelay: 0.5
-  - Enemy: {fileID: 1661003693710212378, guid: 73dbeeb6ab51d964abbe44c8cbee6880, type: 3}
+  - Enemy: Enemy2
     SpawnDelay: 0.5
-  - Enemy: {fileID: 1661003693710212378, guid: 73dbeeb6ab51d964abbe44c8cbee6880, type: 3}
+  - Enemy: Enemy2
     SpawnDelay: 2

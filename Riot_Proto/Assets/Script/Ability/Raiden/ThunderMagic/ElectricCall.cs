@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ElectricCall : AbilityBase
 {
@@ -48,7 +49,7 @@ public class ElectricCall : AbilityBase
 
     void ThunderDrop()
     {
-        List<GameObject> list = new List<GameObject>(GameManager.instance.curEnemys);
+        List<GameObject> list = GameManager.instance.curEnemys.ToList();
         int damage = defaultDamage + (int)(player.damage * damageRate);
         
             Transform target = list[Random.Range(0, list.Count)].transform;

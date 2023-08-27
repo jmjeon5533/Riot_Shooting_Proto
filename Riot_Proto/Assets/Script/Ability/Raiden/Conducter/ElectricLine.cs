@@ -48,7 +48,7 @@ public class ElectricLine : AbilityBase, IListener
     public override void LevelUp()
     {
         base.LevelUp();
-        defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
+        //defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
         duration = beams[level - 1].GetComponent<ElectricBeam>().duration;
         maxStack--;
     }

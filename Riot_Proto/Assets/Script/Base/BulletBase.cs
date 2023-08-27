@@ -26,7 +26,7 @@ public class BulletBase : MonoBehaviour
         if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 5
         || Mathf.Abs(transform.position.y) >= GameManager.instance.MoveRange.y + 5)
         {
-            Destroy(gameObject);
+            PoolManager.Instance.PoolObject("Bullet", gameObject);
         }
     }
     private void OnDrawGizmos()

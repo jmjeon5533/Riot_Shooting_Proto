@@ -5,26 +5,80 @@ using UnityEngine;
 public class PoolManager : MonoBehaviour
 {
     [System.Serializable]
-    public class PoolData
+    public class ObjectPoolInfo
     {
-        public string ObjName;
-        public GameObject OriginObj;
-        public int size;
+        public string key;
+        public GameObject obj;
+        public int maxAmount;
     }
-    public static PoolManager instance { get; private set; }
 
-    public List<PoolData> pools = new();
-    public Dictionary<int, Queue<GameObject>> PoolDictionary;
-
-    private void Start()
+    public class ObjectPoolQueueInfo
     {
-        PoolDictionary = new Dictionary<int, Queue<GameObject>>();
-
-        foreach(PoolData pool in pools)
+        public ObjectPoolQueueInfo(Transform parent, ObjectPoolInfo info)
         {
-            Queue<GameObject> objectPool = new Queue<GameObject>();
+            this.parent = parent;
+            this.info = info;
 
+            queue = new();
+            for (int i = 0; i < info.maxAmount; i++)
+            {
+                var obj = Instantiate(info.obj);
+                obj.transform.SetParent(parent);
+                obj.SetActive(false);
+                queue.Enqueue(obj);
+            }
+        }
 
+        public Transform parent;
+        public ObjectPoolInfo info;
+        public Queue<GameObject> queue = new();
+    }
+
+    public static PoolManager Instance { get; private set; }
+
+    public ObjectPoolInfo[] poolInfo;
+    private readonly Dictionary<string, ObjectPoolQueueInfo> pools = new();
+
+    public GameObject GetObject(string key, Vector3 position = default, Quaternion rotation = default)
+    {
+        if (pools[key].queue.Count == 0)
+        {
+            var newObj = Instantiate(pools[key].info.obj, position, rotation);
+            newObj.SetActive(true);
+            return newObj;
+        }
+
+        var target = pools[key].queue.Dequeue();
+        target.transform.position = position;
+        target.transform.rotation = rotation;
+        target.transform.SetParent(null);
+        target.SetActive(true);
+        return target;
+    }
+
+    public void PoolObject(string key, GameObject obj)
+    {
+        if (pools[key].queue.Count >= pools[key].info.maxAmount)
+        {
+            Destroy(obj);
+        }
+        else
+        {
+            pools[key].queue.Enqueue(obj);
+            obj.SetActive(false);
+            obj.transform.SetParent(pools[key].parent);
+        }
+    }
+
+    private void Awake()
+    {
+        Instance = this;
+
+        foreach (var info in poolInfo)
+        {
+            var pObj = new GameObject($"{info.key}");
+            pObj.transform.SetParent(transform);
+            pools.Add(info.key, new ObjectPoolQueueInfo(pObj.transform, info));
         }
     }
 }

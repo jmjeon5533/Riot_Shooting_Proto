@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 85774253}
   - component: {fileID: 85774254}
   m_Layer: 0
-  m_Name: PoolManager
+  m_Name: <<<PoolManager>>>
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &85774254
 MonoBehaviour:
@@ -167,16 +167,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ffdb66a9fda9a4aae7a887918c0dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pools:
-  - ObjName: 
-    OriginObj: {fileID: 0}
-    size: 0
-  - ObjName: 
-    OriginObj: {fileID: 0}
-    size: 0
-  - ObjName: 
-    OriginObj: {fileID: 0}
-    size: 0
+  poolInfo:
+  - key: Bullet
+    obj: {fileID: 7488623435463272498, guid: b7c2e428f26f83343a39d3baa0b35720, type: 3}
+    maxAmount: 100
+  - key: EnemyBullet
+    obj: {fileID: 269225301555661974, guid: 77a3fadfd0297b64db4d4d36bc443111, type: 3}
+    maxAmount: 100
 --- !u!1 &218593979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1888,7 +1885,7 @@ GameObject:
   - component: {fileID: 1118154654}
   - component: {fileID: 1118154653}
   m_Layer: 0
-  m_Name: SpawnManager
+  m_Name: <<<SpawnManager>>>
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1923,7 +1920,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1123133182
 GameObject:
@@ -2908,7 +2905,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1638583099
 GameObject:
@@ -3073,7 +3070,7 @@ GameObject:
   - component: {fileID: 1679633661}
   - component: {fileID: 1679633663}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: <<<GameManager>>>
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3092,7 +3089,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1679633661
 MonoBehaviour:
@@ -3413,7 +3410,7 @@ Transform:
   - {fileID: 1638583102}
   - {fileID: 1526032573}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!1 &1779019923
 GameObject:

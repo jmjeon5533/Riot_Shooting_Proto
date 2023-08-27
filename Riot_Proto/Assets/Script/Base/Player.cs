@@ -64,9 +64,9 @@ public abstract class Player : MonoBehaviour
         }
     }
     protected abstract void Attack();
-    protected void InitBullet(PlayerBullet bullet)
+    protected void InitBullet(GameObject bullet)
     {
-        var b = bullet;
+        var b = bullet.GetComponent<PlayerBullet>();
         b.Damage = damage;
         b.dir = Vector3.right;
         b.CritRate = CritRate;

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Enemy2 : EnemyBase
 {
-    public GameObject Bullet;
     protected override void Attack()
     {
-        var b = Instantiate(Bullet,transform.position,Quaternion.identity).GetComponent<BulletBase>();
+        var b = PoolManager.Instance.GetObject("EnemyBullet",transform.position,Quaternion.identity).GetComponent<BulletBase>();
         b.dir = (GameManager.instance.player.transform.position - transform.position).normalized;
     }
 }

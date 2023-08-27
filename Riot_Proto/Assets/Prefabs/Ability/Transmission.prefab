@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &794535555028927245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1938527730846701833}
+  - component: {fileID: 7883651356100267816}
+  m_Layer: 0
+  m_Name: Transmission
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1938527730846701833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794535555028927245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3551385, y: 1.0851047, z: 0.107014656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7883651356100267816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794535555028927245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45cef390c9e24c49a3687daf3423280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  type: 0
+  skillImage: {fileID: 0}
+  skillName: "\uC804\uB3C4"
+  skillDescription: "\uD0C4\uD658\uC744 \uBC1C\uC0AC \uD558\uC5EC \uC801\uC744 \uBA85\uC911
+    \uC2DC \uD53C\uACA9 \uC704\uCE58 \uADFC\uCC98 \uC801\uB4E4\uC5D0\uAC8C \uC5F0\uC1C4
+    \uB370\uBBF8\uC9C0\uB97C \uAC00\uD569\uB2C8\uB2E4"
+  stats: 
+  maxCooltime: 8
+  curCooltime: 0
+  defaultDamage: 7
+  damageRate: 0.3
+  increaseValue: 3
+  bullet: {fileID: 1734367368388147868, guid: 338f8a5fbf977d449b1563d416728e1e, type: 3}
+  radius: 3.5
+  maxAttack: 4

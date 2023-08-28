@@ -23,4 +23,8 @@ public class UIManager : MonoBehaviour
         float maxXp = GameManager.instance.MaxXP;
         XPBar.fillAmount = xp / maxXp;
     }
+    public void ClearTab()
+    {
+        
+    }
 }

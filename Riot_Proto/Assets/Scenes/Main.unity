@@ -203,10 +203,10 @@ MonoBehaviour:
     maxAmount: 1
   - key: TransmissionBullet
     obj: {fileID: 1734367368388147868, guid: 338f8a5fbf977d449b1563d416728e1e, type: 3}
-    maxAmount: 1
+    maxAmount: 100
   - key: ChainBullet
     obj: {fileID: 1734367368388147868, guid: ac00b179c0ba8ed48a3b003e3bae96db, type: 3}
-    maxAmount: 1
+    maxAmount: 100
 --- !u!1 &218593979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,7 +1939,11 @@ MonoBehaviour:
   WavePrefab:
   - {fileID: 11400000, guid: 213ccf80ba44f754e87dab95028fd118, type: 2}
   - {fileID: 11400000, guid: 7f547d4255a7ba84da0d8cb40e025ce8, type: 2}
-  BossSpawnWave: 10
+  - {fileID: 11400000, guid: c3ea46e55713bf646afad26421c0a770, type: 2}
+  - {fileID: 11400000, guid: b602778fe56ce2941b24edae522369d5, type: 2}
+  - {fileID: 11400000, guid: 51440f657a6840f498e4f96dfa9292bc, type: 2}
+  - {fileID: 11400000, guid: 8c408be02bbd774428a8274aac659945, type: 2}
+  BossSpawnWave: 20
 --- !u!4 &1118154654
 Transform:
   m_ObjectHideFlags: 0
@@ -3146,8 +3150,8 @@ MonoBehaviour:
   MovePivot: {x: 0, y: -1.1}
   BGSpeed: 5
   XPPrefab: {fileID: 8339991442943732091, guid: b379a882caa8ed14ba39e2a473ce3ce2, type: 3}
-  MaxXP: 10
-  AddMaxXP: 2
+  MaxXP: 50
+  AddMaxXP: 5
   XP: 0
   Level: 1
   SelectChance: 0
@@ -3201,6 +3205,7 @@ MonoBehaviour:
   panel: {fileID: 2008133726}
   selectabs: []
   isSelect: 0
+  isClick: 0
 --- !u!1 &1686146291
 GameObject:
   m_ObjectHideFlags: 0

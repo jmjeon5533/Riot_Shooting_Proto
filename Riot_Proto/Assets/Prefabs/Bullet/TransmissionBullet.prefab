@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1734367368195738275}
   - component: {fileID: 1734367368195738274}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 1734367368388147858}
   - component: {fileID: 4772647383835611345}
   - component: {fileID: 3758628544844685145}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TransmissionBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

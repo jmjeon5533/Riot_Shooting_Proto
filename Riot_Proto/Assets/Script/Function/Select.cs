@@ -75,7 +75,7 @@ public class Select : MonoBehaviour, IPointerDownHandler
 
     public void SelectAbility()
     {
-        if (!AbilityCard.Instance.isSelect) {
+        if (!AbilityCard.Instance.isSelect || AbilityCard.Instance.isClick) {
             return;
         }
 

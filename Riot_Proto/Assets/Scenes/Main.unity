@@ -201,6 +201,12 @@ MonoBehaviour:
   - key: Boss1
     obj: {fileID: 149849303624063132, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
     maxAmount: 1
+  - key: TransmissionBullet
+    obj: {fileID: 1734367368388147868, guid: 338f8a5fbf977d449b1563d416728e1e, type: 3}
+    maxAmount: 1
+  - key: ChainBullet
+    obj: {fileID: 1734367368388147868, guid: ac00b179c0ba8ed48a3b003e3bae96db, type: 3}
+    maxAmount: 1
 --- !u!1 &218593979
 GameObject:
   m_ObjectHideFlags: 0

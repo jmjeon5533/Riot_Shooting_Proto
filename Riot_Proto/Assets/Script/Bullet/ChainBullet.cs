@@ -74,7 +74,7 @@ public class ChainBullet : BulletBase
             while (time < 0.3f)
             {
                 int count = 0;
-                line.SetPosition(0, player.transform.position);
+                line.SetPosition(0, transform.position);
                 for (int i = 0; i < targets.Count; i++)
                 {
                     if (targets[i] == null) continue;
@@ -86,6 +86,7 @@ public class ChainBullet : BulletBase
             }
         }
         line.positionCount = 0;
+        Destroy(this.gameObject);
     }
 
     // Update is called once per frame

@@ -349,6 +349,7 @@ MonoBehaviour:
   Damage: 0
   CritRate: 0
   CritDamage: 0
+  BulletTag: TransmissionBullet
   transRadius: 0
   line: {fileID: 4772647383835611345}
   damage: 0

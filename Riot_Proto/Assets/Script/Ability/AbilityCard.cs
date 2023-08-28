@@ -33,6 +33,7 @@ public class AbilityCard : MonoBehaviour
     //[SerializeField] float width;
     [Header("Card Select State")]
     public bool isSelect = false;
+    public bool isClick = false;
 
     // Start is called before the first frame update
     void Start()
@@ -114,6 +115,7 @@ public class AbilityCard : MonoBehaviour
         if (end)
         {
             isSelect = false;
+            isClick = false;
             //panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0.5f);
             if (GameManager.instance.IsLevelDupe())
             {
@@ -245,6 +247,7 @@ public class AbilityCard : MonoBehaviour
     //������ ī�带 ���� �ɷ� �迭�� �߰���Ű�� ������ �����ϴ� �Լ�
     public void SelectEnd(AbilityBase abi)
     {
+        isClick = true;
         if (abilityLevels.ContainsKey(abi.skillName))
         {
             abilityLevels[abi.skillName]++;

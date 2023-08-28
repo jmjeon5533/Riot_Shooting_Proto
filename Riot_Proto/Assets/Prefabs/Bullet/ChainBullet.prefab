@@ -349,6 +349,7 @@ MonoBehaviour:
   Damage: 0
   CritRate: 0
   CritDamage: 0
+  BulletTag: ChainBullet
   maxAttack: 0
   target: {fileID: 0}
   targets: []

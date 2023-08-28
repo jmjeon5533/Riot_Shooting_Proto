@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6135124214814187007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6135124214814187001}
+  - component: {fileID: 6135124214814187006}
+  m_Layer: 0
+  m_Name: ElectricCall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6135124214814187001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135124214814187007}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6135124214814187006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135124214814187007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489051bf0bcb8e24292000f8f03358a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  type: 0
+  skillImage: {fileID: 0}
+  skillName: "\uC77C\uB809\uD2B8\uB9AD \uCF5C"
+  skillDescription: "\uBAA8\uB4E0 \uC801\uB4E4\uC5D0\uAC8C \uC57D\uD55C \uB370\uBBF8\uC9C0\uB97C
+    \uC785\uD788\uACE0 \uC801\uB4E4\uC758 \uC218 \uB9CC\uD07C \uB79C\uB364 \uC801\uC5D0\uAC8C
+    \uBC88\uAC1C\uB97C \uB5A8\uC5B4\uB728\uB9BD\uB2C8\uB2E4"
+  stats: 
+  curCooltime: 0
+  maxCooltime: 20
+  defaultDamage: 10
+  thunder: {fileID: 2737902857122770629, guid: 1a7a7c422e044614ca63862516ba33a3, type: 3}
+  thunderDrain: {fileID: 7474502817962377297, guid: a86f3c687c7d6eb4480a8586826e5e82, type: 3}
+  radius: 3
+  increaseValue: 4
+  damageRate: 0.3
+  delay: 0.3

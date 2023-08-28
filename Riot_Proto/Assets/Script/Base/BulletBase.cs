@@ -10,6 +10,7 @@ public class BulletBase : MonoBehaviour
     [HideInInspector] public int Damage;
     [HideInInspector] public int CritRate;
     [HideInInspector] public float CritDamage;
+    [SerializeField] string BulletTag;
     protected virtual void Start()
     {
 
@@ -26,7 +27,7 @@ public class BulletBase : MonoBehaviour
         if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 5
         || Mathf.Abs(transform.position.y) >= GameManager.instance.MoveRange.y + 5)
         {
-            Destroy(gameObject);
+            PoolManager.Instance.PoolObject(BulletTag, gameObject);
         }
     }
     private void OnDrawGizmos()

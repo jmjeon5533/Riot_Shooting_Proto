@@ -10,10 +10,10 @@ public abstract class EnemyBase : MonoBehaviour
     public float AttackCooltime;
     private float AttackCurtime;
     public Vector3 MovePos;
-    public GameObject hitObj;
     public int XPRate;
+    [SerializeField] string EnemyTag;
 
-    void Start()
+    protected virtual void Start()
     {
         var g = GameManager.instance;
         var x = Random.Range(0,g.MoveRange.x + g.MovePivot.x);
@@ -45,12 +45,12 @@ public abstract class EnemyBase : MonoBehaviour
             GameManager.instance.curEnemys.Remove(this.gameObject);
             for (int i = 0; i < XPRate; i++)
             {
-                Instantiate(GameManager.instance.XPPrefab,transform.position,Quaternion.identity);
+                PoolManager.Instance.GetObject("XP",transform.position,Quaternion.identity);
             }
             
-            Destroy(gameObject);
+            PoolManager.Instance.PoolObject(EnemyTag, gameObject);
         }
-        Instantiate(hitObj,transform.position,Quaternion.identity);
+        PoolManager.Instance.GetObject("Hit",transform.position,Quaternion.identity);
     }
     protected abstract void Attack();
 }

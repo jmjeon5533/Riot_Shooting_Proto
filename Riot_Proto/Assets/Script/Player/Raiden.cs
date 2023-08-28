@@ -58,7 +58,7 @@ public class Raiden : Player
             }
             else
             {
-                // ÀûÀÌ ´õ ÀÌ»ó ¾øÀ» °æ¿ì Á¾·á
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 break;
             }
             if (closestEnemies.Count >= GameManager.instance.curEnemys.Count) break;
@@ -73,34 +73,34 @@ public class Raiden : Player
         {
             case 1:
             {
-                InitBullet(Instantiate(bulletPrefab[0],transform.position,Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position,Quaternion.identity));
                 break;
             }
             case 2:
             {
-                InitBullet(Instantiate(bulletPrefab[0],transform.position + (Vector3.up * 0.5f), Quaternion.identity));
-                InitBullet(Instantiate(bulletPrefab[0],transform.position + (Vector3.down * 0.5f), Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.up * 0.5f), Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.down * 0.5f), Quaternion.identity));
                 break;
             }
             case 3:
             {
-                InitBullet(Instantiate(bulletPrefab[0],transform.position,Quaternion.identity));
-                InitBullet(Instantiate(bulletPrefab[0],transform.position + (Vector3.up * 0.5f) + (Vector3.left * 0.2f),Quaternion.identity));
-                InitBullet(Instantiate(bulletPrefab[0],transform.position + (Vector3.down * 0.5f) + (Vector3.left * 0.2f),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position,Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.up * 0.5f) + (Vector3.left * 0.2f),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.down * 0.5f) + (Vector3.left * 0.2f),Quaternion.identity));
                 break;
             }
             case 4:
             {
-                InitBullet(Instantiate(bulletPrefab[0],transform.position,Quaternion.identity));
-                InitBullet(Instantiate(bulletPrefab[0],transform.position + (Vector3.up * 0.5f) + (Vector3.left * 0.2f),Quaternion.identity));
-                InitBullet(Instantiate(bulletPrefab[0],transform.position + (Vector3.down * 0.5f) + (Vector3.left * 0.2f),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position,Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.up * 0.5f) + (Vector3.left * 0.2f),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.down * 0.5f) + (Vector3.left * 0.2f),Quaternion.identity));
                 break;
             }
             case 5:
             {
-                InitBullet(Instantiate(bulletPrefab[0],transform.position,Quaternion.identity));
-                InitBullet(Instantiate(bulletPrefab[0],transform.position,Quaternion.identity));
-                InitBullet(Instantiate(bulletPrefab[0],transform.position,Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position,Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position,Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position,Quaternion.identity));
                 break;
             }
         }

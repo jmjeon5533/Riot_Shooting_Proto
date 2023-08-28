@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy1 : EnemyBase
 {
-    public GameObject Bullet;
     protected override void Attack()
     {
         StartCoroutine(AttackMove());
@@ -17,7 +16,7 @@ public class Enemy1 : EnemyBase
         MovePos = new Vector3(x,y,0);
 
         yield return new WaitUntil(()=>Vector3.Distance(transform.position,MovePos) <= 0.1f);
-        var b = Instantiate(Bullet,transform.position,Quaternion.identity).GetComponent<BulletBase>();
+        var b = PoolManager.Instance.GetObject("EnemyBullet",transform.position,Quaternion.identity).GetComponent<BulletBase>();
         b.dir = (GameManager.instance.player.transform.position - transform.position).normalized;
     }
 }

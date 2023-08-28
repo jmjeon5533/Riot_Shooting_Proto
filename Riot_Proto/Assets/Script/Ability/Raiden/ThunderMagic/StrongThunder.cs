@@ -16,7 +16,7 @@ public class StrongThunder : AbilityBase
 
     [SerializeField] int increaseValue;
     [SerializeField] float damageRate;
-    [SerializeField] float delay;
+    
 
     Player player;
 
@@ -26,15 +26,16 @@ public class StrongThunder : AbilityBase
         if(curCooltime >= maxCooltime)
         {
             curCooltime=0;
-            List<GameObject> list = GameManager.instance.curEnemys;
+            List<GameObject> list = new List<GameObject>(GameManager.instance.curEnemys);
             int damage = defaultDamage + (int)(player.damage * damageRate);
 
             Transform target = list[Random.Range(0, list.Count)].transform;
-            while (target != null)
+            while (target == null)
             {
+                list = new List<GameObject>(GameManager.instance.curEnemys);
                 target = list[Random.Range(0, list.Count)].transform;
             }
-            Thunder t = Instantiate(thunders[level], new Vector3(target.position.x, 0, target.position.z), Quaternion.identity).GetComponent<Thunder>();
+            Thunder t = Instantiate(thunders[level-1], new Vector3(target.position.x, 0, target.position.z), Quaternion.identity).GetComponent<Thunder>();
              t.SetDamage(damage);
             t.radius = radius;
             t.transform.localScale = new Vector3(t.transform.localScale.x, t.transform.localScale.y, t.transform.localScale.z);
@@ -65,6 +66,6 @@ public class StrongThunder : AbilityBase
     // Update is called once per frame
     void Update()
     {
-        
+        Ability();
     }
 }

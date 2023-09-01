@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sphere
+  m_Shader: {fileID: 4800000, guid: 53411d7349006fa4db6d91d1af272d98, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4654942058445c945a9363c3bd527528, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SubTex:
+        m_Texture: {fileID: 2800000, guid: 8e2a5b8a47fd41e478c129f6e14bf2e9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _InitRotate: 90
+    - _InitRotate2: 0
+    - _InitScale: 1
+    - _InitScale2: 1
+    - _InitUOffset: 0
+    - _InitUOffset2: 0
+    - _InitVOffset: 0
+    - _InitVOffset2: 0
+    - _Multiplier: 2
+    - _RotateSpeed: 0
+    - _RotateSpeed2: 0
+    - _ScaleSpeed: 0
+    - _ScaleSpeed2: 0
+    - _USpeed: 0
+    - _USpeed2: -1
+    - _VSpeed: 0
+    - _VSpeed2: 1
+    m_Colors:
+    - _TintColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

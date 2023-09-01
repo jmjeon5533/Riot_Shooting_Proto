@@ -56,5 +56,5 @@ MonoBehaviour:
   cloud: {fileID: 4425488917986869762, guid: ec92e946d49ed424e926462e10638c42, type: 3}
   defaultDamage: 2
   curCooltime: 0
-  maxCooltime: 10
+  maxCooltime: 12
   livingDuration: 5

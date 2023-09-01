@@ -41,7 +41,7 @@ public class Boss1 : BossBase
         yield return new WaitForSeconds(2f);
         Collider[] enemy = Physics.OverlapBox(transform.localPosition + AttackPivot,AttackRange * 0.5f,
             Quaternion.identity,LayerMask.GetMask("Player"));
-        enemy[0].GetComponent<Player>().Damage();
+            foreach(var e in enemy) e.GetComponent<Player>().Damage();
     }
     IEnumerator Attack2()
     {

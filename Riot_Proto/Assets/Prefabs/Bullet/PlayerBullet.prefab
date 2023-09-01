@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2674465090724959727}
   - component: {fileID: 2674465090724959721}
   - component: {fileID: 2674465090724959726}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lighting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2674465090724959724}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.3
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.25
+      scalar: 0.3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4881,7 +4881,7 @@ GameObject:
   - component: {fileID: 2674465091103591027}
   - component: {fileID: 2674465091103590989}
   - component: {fileID: 2674465091103591026}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9752,7 +9752,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2674465091761193915}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LightingBullet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9786,7 +9786,7 @@ GameObject:
   - component: {fileID: 6246766223855511957}
   - component: {fileID: 6146657329502003355}
   - component: {fileID: 3706915474193388715}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: rayMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14656,7 +14656,7 @@ GameObject:
   - component: {fileID: 8021042647633978669}
   - component: {fileID: 185350577222785199}
   - component: {fileID: 7320365048701726274}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19528,7 +19528,7 @@ GameObject:
   - component: {fileID: 7488623435463272497}
   - component: {fileID: 7488623435463272496}
   - component: {fileID: 7488623435463272499}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

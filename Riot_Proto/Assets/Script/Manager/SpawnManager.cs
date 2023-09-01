@@ -25,7 +25,8 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         while (SpawnCount < BossSpawnWave)
         {
-            var wave = WavePrefab[Random.Range(0, WavePrefab.Count)];
+            var Level = SpawnCount <= 10 ? Random.Range(0,3) : Random.Range(3,6);
+            var wave = WavePrefab[Level];
             yield return new WaitForSeconds(wave.startDelay);
             for (int i = 0; i < wave.WaveList.Count; i++)
             {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7488623435463272497}
   - component: {fileID: 7488623435463272496}
   - component: {fileID: -3567373497266064039}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DirectBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,6 +125,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7488623435463272495}
     m_Modifications:
+    - target: {fileID: 5380279124100818145, guid: 0e711dc4848cdbe449d54e260c11dad9, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5380279124100818148, guid: 0e711dc4848cdbe449d54e260c11dad9, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.75461996
@@ -136,6 +140,10 @@ PrefabInstance:
     - target: {fileID: 5380279124100818148, guid: 0e711dc4848cdbe449d54e260c11dad9, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.9245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380279124375327322, guid: 0e711dc4848cdbe449d54e260c11dad9, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5380279124375327325, guid: 0e711dc4848cdbe449d54e260c11dad9, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -152,6 +160,10 @@ PrefabInstance:
     - target: {fileID: 5380279125620668677, guid: 0e711dc4848cdbe449d54e260c11dad9, type: 3}
       propertyPath: m_Name
       value: LightingBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380279125620668677, guid: 0e711dc4848cdbe449d54e260c11dad9, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5380279125620668679, guid: 0e711dc4848cdbe449d54e260c11dad9, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -236,6 +248,10 @@ PrefabInstance:
     - target: {fileID: 5380279125878497954, guid: 0e711dc4848cdbe449d54e260c11dad9, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.98039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380279125878497983, guid: 0e711dc4848cdbe449d54e260c11dad9, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e711dc4848cdbe449d54e260c11dad9, type: 3}

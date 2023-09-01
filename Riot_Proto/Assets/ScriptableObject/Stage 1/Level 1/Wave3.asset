@@ -15,8 +15,8 @@ MonoBehaviour:
   startDelay: 1
   WaveList:
   - Enemy: Enemy1
-    SpawnDelay: 1
+    SpawnDelay: 2
   - Enemy: Enemy2
     SpawnDelay: 1
   - Enemy: Enemy1
-    SpawnDelay: 1
+    SpawnDelay: 2

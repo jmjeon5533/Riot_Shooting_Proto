@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3478243165121377653}
   - component: {fileID: 3641419622014125125}
   - component: {fileID: 3643179650926862309}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EndCoreFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4893,7 +4893,7 @@ GameObject:
   - component: {fileID: 3478131281673763707}
   - component: {fileID: 3641198647300107431}
   - component: {fileID: 3641615698009787445}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EndSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9775,7 +9775,7 @@ GameObject:
   - component: {fileID: 3478386864985099611}
   - component: {fileID: 3642271200006096811}
   - component: {fileID: 3641444436852864749}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RayLightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14657,7 +14657,7 @@ GameObject:
   - component: {fileID: 3484453322498563811}
   - component: {fileID: 3641367124178927087}
   - component: {fileID: 3643325209663934215}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rays
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19539,7 +19539,7 @@ GameObject:
   - component: {fileID: 3478258112006114691}
   - component: {fileID: 3642093473070815141}
   - component: {fileID: 3641476999311264965}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackWaves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24430,7 +24430,7 @@ GameObject:
   - component: {fileID: 3484372808887085381}
   - component: {fileID: 3642012419481947459}
   - component: {fileID: 3641523630598474097}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackWaves2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29373,7 +29373,7 @@ GameObject:
   - component: {fileID: 3560527956247532045}
   - component: {fileID: 3593248385265365443}
   - component: {fileID: 3233679284607641659}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Laser (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34500,7 +34500,7 @@ GameObject:
   - component: {fileID: 3642275487755371395}
   - component: {fileID: 3642869714669421335}
   - component: {fileID: 3587154636674873889}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39462,7 +39462,7 @@ GameObject:
   - component: {fileID: 3478113784673859303}
   - component: {fileID: 3641785358403419021}
   - component: {fileID: 3643094754314343351}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44362,7 +44362,7 @@ GameObject:
   - component: {fileID: 3484506948812881079}
   - component: {fileID: 3641292118503319187}
   - component: {fileID: 3643062497835215079}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sparks2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49262,7 +49262,7 @@ GameObject:
   - component: {fileID: 3478243580861765115}
   - component: {fileID: 3642089272865439163}
   - component: {fileID: 3641446790838320517}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54144,7 +54144,7 @@ GameObject:
   - component: {fileID: 3478207847852972301}
   - component: {fileID: 3641861587277094681}
   - component: {fileID: 3642984884268742757}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RayWaves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59026,7 +59026,7 @@ GameObject:
   - component: {fileID: 3484100770549151867}
   - component: {fileID: 3671999651860613595}
   - component: {fileID: 3641452751667293091}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63908,7 +63908,7 @@ GameObject:
   - component: {fileID: 3484514755170803727}
   - component: {fileID: 3672025789870143339}
   - component: {fileID: 3643041605759923435}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LaserCore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68826,7 +68826,7 @@ GameObject:
   - component: {fileID: 3484316007464207581}
   - component: {fileID: 3641831816120338215}
   - component: {fileID: 3642997857513337103}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MuzzleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73708,7 +73708,7 @@ GameObject:
   - component: {fileID: 3484626916606320043}
   - component: {fileID: 3642274092958703657}
   - component: {fileID: 3643195756186583379}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LaserTrails
   m_TagString: Untagged
   m_Icon: {fileID: 0}

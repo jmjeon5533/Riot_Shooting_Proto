@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2096438717340528447}
   - component: {fileID: 2360491437480248137}
   - component: {fileID: 7441882647192872918}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StaticZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

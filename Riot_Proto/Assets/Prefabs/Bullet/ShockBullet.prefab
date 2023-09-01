@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1704503521578353785}
   - component: {fileID: 6995373602410539712}
   - component: {fileID: 6429056188551395480}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShockBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 2598866814222724642}
   - component: {fileID: 2598866814222724644}
   - component: {fileID: 2598866814222724645}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: rayMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5001,7 +5001,7 @@ GameObject:
   - component: {fileID: 2598866814501263515}
   - component: {fileID: 2598866814501263517}
   - component: {fileID: 2598866814501263514}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9862,7 +9862,7 @@ GameObject:
   - component: {fileID: 2598866815206776537}
   - component: {fileID: 2598866815206776539}
   - component: {fileID: 2598866815206776536}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Glow_World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14674,7 +14674,7 @@ GameObject:
   - component: {fileID: 2598866815485281649}
   - component: {fileID: 2598866815485281662}
   - component: {fileID: 2598866815485281663}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LightingBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

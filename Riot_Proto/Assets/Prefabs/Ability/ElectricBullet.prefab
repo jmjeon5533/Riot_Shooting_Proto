@@ -57,6 +57,6 @@ MonoBehaviour:
   bullet: {fileID: 1049926176297283882, guid: d24d110f96e013240b62edabb8a70163, type: 3}
   defaultDamage: 5
   curCooltime: 0
-  maxCooltime: 5
+  maxCooltime: 7
   angle: 50
   livingDuration: 1

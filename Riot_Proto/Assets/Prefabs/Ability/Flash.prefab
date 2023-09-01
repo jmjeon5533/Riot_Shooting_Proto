@@ -53,8 +53,8 @@ MonoBehaviour:
   stats: 
   curCooltime: 0
   maxCooltime: 5
-  defaultDamage: 5
+  defaultDamage: 4
   explosion: {fileID: 1802760122720678419, guid: c8b13b151451b404285240a1a72b9a5f, type: 3}
   radius: 2.5
   increaseValue: 4
-  damageRate: 0.4
+  damageRate: 0.25

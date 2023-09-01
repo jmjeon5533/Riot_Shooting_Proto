@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq;
 using UnityEngine.UI;
 
 public class AbilityCard : MonoBehaviour
@@ -14,6 +15,8 @@ public class AbilityCard : MonoBehaviour
 
     public List<AbilityBase> curAbilityList;
     public Dictionary<string, AbilityBase> curAbilityDic = new();
+    public List<AbilityBase> curPassiveList = new List<AbilityBase>(); 
+
 
     public Transform[] cards;
 
@@ -167,7 +170,7 @@ public class AbilityCard : MonoBehaviour
     //���� 5�� �ƴ� �ɷ� �� �������� �������� �Լ�
     AbilityBase GetRandomAbility()
     {
-        List<AbilityBase> abs = new List<AbilityBase>(abilities);
+        List<AbilityBase> abs = abilities.ToList();
         List<AbilityBase> removeToList = new List<AbilityBase>();
         for (int i = 0; i < abs.Count; i++)
         {
@@ -175,6 +178,10 @@ public class AbilityCard : MonoBehaviour
             {
                 removeToList.Add(abs[i]);
 
+            }
+            if(curPassiveList.Count >= 3 && !curPassiveList.Contains(abs[i]))
+            {
+                removeToList.Add(abs[i]);
             }
         }
         foreach (AbilityBase rem in removeToList)
@@ -258,6 +265,10 @@ public class AbilityCard : MonoBehaviour
             curAbilityList.Add(abi);
             abilityLevels.Add(abi.skillName, 1);
             curAbilityDic.Add(abi.skillName, abi);
+            if(!curPassiveList.Contains(abi) && curPassiveList.Count < 3)
+            {
+                curPassiveList.Add(abi);
+            }
         }
         GameManager.instance.StopCoroutine(GameManager.instance.FadeCoroutine);
         GameManager.instance.FadeCoroutine = null;

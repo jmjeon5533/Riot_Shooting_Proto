@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyBase : MonoBehaviour
+public abstract class EnemyBase : MonoBehaviour, IListener
 {
     public int HP;
 
@@ -53,4 +53,12 @@ public abstract class EnemyBase : MonoBehaviour
         PoolManager.Instance.GetObject("Hit",transform.position,Quaternion.identity);
     }
     protected abstract void Attack();
+
+        public void OnEvent(Event_Type type, Component sender, object param = null)
+        {
+            if(type == Event_Type.ApplyBuff)
+            {
+                
+            }
+        }
 }

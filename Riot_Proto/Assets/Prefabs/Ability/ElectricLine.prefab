@@ -53,8 +53,8 @@ MonoBehaviour:
     \uB3D9\uC548 \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
   stats: 
   stack: 0
-  maxStack: 30
-  defaultDamage: 10
+  maxStack: 50
+  defaultDamage: 7
   duration: 0
   beams:
   - {fileID: 3480814663897831589, guid: 8237d5bab7dd62a4db982f09fd12960f, type: 3}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,10 +22,10 @@ public class GameManager : MonoBehaviour
     public int Level;
     public int SelectChance;
     [Space(10)]
+    public GameObject StagePrefab;
     public List<GameObject> playerPrefab = new();
-    public List<GameObject> StagePrefab = new();
     public List<GameObject> ItemList = new();
-
+    public List<Sprite> BGList = new();
     public List<GameObject> curEnemys = new();
 
     public bool IsGame = false;
@@ -37,13 +38,32 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        var u = UIManager.instance;
         Camera[] camera = { MainCamera, EffectCamera, UICamera, BackCamera};
         SceneManager.instance.SetResolution(camera);
         Instantiate(playerPrefab[SceneManager.instance.CharIndex], new Vector3(-12f, 0, 0), Quaternion.identity);
-        Instantiate(StagePrefab[SceneManager.instance.StageIndex], UIManager.instance.canvas);
-        var bg2 = Instantiate(StagePrefab[SceneManager.instance.StageIndex], UIManager.instance.canvas).GetComponent<RectTransform>();
-        bg2.transform.localPosition += new Vector3(bg2.rect.width, 0, 0);
+        u.BG1 = Instantiate(StagePrefab, UIManager.instance.canvas).GetComponent<Image>();
+        u.BG2 = Instantiate(StagePrefab, UIManager.instance.canvas).GetComponent<Image>();
+        UIManager.instance.FadeBg.transform.SetAsLastSibling();
+        InitBackGround(SceneManager.instance.StageIndex);
+
     }
+    public void InitBackGround(int BackNum)
+    {
+        var u = UIManager.instance;
+
+        u.BG1.sprite = BGList[BackNum];
+        var ratio = 1080 / u.BG1.sprite.rect.height;
+        print(ratio);
+        u.BG1.GetComponent<RectTransform>().sizeDelta = new Vector2(u.BG1.sprite.rect.width, u.BG1.sprite.rect.height) * ratio;
+        u.BG1.transform.localPosition = Vector3.zero;
+        
+
+        u.BG2.sprite = BGList[BackNum];
+        u.BG2.GetComponent<RectTransform>().sizeDelta = new Vector2(u.BG2.sprite.rect.width, u.BG2.sprite.rect.height) * ratio;
+        u.BG2.transform.localPosition = new Vector3(u.BG2.GetComponent<RectTransform>().rect.width, 0, 0);
+    }
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

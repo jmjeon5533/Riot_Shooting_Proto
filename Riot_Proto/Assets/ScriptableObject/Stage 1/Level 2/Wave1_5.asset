@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dade780c5cb8984e8c30cce45d74da6, type: 3}
-  m_Name: Wave6
+  m_Name: Wave1_5
   m_EditorClassIdentifier: 
   startDelay: 1
   WaveList:
@@ -18,9 +18,5 @@ MonoBehaviour:
     SpawnDelay: 0.5
   - Enemy: Enemy2
     SpawnDelay: 0.5
-  - Enemy: Enemy2
-    SpawnDelay: 0.5
-  - Enemy: Enemy2
-    SpawnDelay: 0.5
-  - Enemy: Enemy2
-    SpawnDelay: 0.5
+  - Enemy: Enemy1
+    SpawnDelay: 1

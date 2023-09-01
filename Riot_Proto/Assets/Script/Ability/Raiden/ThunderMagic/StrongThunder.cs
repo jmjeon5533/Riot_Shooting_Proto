@@ -16,16 +16,17 @@ public class StrongThunder : AbilityBase
 
     [SerializeField] int increaseValue;
     [SerializeField] float damageRate;
+
+    
     
 
     Player player;
 
     public override void Ability()
     {
-        curCooltime+=Time.deltaTime;
-        if(curCooltime >= maxCooltime)
-        {
+        
             curCooltime=0;
+             useSkill = true;
             List<GameObject> list = new List<GameObject>(GameManager.instance.curEnemys);
             int damage = defaultDamage + (int)(player.damage * damageRate);
 
@@ -40,7 +41,7 @@ public class StrongThunder : AbilityBase
             t.radius = radius;
             t.transform.localScale = new Vector3(t.transform.localScale.x, t.transform.localScale.y, t.transform.localScale.z);
 
-        }
+        
     }
 
     public override string GetStatText()
@@ -66,6 +67,17 @@ public class StrongThunder : AbilityBase
     // Update is called once per frame
     void Update()
     {
-        Ability();
+        if(useSkill)
+        {
+            
+            curCooltime += Time.deltaTime;
+            minCool = curCooltime;
+            maxCool = maxCooltime;
+            if(curCooltime >= maxCooltime)
+            {
+                curCooltime = 0;
+                useSkill = false;
+            }
+        }
     }
 }

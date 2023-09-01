@@ -21,6 +21,26 @@ public abstract class AbilityBase : MonoBehaviour
 
     public string stats;
 
+    protected float maxCool;
+    protected float minCool;
+
+    public float GetMinCool()
+    {
+        return minCool;
+    }
+
+    public float GetMaxCool()
+    {
+        return maxCool;
+    }
+
+    public bool IsSkillCool()
+    {
+        return useSkill;
+    }
+ 
+    protected bool useSkill = false;
+
     public abstract string GetStatText();
 
     protected virtual int GetCalculateDamage(int value)

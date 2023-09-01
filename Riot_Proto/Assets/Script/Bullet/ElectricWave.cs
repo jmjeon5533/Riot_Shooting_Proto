@@ -37,7 +37,7 @@ public class ElectricWave : MonoBehaviour
         {
             if (h.CompareTag("Enemy"))
             {
-
+                new Slow(3f, h.gameObject,BuffBase.TargetType.Enemy, slowRate);
             }
         }
         if (curRadius > radius)

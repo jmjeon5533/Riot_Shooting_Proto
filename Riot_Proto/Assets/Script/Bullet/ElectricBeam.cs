@@ -66,6 +66,7 @@ public class ElectricBeam : MonoBehaviour
     {
         UpdateLivingTime();
         transform.position = player.transform.position + pos;
-        Attack();
+        if(curTime > delay)
+            Attack();
     }
 }

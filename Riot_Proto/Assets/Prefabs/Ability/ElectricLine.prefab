@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  type: 0
+  type: 1
   skillImage: {fileID: 0}
   skillName: "\uC804\uC120"
   skillDescription: "\uAE30\uBCF8 \uACF5\uACA9\uC744 \uC77C\uC815 \uD69F\uC218 \uC2E4\uD589

@@ -20,15 +20,17 @@ public class ElectricLine : AbilityBase, IListener
 
     public override void Ability()
     {
-        if (stack >= maxStack)
+        if(!useSkill)
         {
+
             stack = 0;
+            minCool = stack;
+            maxCool = maxStack;
+            useSkill = true;
             var b = Instantiate(beams[level-1], player.transform.position, Quaternion.Euler(0,90,0)).GetComponent<ElectricBeam>();
             b.damage = defaultDamage + (int)(player.damage * damageRate);
-            
-            
-
-        }
+        }    
+ 
     }
 
     public override string GetStatText()
@@ -42,6 +44,7 @@ public class ElectricLine : AbilityBase, IListener
         if (type == Event_Type.PlayerAttack)
         {
             stack++;
+           
         }
     }
 
@@ -64,6 +67,15 @@ public class ElectricLine : AbilityBase, IListener
     // Update is called once per frame
     void Update()
     {
-        Ability();
+        minCool = stack;
+        maxCool = maxStack;
+        if (useSkill)
+        {
+            if(stack >= maxStack)
+            {
+                stack = 0;
+                useSkill = false;
+            }
+        }
     }
 }

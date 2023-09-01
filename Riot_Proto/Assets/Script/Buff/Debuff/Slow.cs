@@ -32,17 +32,17 @@ public class Slow : BuffBase
                 player.MoveSpeed = originSpeed;
                 Destroy(this);
             }
-        } else if (type == TargetType.Enemy)
-        {
-            originSpeed = enemy.MoveSpeed;
-            enemy.MoveSpeed = originSpeed * slowRate;
-            if(curTime >= duration)
+            } else if (type == TargetType.Enemy)
             {
-                curTime = 0;
-                enemy.MoveSpeed = originSpeed;
-                Destroy(this);
+                originSpeed = enemy.MoveSpeed;
+                enemy.MoveSpeed = originSpeed * slowRate;
+                if(curTime >= duration)
+                {
+                    curTime = 0;
+                    enemy.MoveSpeed = originSpeed;
+                    Destroy(this);
+                }
             }
-        }
     }
 
     // Start is called before the first frame update

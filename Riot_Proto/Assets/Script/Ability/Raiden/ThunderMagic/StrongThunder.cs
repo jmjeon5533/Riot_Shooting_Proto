@@ -17,11 +17,6 @@ public class StrongThunder : AbilityBase
     [SerializeField] int increaseValue;
     [SerializeField] float damageRate;
 
-    
-    
-
-    Player player;
-
     public override void Ability()
     {
         

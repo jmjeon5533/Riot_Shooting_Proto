@@ -19,9 +19,6 @@ public class ElectricCall : AbilityBase
     [SerializeField] float damageRate;
     [SerializeField] float delay;
 
-
-    Player player;
-
     int attackCount = 0;
 
     public override void Ability()

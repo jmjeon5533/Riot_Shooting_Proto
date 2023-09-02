@@ -12,8 +12,6 @@ public class ElectricLine : AbilityBase, IListener
 
     [SerializeField] List<GameObject> beams;
 
-    Player player;
-
     [SerializeField] int increaseValue;
     [SerializeField] float damageRate;
 

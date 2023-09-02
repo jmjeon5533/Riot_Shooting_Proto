@@ -61,6 +61,7 @@ public class UIManager : MonoBehaviour
         print(2);
         yield return FadeBg.DOColor(new Color(0,0,0,0), 1).WaitForCompletion();
         print(3);
+        SpawnManager.instance.SpawnCount = 0;
         GameManager.instance.IsGame = true;
         SpawnManager.instance.Spawn();
     }

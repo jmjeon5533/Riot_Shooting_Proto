@@ -31,7 +31,7 @@ public class Mage1 : EnemyBase
         var b = PoolManager.Instance.GetObject("EnemyBullet",transform.position,Quaternion.identity).GetComponent<BulletBase>();
         b.dir = (GameManager.instance.player.transform.position - transform.position).normalized;
         
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         var x = Random.Range(0, g.MoveRange.x + g.MovePivot.x);
         var y = Random.Range(-g.MoveRange.y + g.MovePivot.y, g.MoveRange.y + g.MovePivot.y);
         transform.position = new Vector3(x, y, 0);

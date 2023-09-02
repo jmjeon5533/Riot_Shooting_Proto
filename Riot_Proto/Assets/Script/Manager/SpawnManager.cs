@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
     public static SpawnManager instance { get; private set; }
     public List<WaveList> WavePrefab = new();
     public int BossSpawnWave;
-    int SpawnCount;
+    public int SpawnCount;
     int StageLevel;
     // Start is called before the first frame update
     private void Awake()

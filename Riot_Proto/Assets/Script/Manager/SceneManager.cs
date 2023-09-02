@@ -41,13 +41,22 @@ public class SceneManager : MonoBehaviour
     }
     private void Start()
     {
-        JsonSave();
-        //JsonLoad();
+        JsonLoad();
     }
     public void JsonLoad()
     {
         string data = File.ReadAllText(path + filename);
-        playerData = JsonUtility.FromJson<PlayerData>(data);
+        if (data == null)
+        {
+            PlayerData saveData = new PlayerData();
+            saveData.PlayerMora = 0;
+            saveData.abilities = new();
+            playerData = saveData;
+        }
+        else
+        {
+            playerData = JsonUtility.FromJson<PlayerData>(data);
+        }
     }
     public void JsonSave()
     {
@@ -66,7 +75,7 @@ public class SceneManager : MonoBehaviour
     public void MainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
-        TitleManager.instance.InitPanel(1);
+        this.Invoke(() => TitleManager.instance.InitPanel(1), 0.01f);
     }
     public void Option(float y)
     {
@@ -77,7 +86,7 @@ public class SceneManager : MonoBehaviour
     }
     public void SetResolution(Camera[] camera)
     {
-        ScreenArea = new Vector2(1920,1080);
+        ScreenArea = new Vector2(1920, 1080);
         minusScreen = new Vector2(Screen.width, Screen.height);
         Screen.SetResolution((int)ScreenArea.x, (int)(((float)minusScreen.y / minusScreen.x) * ScreenArea.x), true); // SetResolution 함수 제대로 사용하기
         for (int i = 0; i < camera.Length; i++)

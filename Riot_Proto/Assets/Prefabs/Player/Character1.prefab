@@ -14255,7 +14255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdabe7efed854b64b8d337849c64873e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 1
+  HP: 3
   damage: 10
   CritRate: 1
   CritDamage: 2

@@ -12,10 +12,11 @@ public class UIManager : MonoBehaviour
     public Transform canvas;
     public Transform ClearTab;
     public Transform OverTab;
+    public Image[] Heart;
     
     public Image FadeBg;
     bool isUseTab = false;
-    [HideInInspector] public Image BG1, BG2; 
+    [HideInInspector] public Image BG1, BG2;
     private void Awake()
     {
         instance = this;
@@ -23,6 +24,17 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         XPBarUpdate();
+    }
+    public void InitHeart()
+    {
+        for (int i = 0; i < Heart.Length; i++)
+        {
+            Heart[i].enabled = false;
+        }
+        for (int i = 0; i < GameManager.instance.player.HP; i++)
+        {
+            Heart[i].enabled = true;
+        }
     }
     public void XPBarUpdate()
     {

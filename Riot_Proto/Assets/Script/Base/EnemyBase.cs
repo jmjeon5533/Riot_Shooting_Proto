@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class EnemyBase : MonoBehaviour, IListener
+public abstract class EnemyBase : MonoBehaviour
 {
     public float HP;
     [HideInInspector] public float baseHp;
@@ -20,6 +20,8 @@ public abstract class EnemyBase : MonoBehaviour, IListener
 
     public Vector3 MovePos;
     public string EnemyTag;
+
+    [SerializeField] List<BuffBase> EnemyBuffList = new List<BuffBase>();
 
     protected virtual void Start()
     {
@@ -43,8 +45,42 @@ public abstract class EnemyBase : MonoBehaviour, IListener
         XPRate = p * baseXPRate;
     }
 
+    public void AddBuff(BuffBase buff) 
+    {
+        BuffBase _buff = buff;
+        _buff.Start();
+        EnemyBuffList.Add(_buff);
+    }
+
+    protected void BuffTimer()
+    {
+        List<BuffBase> list = null; 
+        if(EnemyBuffList.Count > 0)
+        {
+            list = new List<BuffBase>();    
+            for(int i = 0; i < EnemyBuffList.Count; i++)
+            {
+                EnemyBuffList[i].Run();
+                if(EnemyBuffList[i].IsOnTimer())
+                {
+                    EnemyBuffList[i].End();
+                    list.Add(EnemyBuffList[i]);
+                }
+            }
+        }
+        if(list != null && list.Count > 0)
+        {
+            for(int i = 0; i < list.Count;i++)
+            {
+                EnemyBuffList.Remove(list[i]);
+            }
+        }
+    } 
+
+    void Update()
     protected virtual void Update()
     {
+        BuffTimer();
         if (AttackCurtime >= AttackCooltime)
         {
             AttackCurtime -= AttackCooltime;

@@ -7,7 +7,7 @@ public enum BuffType
     Buff, Debuff
 }
 
-public abstract class BuffBase : MonoBehaviour
+public abstract class BuffBase
 {
 
     protected float curTime = 0;
@@ -19,6 +19,17 @@ public abstract class BuffBase : MonoBehaviour
     public enum TargetType
     {
         Player, Enemy
+    }
+
+    public bool IsOnTimer()
+    {
+        if(curTime >= duration)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
     }
 
     protected BuffType buffType;
@@ -34,19 +45,11 @@ public abstract class BuffBase : MonoBehaviour
         this.type = type;
     }
 
-    public abstract void UpdateBuff();
+    public abstract void Start();
 
-    public abstract void Init();
+    public abstract void Run();
+
+    public abstract void End();
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

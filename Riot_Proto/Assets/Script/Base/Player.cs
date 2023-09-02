@@ -20,6 +20,8 @@ public abstract class Player : MonoBehaviour
     Coroutine ShieldCoroutine;
     [SerializeField] GameObject ShieldObj;
 
+    [SerializeField] List<BuffBase> PlayerBuffList = new List<BuffBase>();
+
     Vector3 MoveRange;
     Vector3 MovePivot;
     public float AttackCooltime;
@@ -44,6 +46,7 @@ public abstract class Player : MonoBehaviour
     {
         if (IsMove)
         {
+            BuffTimer();
             Movement();
             AttackInput();
         }
@@ -132,6 +135,39 @@ public abstract class Player : MonoBehaviour
         transform.position
          = new Vector3(Mathf.Clamp(transform.position.x, -MoveRange.x + MovePivot.x, MoveRange.x + MovePivot.x),
          Mathf.Clamp(transform.position.y, -MoveRange.y + MovePivot.y, MoveRange.y + MovePivot.y));
+    }
+
+    public void AddBuff(BuffBase buff)
+    {
+        BuffBase _buff = buff;
+        _buff.Start();
+        PlayerBuffList.Add(_buff);
+    }
+
+    protected void BuffTimer()
+    {
+        List<BuffBase> list = null;
+        if (PlayerBuffList.Count > 0)
+        {
+            list = new List<BuffBase>();
+            for (int i = 0; i < PlayerBuffList.Count; i++)
+            {
+                PlayerBuffList[i].Run();
+                if (PlayerBuffList[i].IsOnTimer())
+                {
+                    PlayerBuffList[i].End();
+                    list.Add(PlayerBuffList[i]);
+
+                }
+            }
+        }
+        if (list != null && list.Count > 0)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                PlayerBuffList.Remove(list[i]);
+            }
+        }
     }
 
 

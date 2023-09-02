@@ -22,6 +22,9 @@ public class Spider1 : EnemyBase
         base.Update();
         var range = MovePos - transform.position;
         if(range.magnitude <= 0.1f)
-        PoolManager.Instance.PoolObject(EnemyTag,gameObject);
+        {
+            PoolManager.Instance.PoolObject(EnemyTag,gameObject);
+            GameManager.instance.curEnemys.Remove(gameObject);
+        }
     }
 }

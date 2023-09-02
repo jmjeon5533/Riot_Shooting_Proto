@@ -11,8 +11,6 @@ public class LightningBolt : AbilityBase
 
     //[SerializeField] float distance;
 
-    Player player;
-
     public override void Ability()
     {
         curCooltime += Time.deltaTime;

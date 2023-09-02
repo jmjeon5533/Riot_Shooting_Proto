@@ -75,7 +75,7 @@ public class SceneManager : MonoBehaviour
     public void MainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
-        this.Invoke(() => TitleManager.instance.InitPanel(1), 0.01f);
+        this.Invoke(() => TitleManager.instance.InitPanel(1), Time.deltaTime);
     }
     public void Option(float y)
     {

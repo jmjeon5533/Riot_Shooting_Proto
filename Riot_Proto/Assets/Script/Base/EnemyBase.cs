@@ -10,9 +10,6 @@ public abstract class EnemyBase : MonoBehaviour
     [Space(10)]
     public float XPRate;
     [HideInInspector] public float baseXPRate;
-    [Space(10)]
-    public float defence;
-    [HideInInspector] public float baseDefence;
     [Space()]
     public float MoveSpeed;
     public float AttackCooltime;
@@ -36,7 +33,6 @@ public abstract class EnemyBase : MonoBehaviour
     {
         baseHp = HP;
         baseXPRate = XPRate;
-        baseDefence = defence;
     }
     public virtual void StatMultiplier()
     {
@@ -101,9 +97,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
     public void Damage(int damage)
     {
-        var dmg = 50f / (50 + defence);
-        print(dmg);
-        HP -= dmg * damage;
+        HP -= damage;
         if (HP <= 0)
         {
             GameManager.instance.curEnemys.Remove(this.gameObject);

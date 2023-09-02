@@ -40,6 +40,7 @@ public class SpawnManager : MonoBehaviour
                 yield return new WaitForSeconds(wave.WaveList[i].SpawnDelay);
             }
             SpawnCount++;
+            GameManager.instance.EnemyPower += 0.05f;
         }
         GameObject Boss = PoolManager.Instance.GetObject($"Boss{StageLevel + 1}", new Vector3(15, 0, 0), Quaternion.identity);
         GameManager.instance.curEnemys.Add(Boss);

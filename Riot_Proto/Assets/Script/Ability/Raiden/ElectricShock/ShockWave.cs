@@ -16,8 +16,6 @@ public class ShockWave : AbilityBase
 
     [SerializeField] GameObject wave;
 
- 
-    
     [SerializeField] int increaseValue;
     [SerializeField] float damageRate;
 

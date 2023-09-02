@@ -15,8 +15,6 @@ public class StaticField : AbilityBase
 
     [SerializeField] GameObject field;
 
-    Player player;
-
     [SerializeField] int increaseValue;
     [SerializeField] float damageRate;
 

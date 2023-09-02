@@ -10,13 +10,12 @@ public class ThunderDrop : AbilityBase
     [SerializeField] int defaultDamage;
 
     [SerializeField] GameObject thunder;
-    Player player;
 
     [SerializeField] float distance;
     // Start is called before the first frame update
     public override void Start()
     {
-        player = GameManager.instance.player;
+        Initalize();
     }
 
     // Update is called once per frame

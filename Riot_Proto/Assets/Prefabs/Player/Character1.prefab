@@ -14256,7 +14256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 1
-  damage: 5
+  damage: 10
   CritRate: 1
   CritDamage: 2
   bulletLevel: 1
@@ -14264,6 +14264,7 @@ MonoBehaviour:
   MoveSpeed: 10
   bulletPrefab:
   - {fileID: 7488623435463272499, guid: b7c2e428f26f83343a39d3baa0b35720, type: 3}
+  IsShield: 0
   ShieldObj: {fileID: 596910838836457825}
   AttackCooltime: 0.4
   maxCooltime: 3

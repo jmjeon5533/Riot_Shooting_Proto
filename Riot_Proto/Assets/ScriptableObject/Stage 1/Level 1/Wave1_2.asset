@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startDelay: 2
   WaveList:
-  - Enemy: Enemy2
+  - Enemy: Bat2
     SpawnDelay: 2
-  - Enemy: Enemy2
+  - Enemy: Mage1
     SpawnDelay: 2
-  - Enemy: Enemy1
+  - Enemy: Bat1
     SpawnDelay: 1

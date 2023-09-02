@@ -36,6 +36,7 @@ public class SpawnManager : MonoBehaviour
             {
                 GameObject enemy = PoolManager.Instance.GetObject(wave.WaveList[i].Enemy, new Vector3(15, Random.Range(-5, 6), 0), Quaternion.identity);
                 GameManager.instance.curEnemys.Add(enemy);
+                //enemy.GetComponent<EnemyBase>().InitStatus();
                 yield return new WaitForSeconds(wave.WaveList[i].SpawnDelay);
             }
             SpawnCount++;

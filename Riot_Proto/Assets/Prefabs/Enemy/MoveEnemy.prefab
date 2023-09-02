@@ -113,11 +113,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 25
+  baseHp: 0
+  XPRate: 3
+  baseXPRate: 0
+  defence: 12
+  baseDefence: 0
   MoveSpeed: 10
   AttackCooltime: 2.5
   MovePos: {x: 0, y: 0, z: 0}
-  XPRate: 3
-  EnemyTag: Enemy2
+  EnemyTag: Bat2
 --- !u!1001 &4624744284648621802
 PrefabInstance:
   m_ObjectHideFlags: 0

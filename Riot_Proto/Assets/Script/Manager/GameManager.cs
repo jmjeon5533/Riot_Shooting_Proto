@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public Vector2 MoveRange;
     public Vector2 MovePivot;
     public float BGSpeed;
-
+    public float EnemyPower = 1;
     [Space(10)]
     public GameObject XPPrefab;
     public int MaxXP;
@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
 
         u.BG1.sprite = BGList[BackNum];
         var ratio = 1080 / u.BG1.sprite.rect.height;
-        print(ratio);
         u.BG1.GetComponent<RectTransform>().sizeDelta = new Vector2(u.BG1.sprite.rect.width, u.BG1.sprite.rect.height) * ratio;
         u.BG1.transform.localPosition = Vector3.zero;
         

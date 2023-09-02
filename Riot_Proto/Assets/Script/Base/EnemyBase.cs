@@ -77,7 +77,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
     } 
 
-    void Update()
+   
     protected virtual void Update()
     {
         BuffTimer();

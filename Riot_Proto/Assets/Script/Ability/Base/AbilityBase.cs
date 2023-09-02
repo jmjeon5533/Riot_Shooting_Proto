@@ -38,6 +38,8 @@ public abstract class AbilityBase : MonoBehaviour
     {
         return useSkill;
     }
+
+    protected Player player;
  
     protected bool useSkill = false;
 
@@ -51,7 +53,7 @@ public abstract class AbilityBase : MonoBehaviour
 
     public virtual void Start()
     {
-        
+        player = GameManager.instance.player;
     }
 
     public virtual void LevelUp()
@@ -66,7 +68,7 @@ public abstract class AbilityBase : MonoBehaviour
 
     public virtual void Initalize()
     {
-        
+        player = GameManager.instance.player;
     }
 
     public abstract void Ability();

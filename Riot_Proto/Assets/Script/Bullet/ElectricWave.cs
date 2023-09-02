@@ -13,6 +13,8 @@ public class ElectricWave : MonoBehaviour
 
     private float curRadius = 0;
 
+    List<Transform> hits = new List<Transform>();
+
     public void Init(float radius, float speed, float duration, float slowRate)
     {
         this.radius = radius;
@@ -35,9 +37,11 @@ public class ElectricWave : MonoBehaviour
         var hit = Physics.OverlapSphere(transform.position, radius);
         foreach (var h in hit)
         {
-            if (h.CompareTag("Enemy"))
+            if (h.CompareTag("Enemy") && !hits.Contains(h.transform))
             {
-                new Slow(3f, h.gameObject,BuffBase.TargetType.Enemy, slowRate);
+                BuffBase buff = new Slow(duration, h.gameObject, BuffBase.TargetType.Enemy, slowRate);
+                h.GetComponent<EnemyBase>().AddBuff(buff);
+                hits.Add(h.transform);
             }
         }
         if (curRadius > radius)

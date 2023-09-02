@@ -60,7 +60,7 @@ public class ElectricLine : AbilityBase, IListener
     public override void Start()
     {
         EventManager.Instance.AddListener(Event_Type.PlayerAttack, this);
-        player = GameManager.instance.player;
+        Initalize();
         duration = beams[level - 1].GetComponent<ElectricBeam>().duration;
     }
 

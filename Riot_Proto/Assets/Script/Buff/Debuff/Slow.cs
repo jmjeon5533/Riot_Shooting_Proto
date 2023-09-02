@@ -14,48 +14,46 @@ public class Slow : BuffBase
         else enemy = target.GetComponent<EnemyBase>();
     }
 
-    public override void Init()
+    public override void Start()
     {
         
-    }
-
-    public override void UpdateBuff()
-    {
-        curTime += Time.deltaTime;
         if (type == TargetType.Player)
         {
             originSpeed = player.MoveSpeed;
-            player.MoveSpeed = originSpeed * slowRate;
-            if(curTime >= duration)
+        }
+        else if (type == TargetType.Enemy)
+        {
+            originSpeed = enemy.MoveSpeed;
+        }
+    }
+
+    public override void Run()
+    {
+            curTime += Time.deltaTime;
+            Debug.Log("testbuff");
+            if (type == TargetType.Player)
             {
-                curTime = 0;
-                player.MoveSpeed = originSpeed;
-                Destroy(this);
+                player.MoveSpeed = originSpeed * slowRate;
             }
-            } else if (type == TargetType.Enemy)
-            {
-                originSpeed = enemy.MoveSpeed;
+            else if (type == TargetType.Enemy)
+            {       
                 enemy.MoveSpeed = originSpeed * slowRate;
-                if(curTime >= duration)
-                {
-                    curTime = 0;
-                    enemy.MoveSpeed = originSpeed;
-                    Destroy(this);
-                }
             }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public override void End()
     {
-        
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateBuff();
+        if (type == TargetType.Player)
+        {
+            player.MoveSpeed = originSpeed;
+        }
+        else if (type == TargetType.Enemy)
+        {
+            enemy.MoveSpeed = originSpeed;
+        }
     }
 
-    
+
+
+
 }

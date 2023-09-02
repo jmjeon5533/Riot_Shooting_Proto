@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyBase : MonoBehaviour, IListener
+public abstract class EnemyBase : MonoBehaviour
 {
     public int HP;
 
@@ -13,6 +13,8 @@ public abstract class EnemyBase : MonoBehaviour, IListener
     public int XPRate;
     [SerializeField] string EnemyTag;
 
+    [SerializeField] List<BuffBase> EnemyBuffList = new List<BuffBase>();
+
     protected virtual void Start()
     {
         var g = GameManager.instance;
@@ -21,8 +23,41 @@ public abstract class EnemyBase : MonoBehaviour, IListener
         MovePos = new Vector3(x, y, 0);
     }
 
+    public void AddBuff(BuffBase buff) 
+    {
+        BuffBase _buff = buff;
+        _buff.Start();
+        EnemyBuffList.Add(_buff);
+    }
+
+    protected void BuffTimer()
+    {
+        List<BuffBase> list = null; 
+        if(EnemyBuffList.Count > 0)
+        {
+            list = new List<BuffBase>();    
+            for(int i = 0; i < EnemyBuffList.Count; i++)
+            {
+                EnemyBuffList[i].Run();
+                if(EnemyBuffList[i].IsOnTimer())
+                {
+                    EnemyBuffList[i].End();
+                    list.Add(EnemyBuffList[i]);
+                }
+            }
+        }
+        if(list != null && list.Count > 0)
+        {
+            for(int i = 0; i < list.Count;i++)
+            {
+                EnemyBuffList.Remove(list[i]);
+            }
+        }
+    } 
+
     void Update()
     {
+        BuffTimer();
         if (AttackCurtime >= AttackCooltime)
         {
             AttackCurtime -= AttackCooltime;
@@ -54,11 +89,5 @@ public abstract class EnemyBase : MonoBehaviour, IListener
     }
     protected abstract void Attack();
 
-    public void OnEvent(Event_Type type, Component sender, object param = null)
-    {
-        if (type == Event_Type.ApplyBuff)
-        {
-
-        }
-    }
+   
 }

@@ -53,7 +53,7 @@ MonoBehaviour:
     \uB3D9\uC548 \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
   stats: 
   stack: 0
-  maxStack: 50
+  maxStack: 150
   defaultDamage: 7
   duration: 0
   beams:

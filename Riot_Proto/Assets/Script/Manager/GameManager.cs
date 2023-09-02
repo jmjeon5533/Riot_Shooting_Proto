@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
         u.BG2 = Instantiate(StagePrefab, UIManager.instance.canvas).GetComponent<Image>();
         UIManager.instance.FadeBg.transform.SetAsLastSibling();
         InitBackGround(SceneManager.instance.StageIndex);
-
     }
     public void InitBackGround(int BackNum)
     {

@@ -30,7 +30,7 @@ public class TitleManager : MonoBehaviour
     }
     private void Start()
     {
-        Camera[] camera = { MainCamera, UICamera};
+        Camera[] camera = { MainCamera, UICamera };
         SceneManager.instance.SetResolution(camera);
         explainImage = explainPanel.GetChild(0).GetComponent<Image>();
         explainPanel.gameObject.SetActive(false);
@@ -46,10 +46,10 @@ public class TitleManager : MonoBehaviour
             Panel[i].SetActive(false);
         }
         Panel[index].SetActive(true);
-        Panel[1].transform.GetChild(0).gameObject.SetActive(true);
+        Panel[3].transform.GetChild(0).gameObject.SetActive(true);
         explainPanel.gameObject.SetActive(false);
         CharImage.color = Color.clear;
-        CharImage.transform.localScale = new Vector3(1,1,1);
+        CharImage.transform.localScale = new Vector3(1, 1, 1);
     }
     public void CharButtonInit() //캐릭터 버튼 초기화
     {
@@ -62,7 +62,7 @@ public class TitleManager : MonoBehaviour
             {
                 SelectRawImage = button.transform.GetChild(0).GetComponent<RawImage>();
                 returnPos = buttonPos.transform.position;
-                Panel[1].transform.GetChild(0).gameObject.SetActive(false);
+                Panel[3].transform.GetChild(0).gameObject.SetActive(false);
                 CharImage.texture = SelectRawImage.texture;
                 CharImage.transform.position = SelectRawImage.transform.position;
                 CharImage.color = Color.white;
@@ -112,5 +112,9 @@ public class TitleManager : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+    void OnApplicationQuit()
+    {
+        SceneManager.instance.JsonSave();
     }
 }

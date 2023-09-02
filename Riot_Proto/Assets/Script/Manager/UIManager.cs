@@ -11,8 +11,10 @@ public class UIManager : MonoBehaviour
     public Image XPBar;
     public Transform canvas;
     public Transform ClearTab;
+    public Transform OverTab;
+    
     public Image FadeBg;
-    bool isclearTab = false;
+    bool isUseTab = false;
     [HideInInspector] public Image BG1, BG2; 
     private void Awake()
     {
@@ -30,18 +32,30 @@ public class UIManager : MonoBehaviour
     }
     public void UseClearTab()
     {
-        if(isclearTab) return;
+        if(isUseTab) return;
 
         GameManager.instance.IsGame = false;
-        isclearTab = true;
-        ClearTab.DOLocalMoveY(0,1).SetEase(Ease.OutQuad).OnComplete(() => isclearTab = false);
+        isUseTab = true;
+        ClearTab.DOLocalMoveY(0,1).SetEase(Ease.OutQuad).OnComplete(() => isUseTab = false);
+    }
+    public void UseOverTab()
+    {
+        if(isUseTab) return;
+
+        GameManager.instance.IsGame = false;
+        isUseTab = true;
+        OverTab.DOLocalMoveY(0,1).SetEase(Ease.OutQuad).OnComplete(() => isUseTab = false);
+    }
+    public void MainMenu()
+    {
+        SceneManager.instance.MainMenu();
     }
     public void NextStage()
     {
-        if(isclearTab) return;
+        if(isUseTab) return;
 
-        isclearTab = true;
-        ClearTab.DOLocalMoveY(800,1).SetEase(Ease.OutQuad).OnComplete(() => isclearTab = false);
+        isUseTab = true;
+        ClearTab.DOLocalMoveY(800,1).SetEase(Ease.OutQuad).OnComplete(() => isUseTab = false);
 
         StartCoroutine(NextStageCoroutine());
     }

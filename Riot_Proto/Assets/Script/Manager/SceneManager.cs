@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.IO;
+
+[System.Serializable]
+public class PlayerData
+{
+    public int PlayerMora;
+    public List<AbilityBase> abilities = new();
+}
 
 public class SceneManager : MonoBehaviour
 {
@@ -14,6 +22,11 @@ public class SceneManager : MonoBehaviour
     public Vector2 minusScreen;
 
     [Space(10)]
+    public PlayerData playerData = new();
+    [Space(10)]
+    string path;
+    string filename = "savefile";
+
     [Header("Option")]
     public bool CtrlLock;
     [SerializeField] Transform OptionPanel;
@@ -24,15 +37,36 @@ public class SceneManager : MonoBehaviour
         if (instance == null) instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+        path = Application.dataPath + "/Json/";
     }
     private void Start()
     {
-
+        JsonSave();
+        //JsonLoad();
+    }
+    public void JsonLoad()
+    {
+        string data = File.ReadAllText(path + filename);
+        playerData = JsonUtility.FromJson<PlayerData>(data);
+    }
+    public void JsonSave()
+    {
+        PlayerData saveData = new PlayerData();
+        saveData.PlayerMora = playerData.PlayerMora;
+        saveData.abilities = new List<AbilityBase>(playerData.abilities);
+        string data = JsonUtility.ToJson(saveData);
+        print($"{path + filename},{data}");
+        File.WriteAllText(path + filename, data);
     }
     public void StageStart()
     {
         CtrlLock = CtrlToggle.isOn;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+    }
+    public void MainMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
+        TitleManager.instance.InitPanel(1);
     }
     public void Option(float y)
     {

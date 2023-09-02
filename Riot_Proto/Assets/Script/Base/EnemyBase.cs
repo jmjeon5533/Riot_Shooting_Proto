@@ -125,12 +125,4 @@ public abstract class EnemyBase : MonoBehaviour
             other.GetComponent<Player>().Damage();
         }
     }
-
-    public void OnEvent(Event_Type type, Component sender, object param = null)
-    {
-        if (type == Event_Type.ApplyBuff)
-        {
-
-        }
-    }
 }

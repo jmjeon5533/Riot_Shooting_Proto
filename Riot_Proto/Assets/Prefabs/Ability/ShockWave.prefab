@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   type: 0
-  skillImage: {fileID: 0}
+  skillImage: {fileID: 21300000, guid: 97dfdd28f682c4c4586698d9eb6ac48a, type: 3}
   skillName: "\uAC10\uC804"
   skillDescription: "\uC8FC\uBCC0\uC73C\uB85C \uC804\uACA9\uD30C\uB97C \uBC1C\uC0AC\uD574
     \uB9DE\uC740 \uB300\uC0C1\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C \uC7A0\uC2DC \uAC10\uC18C\uC2DC\uD0A8\uB2E4"

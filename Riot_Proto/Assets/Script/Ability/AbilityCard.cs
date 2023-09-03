@@ -267,18 +267,28 @@ public class AbilityCard : MonoBehaviour
         }
         else
         {
-            curAbilityList.Add(abi);
-            abilityLevels.Add(abi.skillName, 1);
-            curAbilityDic.Add(abi.skillName, abi);
-            if (!curPassiveList.Contains(abi) && curPassiveList.Count < 3 && abi.type == AbilityBase.AbilityType.Passive)
+            AbilityBase ab;
+            if (curAbilityDic.ContainsKey(abi.skillName))
             {
-                curPassiveList.Add(abi);
-                curPassiveDic.Add(abi.skillName, abi);
+                ab = curAbilityDic[abi.skillName];
             }
-            if (activeSkill == null && abi.type == AbilityBase.AbilityType.Active)
+            else
             {
-                activeSkill = abi;
-                //ShowActiveSkillButton();
+                ab = Instantiate(abi.gameObject, GameManager.instance.player.transform).GetComponent<AbilityBase>();
+            }
+            curAbilityList.Add(ab);
+            abilityLevels.Add(ab.skillName, 1);
+            curAbilityDic.Add(ab.skillName, ab);
+            if (!curPassiveList.Contains(ab) && curPassiveList.Count < 3 && ab.type == AbilityBase.AbilityType.Passive)
+            {
+                curPassiveList.Add(ab);
+                curPassiveDic.Add(ab.skillName, ab);
+            }
+            if (activeSkill == null && ab.type == AbilityBase.AbilityType.Active)
+            {
+                activeSkill = ab;
+                abilities.Add(abi);
+                ShowActiveSkillButton();
             }
         }
     }

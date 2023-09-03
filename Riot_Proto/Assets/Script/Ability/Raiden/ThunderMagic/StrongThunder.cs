@@ -41,8 +41,16 @@ public class StrongThunder : AbilityBase
 
     public override string GetStatText()
     {
-        return "스킬 데미지 " + defaultDamage + " → " + defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level)) + 
+        if((level+1) ==3 || (level + 1) == 5)
+        {
+            return "스킬 데미지 " + defaultDamage + " → " + defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level)) +
             " 스킬 범위 " + radius + " → " + (radius + 0.5);
+        } else
+        {
+            return "스킬 데미지 " + defaultDamage + " → " + defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
+          
+        }
+        
     }
 
     // Start is called before the first frame update

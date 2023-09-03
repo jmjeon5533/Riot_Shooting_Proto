@@ -11,6 +11,8 @@ public class AbilityCard : MonoBehaviour
 
     public List<AbilityBase> abilities;
 
+    public AbilityBase[] activeSkills;
+
     public Dictionary<string, int> abilityLevels = new Dictionary<string,int>();
 
     public List<AbilityBase> curAbilityList;
@@ -19,6 +21,7 @@ public class AbilityCard : MonoBehaviour
     public Dictionary<string, AbilityBase> curPassiveDic = new Dictionary<string, AbilityBase>();
 
     private AbilityBase activeSkill;
+
 
     public Transform[] cards;
 
@@ -249,10 +252,37 @@ public class AbilityCard : MonoBehaviour
         yield return new WaitForSecondsRealtime(duration / 2);
         t.DOMove(endPos, duration).SetUpdate(true).OnComplete(() =>
             {
-                if(!GameManager.instance.IsLevelDupe()) Time.timeScale = 1;
+                if (!GameManager.instance.IsLevelDupe()) Time.timeScale = 1;
             }
         );
     }
+
+    public void AddSkill(AbilityBase abi)
+    {
+        if (abi == null) return;
+        if (abilityLevels.ContainsKey(abi.skillName))
+        {
+            abilityLevels[abi.skillName]++;
+            curAbilityDic[abi.skillName].LevelUp();
+        }
+        else
+        {
+            curAbilityList.Add(abi);
+            abilityLevels.Add(abi.skillName, 1);
+            curAbilityDic.Add(abi.skillName, abi);
+            if (!curPassiveList.Contains(abi) && curPassiveList.Count < 3 && abi.type == AbilityBase.AbilityType.Passive)
+            {
+                curPassiveList.Add(abi);
+                curPassiveDic.Add(abi.skillName, abi);
+            }
+            if (activeSkill == null && abi.type == AbilityBase.AbilityType.Active)
+            {
+                activeSkill = abi;
+                //ShowActiveSkillButton();
+            }
+        }
+    }
+
     //������ ī�带 ���� �ɷ� �迭�� �߰���Ű�� ������ �����ϴ� �Լ�
     public void SelectEnd(AbilityBase abi)
     {

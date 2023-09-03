@@ -23,10 +23,11 @@ public class ElectricCall : AbilityBase
 
     public override void Ability()
     {
-        curCooltime+=Time.deltaTime;
-        if(curCooltime >= maxCooltime)
+        
+        if(!useSkill)
         {
             curCooltime=0;
+            useSkill = true;
             StartCoroutine(Attack());
         }
     }
@@ -96,6 +97,17 @@ public class ElectricCall : AbilityBase
     // Update is called once per frame
     void Update()
     {
-        Ability();
+        if (useSkill)
+        {
+
+            curCooltime += Time.deltaTime;
+            minCool = curCooltime;
+            maxCool = maxCooltime;
+            if (curCooltime >= maxCooltime)
+            {
+                curCooltime = 0;
+                useSkill = false;
+            }
+        }
     }
 }

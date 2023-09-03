@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IncreaseWeapon : AbilityBase
 {
-    Player player;
+    
     
     public override void Ability()
     {
@@ -32,9 +32,7 @@ public class IncreaseWeapon : AbilityBase
     // Start is called before the first frame update
     public override void Start()
     {
-        
         Initalize();
-
     }
 
 

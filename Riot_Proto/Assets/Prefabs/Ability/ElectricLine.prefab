@@ -52,12 +52,14 @@ MonoBehaviour:
     \uC2DC \uB51C\uB808\uC774 \uD6C4 \uC804\uAE30 \uAD11\uC120\uC744 \uC9C0\uC18D\uC2DC
     \uB3D9\uC548 \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
   stats: 
-  stack: 0
-  maxStack: 150
+  curCooltime: 0
+  maxCooltime: 60
   defaultDamage: 7
   duration: 0
   beams:
   - {fileID: 3480814663897831589, guid: 8237d5bab7dd62a4db982f09fd12960f, type: 3}
+  - {fileID: 3480814663897831589, guid: 8237d5bab7dd62a4db982f09fd12960f, type: 3}
+  - {fileID: 4017179739931288192, guid: d88a39a6beb85dd47acf532757a0d8a8, type: 3}
   - {fileID: 4017179739931288192, guid: d88a39a6beb85dd47acf532757a0d8a8, type: 3}
   - {fileID: 5826500511644766688, guid: a43b2bd998017c147a685df249e52b8b, type: 3}
   increaseValue: 2

@@ -57,6 +57,8 @@ MonoBehaviour:
   defaultDamage: 15
   thunders:
   - {fileID: 2737902857122770629, guid: 3bb024124139c214b9aab48dbc267812, type: 3}
+  - {fileID: 2737902857122770629, guid: 3bb024124139c214b9aab48dbc267812, type: 3}
+  - {fileID: 2737902857122770629, guid: a65082925c06c6040b4fa0c0b705f45a, type: 3}
   - {fileID: 2737902857122770629, guid: a65082925c06c6040b4fa0c0b705f45a, type: 3}
   - {fileID: 2737902857122770629, guid: 28a2723980e30dc4895678b68e10e535, type: 3}
   radius: 4.5

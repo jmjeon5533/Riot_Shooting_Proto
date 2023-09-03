@@ -1253,8 +1253,6 @@ MonoBehaviour:
   baseHp: 0
   XPRate: 5
   baseXPRate: 0
-  defence: 10
-  baseDefence: 0
   MoveSpeed: 8
   AttackCooltime: 1.7
   MovePos: {x: 0, y: 0, z: 0}

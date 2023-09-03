@@ -26,7 +26,7 @@ public class Mage1 : EnemyBase
     {
         var g = GameManager.instance;
         anim.SetTrigger("Attack");
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.3f);
 
         var b = PoolManager.Instance.GetObject("EnemyBullet",transform.position,Quaternion.identity).GetComponent<BulletBase>();
         b.dir = (GameManager.instance.player.transform.position - transform.position).normalized;

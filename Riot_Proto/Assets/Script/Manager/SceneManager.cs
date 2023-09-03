@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.IO;
+
+[System.Serializable]
+public class PlayerData
+{
+    public int PlayerMora;
+    public List<AbilityBase> abilities = new();
+}
 
 public class SceneManager : MonoBehaviour
 {
@@ -14,6 +22,11 @@ public class SceneManager : MonoBehaviour
     public Vector2 minusScreen;
 
     [Space(10)]
+    public PlayerData playerData = new();
+    [Space(10)]
+    string path;
+    string filename = "savefile";
+
     [Header("Option")]
     public bool CtrlLock;
     [SerializeField] Transform OptionPanel;
@@ -24,15 +37,45 @@ public class SceneManager : MonoBehaviour
         if (instance == null) instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+        path = Application.dataPath + "/Json/";
     }
     private void Start()
     {
-
+        JsonLoad();
+    }
+    public void JsonLoad()
+    {
+        string data = File.ReadAllText(path + filename);
+        if (data == null)
+        {
+            PlayerData saveData = new PlayerData();
+            saveData.PlayerMora = 0;
+            saveData.abilities = new();
+            playerData = saveData;
+        }
+        else
+        {
+            playerData = JsonUtility.FromJson<PlayerData>(data);
+        }
+    }
+    public void JsonSave()
+    {
+        PlayerData saveData = new PlayerData();
+        saveData.PlayerMora = playerData.PlayerMora;
+        saveData.abilities = new List<AbilityBase>(playerData.abilities);
+        string data = JsonUtility.ToJson(saveData);
+        print($"{path + filename},{data}");
+        File.WriteAllText(path + filename, data);
     }
     public void StageStart()
     {
         CtrlLock = CtrlToggle.isOn;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+    }
+    public void MainMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
+        this.Invoke(() => TitleManager.instance.InitPanel(1), Time.deltaTime);
     }
     public void Option(float y)
     {
@@ -43,7 +86,7 @@ public class SceneManager : MonoBehaviour
     }
     public void SetResolution(Camera[] camera)
     {
-        ScreenArea = new Vector2(1920,1080);
+        ScreenArea = new Vector2(1920, 1080);
         minusScreen = new Vector2(Screen.width, Screen.height);
         Screen.SetResolution((int)ScreenArea.x, (int)(((float)minusScreen.y / minusScreen.x) * ScreenArea.x), true); // SetResolution 함수 제대로 사용하기
         for (int i = 0; i < camera.Length; i++)

@@ -34,12 +34,13 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(wave.startDelay);
             for (int i = 0; i < wave.WaveList.Count; i++)
             {
+                if(!GameManager.instance.IsGame) yield break;
                 GameObject enemy = PoolManager.Instance.GetObject(wave.WaveList[i].Enemy, new Vector3(15, Random.Range(-5, 6), 0), Quaternion.identity);
                 GameManager.instance.curEnemys.Add(enemy);
-                //enemy.GetComponent<EnemyBase>().InitStatus();
                 yield return new WaitForSeconds(wave.WaveList[i].SpawnDelay);
             }
             SpawnCount++;
+            GameManager.instance.EnemyPower += 0.05f;
         }
         GameObject Boss = PoolManager.Instance.GetObject($"Boss{StageLevel + 1}", new Vector3(15, 0, 0), Quaternion.identity);
         GameManager.instance.curEnemys.Add(Boss);

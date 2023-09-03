@@ -37,7 +37,7 @@ public class RushBullet : BulletBase
 
                 h.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
                     ? (int)(Damage * player.CritDamage) : Damage);
-                h.GetComponent<EnemyBase>().AddBuff(new DefDecrease(duration, h.gameObject, BuffBase.TargetType.Enemy, multiplier));
+                h.GetComponent<EnemyBase>().AddBuff(new DefDecrease(duration, h.gameObject, BuffBase.TargetType.Enemy,multiplier,BuffList.DefDecrease));
                 PoolManager.Instance.PoolObject("RushBullet", this.gameObject);
 
             }

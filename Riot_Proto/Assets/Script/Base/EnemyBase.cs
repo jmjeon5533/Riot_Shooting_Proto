@@ -15,6 +15,8 @@ public abstract class EnemyBase : MonoBehaviour
     public float AttackCooltime;
     private float AttackCurtime;
 
+    public float damagedMultiplier = 1;
+
     public Vector3 MovePos;
     public string EnemyTag;
 
@@ -45,17 +47,33 @@ public abstract class EnemyBase : MonoBehaviour
     {
         
         BuffBase _buff = buff;
+        if(!CheckBuff(_buff))
+        {
+            List<BuffBase> list = new List<BuffBase>(EnemyBuffList);
+            foreach (BuffBase b in list)
+            {
+                if (_buff.GetBuffClass().Equals(b.GetBuffClass()))
+                {
+                    b.Dupe(_buff.GetDuration());
+                    return;
+                }
+            }
+        }
         _buff.Start();
         EnemyBuffList.Add(_buff);
     }
 
-    void CheckBuff(BuffBase buff)
+    bool CheckBuff(BuffBase buff)
     {
         List<BuffBase> list = new List<BuffBase>(EnemyBuffList);
         foreach (BuffBase _buff in list)
         {
-            
+            if(buff.GetBuffClass().Equals(_buff.GetBuffClass()))
+            {
+                return false;
+            }
         }
+        return true;
     }
 
     protected void BuffTimer()

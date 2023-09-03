@@ -7,11 +7,16 @@ public class Slow : BuffBase
     private float multiplier;
     private float originSpeed;
     
-    public Slow(float duration, GameObject target, TargetType type, float multiplier) : base(duration, target, type)
+    public Slow(float duration, GameObject target, TargetType type, BuffList buff, float multiplier) : base(duration, target, type, buff)
     {
         this.multiplier = multiplier;
         if (type == TargetType.Player) player = GameManager.instance.player;
         else enemy = target.GetComponent<EnemyBase>();
+    }
+
+    public override void Dupe(float duration)
+    {
+        base.Dupe(duration);
     }
 
     public override void Start()

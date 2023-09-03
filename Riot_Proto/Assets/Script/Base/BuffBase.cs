@@ -7,6 +7,11 @@ public enum BuffType
     Buff, Debuff
 }
 
+public enum BuffList
+{
+    Slow, DefDecrease
+}
+
 public abstract class BuffBase
 {
 
@@ -16,6 +21,8 @@ public abstract class BuffBase
     protected Player player;
     protected EnemyBase enemy;
 
+    protected BuffList buff;
+
     public enum TargetType
     {
         Player, Enemy
@@ -23,13 +30,25 @@ public abstract class BuffBase
 
     public bool IsOnTimer()
     {
-        if(curTime >= duration)
+        if (curTime >= duration)
         {
             return true;
-        } else
+        }
+        else
         {
             return false;
         }
+    }
+
+    public BuffList GetBuffClass()
+    {
+        
+        return buff;
+    }
+
+    public float GetDuration()
+    {
+        return duration;
     }
 
     protected BuffType buffType;
@@ -38,11 +57,18 @@ public abstract class BuffBase
 
     protected TargetType type;
     
-    public BuffBase(float duration, GameObject target, TargetType type)
+    public BuffBase(float duration, GameObject target, TargetType type, BuffList buff)
     {
         this.duration = duration;
         this.target = target;
         this.type = type;
+        this.buff = buff;
+    }
+
+    public virtual void Dupe(float duration)
+    {
+        this.duration = duration;
+        curTime = 0;
     }
 
     public abstract void Start();

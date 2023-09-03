@@ -7,11 +7,16 @@ public class DefDecrease : BuffBase
     private float multiplier;
     private float originDef;
 
-    public DefDecrease(float duration, GameObject target, TargetType type, float multiplier) : base(duration, target, type)
+    public DefDecrease(float duration, GameObject target, TargetType type, float multiplier, BuffList buff) : base(duration, target, type, buff)
     {
         this.multiplier = multiplier;
         if (type == TargetType.Player) player = GameManager.instance.player;
         else enemy = target.GetComponent<EnemyBase>();
+    }
+
+    public override void Dupe(float duration)
+    {
+        base.Dupe(duration);
     }
 
     public override void Start()
@@ -23,7 +28,7 @@ public class DefDecrease : BuffBase
         }
         else if (type == TargetType.Enemy)
         {
-            originDef = enemy.defence;
+            originDef = enemy.damagedMultiplier;
         }
     }
 
@@ -36,7 +41,7 @@ public class DefDecrease : BuffBase
         }
         else if (type == TargetType.Enemy)
         {
-            enemy.defence = originDef * multiplier;
+            enemy.damagedMultiplier = originDef + multiplier;
         }
     }
 
@@ -48,7 +53,7 @@ public class DefDecrease : BuffBase
         }
         else if (type == TargetType.Enemy)
         {
-            enemy.defence = originDef * multiplier;
+            enemy.damagedMultiplier = originDef + multiplier;
         }
     }
 }

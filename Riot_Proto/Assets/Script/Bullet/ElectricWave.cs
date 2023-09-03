@@ -39,7 +39,7 @@ public class ElectricWave : MonoBehaviour
         {
             if (h.CompareTag("Enemy") && !hits.Contains(h.transform))
             {
-                BuffBase buff = new Slow(duration, h.gameObject, BuffBase.TargetType.Enemy, slowRate);
+                BuffBase buff = new Slow(duration, h.gameObject, BuffBase.TargetType.Enemy, BuffList.Slow,slowRate);
                 h.GetComponent<EnemyBase>().AddBuff(buff);
                 hits.Add(h.transform);
             }

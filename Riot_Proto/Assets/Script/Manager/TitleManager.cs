@@ -9,10 +9,8 @@ public class TitleManager : MonoBehaviour
 {
     public static TitleManager instance { get; private set; }
     public List<GameObject> Panel = new();
-    [SerializeField] Button ActivePrefab;
-    public Sprite[] SkillSprite;
 
-    [SerializeField] Camera MainCamera, UICamera;
+    [SerializeField] Camera[] Mcamera;
     [SerializeField] Transform CharButtonParant;
     [SerializeField] Transform StageButtonParant;
     [SerializeField] Button OptionButton;
@@ -21,8 +19,22 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Transform explainPanel;
     [Space(10)]
     public Text moraText;
+    [Space(10)]
+    [Header("ActiveSkill")]
+    public Sprite[] ASkillSprite;
+    public string[] ASkillName;
+    public string[] ASkillExplain;
+    public int[] ASkillCoolTime;
+    [Space(10)]
+    [SerializeField] Transform ASkillParent;
+    [SerializeField] Image ASkillImage;
+    [SerializeField] Image ASkillBorder;
+    [SerializeField] Text ASkillNameText;
+    [SerializeField] Text ASkillExplainText;
+    [SerializeField] Text ASkillCoolTimeText;
+    [SerializeField] GameObject ActivePrefab;
 
-    [SerializeField] RawImage SelectRawImage;
+    RawImage SelectRawImage;
     Vector3 returnPos;
 
 
@@ -32,13 +44,35 @@ public class TitleManager : MonoBehaviour
     }
     private void Start()
     {
-        Camera[] camera = { MainCamera, UICamera };
-        SceneManager.instance.SetResolution(camera);
+        SceneManager.instance.SetResolution(Mcamera);
         explainPanel.gameObject.SetActive(false);
         OptionButton.onClick.AddListener(() => SceneManager.instance.Option(0));
         CharButtonInit();
         StageButtonInit();
+        ASkillButtonAdd();
         InitPanel(0);
+    }
+    public void ASkillButtonAdd()
+    {
+        var p = SceneManager.instance.playerData;
+        for (int i = 0; i < p.abilitiy.Count; i++)
+        {
+            var b = Instantiate(ActivePrefab, ASkillParent).GetComponent<Button>();
+            b.image.sprite = ASkillSprite[p.abilitiy[i].index];
+            Color[] colors = { Color.yellow, new Color(1,0.5f,0,1), Color.red};
+            b.transform.GetChild(0).GetComponent<Image>().color = colors[p.abilitiy[i].level - 1];
+            var index = p.abilitiy[i].index;
+            var num = i;
+            b.onClick.AddListener(() =>
+            {
+                SceneManager.instance.ActiveIndex = index;
+                ASkillImage.sprite = ASkillSprite[index];
+                ASkillBorder.color = colors[p.abilitiy[num].level - 1];
+                ASkillNameText.text = ASkillName[index];
+                ASkillCoolTimeText.text = ASkillCoolTime[index].ToString() + "s";
+                ASkillExplainText.text = ASkillExplain[index];
+            });
+        }
     }
     public void InitPanel(int index) //타이틀 패널 바꾸기
     {

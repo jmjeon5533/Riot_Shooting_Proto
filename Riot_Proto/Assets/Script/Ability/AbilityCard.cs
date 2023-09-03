@@ -45,6 +45,7 @@ public class AbilityCard : MonoBehaviour
     [Header("Skill UI")]
     [SerializeField] GameObject activeSkillUI;
     [SerializeField] Image skillCoolUI;
+    [SerializeField] GameObject skillListUI;
      
     // Start is called before the first frame update
     void Start()
@@ -292,8 +293,21 @@ public class AbilityCard : MonoBehaviour
                 activeSkill = ab;
                 abilities.Add(abi);
                 ShowActiveSkillButton();
+                AddSkillList(ab);
             }
         }
+    }
+
+    void AddSkillList(AbilityBase abi)
+    {
+        var img = new GameObject().AddComponent<Image>();
+        img.transform.parent = skillListUI.transform;
+        img.transform.localScale = Vector3.one;
+        img.transform.localPosition = Vector3.zero;
+        img.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 66);
+        img.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 66);
+        img.sprite = abi.skillImage;
+
     }
 
     //������ ī�带 ���� �ɷ� �迭�� �߰���Ű�� ������ �����ϴ� �Լ�
@@ -307,6 +321,7 @@ public class AbilityCard : MonoBehaviour
         }
         else
         {
+            AddSkillList(abi);
             curAbilityList.Add(abi);
             abilityLevels.Add(abi.skillName, 1);
             curAbilityDic.Add(abi.skillName, abi);

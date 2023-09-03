@@ -20,9 +20,12 @@ public class StrongThunder : AbilityBase
     public override void Ability()
     {
         
-            curCooltime=0;
-             useSkill = true;
+            
+           
             List<GameObject> list = new List<GameObject>(GameManager.instance.curEnemys);
+            if (list.Count == 0) return; 
+            curCooltime = 0;
+            useSkill = true;
             int damage = defaultDamage + (int)(player.damage * damageRate);
 
             Transform target = list[Random.Range(0, list.Count)].transform;

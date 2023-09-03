@@ -50,7 +50,7 @@ public class Select : MonoBehaviour, IPointerDownHandler
             statText.text = ab.GetStatText();
 
         }
-        nameText.text = abilityName + " " + GetLevelText(ab.level);
+        nameText.text = abilityName + " " + GetLevelText(ab.cardLevel);
     }
 
     string GetLevelText(int lv)

@@ -51,6 +51,9 @@ public class AbilityCard : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Destroy(this.gameObject);
+        if (SceneManager.instance.ActiveIndex == -1) return;
+        AddSkill(activeSkills[SceneManager.instance.ActiveIndex]);
+            
     }
 
     // Update is called once per frame
@@ -225,11 +228,11 @@ public class AbilityCard : MonoBehaviour
             //Debug.Log(ab.gameObject.name);
             ab = curAbilityDic[ab.skillName];
             //Debug.Log(curAbilityDic[ab.skillName].skillName);
-            ab.level = abilityLevels[ab.skillName] + 1;
+            ab.cardLevel = abilityLevels[ab.skillName] + 1;
         }
         else
         {
-            ab.level = abilityLevels.ContainsKey(ab.skillName) ? abilityLevels[ab.skillName] + 1 : 1;
+            ab.cardLevel = abilityLevels.ContainsKey(ab.skillName) ? abilityLevels[ab.skillName] + 1 : 1;
         }
         return ab;
     }

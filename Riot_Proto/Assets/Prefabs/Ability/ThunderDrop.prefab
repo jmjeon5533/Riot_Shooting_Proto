@@ -47,7 +47,7 @@ MonoBehaviour:
   level: 1
   type: 0
   skillImage: {fileID: 21300000, guid: 77354ca77f15ab344a99813df56ab658, type: 3}
-  skillName: "\uC36C\uB354 \uBCFC"
+  skillName: "\uC36C\uB354 \uBCFC\uD2B8"
   skillDescription: "\uAC15\uB825\uD55C \uBC88\uAC1C \uAE30\uB465\uC744 \uC18C\uD658\uD569\uB2C8\uB2E4.
     \uB808\uBCA8\uC5D0 \uB530\uB77C \uAC1C\uC218\uAC00 \uB2EC\uB77C\uC9D1\uB2C8\uB2E4"
   stats: 

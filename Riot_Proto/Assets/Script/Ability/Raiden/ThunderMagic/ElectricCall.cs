@@ -26,7 +26,9 @@ public class ElectricCall : AbilityBase
         
         if(!useSkill)
         {
-            curCooltime=0;
+            List<GameObject> list = GameManager.instance.curEnemys.ToList();
+            if (list.Count == 0) return;
+            curCooltime =0;
             useSkill = true;
             StartCoroutine(Attack());
         }
@@ -48,6 +50,7 @@ public class ElectricCall : AbilityBase
     void ThunderDrop()
     {
         List<GameObject> list = GameManager.instance.curEnemys.ToList();
+        if (list.Count == 0) return;
         int damage = defaultDamage + (int)(player.damage * damageRate);
         
             Transform target = list[Random.Range(0, list.Count)].transform;
@@ -64,6 +67,7 @@ public class ElectricCall : AbilityBase
     void ThunderDrain()
     {
         List<GameObject> list = new List<GameObject>(GameManager.instance.curEnemys);
+        if (list.Count == 0) return;
         int damage = defaultDamage/2 + (int)(player.damage * damageRate);
         foreach (var enemy in list)
         {

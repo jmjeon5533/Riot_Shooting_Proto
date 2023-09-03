@@ -48,7 +48,7 @@ public class StrongThunder : AbilityBase
     // Start is called before the first frame update
     public override void Start()
     {
-        player = GameManager.instance.player;
+        Initalize();
     }
 
     public override void LevelUp()

@@ -18,7 +18,7 @@ public class ChainLightning : AbilityBase
 
     
 
-    Player player;
+
 
     public override void Ability()
     {
@@ -51,7 +51,7 @@ public class ChainLightning : AbilityBase
     // Start is called before the first frame update
     public override void Start()
     {
-        player = GameManager.instance.player;
+        Initalize();
     }
 
    

@@ -17,9 +17,6 @@ public class Transmission : AbilityBase
     [SerializeField] float radius;
     [SerializeField] int maxAttack;
 
-
-    Player player;
-
     public override void Ability()
     {
         curCooltime += Time.deltaTime;

@@ -381,6 +381,9 @@ MonoBehaviour:
   - key: Boss1
     obj: {fileID: 149849303624063132, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
     maxAmount: 1
+  - key: RushBullet
+    obj: {fileID: 8658052103336013023, guid: a03f565b18fe2c643a5271a1c72c3861, type: 3}
+    maxAmount: 100
 --- !u!1 &210102541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,6 +2287,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 552f1b4e41710484cb9661e6408ff454, type: 2}
     - {fileID: 11400000, guid: c5a78dfa64f882f478a074b2ed38d70a, type: 2}
   BossSpawnWave: 20
+  SpawnCount: 0
 --- !u!4 &1118154654
 Transform:
   m_ObjectHideFlags: 0
@@ -3541,6 +3545,7 @@ MonoBehaviour:
   - {fileID: 7883651356100267816, guid: c58228cd15bb3ae468e74476961569c8, type: 3}
   - {fileID: 1091152062516125674, guid: dc4517977c91c0a49b517ebc5d89a0bd, type: 3}
   - {fileID: 6429657059573211761, guid: 09645bf7f68cbd24885b1ebbc34f7693, type: 3}
+  - {fileID: 2920288409773848556, guid: 882422c1d6c07d84c866f9d52bf664c8, type: 3}
   curAbilityList: []
   curPassiveList: []
   cards:

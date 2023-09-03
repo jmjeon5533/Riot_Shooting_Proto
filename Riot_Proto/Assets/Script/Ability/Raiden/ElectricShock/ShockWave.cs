@@ -32,7 +32,7 @@ public class ShockWave : AbilityBase
 
     public override string GetStatText()
     {
-        return "디버프 지속 시간 " + duration + " → " + (duration + (increaseValue/2 * Mathf.Pow((1 + 0.08f), level))) +
+        return "디버프 지속 시간 " + duration + " → " + (duration + (increaseValue/3 * Mathf.Pow((0.7f + 0.06f), level))) +
             " 이동 속도 감소 " + (slowRate * 100) + "% →" + ((slowRate+0.04f) * 100) + "% " +
             " 스킬 범위 " + range + " → " + (range + (increaseValue/2 * Mathf.Pow((1 + 0.1f), level)));
     }

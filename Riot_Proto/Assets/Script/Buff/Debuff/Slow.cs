@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Slow : BuffBase
 {
-    private float slowRate;
+    private float multiplier;
     private float originSpeed;
     
-    public Slow(float duration, GameObject target, TargetType type, float slowRate) : base(duration, target, type)
+    public Slow(float duration, GameObject target, TargetType type, float multiplier) : base(duration, target, type)
     {
-        this.slowRate = slowRate;
+        this.multiplier = multiplier;
         if (type == TargetType.Player) player = GameManager.instance.player;
         else enemy = target.GetComponent<EnemyBase>();
     }
@@ -30,14 +30,14 @@ public class Slow : BuffBase
     public override void Run()
     {
             curTime += Time.deltaTime;
-            Debug.Log("testbuff");
+            
             if (type == TargetType.Player)
             {
-                player.MoveSpeed = originSpeed * slowRate;
+                player.MoveSpeed = originSpeed * multiplier;
             }
             else if (type == TargetType.Enemy)
             {       
-                enemy.MoveSpeed = originSpeed * slowRate;
+                enemy.MoveSpeed = originSpeed * multiplier;
             }
     }
 

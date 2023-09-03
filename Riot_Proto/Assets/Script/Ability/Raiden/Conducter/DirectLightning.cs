@@ -11,8 +11,6 @@ public class DirectLightning : AbilityBase, IListener
 
     [SerializeField] GameObject bullet;
 
-    Player player;
-
     [SerializeField] int increaseValue;
     [SerializeField] float damageRate;
     
@@ -53,7 +51,7 @@ public class DirectLightning : AbilityBase, IListener
     public override void Start()
     {
         EventManager.Instance.AddListener(Event_Type.PlayerAttack, this);
-        player = GameManager.instance.player;
+        Initalize();    
     }
 
     // Update is called once per frame

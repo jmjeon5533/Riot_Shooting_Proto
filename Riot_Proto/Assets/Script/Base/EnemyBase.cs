@@ -47,9 +47,19 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void AddBuff(BuffBase buff) 
     {
+        
         BuffBase _buff = buff;
         _buff.Start();
         EnemyBuffList.Add(_buff);
+    }
+
+    void CheckBuff(BuffBase buff)
+    {
+        List<BuffBase> list = new List<BuffBase>(EnemyBuffList);
+        foreach (BuffBase _buff in list)
+        {
+            
+        }
     }
 
     protected void BuffTimer()

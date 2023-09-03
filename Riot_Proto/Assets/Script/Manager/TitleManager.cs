@@ -8,8 +8,11 @@ using DG.Tweening;
 public class TitleManager : MonoBehaviour
 {
     public static TitleManager instance { get; private set; }
-    [SerializeField] Camera MainCamera, UICamera;
     public List<GameObject> Panel = new();
+    [SerializeField] Button ActivePrefab;
+    public Sprite[] SkillSprite;
+
+    [SerializeField] Camera MainCamera, UICamera;
     [SerializeField] Transform CharButtonParant;
     [SerializeField] Transform StageButtonParant;
     [SerializeField] Button OptionButton;

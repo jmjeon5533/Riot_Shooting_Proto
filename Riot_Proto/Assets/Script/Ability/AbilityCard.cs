@@ -345,6 +345,7 @@ public class AbilityCard : MonoBehaviour
     void ShowActiveSkillButton()
     {
         activeSkillUI.SetActive(true);
+        activeSkillUI.GetComponent<Image>().sprite = activeSkill.skillImage;
         skillCoolUI.fillAmount = 0;
     }
 

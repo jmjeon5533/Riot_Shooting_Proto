@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fbc637fea6811744bedd76f91e28d83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardLevel: 1
   level: 1
   type: 0
   skillImage: {fileID: 21300000, guid: 7efb79412301bdb4f9c3dc6a17d9e8af, type: 3}
@@ -54,7 +55,7 @@ MonoBehaviour:
   curCooltime: 0
   maxCooltime: 5
   defaultDamage: 4
-  explosion: {fileID: 1802760122720678419, guid: c8b13b151451b404285240a1a72b9a5f, type: 3}
+  explosion: {fileID: 6138899904533181813, guid: c8b13b151451b404285240a1a72b9a5f, type: 3}
   radius: 2.5
   increaseValue: 4
   damageRate: 0.25

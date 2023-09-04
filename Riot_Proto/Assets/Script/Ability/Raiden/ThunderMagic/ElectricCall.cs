@@ -73,7 +73,10 @@ public class ElectricCall : AbilityBase
         {
             if (enemy != null)
             {
-                Instantiate(thunderDrain, enemy.transform.position, Quaternion.identity);
+                var t = Instantiate(thunderDrain, enemy.transform);
+                t.transform.localPosition = Vector3.zero;
+                t.Play();
+
                 enemy.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
                         ? (int)(damage * player.CritDamage) : damage);
                 attackCount++;

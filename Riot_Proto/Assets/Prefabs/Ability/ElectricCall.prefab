@@ -57,7 +57,7 @@ MonoBehaviour:
   maxCooltime: 80
   defaultDamage: 30
   thunder: {fileID: 2737902857122770629, guid: 1a7a7c422e044614ca63862516ba33a3, type: 3}
-  thunderDrain: {fileID: 7474502817962377297, guid: a86f3c687c7d6eb4480a8586826e5e82, type: 3}
+  thunderDrain: {fileID: 8653997705584115804, guid: fbd7dae1702256742bce28f9b0fc7b1d, type: 3}
   radius: 3
   increaseValue: 4
   damageRate: 0.3

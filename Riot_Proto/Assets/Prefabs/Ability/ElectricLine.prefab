@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a6cb76f4e859544b245474fdcef7e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardLevel: 1
   level: 1
   type: 1
   skillImage: {fileID: 21300000, guid: d99df2d581264394e8f875444dfc550f, type: 3}
@@ -54,7 +55,7 @@ MonoBehaviour:
   stats: 
   curCooltime: 70
   maxCooltime: 60
-  defaultDamage: 7
+  defaultDamage: 15
   duration: 0
   beams:
   - {fileID: 3480814663897831589, guid: 8237d5bab7dd62a4db982f09fd12960f, type: 3}

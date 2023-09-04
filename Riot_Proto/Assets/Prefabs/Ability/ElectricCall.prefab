@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 489051bf0bcb8e24292000f8f03358a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardLevel: 1
   level: 1
   type: 1
   skillImage: {fileID: 21300000, guid: b89b3882e4a8e984b95c854c50c2a8b9, type: 3}
@@ -54,7 +55,7 @@ MonoBehaviour:
   stats: 
   curCooltime: 0
   maxCooltime: 80
-  defaultDamage: 10
+  defaultDamage: 30
   thunder: {fileID: 2737902857122770629, guid: 1a7a7c422e044614ca63862516ba33a3, type: 3}
   thunderDrain: {fileID: 7474502817962377297, guid: a86f3c687c7d6eb4480a8586826e5e82, type: 3}
   radius: 3

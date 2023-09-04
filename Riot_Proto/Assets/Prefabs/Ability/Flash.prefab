@@ -55,7 +55,7 @@ MonoBehaviour:
   curCooltime: 0
   maxCooltime: 5
   defaultDamage: 4
-  explosion: {fileID: 6138899904533181813, guid: c8b13b151451b404285240a1a72b9a5f, type: 3}
+  explosion: {fileID: 5727989236820037991, guid: b6d019f1075d60943960e84691c3b528, type: 3}
   radius: 2.5
   increaseValue: 4
   damageRate: 0.25

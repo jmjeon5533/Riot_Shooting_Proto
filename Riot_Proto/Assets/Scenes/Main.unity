@@ -3051,12 +3051,12 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 51440f657a6840f498e4f96dfa9292bc, type: 2}
     - {fileID: 11400000, guid: 8c408be02bbd774428a8274aac659945, type: 2}
   - Wavelist:
-    - {fileID: 11400000, guid: faee6a3951d3e4a45ad77b2772e64fdc, type: 2}
-    - {fileID: 11400000, guid: de1a5c23f7685764aa755123179b337c, type: 2}
-    - {fileID: 11400000, guid: c5acdc84b97073d4cb40d3576cea84e6, type: 2}
-    - {fileID: 11400000, guid: 16cb0ff1b0fc47d43b5d60e7ded68ef5, type: 2}
-    - {fileID: 11400000, guid: 552f1b4e41710484cb9661e6408ff454, type: 2}
-    - {fileID: 11400000, guid: c5a78dfa64f882f478a074b2ed38d70a, type: 2}
+    - {fileID: 11400000, guid: 2dc27d09ccc4b5845ba5db370561d610, type: 2}
+    - {fileID: 11400000, guid: ff6b4b78528471746b8e549c557a888f, type: 2}
+    - {fileID: 11400000, guid: de4c2512089af9743925e9036c263940, type: 2}
+    - {fileID: 11400000, guid: e042b6e10beae4745ae435e257ebbfea, type: 2}
+    - {fileID: 11400000, guid: 89d96d9d9cfb01740bdba47c9fa635bf, type: 2}
+    - {fileID: 11400000, guid: f8b0237d5293f024f92fdaac8e7f23e5, type: 2}
   BossSpawnWave: 20
   SpawnCount: 0
 --- !u!4 &1118154654

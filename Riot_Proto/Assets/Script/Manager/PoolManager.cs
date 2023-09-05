@@ -55,6 +55,23 @@ public class PoolManager : MonoBehaviour
         target.SetActive(true);
         return target;
     }
+    public GameObject GetObject(string key, Transform parent = null)
+    {
+        if (pools[key].queue.Count == 0)
+        {
+            var newObj = Instantiate(pools[key].info.obj,parent);
+            newObj.SetActive(true);
+            return newObj;
+        }
+
+        var target = pools[key].queue.Dequeue();
+        target.transform.position = parent.transform.position;
+        target.transform.rotation = parent.transform.rotation;
+        target.transform.SetParent(parent);
+        target.transform.localScale = new Vector3(1,1,1);
+        target.SetActive(true);
+        return target;
+    }
 
     public void PoolObject(string key, GameObject obj)
     {
@@ -69,6 +86,7 @@ public class PoolManager : MonoBehaviour
             obj.transform.SetParent(pools[key].parent);
         }
     }
+    
 
     private void Awake()
     {

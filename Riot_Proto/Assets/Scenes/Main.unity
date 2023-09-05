@@ -336,6 +336,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolInfo:
+  - key: BG
+    obj: {fileID: 1221886862955168235, guid: 1d4a10627c2ac13448a6eecd660adc25, type: 3}
+    maxAmount: 10
   - key: XP
     obj: {fileID: 8339991442943732091, guid: b379a882caa8ed14ba39e2a473ce3ce2, type: 3}
     maxAmount: 100
@@ -3926,9 +3929,7 @@ MonoBehaviour:
       speed: 5
   - bgs:
     - sprite: {fileID: 21300000, guid: 252006ecf2756fa49b0072d2985a73ed, type: 3}
-      speed: 0
-  BG1: {fileID: 0}
-  BG2: {fileID: 0}
+      speed: 5
 --- !u!4 &1480380334
 Transform:
   m_ObjectHideFlags: 0
@@ -4448,7 +4449,6 @@ MonoBehaviour:
   joystick: {fileID: 1044799010}
   MoveRange: {x: 10, y: 4.5}
   MovePivot: {x: 0, y: -1.1}
-  BGSpeed: 5
   EnemyPower: 1
   XPPrefab: {fileID: 8339991442943732091, guid: b379a882caa8ed14ba39e2a473ce3ce2, type: 3}
   MaxXP: 50

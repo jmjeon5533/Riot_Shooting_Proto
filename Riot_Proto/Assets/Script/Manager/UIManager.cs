@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
     public GameObject StagePrefab;
     public List<BG> BGList = new();
     bool isUseTab = false;
+    List<GameObject> curBGObj = new();
     private void Awake()
     {
         instance = this;
@@ -85,10 +86,17 @@ public class UIManager : MonoBehaviour
     }
     public void InitBackGround(int BackNum)
     {
+        for (int i = 0; i < curBGObj.Count; i++)
+        {
+            PoolManager.Instance.PoolObject("BG", curBGObj[i]);
+        }
         for (int i = 0; i < BGList[BackNum].bgs.Count; i++)
         {
-            var BG1 = Instantiate(StagePrefab, UIManager.instance.canvas).GetComponent<Image>();
-            var BG2 = Instantiate(StagePrefab, UIManager.instance.canvas).GetComponent<Image>();
+            var BG1 = PoolManager.Instance.GetObject("BG",canvas).GetComponent<Image>();
+            var BG2 = PoolManager.Instance.GetObject("BG",canvas).GetComponent<Image>();
+
+            curBGObj.Add(BG1.gameObject);
+            curBGObj.Add(BG2.gameObject);
 
             BG1.sprite = BGList[BackNum].bgs[i].sprite;
             var ratio = 1080 / BG1.sprite.rect.height;

@@ -39,8 +39,9 @@ public abstract class EnemyBase : MonoBehaviour
     public virtual void StatMultiplier()
     {
         var p = GameManager.instance.EnemyPower;
-        HP = p * baseHp;
-        XPRate = p * baseXPRate;
+        HP = Mathf.Round(p * baseHp);
+        XPRate = Mathf.Round(p * baseXPRate);
+        print($"{baseHp} : {HP} = {baseXPRate} : {XPRate} - {p}");
     }
 
     public void AddBuff(BuffBase buff) 

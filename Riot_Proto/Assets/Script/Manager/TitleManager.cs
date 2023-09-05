@@ -61,16 +61,17 @@ public class TitleManager : MonoBehaviour
             b.image.sprite = ASkillSprite[p.abilitiy[i].index];
             Color[] colors = { Color.yellow, new Color(1,0.5f,0,1), Color.red};
             b.transform.GetChild(0).GetComponent<Image>().color = colors[p.abilitiy[i].level - 1];
-            var index = p.abilitiy[i].index;
+            var ab = p.abilitiy[i];
             var num = i;
             b.onClick.AddListener(() =>
             {
-                SceneManager.instance.ActiveIndex = index;
-                ASkillImage.sprite = ASkillSprite[index];
+                SceneManager.instance.ActiveIndex = ab.index;
+                SceneManager.instance.ActiveLevel = ab.level;
+                ASkillImage.sprite = ASkillSprite[ab.index];
                 ASkillBorder.color = colors[p.abilitiy[num].level - 1];
-                ASkillNameText.text = ASkillName[index];
-                ASkillCoolTimeText.text = ASkillCoolTime[index].ToString() + "s";
-                ASkillExplainText.text = ASkillExplain[index];
+                ASkillNameText.text = ASkillName[ab.index];
+                ASkillCoolTimeText.text = ASkillCoolTime[ab.index].ToString() + "s";
+                ASkillExplainText.text = ASkillExplain[ab.index];
             });
         }
     }

@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     }
     public void AddXP(int Value)
     {
+        if(!IsGame) return;
         var ab = AbilityCard.Instance;
         XP += Value;
         while(XP >= MaxXP)
@@ -61,7 +62,6 @@ public class GameManager : MonoBehaviour
         if (SelectChance >= 1 && !ab.isSelect)
         {
             if (!ab.IsAbilityLimit()) ab.Select();
-            print("dsaefdazsfs");
             FadeCoroutine ??= StartCoroutine(FadeTime(0));
         }
         UIManager.instance.XPBarUpdate();

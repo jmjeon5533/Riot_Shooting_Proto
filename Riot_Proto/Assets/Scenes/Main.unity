@@ -3915,6 +3915,18 @@ MonoBehaviour:
   - {fileID: 872683005}
   - {fileID: 1793730573}
   FadeBg: {fileID: 47389105}
+  StagePrefab: {fileID: 1221886862955168235, guid: 1d4a10627c2ac13448a6eecd660adc25, type: 3}
+  BGList:
+  - bgs:
+    - sprite: {fileID: 21300000, guid: 3db5563d35b55e04abda63679ce7f021, type: 3}
+      speed: 3
+    - sprite: {fileID: 21300000, guid: c3ddad3b7fdd72a4aaae5a267aa1726a, type: 3}
+      speed: 3.5
+    - sprite: {fileID: 21300000, guid: 03675312afe97b44a8a5320437ce011a, type: 3}
+      speed: 5
+  - bgs:
+    - sprite: {fileID: 21300000, guid: 252006ecf2756fa49b0072d2985a73ed, type: 3}
+      speed: 0
   BG1: {fileID: 0}
   BG2: {fileID: 0}
 --- !u!4 &1480380334
@@ -4444,13 +4456,9 @@ MonoBehaviour:
   XP: 0
   Level: 1
   SelectChance: 0
-  StagePrefab: {fileID: 1221886862955168235, guid: 1d4a10627c2ac13448a6eecd660adc25, type: 3}
   playerPrefab:
   - {fileID: 6332685398307081435, guid: c63eed9c18d0ed34f8f2d208ba702ad0, type: 3}
   ItemList: []
-  BGList:
-  - {fileID: 21300000, guid: a6f8b76f69d838540ac429aeed923371, type: 3}
-  - {fileID: 21300000, guid: 252006ecf2756fa49b0072d2985a73ed, type: 3}
   curEnemys: []
   IsGame: 0
 --- !u!114 &1679633663

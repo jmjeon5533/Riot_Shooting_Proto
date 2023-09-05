@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class ElectricLine : AbilityBase, IListener
 {
-    [SerializeField] int stack = 0;
-    [SerializeField] int maxStack;
+    [SerializeField] float curCooltime = 0;
+    [SerializeField] int maxCooltime;
 
     [SerializeField] int defaultDamage;
     [SerializeField] float duration;
 
     [SerializeField] List<GameObject> beams;
-
-    Player player;
 
     [SerializeField] int increaseValue;
     [SerializeField] float damageRate;
@@ -20,28 +18,41 @@ public class ElectricLine : AbilityBase, IListener
 
     public override void Ability()
     {
-        if (stack >= maxStack)
+        if(!useSkill)
         {
-            stack = 0;
+            curCooltime = 0;
+            minCool = curCooltime;
+            maxCool = maxCooltime;
+            useSkill = true;
             var b = Instantiate(beams[level-1], player.transform.position, Quaternion.Euler(0,90,0)).GetComponent<ElectricBeam>();
             b.damage = defaultDamage + (int)(player.damage * damageRate);
-            
-            
-
-        }
+        }    
+ 
     }
 
     public override string GetStatText()
     {
-        return "스킬 지속 시간 " + duration + "s → " + (beams[level - 1].GetComponent<ElectricBeam>().duration) +
-            "s 필요 공격 횟수 " + maxStack + " → " + (maxStack - 1);
+        if ((level + 1) == 3 || (level + 1) == 5)
+        {
+            return "스킬 지속 시간 " + duration + "s → " + (beams[level - 1].GetComponent<ElectricBeam>().duration) +
+           "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue / 2 * Mathf.Pow((1 + 0.1f), level)));
+        }
+        else
+        {
+            return 
+            "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue / 2 * Mathf.Pow((1 + 0.1f), level)));
+
+
+        }
+
+       
     }
 
     public void OnEvent(Event_Type type, Component sender, object param = null)
     {
         if (type == Event_Type.PlayerAttack)
         {
-            stack++;
+           
         }
     }
 
@@ -50,20 +61,30 @@ public class ElectricLine : AbilityBase, IListener
         base.LevelUp();
         //defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
         duration = beams[level - 1].GetComponent<ElectricBeam>().duration;
-        maxStack--;
+        defaultDamage += (int)(increaseValue / 2 * Mathf.Pow((1 + 0.1f), level));
     }
 
     // Start is called before the first frame update
     public override void Start()
     {
-        EventManager.Instance.AddListener(Event_Type.PlayerAttack, this);
-        player = GameManager.instance.player;
+        //EventManager.Instance.AddListener(Event_Type.PlayerAttack, this);
+        Initalize();
         duration = beams[level - 1].GetComponent<ElectricBeam>().duration;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Ability();
+        if (useSkill)
+        {
+            curCooltime += Time.deltaTime;
+            minCool = curCooltime;
+            maxCool = maxCooltime;
+            if (curCooltime >= maxCooltime)
+            {
+                curCooltime = 0;
+                useSkill = false;
+            }
+        }
     }
 }

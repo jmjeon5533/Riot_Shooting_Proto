@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5960409881394697884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4918259277679250688}
+  - component: {fileID: 2920288409773848556}
+  m_Layer: 0
+  m_Name: ElectricRush
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4918259277679250688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5960409881394697884}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.34661692, y: 0.87724817, z: -0.12378305}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2920288409773848556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5960409881394697884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf88a8b5e40d9742848cc79ca43de5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  type: 0
+  skillImage: {fileID: 21300000, guid: 48f1d4731202fb0409a9bc79e8f77fc5, type: 3}
+  skillName: "\uC1C4\uB3C4"
+  skillDescription: "\uC801 \uBC29\uD5A5\uC73C\uB85C \uC804\uAE30 \uD22C\uC0AC\uCCB4\uB97C
+    \uBC1C\uC0AC\uD55C\uB2E4. \uC801\uC911\uD55C \uC801\uC740 \uBC29\uC5B4\uB825\uC774
+    \uAC10\uC18C\uD55C\uB2E4. "
+  stats: 
+  bullet: {fileID: 8658052103336013023, guid: a03f565b18fe2c643a5271a1c72c3861, type: 3}
+  defaultDamage: 5
+  damageRate: 0.4
+  angle: 15
+  count: 3
+  maxCooltime: 10
+  curCooltime: 0
+  defRate: 0.3
+  increaseValue: 3
+  duration: 6
+  multiplier: 0.3
+  speed: 8

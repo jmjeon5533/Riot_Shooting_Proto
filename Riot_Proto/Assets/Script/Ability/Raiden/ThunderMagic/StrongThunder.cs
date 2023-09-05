@@ -16,17 +16,16 @@ public class StrongThunder : AbilityBase
 
     [SerializeField] int increaseValue;
     [SerializeField] float damageRate;
-    
-
-    Player player;
 
     public override void Ability()
     {
-        curCooltime+=Time.deltaTime;
-        if(curCooltime >= maxCooltime)
-        {
-            curCooltime=0;
+        
+            
+           
             List<GameObject> list = new List<GameObject>(GameManager.instance.curEnemys);
+            if (list.Count == 0) return; 
+            curCooltime = 0;
+            useSkill = true;
             int damage = defaultDamage + (int)(player.damage * damageRate);
 
             Transform target = list[Random.Range(0, list.Count)].transform;
@@ -40,19 +39,27 @@ public class StrongThunder : AbilityBase
             t.radius = radius;
             t.transform.localScale = new Vector3(t.transform.localScale.x, t.transform.localScale.y, t.transform.localScale.z);
 
-        }
+        
     }
 
     public override string GetStatText()
     {
-        return "스킬 데미지 " + defaultDamage + " → " + defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level)) + 
+        if((level+1) ==3 || (level + 1) == 5)
+        {
+            return "스킬 데미지 " + defaultDamage + " → " + defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level)) +
             " 스킬 범위 " + radius + " → " + (radius + 0.5);
+        } else
+        {
+            return "스킬 데미지 " + defaultDamage + " → " + defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
+          
+        }
+        
     }
 
     // Start is called before the first frame update
     public override void Start()
     {
-        player = GameManager.instance.player;
+        Initalize();
     }
 
     public override void LevelUp()
@@ -66,6 +73,17 @@ public class StrongThunder : AbilityBase
     // Update is called once per frame
     void Update()
     {
-        Ability();
+        if(useSkill)
+        {
+            
+            curCooltime += Time.deltaTime;
+            minCool = curCooltime;
+            maxCool = maxCooltime;
+            if(curCooltime >= maxCooltime)
+            {
+                curCooltime = 0;
+                useSkill = false;
+            }
+        }
     }
 }

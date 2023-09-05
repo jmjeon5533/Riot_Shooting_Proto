@@ -11,11 +11,16 @@ public class AbilityCard : MonoBehaviour
 
     public List<AbilityBase> abilities;
 
-    public Dictionary<string, int> abilityLevels = new();
+    public AbilityBase[] activeSkills;
+
+    public Dictionary<string, int> abilityLevels = new Dictionary<string,int>();
 
     public List<AbilityBase> curAbilityList;
-    public Dictionary<string, AbilityBase> curAbilityDic = new();
-    public List<AbilityBase> curPassiveList = new List<AbilityBase>(); 
+    public Dictionary<string, AbilityBase> curAbilityDic = new Dictionary<string, AbilityBase>();
+    public List<AbilityBase> curPassiveList = new List<AbilityBase>();
+    public Dictionary<string, AbilityBase> curPassiveDic = new Dictionary<string, AbilityBase>();
+
+    private AbilityBase activeSkill;
 
 
     public Transform[] cards;
@@ -37,12 +42,19 @@ public class AbilityCard : MonoBehaviour
     [Header("Card Select State")]
     public bool isSelect = false;
     public bool isClick = false;
-
+    [Header("Skill UI")]
+    [SerializeField] GameObject activeSkillUI;
+    [SerializeField] Image skillCoolUI;
+    [SerializeField] GameObject skillListUI;
+     
     // Start is called before the first frame update
     void Start()
     {
         if (Instance == null) Instance = this;
         else Destroy(this.gameObject);
+        if (SceneManager.instance.ActiveIndex == -1) return;
+        AddSkill(activeSkills[SceneManager.instance.ActiveIndex]);
+            
     }
 
     // Update is called once per frame
@@ -61,6 +73,8 @@ public class AbilityCard : MonoBehaviour
     {
         foreach (AbilityBase ability in abilities)
         {
+            if (ability.type.Equals(AbilityBase.AbilityType.Passive) && !curPassiveList.Contains(ability) && curPassiveList.Count >= 3) continue;
+            if (ability.type.Equals(AbilityBase.AbilityType.Active) && activeSkill != null && !ability.Equals(activeSkill)) continue;
             if (!abilityLevels.ContainsKey(ability.skillName))
             {
                 return false;
@@ -139,9 +153,8 @@ public class AbilityCard : MonoBehaviour
 
     bool IsAbilityLevelCheck(string skillName)
     {
-        if (curAbilityDic[skillName].type == AbilityBase.AbilityType.Stats)
-        {
-            if (abilityLevels[skillName] >= 5)
+       
+            if (abilityLevels[skillName] >= 4)
             {
                 return false;
             }
@@ -149,22 +162,8 @@ public class AbilityCard : MonoBehaviour
             {
                 return true;
             }
-        }
-        else if (curAbilityDic[skillName].type == AbilityBase.AbilityType.Passive)
-        {
-            if (abilityLevels[skillName] >= 3)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        else
-        {
-            return true;
-        }
+        
+       
     }
 
     //���� 5�� �ƴ� �ɷ� �� �������� �������� �Լ�
@@ -174,15 +173,25 @@ public class AbilityCard : MonoBehaviour
         List<AbilityBase> removeToList = new List<AbilityBase>();
         for (int i = 0; i < abs.Count; i++)
         {
+            if (abs[i].type == AbilityBase.AbilityType.Active && activeSkill != null && !abs[i].skillName.Equals(activeSkill.skillName))
+            {
+                removeToList.Add(abs[i]);
+                continue;
+            }
+            if (curPassiveList.Count >= 3 && !curPassiveDic.ContainsKey(abs[i].skillName) && abs[i].type == AbilityBase.AbilityType.Passive)
+            {
+                removeToList.Add(abs[i]);
+                Debug.Log(abs[i].skillName);
+            }
+        }
+        for (int i = 0; i < abs.Count; i++)
+        {
             if ((abilityLevels.ContainsKey(abs[i].skillName) && !IsAbilityLevelCheck(abs[i].skillName)))
             {
                 removeToList.Add(abs[i]);
 
             }
-            if(curPassiveList.Count >= 3 && !curPassiveList.Contains(abs[i]))
-            {
-                removeToList.Add(abs[i]);
-            }
+            
         }
         foreach (AbilityBase rem in removeToList)
         {
@@ -220,11 +229,11 @@ public class AbilityCard : MonoBehaviour
             //Debug.Log(ab.gameObject.name);
             ab = curAbilityDic[ab.skillName];
             //Debug.Log(curAbilityDic[ab.skillName].skillName);
-            ab.level = abilityLevels[ab.skillName] + 1;
+            ab.cardLevel = abilityLevels[ab.skillName] + 1;
         }
         else
         {
-            ab.level = abilityLevels.ContainsKey(ab.skillName) ? abilityLevels[ab.skillName] + 1 : 1;
+            ab.cardLevel = abilityLevels.ContainsKey(ab.skillName) ? abilityLevels[ab.skillName] + 1 : 1;
         }
         return ab;
     }
@@ -247,10 +256,60 @@ public class AbilityCard : MonoBehaviour
         yield return new WaitForSecondsRealtime(duration / 2);
         t.DOMove(endPos, duration).SetUpdate(true).OnComplete(() =>
             {
-                if(!GameManager.instance.IsLevelDupe()) Time.timeScale = 1;
+                if (!GameManager.instance.IsLevelDupe()) Time.timeScale = 1;
             }
         );
     }
+
+    public void AddSkill(AbilityBase abi)
+    {
+        if (abi == null) return;
+        if (abilityLevels.ContainsKey(abi.skillName))
+        {
+            abilityLevels[abi.skillName]++;
+            curAbilityDic[abi.skillName].LevelUp();
+        }
+        else
+        {
+            AbilityBase ab;
+            if (curAbilityDic.ContainsKey(abi.skillName))
+            {
+                ab = curAbilityDic[abi.skillName];
+            }
+            else
+            {
+                ab = Instantiate(abi.gameObject, GameManager.instance.player.transform).GetComponent<AbilityBase>();
+            }
+            curAbilityList.Add(ab);
+            abilityLevels.Add(ab.skillName, 1);
+            curAbilityDic.Add(ab.skillName, ab);
+            if (!curPassiveList.Contains(ab) && curPassiveList.Count < 3 && ab.type == AbilityBase.AbilityType.Passive)
+            {
+                curPassiveList.Add(ab);
+                curPassiveDic.Add(ab.skillName, ab);
+            }
+            if (activeSkill == null && ab.type == AbilityBase.AbilityType.Active)
+            {
+                activeSkill = ab;
+                abilities.Add(abi);
+                ShowActiveSkillButton();
+                AddSkillList(ab);
+            }
+        }
+    }
+
+    void AddSkillList(AbilityBase abi)
+    {
+        var img = new GameObject().AddComponent<Image>();
+        img.transform.parent = skillListUI.transform;
+        img.transform.localScale = Vector3.one;
+        img.transform.localPosition = Vector3.zero;
+        img.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 66);
+        img.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 66);
+        img.sprite = abi.skillImage;
+
+    }
+
     //������ ī�带 ���� �ɷ� �迭�� �߰���Ű�� ������ �����ϴ� �Լ�
     public void SelectEnd(AbilityBase abi)
     {
@@ -262,17 +321,38 @@ public class AbilityCard : MonoBehaviour
         }
         else
         {
+            AddSkillList(abi);
             curAbilityList.Add(abi);
             abilityLevels.Add(abi.skillName, 1);
             curAbilityDic.Add(abi.skillName, abi);
-            if(!curPassiveList.Contains(abi) && curPassiveList.Count < 3)
+            if(!curPassiveList.Contains(abi) && curPassiveList.Count < 3 && abi.type == AbilityBase.AbilityType.Passive)
             {
                 curPassiveList.Add(abi);
+                curPassiveDic.Add(abi.skillName, abi);
+            }
+            if(activeSkill == null && abi.type == AbilityBase.AbilityType.Active)
+            {
+                activeSkill = abi;
+                ShowActiveSkillButton();
             }
         }
         GameManager.instance.StopCoroutine(GameManager.instance.FadeCoroutine);
         GameManager.instance.FadeCoroutine = null;
         GameManager.instance.SelectChance--;
             StartCoroutine(ISelect(true));
+    }
+
+    void ShowActiveSkillButton()
+    {
+        activeSkillUI.SetActive(true);
+        activeSkillUI.GetComponent<Image>().sprite = activeSkill.skillImage;
+        skillCoolUI.fillAmount = 0;
+    }
+
+    
+
+    public AbilityBase GetActiveSKill()
+    {
+        return activeSkill;
     }
 }

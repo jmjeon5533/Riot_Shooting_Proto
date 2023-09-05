@@ -10,6 +10,8 @@ public abstract class AbilityBase : MonoBehaviour
         Passive, Active, Stats
     }
 
+    public int cardLevel = 1;
+
     public int level = 1;
 
     public AbilityType type;
@@ -21,6 +23,28 @@ public abstract class AbilityBase : MonoBehaviour
 
     public string stats;
 
+    protected float maxCool;
+    protected float minCool;
+
+    public float GetMinCool()
+    {
+        return minCool;
+    }
+
+    public float GetMaxCool()
+    {
+        return maxCool;
+    }
+
+    public bool IsSkillCool()
+    {
+        return useSkill;
+    }
+
+    protected Player player;
+ 
+    protected bool useSkill = false;
+
     public abstract string GetStatText();
 
     protected virtual int GetCalculateDamage(int value)
@@ -31,7 +55,7 @@ public abstract class AbilityBase : MonoBehaviour
 
     public virtual void Start()
     {
-        
+        player = GameManager.instance.player;
     }
 
     public virtual void LevelUp()
@@ -46,7 +70,7 @@ public abstract class AbilityBase : MonoBehaviour
 
     public virtual void Initalize()
     {
-        
+        player = GameManager.instance.player;
     }
 
     public abstract void Ability();

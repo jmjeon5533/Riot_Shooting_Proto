@@ -9,11 +9,7 @@ public class ElectricShock : AbilityBase, IListener
 
     [SerializeField] int defaultDamage;
 
-    [SerializeField] GameObject bullet;
-
-    Player player;
-
-    
+    [SerializeField] GameObject bullet;  
 
     [SerializeField] int increaseValue;
     [SerializeField] float damageRate;
@@ -55,7 +51,7 @@ public class ElectricShock : AbilityBase, IListener
     public override void Start()
     {
         EventManager.Instance.AddListener(Event_Type.PlayerAttack, this);
-        player = GameManager.instance.player;
+        Initalize();
     }
 
     // Update is called once per frame

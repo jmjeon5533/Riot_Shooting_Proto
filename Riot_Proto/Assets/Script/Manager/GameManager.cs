@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,8 +12,7 @@ public class GameManager : MonoBehaviour
     public Joystick joystick;
     public Vector2 MoveRange;
     public Vector2 MovePivot;
-    public float BGSpeed;
-
+    public float EnemyPower = 1;
     [Space(10)]
     public GameObject XPPrefab;
     public int MaxXP;
@@ -22,9 +22,7 @@ public class GameManager : MonoBehaviour
     public int SelectChance;
     [Space(10)]
     public List<GameObject> playerPrefab = new();
-    public List<GameObject> StagePrefab = new();
     public List<GameObject> ItemList = new();
-
     public List<GameObject> curEnemys = new();
 
     public bool IsGame = false;
@@ -40,10 +38,10 @@ public class GameManager : MonoBehaviour
         Camera[] camera = { MainCamera, EffectCamera, UICamera, BackCamera};
         SceneManager.instance.SetResolution(camera);
         Instantiate(playerPrefab[SceneManager.instance.CharIndex], new Vector3(-12f, 0, 0), Quaternion.identity);
-        Instantiate(StagePrefab[SceneManager.instance.StageIndex], UIManager.instance.canvas);
-        var bg2 = Instantiate(StagePrefab[SceneManager.instance.StageIndex], UIManager.instance.canvas).GetComponent<RectTransform>();
-        bg2.transform.localPosition += new Vector3(bg2.rect.width, 0, 0);
+        UIManager.instance.InitBackGround(SceneManager.instance.StageIndex);
+        UIManager.instance.FadeBg.transform.SetAsLastSibling();
     }
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -51,6 +49,7 @@ public class GameManager : MonoBehaviour
     }
     public void AddXP(int Value)
     {
+        if(!IsGame) return;
         var ab = AbilityCard.Instance;
         XP += Value;
         while(XP >= MaxXP)
@@ -63,7 +62,6 @@ public class GameManager : MonoBehaviour
         if (SelectChance >= 1 && !ab.isSelect)
         {
             if (!ab.IsAbilityLimit()) ab.Select();
-            print("dsaefdazsfs");
             FadeCoroutine ??= StartCoroutine(FadeTime(0));
         }
         UIManager.instance.XPBarUpdate();

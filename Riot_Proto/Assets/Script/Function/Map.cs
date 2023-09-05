@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    private float MoveSpeed;
+    public float MoveSpeed;
     public RectTransform rect;
     private void Start()
     {
         rect = GetComponent<RectTransform>();
-        MoveSpeed = GameManager.instance.BGSpeed;
     }
     void Update()
     {

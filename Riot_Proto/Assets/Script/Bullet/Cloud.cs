@@ -42,6 +42,7 @@ public class Cloud : MonoBehaviour
                 {
                     //StartCoroutine(Electric(collider.transform, maxAttackTime/2));
                     collider.GetComponent<EnemyBase>().Damage(damage);
+                    collider.GetComponent<EnemyBase>().AddBuff(new Slow(2, collider.gameObject, BuffBase.TargetType.Enemy, BuffList.Slow, 0.7f));
                     Debug.Log(collider.name);
                 }
             }

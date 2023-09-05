@@ -14,9 +14,6 @@ public class Flash : AbilityBase
 
     [SerializeField] int increaseValue;
     [SerializeField] float damageRate;
-     
-
-    Player player;  
     
     public override void Ability()
     {

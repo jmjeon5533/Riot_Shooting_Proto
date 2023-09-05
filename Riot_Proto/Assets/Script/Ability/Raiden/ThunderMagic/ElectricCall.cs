@@ -19,17 +19,17 @@ public class ElectricCall : AbilityBase
     [SerializeField] float damageRate;
     [SerializeField] float delay;
 
-
-    Player player;
-
     int attackCount = 0;
 
     public override void Ability()
     {
-        curCooltime+=Time.deltaTime;
-        if(curCooltime >= maxCooltime)
+        
+        if(!useSkill)
         {
-            curCooltime=0;
+            List<GameObject> list = GameManager.instance.curEnemys.ToList();
+            if (list.Count == 0) return;
+            curCooltime =0;
+            useSkill = true;
             StartCoroutine(Attack());
         }
     }
@@ -50,6 +50,7 @@ public class ElectricCall : AbilityBase
     void ThunderDrop()
     {
         List<GameObject> list = GameManager.instance.curEnemys.ToList();
+        if (list.Count == 0) return;
         int damage = defaultDamage + (int)(player.damage * damageRate);
         
             Transform target = list[Random.Range(0, list.Count)].transform;
@@ -66,12 +67,16 @@ public class ElectricCall : AbilityBase
     void ThunderDrain()
     {
         List<GameObject> list = new List<GameObject>(GameManager.instance.curEnemys);
+        if (list.Count == 0) return;
         int damage = defaultDamage/2 + (int)(player.damage * damageRate);
         foreach (var enemy in list)
         {
             if (enemy != null)
             {
-                Instantiate(thunderDrain, enemy.transform.position, Quaternion.identity);
+                var t = Instantiate(thunderDrain, enemy.transform);
+                t.transform.localPosition = Vector3.zero;
+                t.Play();
+
                 enemy.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
                         ? (int)(damage * player.CritDamage) : damage);
                 attackCount++;
@@ -99,6 +104,17 @@ public class ElectricCall : AbilityBase
     // Update is called once per frame
     void Update()
     {
-        Ability();
+        if (useSkill)
+        {
+
+            curCooltime += Time.deltaTime;
+            minCool = curCooltime;
+            maxCool = maxCooltime;
+            if (curCooltime >= maxCooltime)
+            {
+                curCooltime = 0;
+                useSkill = false;
+            }
+        }
     }
 }

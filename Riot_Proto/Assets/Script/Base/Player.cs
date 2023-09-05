@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Player : MonoBehaviour
 {
+
     public int HP;
     public int damage;
 
@@ -20,6 +21,8 @@ public abstract class Player : MonoBehaviour
     Coroutine ShieldCoroutine;
     [SerializeField] GameObject ShieldObj;
 
+    [SerializeField] List<BuffBase> PlayerBuffList = new List<BuffBase>();
+
     Vector3 MoveRange;
     Vector3 MovePivot;
     public float AttackCooltime;
@@ -30,6 +33,10 @@ public abstract class Player : MonoBehaviour
     Rigidbody rigid;
     Animator anim;
     Joystick joystick;
+    protected virtual void Awake()
+    {
+        GameManager.instance.player = this;
+    }
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
@@ -37,13 +44,13 @@ public abstract class Player : MonoBehaviour
         joystick = GameManager.instance.joystick;
         MoveRange = GameManager.instance.MoveRange;
         MovePivot = GameManager.instance.MovePivot;
-        GameManager.instance.player = this;
         StartCoroutine(Started());
     }
     protected virtual void Update()
     {
         if (IsMove)
         {
+            BuffTimer();
             Movement();
             AttackInput();
         }
@@ -74,9 +81,10 @@ public abstract class Player : MonoBehaviour
 
     public void Damage()
     {
-        if(IsShield) return;
+        if (IsShield) return;
         HP--;
         StartCoroutine(Dead());
+        UIManager.instance.InitHeart();
     }
 
     IEnumerator Dead()
@@ -85,19 +93,27 @@ public abstract class Player : MonoBehaviour
         rigid.useGravity = true;
         IsShield = true;
         rigid.AddForce(Vector3.left, ForceMode.Impulse);
-        yield return new WaitForSeconds(2);
-        rigid.useGravity = false;
-        rigid.velocity = Vector3.zero;
-        StartCoroutine(Spawned());
+        if (HP <= 0)
+        {
+            UIManager.instance.UseOverTab();
+        }
+        else
+        {
+            yield return new WaitForSeconds(2);
+            rigid.useGravity = false;
+            rigid.velocity = Vector3.zero;
+            StartCoroutine(Spawned());
+        }
     }
     IEnumerator Started()
     {
         yield return StartCoroutine(Spawned());
         GameManager.instance.IsGame = true;
+        UIManager.instance.InitHeart();
     }
     IEnumerator Spawned()
     {
-        anim.SetInteger("MoveState",1);
+        anim.SetInteger("MoveState", 1);
         transform.position = new Vector3(-12, 0, 0);
         Shield(3f);
         while (Vector3.Distance(transform.position, new Vector3(-8, 0, 0)) >= 0.1f)
@@ -109,7 +125,7 @@ public abstract class Player : MonoBehaviour
     }
     public void Shield(float time)
     {
-        if(ShieldCoroutine != null) StopCoroutine(ShieldCoroutine);
+        if (ShieldCoroutine != null) StopCoroutine(ShieldCoroutine);
         ShieldCoroutine = StartCoroutine(Protect(time));
     }
     IEnumerator Protect(float time)
@@ -123,15 +139,48 @@ public abstract class Player : MonoBehaviour
     void Movement()
     {
         Vector2 input = joystick.input.normalized;
-        
 
-        anim.SetInteger("MoveState",Mathf.RoundToInt(input.x));
+
+        anim.SetInteger("MoveState", Mathf.RoundToInt(input.x));
 
         transform.Translate(input * MoveSpeed * Time.deltaTime);
 
         transform.position
          = new Vector3(Mathf.Clamp(transform.position.x, -MoveRange.x + MovePivot.x, MoveRange.x + MovePivot.x),
          Mathf.Clamp(transform.position.y, -MoveRange.y + MovePivot.y, MoveRange.y + MovePivot.y));
+    }
+
+    public void AddBuff(BuffBase buff)
+    {
+        BuffBase _buff = buff;
+        _buff.Start();
+        PlayerBuffList.Add(_buff);
+    }
+
+    protected void BuffTimer()
+    {
+        List<BuffBase> list = null;
+        if (PlayerBuffList.Count > 0)
+        {
+            list = new List<BuffBase>();
+            for (int i = 0; i < PlayerBuffList.Count; i++)
+            {
+                PlayerBuffList[i].Run();
+                if (PlayerBuffList[i].IsOnTimer())
+                {
+                    PlayerBuffList[i].End();
+                    list.Add(PlayerBuffList[i]);
+
+                }
+            }
+        }
+        if (list != null && list.Count > 0)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                PlayerBuffList.Remove(list[i]);
+            }
+        }
     }
 
 

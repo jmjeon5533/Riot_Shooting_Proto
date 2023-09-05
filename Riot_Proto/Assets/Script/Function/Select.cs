@@ -19,6 +19,8 @@ public class Select : MonoBehaviour, IPointerDownHandler
 
     [SerializeField] Text statText;
 
+    [SerializeField] Image icon;
+
     [SerializeField] Vector2 offset;
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,7 @@ public class Select : MonoBehaviour, IPointerDownHandler
         
         explain = ab.skillDescription;
         description.text = explain;
+        icon.sprite = ab.skillImage;
         if(ab.type == AbilityBase.AbilityType.Passive && !AbilityCard.Instance.curAbilityList.Contains(ab))
         {
             statText.text = "";
@@ -47,7 +50,7 @@ public class Select : MonoBehaviour, IPointerDownHandler
             statText.text = ab.GetStatText();
 
         }
-        nameText.text = abilityName + " " + GetLevelText(ab.level);
+        nameText.text = abilityName + " " + GetLevelText(ab.cardLevel);
     }
 
     string GetLevelText(int lv)

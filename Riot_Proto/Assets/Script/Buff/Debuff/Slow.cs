@@ -4,58 +4,61 @@ using UnityEngine;
 
 public class Slow : BuffBase
 {
-    private float slowRate;
+    private float multiplier;
     private float originSpeed;
     
-    public Slow(float duration, GameObject target, TargetType type, float slowRate) : base(duration, target, type)
+    public Slow(float duration, GameObject target, TargetType type, BuffList buff, float multiplier) : base(duration, target, type, buff)
     {
-        this.slowRate = slowRate;
+        this.multiplier = multiplier;
         if (type == TargetType.Player) player = GameManager.instance.player;
         else enemy = target.GetComponent<EnemyBase>();
     }
 
-    public override void Init()
+    public override void Dupe(float duration)
     {
-        
+        base.Dupe(duration);
     }
 
-    public override void UpdateBuff()
+    public override void Start()
     {
-        curTime += Time.deltaTime;
+        
         if (type == TargetType.Player)
         {
             originSpeed = player.MoveSpeed;
-            player.MoveSpeed = originSpeed * slowRate;
-            if(curTime >= duration)
-            {
-                curTime = 0;
-                player.MoveSpeed = originSpeed;
-                Destroy(this);
-            }
-        } else if (type == TargetType.Enemy)
+        }
+        else if (type == TargetType.Enemy)
         {
             originSpeed = enemy.MoveSpeed;
-            enemy.MoveSpeed = originSpeed * slowRate;
-            if(curTime >= duration)
-            {
-                curTime = 0;
-                enemy.MoveSpeed = originSpeed;
-                Destroy(this);
-            }
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public override void Run()
     {
-        
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateBuff();
+            curTime += Time.deltaTime;
+            
+            if (type == TargetType.Player)
+            {
+                player.MoveSpeed = originSpeed * multiplier;
+            }
+            else if (type == TargetType.Enemy)
+            {       
+                enemy.MoveSpeed = originSpeed * multiplier;
+            }
     }
 
-    
+    public override void End()
+    {
+        if (type == TargetType.Player)
+        {
+            player.MoveSpeed = originSpeed;
+        }
+        else if (type == TargetType.Enemy)
+        {
+            enemy.MoveSpeed = originSpeed;
+        }
+    }
+
+
+
+
 }

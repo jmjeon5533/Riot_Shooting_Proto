@@ -42,6 +42,7 @@ public class AbilityCard : MonoBehaviour
     [Header("Card Select State")]
     public bool isSelect = false;
     public bool isClick = false;
+    public bool isMove = false;
     [Header("Skill UI")]
     [SerializeField] GameObject activeSkillUI;
     [SerializeField] Image skillCoolUI;
@@ -241,16 +242,18 @@ public class AbilityCard : MonoBehaviour
     //ī�� ���� �Լ�
     IEnumerator ICardSpawn(Transform t, Vector3 startPos, Vector3 endPos, float duration)
     {
+        isMove = true;
         GameManager.instance.player.Shield(2f);
         t.position = startPos;
         t.DOMove(endPos + (transform.up * bounceHeight), duration).SetUpdate(true);
         yield return new WaitForSecondsRealtime(duration);
         t.DOMove(endPos, duration / 2).SetUpdate(true);
+        isMove = false;
     }
     //ī�� ���� �Լ�
     IEnumerator ICardEnd(Transform t, Vector3 startPos, Vector3 endPos, float duration)
     {
-
+        isMove = true;
         t.position = startPos;
         t.DOMove(startPos + (Vector3.up * bounceHeight), duration / 2).SetUpdate(true);
         yield return new WaitForSecondsRealtime(duration / 2);
@@ -259,6 +262,7 @@ public class AbilityCard : MonoBehaviour
                 if (!GameManager.instance.IsLevelDupe()) Time.timeScale = 1;
             }
         );
+        isMove = false;
     }
 
     public void AddSkill(AbilityBase abi)

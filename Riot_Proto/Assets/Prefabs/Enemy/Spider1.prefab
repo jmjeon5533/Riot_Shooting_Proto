@@ -541,7 +541,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5148704164904888988}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.1092, y: -7.339579, z: 31.976683}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -563,10 +563,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 70
   baseHp: 0
-  XPRate: 0
+  XPRate: 3
   baseXPRate: 0
   MoveSpeed: 5
   AttackCooltime: 50
+  damagedMultiplier: 1
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Spider1
 --- !u!136 &2803538439958359753
@@ -582,7 +583,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 1.72
   m_Direction: 0
-  m_Center: {x: 0.03, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5215589708090576436
 GameObject:
   m_ObjectHideFlags: 0

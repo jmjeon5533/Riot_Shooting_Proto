@@ -73,6 +73,7 @@ public abstract class Player : MonoBehaviour
     protected void InitBullet(GameObject bullet)
     {
         var b = bullet.GetComponent<PlayerBullet>();
+        b.MoveSpeed = bulletSpeed;
         b.Damage = damage;
         b.dir = Vector3.right;
         b.CritRate = CritRate;

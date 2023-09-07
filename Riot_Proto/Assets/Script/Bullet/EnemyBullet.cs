@@ -7,6 +7,7 @@ public class EnemyBullet : BulletBase
     protected override void Update()
     {
         base.Update();
+        
         var hit = Physics.OverlapSphere(transform.position,radius);
         foreach (var h in hit)
         {

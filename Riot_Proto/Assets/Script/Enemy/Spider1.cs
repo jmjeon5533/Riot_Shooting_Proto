@@ -8,14 +8,17 @@ public class Spider1 : EnemyBase
     {
         
     }
+    protected override void Move()
+    {
+        transform.Translate(Vector3.left * Time.deltaTime * MoveSpeed);
+    }
     protected override void Start()
     {
         InitStat();
         StatMultiplier();
         var g = GameManager.instance;
-        var y = Random.Range(1, g.MoveRange.y + g.MovePivot.y) * Random.Range(0, 2) > 0 ? 1 : -1;
+        var y = Random.Range(1.5f, g.MoveRange.y + g.MovePivot.y) * Random.Range(0, 2) > 0 ? 1 : -1;
         transform.position = new Vector3(15, y, 0);
-        MovePos = new Vector3(-15, y, 0);
     }
     protected override void Update()
     {

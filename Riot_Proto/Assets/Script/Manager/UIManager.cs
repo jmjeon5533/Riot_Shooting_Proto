@@ -92,6 +92,8 @@ public class UIManager : MonoBehaviour
         }
         for (int i = 0; i < BGList[BackNum].bgs.Count; i++)
         {
+            float b = 0.8f;
+
             var BG1 = PoolManager.Instance.GetObject("BG",canvas).GetComponent<Image>();
             var BG2 = PoolManager.Instance.GetObject("BG",canvas).GetComponent<Image>();
 
@@ -100,17 +102,20 @@ public class UIManager : MonoBehaviour
 
             BG1.sprite = BGList[BackNum].bgs[i].sprite;
             var ratio = 1080 / BG1.sprite.rect.height;
-            BG1.GetComponent<RectTransform>().sizeDelta = new Vector2(BG1.sprite.rect.width, BG1.sprite.rect.height) * ratio;
+            BG1.rectTransform.sizeDelta = new Vector2(BG1.sprite.rect.width, BG1.sprite.rect.height) * ratio;
             BG1.transform.localPosition = Vector3.zero;
 
 
             BG2.sprite = BGList[BackNum].bgs[i].sprite;
-            BG2.GetComponent<RectTransform>().sizeDelta = new Vector2(BG2.sprite.rect.width, BG2.sprite.rect.height) * ratio;
+            BG2.rectTransform.sizeDelta = new Vector2(BG2.sprite.rect.width, BG2.sprite.rect.height) * ratio;
             BG2.transform.localPosition = new Vector3(BG2.GetComponent<RectTransform>().rect.width, 0, 0);
 
             var speed = BGList[BackNum].bgs[i].speed;
             BG1.GetComponent<Map>().MoveSpeed = speed;
             BG2.GetComponent<Map>().MoveSpeed = speed;
+
+            BG1.color = new Color(b,b,b,1);
+            BG2.color = new Color(b,b,b,1);
         }
     }
     IEnumerator NextStageCoroutine()

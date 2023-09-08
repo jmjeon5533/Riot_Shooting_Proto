@@ -19,7 +19,7 @@ public class BulletBase : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        transform.Translate(dir * MoveSpeed * Time.deltaTime);
+        transform.position += dir * MoveSpeed * Time.deltaTime;
         MapOut();
     }
     protected virtual void MapOut()

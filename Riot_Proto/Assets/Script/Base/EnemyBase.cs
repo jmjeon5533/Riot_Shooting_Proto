@@ -41,12 +41,10 @@ public abstract class EnemyBase : MonoBehaviour
         var p = GameManager.instance.EnemyPower;
         HP = Mathf.Round(p * baseHp);
         XPRate = Mathf.Round(p * baseXPRate);
-        print($"{baseHp} : {HP} = {baseXPRate} : {XPRate} - {p}");
     }
 
     public void AddBuff(BuffBase buff) 
     {
-        
         BuffBase _buff = buff;
         if(!CheckBuff(_buff))
         {
@@ -119,10 +117,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
     protected virtual void Move()
     {
-        if (Vector3.Distance(transform.position, MovePos) >= 0.1f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, MovePos, MoveSpeed * Time.deltaTime);
-        }
+        transform.position = Vector3.MoveTowards(transform.position, MovePos, MoveSpeed * Time.deltaTime);
     }
     public void Damage(int damage)
     {
@@ -132,12 +127,16 @@ public abstract class EnemyBase : MonoBehaviour
             GameManager.instance.curEnemys.Remove(this.gameObject);
             for (int i = 0; i < XPRate; i++)
             {
-                PoolManager.Instance.GetObject("XP", transform.position, Quaternion.identity);
+                Dead();
             }
 
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);
         }
         PoolManager.Instance.GetObject("Hit", transform.position, Quaternion.identity);
+    }
+    protected virtual void Dead()
+    {
+        PoolManager.Instance.GetObject("XP", transform.position, Quaternion.identity);
     }
     protected abstract void Attack();
 

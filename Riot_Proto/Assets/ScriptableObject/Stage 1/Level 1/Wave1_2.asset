@@ -12,11 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dade780c5cb8984e8c30cce45d74da6, type: 3}
   m_Name: Wave1_2
   m_EditorClassIdentifier: 
-  startDelay: 2
+  startDelay: 1
   WaveList:
-  - Enemy: Bat2
-    SpawnDelay: 2
-  - Enemy: Mage1
-    SpawnDelay: 2
-  - Enemy: Bat1
+  - Enemy: Bat3
+    SpawnDelay: 0.1
+  - Enemy: Bat3
+    SpawnDelay: 0.1
+  - Enemy: Bat3
+    SpawnDelay: 0.1
+  - Enemy: Bat3
+    SpawnDelay: 0.1
+  - Enemy: Bat3
+    SpawnDelay: 0.1
+  - Enemy: Bat3
+    SpawnDelay: 0.1
+  - Enemy: Bat3
+    SpawnDelay: 0.1
+  - Enemy: Bat3
+    SpawnDelay: 0.1
+  - Enemy: Bat3
+    SpawnDelay: 0.1
+  - Enemy: Bat3
     SpawnDelay: 1

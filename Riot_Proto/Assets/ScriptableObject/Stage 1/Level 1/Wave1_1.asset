@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startDelay: 2
   WaveList:
-  - Enemy: Bat1
+  - Enemy: Turtle1
     SpawnDelay: 1
   - Enemy: Bat1
     SpawnDelay: 2

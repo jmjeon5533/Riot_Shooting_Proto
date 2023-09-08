@@ -375,11 +375,20 @@ MonoBehaviour:
   - key: Bat2
     obj: {fileID: 1661003693710212378, guid: 0d32f102092e054428644eabf41cf27a, type: 3}
     maxAmount: 50
+  - key: Bat3
+    obj: {fileID: 960719984618054119, guid: adc18e6514cd7d540aa0ea6caff01017, type: 3}
+    maxAmount: 50
   - key: Spider1
     obj: {fileID: 5148704164904888988, guid: 847edf739fbc82d4aab6f9fc832be794, type: 3}
     maxAmount: 50
   - key: Mage1
     obj: {fileID: 8805811973873897148, guid: c1c27284a62473d44827a35569477ca3, type: 3}
+    maxAmount: 50
+  - key: Turtle1
+    obj: {fileID: 4887867709369130154, guid: 5a44a717591f274468b4ef6b780a1cdf, type: 3}
+    maxAmount: 50
+  - key: TurtleBullet
+    obj: {fileID: 269225301555661974, guid: 31492bf93028b574dac4c6b53d273591, type: 3}
     maxAmount: 50
   - key: Boss1
     obj: {fileID: 149849303624063132, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
@@ -4506,6 +4515,7 @@ MonoBehaviour:
   selectabs: []
   isSelect: 0
   isClick: 0
+  isMove: 0
   activeSkillUI: {fileID: 33267872}
   skillCoolUI: {fileID: 1821388555}
   skillListUI: {fileID: 889950123}

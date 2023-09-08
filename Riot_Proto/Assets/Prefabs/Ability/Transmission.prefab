@@ -62,7 +62,7 @@ MonoBehaviour:
   transformList: []
   target: {fileID: 0}
   targets: []
-  line: {fileID: 0}
+  line: {fileID: 1371695176635056226}
   radius: 4
 --- !u!120 &1371695176635056226
 LineRenderer:

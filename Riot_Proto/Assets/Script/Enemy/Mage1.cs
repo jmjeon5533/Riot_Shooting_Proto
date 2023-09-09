@@ -27,14 +27,23 @@ public class Mage1 : EnemyBase
         base.Update();
         float Speed = UIManager.instance.BGList[SceneManager.instance.StageIndex].bgs[0].speed;
         transform.Translate(Vector3.left * Time.deltaTime * Speed);
+
+        if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 5)
+        {
+            PoolManager.Instance.PoolObject(EnemyTag, gameObject);
+            GameManager.instance.curEnemys.Remove(gameObject);
+        }
     }
     IEnumerator AttackCoroutine()
     {
+
         var g = GameManager.instance;
+        anim.transform.LookAt(g.player.transform.position);
+
         anim.SetTrigger("Attack");
         yield return new WaitForSeconds(0.3f);
 
         var b = PoolManager.Instance.GetObject("EnemyBullet",transform.position,Quaternion.identity).GetComponent<BulletBase>();
-        b.dir = (GameManager.instance.player.transform.position - transform.position).normalized;
+        b.dir = (g.player.transform.position - transform.position).normalized;
     }
 }

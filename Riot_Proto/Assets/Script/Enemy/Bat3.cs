@@ -26,7 +26,6 @@ public class Bat3 : EnemyBase
     protected override void Update()
     {
         base.Update();
-        var range = MovePos - transform.position;
         if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 5
         || Mathf.Abs(transform.position.y) >= GameManager.instance.MoveRange.y + 5)
         {

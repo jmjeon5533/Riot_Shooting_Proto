@@ -4,7 +4,7 @@ using UnityEngine;
 
     public enum Event_Type
     {
-        PlayerAttack, PlayerDeath, ApplyBuff
+        PlayerAttack, PlayerDeath, ApplyBuff, PlayerAttacked
     }
 public interface IListener
 {

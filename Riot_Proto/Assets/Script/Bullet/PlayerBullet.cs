@@ -14,6 +14,7 @@ public class PlayerBullet : BulletBase
             {
                 h.GetComponent<EnemyBase>().Damage((Random.Range(0,100f) <= CritRate) 
                     ? (int)(Damage * CritDamage) : Damage);
+                EventManager.Instance.PostNotification(Event_Type.PlayerAttacked, this, h.gameObject.GetComponent<EnemyBase>());
                 Destroy(gameObject);
                 
             }

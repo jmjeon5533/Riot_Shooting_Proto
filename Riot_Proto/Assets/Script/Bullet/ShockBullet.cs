@@ -12,6 +12,7 @@ public class ShockBullet : BulletBase
     protected override void Start()
     {
         dir = Vector2.right;
+        player = GameManager.instance.player;
     }
 
     void UpdateLivingTime()
@@ -23,23 +24,32 @@ public class ShockBullet : BulletBase
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
+                   ? (int)(Damage * player.CritDamage) : Damage);
+        }
+    }
+
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
         UpdateLivingTime();
-        var hit = Physics.OverlapSphere(transform.position, radius);
-        player = GameManager.instance.player;
+        //var hit = Physics.OverlapSphere(transform.position, radius);
+        //player = GameManager.instance.player;
 
-        foreach (var h in hit)
-        {
-            if (h.CompareTag("Enemy"))
-            {
+        //foreach (var h in hit)
+        //{
+        //    if (h.CompareTag("Enemy"))
+        //    {
 
-                h.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
-                    ? (int)(Damage * player.CritDamage) : Damage);
+        //        h.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
+        //            ? (int)(Damage * player.CritDamage) : Damage);
                 
-            }
-        }
+        //    }
+        //}
     }
 }

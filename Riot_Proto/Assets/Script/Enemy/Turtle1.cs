@@ -19,13 +19,18 @@ public class Turtle1 : EnemyBase
         var y = Random.Range(3f, 3f);
         transform.position = new Vector3(15, y, 0);
         MovePos = new Vector3(-15, y, 0);
-        StartCoroutine(TMove());
     }
     protected override void Update()
     {
         base.Update();
-        var range = MovePos - transform.position;
-        if (range.magnitude <= 0.1f)
+
+        Vector3 pos = transform.position;
+        float sin = Mathf.Sin(pos.x);
+        pos.y = sin;
+
+        transform.position = pos;
+
+        if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 5)
         {
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);
             GameManager.instance.curEnemys.Remove(gameObject);
@@ -42,11 +47,4 @@ public class Turtle1 : EnemyBase
             b.dir = direction; // 방향을 총알에 할당
         }
     }
-    IEnumerator TMove()
-    {
-        yield return transform.DOMoveY(1, 1.5f).SetEase(Ease.InOutSine).WaitForCompletion();
-        yield return transform.DOMoveY(-1, 1.5f).SetEase(Ease.InOutSine).WaitForCompletion();
-        StartCoroutine(TMove());
-    }
-
 }

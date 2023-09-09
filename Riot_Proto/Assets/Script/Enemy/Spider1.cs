@@ -17,16 +17,17 @@ public class Spider1 : EnemyBase
         InitStat();
         StatMultiplier();
         var g = GameManager.instance;
-        var y = Random.Range(1.5f, g.MoveRange.y + g.MovePivot.y) * Random.Range(0, 2) > 0 ? 1 : -1;
+        int[] m = {1, -1};
+        var y = Random.Range(3f, 6f) * m[Random.Range(0,2)];
         transform.position = new Vector3(15, y, 0);
     }
     protected override void Update()
     {
         base.Update();
         var range = MovePos - transform.position;
-        if(range.magnitude <= 0.1f)
+        if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 5)
         {
-            PoolManager.Instance.PoolObject(EnemyTag,gameObject);
+            PoolManager.Instance.PoolObject(EnemyTag, gameObject);
             GameManager.instance.curEnemys.Remove(gameObject);
         }
     }

@@ -179,6 +179,11 @@ public class AbilityCard : MonoBehaviour
                 removeToList.Add(abs[i]);
                 continue;
             }
+            if(activeSkill == null && abs[i].type.Equals(AbilityBase.AbilityType.Active))
+            {
+                removeToList.Add(abs[i]);
+                continue;
+            }
             if (curPassiveList.Count >= 3 && !curPassiveDic.ContainsKey(abs[i].skillName) && abs[i].type == AbilityBase.AbilityType.Passive)
             {
                 removeToList.Add(abs[i]);

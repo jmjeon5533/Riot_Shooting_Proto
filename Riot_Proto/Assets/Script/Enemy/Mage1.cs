@@ -38,12 +38,23 @@ public class Mage1 : EnemyBase
     {
 
         var g = GameManager.instance;
-        anim.transform.LookAt(g.player.transform.position);
+        anim.transform.rotation = GetRotation(g.player.transform);
 
         anim.SetTrigger("Attack");
         yield return new WaitForSeconds(0.3f);
 
         var b = PoolManager.Instance.GetObject("EnemyBullet",transform.position,Quaternion.identity).GetComponent<BulletBase>();
         b.dir = (g.player.transform.position - transform.position).normalized;
+    }
+
+    Quaternion GetRotation(Transform target)
+    {
+        if(transform.position.x > target.transform.position.x)
+        {
+            return Quaternion.Euler(0, 270, 0);
+        } else
+        {
+            return Quaternion.Euler(0,90,0);
+        }
     }
 }

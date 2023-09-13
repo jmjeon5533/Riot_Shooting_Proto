@@ -33,7 +33,7 @@ public class SceneManager : MonoBehaviour
     public PlayerData playerData;
     [Space(10)]
     string path;
-    string filename = "savefile";
+    string filename = "savefile.json";
 
     [Header("Option")]
     public bool CtrlLock;
@@ -45,11 +45,18 @@ public class SceneManager : MonoBehaviour
         if (instance == null) instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+        if (!Directory.Exists(Application.dataPath + "/Json/"))
+        {
+            Directory.CreateDirectory(Application.dataPath + "/Json/");
+        }
+
         path = Application.dataPath + "/Json/";
         JsonLoad();
+        
     }
     private void Start()
     {
+
     }
     public void JsonLoad()
     {
@@ -66,14 +73,14 @@ public class SceneManager : MonoBehaviour
             playerData = JsonUtility.FromJson<PlayerData>(data);
         }
     }
-    public void JsonSave()
+    public async void JsonSave()
     {
         PlayerData saveData = new PlayerData();
         saveData.PlayerMora = playerData.PlayerMora;
         saveData.abilitiy = new List<Ability>(playerData.abilitiy);
         string data = JsonUtility.ToJson(saveData);
         print($"{path + filename},{data}");
-        File.WriteAllText(path + filename, data);
+        await File.WriteAllTextAsync(path + filename, data);
     }
     public void StageStart()
     {

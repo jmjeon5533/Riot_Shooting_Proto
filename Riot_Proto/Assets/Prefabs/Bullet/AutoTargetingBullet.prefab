@@ -119,6 +119,6 @@ MonoBehaviour:
   BulletTag: AutoBullet
   target: {fileID: 0}
   time: 0
-  damageRate: 1
+  damageRate: 0.7
   livingTime: 2
-  power: 8
+  power: 10

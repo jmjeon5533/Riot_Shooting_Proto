@@ -30,6 +30,8 @@ public abstract class Player : MonoBehaviour
 
     bool IsMove = false;
 
+    bool inv = false;
+
     Rigidbody rigid;
     Animator anim;
     Joystick joystick;
@@ -86,6 +88,18 @@ public abstract class Player : MonoBehaviour
         HP--;
         StartCoroutine(Dead());
         UIManager.instance.InitHeart();
+    }
+
+    public void SetInvincibility(float time)
+    {
+        StartCoroutine(Invincibility(time));
+    }
+
+    IEnumerator Invincibility(float time)
+    {
+        inv = true;
+        yield return new WaitForSeconds(time);
+        inv = false;
     }
 
     IEnumerator Dead()

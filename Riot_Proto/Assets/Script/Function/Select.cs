@@ -47,8 +47,9 @@ public class Select : MonoBehaviour, IPointerDownHandler
             statText.text = "";
         } else
         {
-            statText.text = ab.GetStatText();
-
+            statText.text = "";
+            //statText.text = ab.GetStatText();
+            description.text = explain + "\n\n" + ab.GetStatText();
         }
         nameText.text = abilityName + " " + GetLevelText(ab.cardLevel);
     }

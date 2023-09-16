@@ -11,7 +11,7 @@ public class IncreaseDamage : AbilityBase
 
     public override void Ability()
     {
-        GameManager.instance.player.damage += increaseValue * level;
+        GameManager.instance.player.damage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
     }
 
     // Start is called before the first frame update
@@ -28,7 +28,7 @@ public class IncreaseDamage : AbilityBase
 
     public override string GetStatText()
     {
-        return "데미지 " + GameManager.instance.player.damage + " → " + (GameManager.instance.player.damage + (int)(5 * Mathf.Pow((1 + 0.2f), level)));
+        return "데미지 " + GameManager.instance.player.damage + " → " + (GameManager.instance.player.damage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level)));
     }
 
     // Update is called once per frame

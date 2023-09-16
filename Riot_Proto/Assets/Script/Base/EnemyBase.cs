@@ -20,6 +20,8 @@ public abstract class EnemyBase : MonoBehaviour
     public Vector3 MovePos;
     public string EnemyTag;
 
+    protected bool isAttack = false;
+
     [SerializeField] List<BuffBase> EnemyBuffList = new List<BuffBase>();
 
     protected virtual void Start()
@@ -107,11 +109,13 @@ public abstract class EnemyBase : MonoBehaviour
         if (AttackCurtime >= AttackCooltime)
         {
             AttackCurtime -= AttackCooltime;
-            Attack();
+            if(IsInScreen())
+                Attack();
         }
         else
         {
-            AttackCurtime += Time.deltaTime;
+            if(!isAttack)
+                AttackCurtime += Time.deltaTime;
         }
         Move();
     }
@@ -119,8 +123,22 @@ public abstract class EnemyBase : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, MovePos, MoveSpeed * Time.deltaTime);
     }
+
+    protected bool IsSpawning()
+    {
+        if (transform.position.x <= 10) return false;
+        else return true;
+    }
+
+    protected bool IsInScreen()
+    {
+        if(transform.position.x <= -10) return false;
+        else return true;
+    }
+
     public void Damage(int damage)
     {
+        if (IsSpawning()) return;
         HP -= damage;
         if (HP <= 0)
         {

@@ -57,6 +57,7 @@ MonoBehaviour:
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Boss1
   anim: {fileID: 149849303878326942}
+  pattern: 0
   AttackPivot: {x: -5, y: 0, z: 0}
   AttackRange: {x: 5, y: 10}
 --- !u!135 &3704637008827353322

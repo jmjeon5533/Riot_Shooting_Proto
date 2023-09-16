@@ -20,6 +20,7 @@ public class ElectricLine : AbilityBase, IListener
     {
         if(!useSkill)
         {
+            player.Shield(2.5f);
             curCooltime = 0;
             minCool = curCooltime;
             maxCool = maxCooltime;

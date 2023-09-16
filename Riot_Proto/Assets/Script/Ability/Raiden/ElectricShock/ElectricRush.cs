@@ -38,9 +38,6 @@ public class ElectricRush : AbilityBase
 
             for (int i = 0; i < count; i++)
             {
-                Debug.Log("Shoot");
-                Debug.Log(z);
-                Debug.Log(count);
                 Quaternion rotation = Quaternion.Euler(0, 0, z);
                 RushBullet b = PoolManager.Instance.GetObject("RushBullet", player.transform.position, rotation).GetComponent<RushBullet>();
                 b.Init(duration, multiplier, defaultDamage + (int)(player.damage * damageRate),speed);

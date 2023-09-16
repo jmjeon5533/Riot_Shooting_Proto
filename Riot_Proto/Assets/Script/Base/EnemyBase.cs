@@ -136,7 +136,7 @@ public abstract class EnemyBase : MonoBehaviour
         else return true;
     }
 
-    public void Damage(int damage)
+    public virtual void Damage(int damage)
     {
         if (IsSpawning()) return;
         HP -= damage;

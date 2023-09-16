@@ -3937,6 +3937,8 @@ MonoBehaviour:
       speed: 3
     - sprite: {fileID: 21300000, guid: c3ddad3b7fdd72a4aaae5a267aa1726a, type: 3}
       speed: 3.5
+    - sprite: {fileID: 21300000, guid: 852feb4a7b3610d46a038982f78f4b1e, type: 3}
+      speed: 4
     - sprite: {fileID: 21300000, guid: 03675312afe97b44a8a5320437ce011a, type: 3}
       speed: 5
   - bgs:
@@ -4459,8 +4461,8 @@ MonoBehaviour:
   BackCamera: {fileID: 1526032575}
   player: {fileID: 0}
   joystick: {fileID: 1044799010}
-  MoveRange: {x: 10, y: 4.5}
-  MovePivot: {x: 0, y: -1.1}
+  MoveRange: {x: 10, y: 5}
+  MovePivot: {x: 0, y: -0.5}
   EnemyPower: 1
   XPPrefab: {fileID: 8339991442943732091, guid: b379a882caa8ed14ba39e2a473ce3ce2, type: 3}
   MaxXP: 50

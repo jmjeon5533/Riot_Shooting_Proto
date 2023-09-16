@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.IO;
 
 public class TitleManager : MonoBehaviour
 {
@@ -52,6 +53,8 @@ public class TitleManager : MonoBehaviour
         ASkillButtonAdd();
         InitPanel(0);
     }
+    
+
     public void ASkillButtonAdd()
     {
         var p = SceneManager.instance.playerData;
@@ -82,6 +85,11 @@ public class TitleManager : MonoBehaviour
             Panel[i].SetActive(false);
         }
         Panel[index].SetActive(true);
+        if(index.Equals(4))
+        {
+            StageButtonInit();
+            Debug.Log("Test");
+        }
         Panel[3].transform.GetChild(0).gameObject.SetActive(true);
         explainPanel.gameObject.SetActive(false);
         CharImage.color = Color.clear;
@@ -148,10 +156,12 @@ public class TitleManager : MonoBehaviour
     }
     public void Exit()
     {
+        if(!File.Exists(Application.dataPath+"/Json/savefile.json"))
+            SceneManager.instance.JsonSave();
         Application.Quit();
     }
     void OnApplicationQuit()
     {
-        SceneManager.instance.JsonSave();
+
     }
 }

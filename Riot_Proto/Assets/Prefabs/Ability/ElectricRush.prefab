@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf88a8b5e40d9742848cc79ca43de5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardLevel: 1
   level: 1
   type: 0
   skillImage: {fileID: 21300000, guid: 48f1d4731202fb0409a9bc79e8f77fc5, type: 3}
@@ -57,7 +58,7 @@ MonoBehaviour:
   damageRate: 0.4
   angle: 15
   count: 3
-  maxCooltime: 10
+  maxCooltime: 8
   curCooltime: 0
   defRate: 0.3
   increaseValue: 3

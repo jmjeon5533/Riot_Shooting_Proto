@@ -11,7 +11,7 @@ public class IncreaseCC : AbilityBase
 
     public override void Ability()
     {
-        GameManager.instance.player.CritRate += increaseValue * level;
+        GameManager.instance.player.CritRate += increaseValue;
     }
 
     // Start is called before the first frame update

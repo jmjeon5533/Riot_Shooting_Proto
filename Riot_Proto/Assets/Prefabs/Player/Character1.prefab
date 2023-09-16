@@ -14223,8 +14223,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.25
+  m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.35, z: 0}
 --- !u!54 &5139616172709451010
@@ -14257,7 +14257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 3
   damage: 5
-  CritRate: 1
+  CritRate: 20
   CritDamage: 2
   bulletLevel: 1
   bulletSpeed: 35
@@ -14939,8 +14939,8 @@ Transform:
   m_GameObject: {fileID: 7382487222634075692}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: -0.86, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6917414950759896231}
   - {fileID: 5810449017413317244}

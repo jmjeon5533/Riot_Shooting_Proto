@@ -54,7 +54,7 @@ MonoBehaviour:
     \uB3D9\uC548 \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
   stats: 
   curCooltime: 70
-  maxCooltime: 60
+  maxCooltime: 70
   defaultDamage: 15
   duration: 0
   beams:

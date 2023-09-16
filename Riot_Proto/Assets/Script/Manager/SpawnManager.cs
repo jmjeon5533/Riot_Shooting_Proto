@@ -25,6 +25,7 @@ public class SpawnManager : MonoBehaviour
     }
     IEnumerator SpawnWave()
     {
+        
         yield return new WaitUntil(() => GameManager.instance.IsGame);
         yield return new WaitForSeconds(2f);
         while (SpawnCount < BossSpawnWave)
@@ -35,7 +36,7 @@ public class SpawnManager : MonoBehaviour
             for (int i = 0; i < wave.WaveList.Count; i++)
             {
                 if(!GameManager.instance.IsGame) yield break;
-                GameObject enemy = PoolManager.Instance.GetObject(wave.WaveList[i].Enemy, new Vector3(15, Random.Range(-5, 6), 0), Quaternion.identity);
+                GameObject enemy = PoolManager.Instance.GetObject(wave.WaveList[i].Enemy, new Vector3(15, Random.Range(-4.5f, 5.5f), 0), Quaternion.identity);
                 GameManager.instance.curEnemys.Add(enemy);
                 yield return new WaitForSeconds(wave.WaveList[i].SpawnDelay);
             }

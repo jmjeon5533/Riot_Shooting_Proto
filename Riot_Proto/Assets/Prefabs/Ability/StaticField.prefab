@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cdb279e8a3c17446b9acc8d5dd2e990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardLevel: 1
   level: 1
   type: 0
   skillImage: {fileID: 21300000, guid: dc431d2501364e240b042aee9a8da5b3, type: 3}

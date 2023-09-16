@@ -19,11 +19,9 @@ public class StrongThunder : AbilityBase
 
     public override void Ability()
     {
-        
-            
-           
             List<GameObject> list = new List<GameObject>(GameManager.instance.curEnemys);
-            if (list.Count == 0) return; 
+            if (list.Count == 0) return;
+            player.Shield(2.5f);
             curCooltime = 0;
             useSkill = true;
             int damage = defaultDamage + (int)(player.damage * damageRate);
@@ -33,6 +31,10 @@ public class StrongThunder : AbilityBase
             {
                 list = new List<GameObject>(GameManager.instance.curEnemys);
                 target = list[Random.Range(0, list.Count)].transform;
+                //if (target != null && target.transform.position.x < -10)
+                //{
+                //    target = null;
+                //}   
             }
             Thunder t = Instantiate(thunders[level-1], new Vector3(target.position.x, 0, target.position.z), Quaternion.identity).GetComponent<Thunder>();
              t.SetDamage(damage);

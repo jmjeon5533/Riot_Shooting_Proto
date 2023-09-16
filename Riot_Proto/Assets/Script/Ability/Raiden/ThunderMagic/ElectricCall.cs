@@ -28,6 +28,7 @@ public class ElectricCall : AbilityBase
         {
             List<GameObject> list = GameManager.instance.curEnemys.ToList();
             if (list.Count == 0) return;
+            player.Shield(2.5f);
             curCooltime =0;
             useSkill = true;
             StartCoroutine(Attack());

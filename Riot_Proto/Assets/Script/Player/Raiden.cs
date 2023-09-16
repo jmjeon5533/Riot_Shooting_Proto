@@ -20,7 +20,7 @@ public class Raiden : Player
             curCooltime = 0;
             List<Transform> list = FindClosestEnemies();
 
-            for(int i = 0; i < 2 * (bulletLevel-2); i++)
+            for(int i = 0; i < 1 * (bulletLevel-2) + ((bulletLevel >= 3) ? 1 : 0); i++)
             {
                 var bullet = Instantiate(autoTargetBullet,transform.position,Quaternion.identity);
                 bullet.GetComponent<ThunderBolt>().target = list[Random.Range(0,list.Count)];

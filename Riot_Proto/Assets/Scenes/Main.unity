@@ -393,6 +393,9 @@ MonoBehaviour:
   - key: Boss1
     obj: {fileID: 149849303624063132, guid: 9d4c0ac6b88ccc042bb8d4ff032a5c66, type: 3}
     maxAmount: 1
+  - key: RushBullet
+    obj: {fileID: 8658052103336013023, guid: a03f565b18fe2c643a5271a1c72c3861, type: 3}
+    maxAmount: 100
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,7 +1448,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 1
-    m_MaxSize: 12
+    m_MaxSize: 15
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1879,7 +1882,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 1
-    m_MaxSize: 12
+    m_MaxSize: 15
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2352,7 +2355,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 1
-    m_MaxSize: 12
+    m_MaxSize: 15
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3934,6 +3937,8 @@ MonoBehaviour:
       speed: 3
     - sprite: {fileID: 21300000, guid: c3ddad3b7fdd72a4aaae5a267aa1726a, type: 3}
       speed: 3.5
+    - sprite: {fileID: 21300000, guid: 852feb4a7b3610d46a038982f78f4b1e, type: 3}
+      speed: 4
     - sprite: {fileID: 21300000, guid: 03675312afe97b44a8a5320437ce011a, type: 3}
       speed: 5
   - bgs:
@@ -4456,8 +4461,8 @@ MonoBehaviour:
   BackCamera: {fileID: 1526032575}
   player: {fileID: 0}
   joystick: {fileID: 1044799010}
-  MoveRange: {x: 10, y: 4.5}
-  MovePivot: {x: 0, y: -1.1}
+  MoveRange: {x: 10, y: 5}
+  MovePivot: {x: 0, y: -0.5}
   EnemyPower: 1
   XPPrefab: {fileID: 8339991442943732091, guid: b379a882caa8ed14ba39e2a473ce3ce2, type: 3}
   MaxXP: 50
@@ -4497,6 +4502,8 @@ MonoBehaviour:
   - {fileID: 7883651356100267816, guid: c58228cd15bb3ae468e74476961569c8, type: 3}
   - {fileID: 1091152062516125674, guid: dc4517977c91c0a49b517ebc5d89a0bd, type: 3}
   - {fileID: 6429657059573211761, guid: 09645bf7f68cbd24885b1ebbc34f7693, type: 3}
+  - {fileID: 2920288409773848556, guid: 882422c1d6c07d84c866f9d52bf664c8, type: 3}
+  - {fileID: 2107807676094443317, guid: a2a657d80aed5d24c89c930f55fd62e2, type: 3}
   activeSkills:
   - {fileID: 4038715788137894328, guid: f6b5d72bb580390409bf74ee012c728d, type: 3}
   - {fileID: 6135124214814187006, guid: 0c65a6282d4109e47a8192ba55a52c4d, type: 3}

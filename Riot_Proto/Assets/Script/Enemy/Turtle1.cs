@@ -30,7 +30,7 @@ public class Turtle1 : EnemyBase
 
         transform.position = pos;
 
-        if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 5)
+        if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 2)
         {
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);
             GameManager.instance.curEnemys.Remove(gameObject);

@@ -11,7 +11,7 @@ public class IncreaseCD : AbilityBase
 
     public override void Ability()
     {
-        GameManager.instance.player.CritDamage += (increaseValue * Mathf.Pow((1 + 0.2f), level));
+        GameManager.instance.player.CritDamage += (increaseValue * Mathf.Pow((1 + 0.1f), level));
     }
 
     // Start is called before the first frame update
@@ -39,6 +39,6 @@ public class IncreaseCD : AbilityBase
 
     public override string GetStatText()
     {
-        return "크리티컬 데미지 " + GameManager.instance.player.CritDamage * 100 + "% → " + (GameManager.instance.player.CritDamage + ((increaseValue * Mathf.Pow((1 + 0.2f), level)))) * 100 + "%";
+        return "크리티컬 데미지 " + GameManager.instance.player.CritDamage * 100 + "% → " + (GameManager.instance.player.CritDamage + ((increaseValue * Mathf.Pow((1 + 0.1f), level)))) * 100 + "%";
     }
 }

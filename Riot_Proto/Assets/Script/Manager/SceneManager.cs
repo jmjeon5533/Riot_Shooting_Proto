@@ -84,7 +84,6 @@ public class SceneManager : MonoBehaviour
     }
     public void StageStart()
     {
-        CtrlLock = CtrlToggle.isOn;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
     }
     public void MainMenu()

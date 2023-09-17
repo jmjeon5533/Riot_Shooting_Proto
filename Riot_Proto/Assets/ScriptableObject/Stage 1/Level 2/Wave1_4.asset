@@ -20,7 +20,7 @@ MonoBehaviour:
     SpawnDelay: 2
   - Enemy: Spider1
     SpawnDelay: 0.7
-  - Enemy: Spider1
+  - Enemy: Golem1
     SpawnDelay: 0.7
-  - Enemy: Spider1
+  - Enemy: Mage1
     SpawnDelay: 0.7

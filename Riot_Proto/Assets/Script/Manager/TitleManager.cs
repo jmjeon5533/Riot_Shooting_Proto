@@ -19,7 +19,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] RawImage CharImage;
     [SerializeField] Transform explainPanel;
     [Space(10)]
-    public Text moraText;
+    public Text[] moraText;
     [Space(10)]
     [Header("ActiveSkill")]
     public Sprite[] ASkillSprite;
@@ -94,7 +94,9 @@ public class TitleManager : MonoBehaviour
         explainPanel.gameObject.SetActive(false);
         CharImage.color = Color.clear;
         CharImage.transform.localScale = new Vector3(1, 1, 1);
-        moraText.text = SceneManager.instance.playerData.PlayerMora.ToString();
+        moraText[0].text = SceneManager.instance.playerData.PlayerMora.ToString();
+        moraText[1].text = SceneManager.instance.playerData.PlayerMora.ToString();
+
     }
     public void CharButtonInit() //캐릭터 버튼 초기화
     {

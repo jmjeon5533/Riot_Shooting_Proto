@@ -19,7 +19,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] RawImage CharImage;
     [SerializeField] Transform explainPanel;
     [Space(10)]
-    public Text moraText;
+    public Text[] moraText;
     [Space(10)]
     [Header("ActiveSkill")]
     public Sprite[] ASkillSprite;
@@ -34,7 +34,6 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Text ASkillExplainText;
     [SerializeField] Text ASkillCoolTimeText;
     [SerializeField] GameObject ActivePrefab;
-
     RawImage SelectRawImage;
     Vector3 returnPos;
 
@@ -45,38 +44,39 @@ public class TitleManager : MonoBehaviour
     }
     private void Start()
     {
+        var p = SceneManager.instance.playerData;
         SceneManager.instance.SetResolution(Mcamera);
         explainPanel.gameObject.SetActive(false);
         OptionButton.onClick.AddListener(() => SceneManager.instance.Option(0));
         CharButtonInit();
         StageButtonInit();
-        ASkillButtonAdd();
-        InitPanel(0);
-    }
-    
-
-    public void ASkillButtonAdd()
-    {
-        var p = SceneManager.instance.playerData;
         for (int i = 0; i < p.abilitiy.Count; i++)
         {
-            var b = Instantiate(ActivePrefab, ASkillParent).GetComponent<Button>();
-            b.image.sprite = ASkillSprite[p.abilitiy[i].index];
-            Color[] colors = { Color.yellow, new Color(1,0.5f,0,1), Color.red};
-            b.transform.GetChild(0).GetComponent<Image>().color = colors[p.abilitiy[i].level - 1];
-            var ab = p.abilitiy[i];
-            var num = i;
-            b.onClick.AddListener(() =>
-            {
-                SceneManager.instance.ActiveIndex = ab.index;
-                SceneManager.instance.ActiveLevel = ab.level;
-                ASkillImage.sprite = ASkillSprite[ab.index];
-                ASkillBorder.color = colors[p.abilitiy[num].level - 1];
-                ASkillNameText.text = ASkillName[ab.index];
-                ASkillCoolTimeText.text = ASkillCoolTime[ab.index].ToString() + "s";
-                ASkillExplainText.text = ASkillExplain[ab.index];
-            });
+            ASkillButtonAdd(i);
         }
+        InitPanel(0);
+    }
+
+
+    public void ASkillButtonAdd(int i)
+    {
+        var p = SceneManager.instance.playerData;
+        var b = Instantiate(ActivePrefab, ASkillParent).GetComponent<Button>();
+        b.image.sprite = ASkillSprite[p.abilitiy[i].index];
+        Color[] colors = { Color.yellow, new Color(1, 0.5f, 0, 1), Color.red };
+        b.transform.GetChild(0).GetComponent<Image>().color = colors[p.abilitiy[i].level - 1];
+        var ab = p.abilitiy[i];
+        var num = i;
+        b.onClick.AddListener(() =>
+        {
+            SceneManager.instance.ActiveIndex = ab.index;
+            SceneManager.instance.ActiveLevel = ab.level;
+            ASkillImage.sprite = ASkillSprite[ab.index];
+            ASkillBorder.color = colors[p.abilitiy[num].level - 1];
+            ASkillNameText.text = ASkillName[ab.index];
+            ASkillCoolTimeText.text = ASkillCoolTime[ab.index].ToString() + "s";
+            ASkillExplainText.text = ASkillExplain[ab.index];
+        });
     }
     public void InitPanel(int index) //타이틀 패널 바꾸기
     {
@@ -85,7 +85,7 @@ public class TitleManager : MonoBehaviour
             Panel[i].SetActive(false);
         }
         Panel[index].SetActive(true);
-        if(index.Equals(4))
+        if (index.Equals(4))
         {
             StageButtonInit();
             Debug.Log("Test");
@@ -94,7 +94,9 @@ public class TitleManager : MonoBehaviour
         explainPanel.gameObject.SetActive(false);
         CharImage.color = Color.clear;
         CharImage.transform.localScale = new Vector3(1, 1, 1);
-        moraText.text = SceneManager.instance.playerData.PlayerMora.ToString();
+        moraText[0].text = SceneManager.instance.playerData.PlayerMora.ToString();
+        moraText[1].text = SceneManager.instance.playerData.PlayerMora.ToString();
+
     }
     public void CharButtonInit() //캐릭터 버튼 초기화
     {
@@ -156,8 +158,7 @@ public class TitleManager : MonoBehaviour
     }
     public void Exit()
     {
-        if(!File.Exists(Application.dataPath+"/Json/savefile.json"))
-            SceneManager.instance.JsonSave();
+        SceneManager.instance.JsonSave();
         Application.Quit();
     }
     void OnApplicationQuit()

@@ -36,7 +36,7 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         var y = Mathf.Abs(s.ScreenArea.y - s.minusScreen.y) / 2;
         minusVec = new Vector2(x, y);
         
-        if(!SceneManager.instance.CtrlLock) Stick.anchoredPosition = eventData.position - minusVec;
+        Stick.anchoredPosition = eventData.position - minusVec;
         input = eventData.position - Stick.anchoredPosition - minusVec;
         Lever.anchoredPosition = Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f);
         AlphaTarget = 0.7f;

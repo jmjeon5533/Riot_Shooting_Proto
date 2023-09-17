@@ -402,6 +402,9 @@ MonoBehaviour:
   - key: Shield
     obj: {fileID: 5932559034786085994, guid: 37ff599bcce2f694c93f82d917986758, type: 3}
     maxAmount: 200
+  - key: Golem1
+    obj: {fileID: 1037902292875660728, guid: 65b5bd5b316595342bab9670d99b1a56, type: 3}
+    maxAmount: 50
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

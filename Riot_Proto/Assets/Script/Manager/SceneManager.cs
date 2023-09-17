@@ -31,12 +31,6 @@ public class SceneManager : MonoBehaviour
 
     [Space(10)]
     public PlayerData playerData;
-    [Space(10)]
-    string path;
-    string filename = "savefile.json";
-
-    [Header("Option")]
-    public bool CtrlLock;
     [SerializeField] Transform OptionPanel;
     public Toggle CtrlToggle;
     bool OptionMove;
@@ -45,14 +39,7 @@ public class SceneManager : MonoBehaviour
         if (instance == null) instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
-        if (!Directory.Exists(Application.dataPath + "/Json/"))
-        {
-            Directory.CreateDirectory(Application.dataPath + "/Json/");
-        }
-
-        path = Application.dataPath + "/Json/";
         JsonLoad();
-        
     }
     private void Start()
     {
@@ -60,31 +47,20 @@ public class SceneManager : MonoBehaviour
     }
     public void JsonLoad()
     {
-        string data = File.ReadAllText(path + filename);
-        if (data == null)
-        {
-            PlayerData saveData = new PlayerData();
-            saveData.PlayerMora = 0;
-            saveData.abilitiy = new();
-            playerData = saveData;
-        }
-        else
-        {
-            playerData = JsonUtility.FromJson<PlayerData>(data);
-        }
+        string data = PlayerPrefs.GetString("savedata", "null");
+        print(data);
+        playerData = data.Equals("null") || string.IsNullOrEmpty(data) ? new PlayerData() : JsonUtility.FromJson<PlayerData>(data);
     }
-    public async void JsonSave()
+    public void JsonSave()
     {
         PlayerData saveData = new PlayerData();
         saveData.PlayerMora = playerData.PlayerMora;
         saveData.abilitiy = new List<Ability>(playerData.abilitiy);
         string data = JsonUtility.ToJson(saveData);
-        print($"{path + filename},{data}");
-        await File.WriteAllTextAsync(path + filename, data);
+        PlayerPrefs.SetString("savedata",data);
     }
     public void StageStart()
     {
-        CtrlLock = CtrlToggle.isOn;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
     }
     public void MainMenu()

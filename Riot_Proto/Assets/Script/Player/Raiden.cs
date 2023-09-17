@@ -78,15 +78,15 @@ public class Raiden : Player
             }
             case 2:
             {
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 3) + (Vector3.up * 0.5f), Quaternion.identity));
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 3) + (Vector3.down * 0.5f), Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 3) + (Vector3.up * 0.3f), Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 3) + (Vector3.down * 0.3f), Quaternion.identity));
                 break;
             }
             case 3:
             {
                 InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 3),Quaternion.identity));
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 3) + (Vector3.up * 0.5f) + (Vector3.left * 0.2f),Quaternion.identity));
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 3) + (Vector3.down * 0.5f) + (Vector3.left * 0.2f),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 2.75f) + (Vector3.up * 0.5f) + (Vector3.left * 0.2f),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 2.75f) + (Vector3.down * 0.5f) + (Vector3.left * 0.2f),Quaternion.identity));
                 break;
             }
             case 4:

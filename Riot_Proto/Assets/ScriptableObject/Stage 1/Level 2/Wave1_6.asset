@@ -22,5 +22,5 @@ MonoBehaviour:
     SpawnDelay: 0.5
   - Enemy: Mage1
     SpawnDelay: 0.5
-  - Enemy: Mage1
+  - Enemy: Mage2
     SpawnDelay: 0.5

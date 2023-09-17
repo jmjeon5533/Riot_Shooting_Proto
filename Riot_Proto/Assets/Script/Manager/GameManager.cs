@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     public Coroutine FadeCoroutine;
 
+    
+
     void Awake()
     {
         instance = this;

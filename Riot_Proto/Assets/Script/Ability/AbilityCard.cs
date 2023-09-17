@@ -47,7 +47,10 @@ public class AbilityCard : MonoBehaviour
     [SerializeField] GameObject activeSkillUI;
     [SerializeField] Image skillCoolUI;
     [SerializeField] GameObject skillListUI;
-     
+
+    List<GameObject> skillIcons = new List<GameObject>();
+    [SerializeField] GameObject skillIconObj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -309,16 +312,50 @@ public class AbilityCard : MonoBehaviour
 
     void AddSkillList(AbilityBase abi)
     {
-        var img = new GameObject().AddComponent<Image>();
-        img.transform.parent = skillListUI.transform;
+        var img = Instantiate(skillIconObj, skillListUI.transform).GetComponent<Image>();
+        //img.transform.parent = skillListUI.transform;
+        img.gameObject.name = abi.skillName;
         img.transform.localScale = Vector3.one;
         img.transform.localPosition = Vector3.zero;
         img.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 66);
         img.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 66);
-        img.sprite = abi.skillImage;
+        img.GetComponent<SkillIcon>().GetImage().rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 60);
+        img.GetComponent<SkillIcon>().GetImage().rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 60);
+        img.GetComponent<SkillIcon>().GetImage().sprite = abi.skillImage;
+        skillIcons.Add(img.gameObject);
 
     }
 
+    void SetSkillColor(AbilityBase abi)
+    {
+        foreach(var img in skillIcons)
+        {
+            if(img.name.Equals(abi.skillName))
+            {
+                var imgColor = img.GetComponent<Image>();
+                switch(abilityLevels[abi.skillName])
+                {
+                    case 2:
+                        imgColor.color = Color.green;
+                        break;
+                    case 3:
+                        imgColor.color = Color.blue;
+                        break;
+                    case 4:
+                        imgColor.color = new Color(100,1,255);
+                        break;
+                    case 5:
+                        imgColor.color = new Color(255,175,1);
+                        break;
+                    case 6:
+                        imgColor.color = new Color(1,255,255);
+                        break;
+                }
+                break;
+            }
+        }
+    }
+    
     //������ ī�带 ���� �ɷ� �迭�� �߰���Ű�� ������ �����ϴ� �Լ�
     public void SelectEnd(AbilityBase abi)
     {
@@ -327,6 +364,7 @@ public class AbilityCard : MonoBehaviour
         {
             abilityLevels[abi.skillName]++;
             curAbilityDic[abi.skillName].LevelUp();
+            SetSkillColor(abi);
         }
         else
         {

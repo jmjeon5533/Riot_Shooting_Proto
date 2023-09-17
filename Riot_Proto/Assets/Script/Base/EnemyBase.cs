@@ -139,7 +139,7 @@ public abstract class EnemyBase : MonoBehaviour
     public virtual void Damage(int damage)
     {
         if (IsSpawning()) return;
-        HP -= damage;
+        HP -= damage * damagedMultiplier;
         if (HP <= 0)
         {
             GameManager.instance.curEnemys.Remove(this.gameObject);

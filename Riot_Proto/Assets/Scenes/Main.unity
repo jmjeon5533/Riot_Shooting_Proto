@@ -4532,6 +4532,7 @@ MonoBehaviour:
   activeSkillUI: {fileID: 33267872}
   skillCoolUI: {fileID: 1821388555}
   skillListUI: {fileID: 889950123}
+  skillIconObj: {fileID: 3784462872482043396, guid: c172a0933886ced4ca28ba9d0d9968b2, type: 3}
 --- !u!1 &1686146291
 GameObject:
   m_ObjectHideFlags: 0

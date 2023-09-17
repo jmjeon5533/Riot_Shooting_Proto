@@ -5,7 +5,7 @@ using UnityEngine;
 public class IncreaseCD : AbilityBase
 {
 
-    public int increaseValue;
+    public float increaseValue;
 
     bool isOne = false;
 

@@ -347,7 +347,7 @@ MonoBehaviour:
     maxAmount: 100
   - key: PlayerBullet
     obj: {fileID: 7488623435463272498, guid: b7c2e428f26f83343a39d3baa0b35720, type: 3}
-    maxAmount: 100
+    maxAmount: 150
   - key: EnemyBullet
     obj: {fileID: 269225301555661974, guid: 77a3fadfd0297b64db4d4d36bc443111, type: 3}
     maxAmount: 100

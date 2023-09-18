@@ -159,10 +159,17 @@ public abstract class Player : MonoBehaviour
         anim.SetInteger("MoveState", Mathf.RoundToInt(input.x));
 
         transform.Translate(input * MoveSpeed * Time.deltaTime);
-
+        PCMove();
         transform.position
          = new Vector3(Mathf.Clamp(transform.position.x, -MoveRange.x + MovePivot.x, MoveRange.x + MovePivot.x),
          Mathf.Clamp(transform.position.y, -MoveRange.y + MovePivot.y, MoveRange.y + MovePivot.y));
+    }
+
+    void PCMove()
+    {
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+        transform.Translate(new Vector3((float)x, (float)y, 0) * MoveSpeed * Time.deltaTime * (Input.GetKey(KeyCode.LeftShift) ? 0.25f : 1));
     }
 
     public void AddBuff(BuffBase buff)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Boss1 : BossBase
 {
@@ -9,6 +10,17 @@ public class Boss1 : BossBase
      
     [SerializeField] Vector3 AttackPivot;
     [SerializeField] Vector2 AttackRange;
+    [SerializeField] Transform breathPos;
+    [SerializeField] float breathDuration;
+    [SerializeField] float limitY;
+
+    float maxHP;
+
+    protected override void Start()
+    {
+        base.Start();
+        maxHP = HP;
+    }
 
     protected override void Attack()
     {
@@ -34,10 +46,15 @@ public class Boss1 : BossBase
                     StartCoroutine(Attack3());
                     break;
                 }
+            case 3:
+                {
+                    StartCoroutine(Attack4());
+                    break;
+                }
         }
         pattern++;
-        if (pattern > 2) pattern = 0;
-        AttackCooltime = Random.Range(2f,4f);
+        if (pattern > 3) pattern = 0;
+        AttackCooltime = Random.Range(3f,4f);
     }
 
     void OnDrawGizmos()
@@ -98,9 +115,9 @@ public class Boss1 : BossBase
 
     IEnumerator Attack3_2()
     {
-        Vector3 shootPos1 = transform.position + (Vector3.up * 2);
+        Vector3 shootPos1 = transform.position + (Vector3.up * 1.7f);
         Vector3 shootPos2 = transform.position;
-        Vector3 shootPos3 = transform.position + (Vector3.down * 2);
+        Vector3 shootPos3 = transform.position + (Vector3.down * 1.7f);
         var p = GameManager.instance.player;
         for(int i = 0; i < 15;i++)
         {
@@ -113,6 +130,46 @@ public class Boss1 : BossBase
             yield return new WaitForSeconds(0.1f);
         }
     
+    }
+
+    IEnumerator Attack4()
+    {
+        var g = GameManager.instance;
+        var breath = PoolManager.Instance.GetObject("Breath", breathPos);
+        breath.transform.rotation = Quaternion.Euler(0f, -90, 0f);
+        breath.transform.localScale = Vector3.one * 1.5f;
+        breath.transform.localPosition = Vector3.zero;
+        int flip = 1;
+        for(int i = 0; i < (int)breathDuration;i++)
+        {
+            if (i % 2 == 0)
+            {
+                transform.DOMoveY(limitY * flip, 1.5f);
+                flip *= -1;
+            }
+            if (i % 3 == 0 && i > 0)
+            {
+                if((maxHP/2) >= HP)
+                {
+                    SpawnFireRise(new Vector3(Random.Range((-g.MoveRange.x) +0.8f, (g.MoveRange.x) - 0.8f), -g.MoveRange.y + 0.2f, 0));
+                    SpawnFireRise(new Vector3(Random.Range((-g.MoveRange.x) + 0.8f, (g.MoveRange.x) - 0.8f), -g.MoveRange.y + 0.2f, 0));
+                } else
+                {
+                    SpawnFireRise(new Vector3(g.player.transform.position.x, -g.MoveRange.y + 0.5f, 0));
+                }
+                
+            }
+            yield return new WaitForSeconds(1f);
+                    
+        }
+        yield return transform.DOMoveY(0,1).WaitForCompletion();
+        isAttack = false;
+    }
+
+    void SpawnFireRise(Vector3 pos)
+    {
+        var b = PoolManager.Instance.GetObject("FireRise", pos,Quaternion.identity);
+
     }
 
     Vector3 GetTargetDir(Vector3 origin, Vector3 target)

@@ -405,6 +405,12 @@ MonoBehaviour:
   - key: Golem1
     obj: {fileID: 1037902292875660728, guid: 65b5bd5b316595342bab9670d99b1a56, type: 3}
     maxAmount: 50
+  - key: Breath
+    obj: {fileID: 6828775318146200505, guid: ba1daf4b1e523944b8cd7beddb29f817, type: 3}
+    maxAmount: 3
+  - key: FireRise
+    obj: {fileID: 9001166172843743580, guid: 5d1c36aaffba9c54a926cc63c5a6ebf9, type: 3}
+    maxAmount: 10
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

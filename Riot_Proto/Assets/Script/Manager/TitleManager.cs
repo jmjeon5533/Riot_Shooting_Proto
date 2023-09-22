@@ -120,6 +120,11 @@ public class TitleManager : MonoBehaviour
             });
         }
     }
+    public void GetMora()
+    {
+        SceneManager.instance.playerData.PlayerMora += 1000;
+        InitPanel(2);
+    }
     public void SelectMove(bool OnOff)
     {
         StartCoroutine(SelectCharMove(OnOff));

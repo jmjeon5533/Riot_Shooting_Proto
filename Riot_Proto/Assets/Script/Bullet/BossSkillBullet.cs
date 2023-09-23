@@ -12,8 +12,13 @@ public class BossSkillBullet : MonoBehaviour
 
     float time = 0;
 
-    
-    
+
+
+    private void OnEnable()
+    {
+        time = 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

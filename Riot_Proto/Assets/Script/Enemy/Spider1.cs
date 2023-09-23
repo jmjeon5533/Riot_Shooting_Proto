@@ -18,7 +18,7 @@ public class Spider1 : EnemyBase
         StatMultiplier();
         var g = GameManager.instance;
         int[] m = {1, -1};
-        var y = Random.Range(3f, 6f) * m[Random.Range(0,2)];
+        var y = Random.Range(2.5f, 5.25f) * m[Random.Range(0,2)];
         transform.position = new Vector3(15, y, 0);
     }
     protected override void Update()

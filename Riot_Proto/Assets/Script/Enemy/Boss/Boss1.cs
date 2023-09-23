@@ -1,7 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using DG.Tweening;
+
+[System.Serializable]
+class RisePattern
+{
+    public float[] riseYs;
+    public float[] riseDelay;
+}
+
+
 
 public class Boss1 : BossBase
 {
@@ -13,6 +23,8 @@ public class Boss1 : BossBase
     [SerializeField] Transform breathPos;
     [SerializeField] float breathDuration;
     [SerializeField] float limitY;
+
+    [SerializeField] List<RisePattern> risePatterns = new List<RisePattern>();
 
     float maxHP;
 
@@ -147,15 +159,15 @@ public class Boss1 : BossBase
                 transform.DOMoveY(limitY * flip, 1.5f);
                 flip *= -1;
             }
-            if (i % 3 == 0 && i > 0)
+            if (i % 5 == 0 && i > 0)
             {
                 if((maxHP/2) >= HP)
                 {
-                    SpawnFireRise(new Vector3(Random.Range((-g.MoveRange.x) +0.8f, (g.MoveRange.x) - 0.8f), -g.MoveRange.y + 0.2f, 0));
-                    SpawnFireRise(new Vector3(Random.Range((-g.MoveRange.x) + 0.8f, (g.MoveRange.x) - 0.8f), -g.MoveRange.y + 0.2f, 0));
+                    StartCoroutine(SpawnFireRise(Random.Range(4, 8)));
+                    
                 } else
                 {
-                    SpawnFireRise(new Vector3(g.player.transform.position.x, -g.MoveRange.y + 0.5f, 0));
+                    StartCoroutine(SpawnFireRise(Random.Range(0, 4)));
                 }
                 
             }
@@ -166,10 +178,16 @@ public class Boss1 : BossBase
         isAttack = false;
     }
 
-    void SpawnFireRise(Vector3 pos)
+    IEnumerator SpawnFireRise(int index)
     {
-        var b = PoolManager.Instance.GetObject("FireRise", pos,Quaternion.identity);
-
+        
+        var g = GameManager.instance;
+        for (int i = 0; i < risePatterns[index].riseYs.Length; i++)
+        {
+            yield return new WaitForSeconds(risePatterns[index].riseDelay[i]);
+            Debug.Log(risePatterns[index].riseDelay[i]);
+            var b = PoolManager.Instance.GetObject("FireRise", new Vector3(risePatterns[index].riseYs[i], -g.MoveRange.y,0),Quaternion.identity);
+        }
     }
 
     Vector3 GetTargetDir(Vector3 origin, Vector3 target)

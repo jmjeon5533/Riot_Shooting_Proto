@@ -33,7 +33,16 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Text ASkillNameText;
     [SerializeField] Text ASkillExplainText;
     [SerializeField] Text ASkillCoolTimeText;
-    [SerializeField] GameObject ActivePrefab;
+    [SerializeField] GameObject ASkillPrefab;
+    [Space(10)]
+    [Header("Buy")]
+    public Ability buyAbility;
+    BuyButton selectSkill;
+    [SerializeField] Image BuySkillImage;
+    [SerializeField] Image BuySkillBorder;
+    [SerializeField] Text BuySkillNameText;
+    [SerializeField] Text BuySkillExplainText;
+    [SerializeField] Text BuyMoney;
     RawImage SelectRawImage;
     Vector3 returnPos;
 
@@ -56,12 +65,32 @@ public class TitleManager : MonoBehaviour
         }
         InitPanel(0);
     }
-
-
+    public void SelectBuySkill(BuyButton btn)
+    {
+        selectSkill = btn;
+        Color[] colors = { Color.yellow, new Color(1, 0.5f, 0, 1), Color.red };
+        BuySkillImage.sprite = ASkillSprite[btn.ability.index];
+        BuySkillBorder.color = colors[btn.ability.level - 1];
+        BuySkillNameText.text = ASkillName[btn.ability.index];
+        BuySkillExplainText.text = ASkillExplain[btn.ability.index];
+        BuyMoney.text = (btn.ability.level * 2000).ToString();
+    }
+    public void BuyButtonSelect()
+    {
+        if (SceneManager.instance.playerData.PlayerMora >= selectSkill.ability.level * 2000 && !selectSkill.isSale)
+        {
+            SceneManager.instance.playerData.abilitiy.Add(selectSkill.ability);
+            ASkillButtonAdd(SceneManager.instance.playerData.abilitiy.Count - 1);
+            SceneManager.instance.playerData.PlayerMora -= selectSkill.ability.level * 2000;
+            selectSkill.saleImage.color = new Color(0, 0, 0, 0.8f);
+            selectSkill.isSale = true;
+            InitPanel(2);
+        }
+    }
     public void ASkillButtonAdd(int i)
     {
         var p = SceneManager.instance.playerData;
-        var b = Instantiate(ActivePrefab, ASkillParent).GetComponent<Button>();
+        var b = Instantiate(ASkillPrefab, ASkillParent).GetComponent<Button>();
         b.image.sprite = ASkillSprite[p.abilitiy[i].index];
         Color[] colors = { Color.yellow, new Color(1, 0.5f, 0, 1), Color.red };
         b.transform.GetChild(0).GetComponent<Image>().color = colors[p.abilitiy[i].level - 1];

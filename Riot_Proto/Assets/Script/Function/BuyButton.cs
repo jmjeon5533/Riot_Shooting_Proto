@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class BuyButton : MonoBehaviour
 {
-    [SerializeField] Ability ability;
+    public Ability ability;
     Button button;
     Image border;
     Text MuchText;
-    bool isSale;
-    Image saleImage;
+    public bool isSale;
+    public Image saleImage;
     void Awake()
     {
         button = GetComponent<Button>();
@@ -31,15 +31,8 @@ public class BuyButton : MonoBehaviour
         border.color = colors[ability.level - 1];
         button.onClick.AddListener(()=> 
         {
-            if(SceneManager.instance.playerData.PlayerMora >= ability.level * 2000 && !isSale)
-            {
-                SceneManager.instance.playerData.abilitiy.Add(ability);
-                TitleManager.instance.ASkillButtonAdd(SceneManager.instance.playerData.abilitiy.Count - 1);
-                SceneManager.instance.playerData.PlayerMora -= ability.level * 2000;
-                saleImage.color = new Color(0,0,0,0.8f);
-                isSale = true;
-                TitleManager.instance.InitPanel(2);
-            }
+                TitleManager.instance.SelectBuySkill(this);
+                print("!");
         });
     }
 }

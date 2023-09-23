@@ -10,22 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dade780c5cb8984e8c30cce45d74da6, type: 3}
-  m_Name: Wave1_1
+  m_Name: Wave1_8
   m_EditorClassIdentifier: 
   startDelay: 1
   WaveList:
-  - Enemy: Turtle1
-    SpawnDelay: 1
-    SpawnPos: {x: 15, y: 0, z: 0}
-  - Enemy: Bat1
+  - Enemy: Mage1
     SpawnDelay: 0.5
-    SpawnPos: {x: 15, y: 0, z: 0}
-  - Enemy: Bat1
-    SpawnDelay: 2
-    SpawnPos: {x: 15, y: 0, z: 0}
-  - Enemy: Bat2
-    SpawnDelay: 0.5
-    SpawnPos: {x: 15, y: 0, z: 0}
-  - Enemy: Bat2
+  - Enemy: Spider1
     SpawnDelay: 1
-    SpawnPos: {x: 15, y: 0, z: 0}
+  - Enemy: Spider1
+    SpawnDelay: 1
+  - Enemy: Golem1
+    SpawnDelay: 0.5
+  - Enemy: Golem1
+    SpawnDelay: 1

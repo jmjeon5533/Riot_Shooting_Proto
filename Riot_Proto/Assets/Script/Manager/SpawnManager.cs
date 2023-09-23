@@ -30,13 +30,13 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         while (SpawnCount < BossSpawnWave)
         {
-            var Level = SpawnCount <= 10 ? Random.Range(0,3) : Random.Range(3,6);
+            var Level = SpawnCount <= 10 ? Random.Range(0,5) : Random.Range(5,11);
             var wave = WavePrefab[StageLevel].Wavelist[Level];
             yield return new WaitForSeconds(wave.startDelay);
             for (int i = 0; i < wave.WaveList.Count; i++)
             {
                 if(!GameManager.instance.IsGame) yield break;
-                GameObject enemy = PoolManager.Instance.GetObject(wave.WaveList[i].Enemy, new Vector3(15, Random.Range(-4.5f, 5f), 0), Quaternion.identity);
+                GameObject enemy = PoolManager.Instance.GetObject(wave.WaveList[i].Enemy, wave.WaveList[i].SpawnPos, Quaternion.identity);
                 GameManager.instance.curEnemys.Add(enemy);
                 yield return new WaitForSeconds(wave.WaveList[i].SpawnDelay);
             }
@@ -60,4 +60,5 @@ public class SpawnWave
 {
     public string Enemy;
     public float SpawnDelay;
+    public Vector3 SpawnPos = new Vector3(99,99,99);
 }

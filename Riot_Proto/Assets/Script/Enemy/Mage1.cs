@@ -13,10 +13,6 @@ public class Mage1 : EnemyBase
     {
         base.Start();
         var g = GameManager.instance;
-
-        var x = Random.Range(0, g.MoveRange.x + g.MovePivot.x);
-        var y = Random.Range(-g.MoveRange.y + g.MovePivot.y, g.MoveRange.y + g.MovePivot.y);
-        transform.position = new Vector3(x, y, 0);
     }
     protected override void Move()
     {

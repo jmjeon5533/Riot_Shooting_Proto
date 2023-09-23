@@ -53,7 +53,7 @@ MonoBehaviour:
     \uB9DE\uC740 \uB300\uC0C1\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C \uC7A0\uC2DC \uAC10\uC18C\uC2DC\uD0A8\uB2E4"
   stats: 
   curTime: 0
-  maxCooltime: 10
+  maxCooltime: 8
   delay: 0
   range: 10
   duration: 3

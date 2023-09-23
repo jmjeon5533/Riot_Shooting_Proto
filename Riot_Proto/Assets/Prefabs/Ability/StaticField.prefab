@@ -54,8 +54,8 @@ MonoBehaviour:
     \uB808\uBCA8\uC5C5 \uC2DC \uBC94\uC704\uAC00 \uC99D\uAC00\uD55C\uB2E4. "
   stats: 
   curTime: 0
-  maxCooltime: 15
-  defaultDamage: 3
+  maxCooltime: 12
+  defaultDamage: 2
   duration: 4
   delay: 0.3
   range: 6

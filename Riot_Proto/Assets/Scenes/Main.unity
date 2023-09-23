@@ -411,6 +411,9 @@ MonoBehaviour:
   - key: FireRise
     obj: {fileID: 9001166172843743580, guid: 5d1c36aaffba9c54a926cc63c5a6ebf9, type: 3}
     maxAmount: 40
+  - key: Explosion
+    obj: {fileID: 919622504480833353, guid: 2493e9a2ac06d0f498f056e2db8412ff, type: 3}
+    maxAmount: 10
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

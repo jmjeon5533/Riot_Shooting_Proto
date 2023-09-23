@@ -26,7 +26,14 @@ public class Boss1 : BossBase
 
     [SerializeField] List<RisePattern> risePatterns = new List<RisePattern>();
 
+    bool isDeadMotionPlay = false;
+
     float maxHP;
+
+    private void OnEnable()
+    {
+        isDeadMotionPlay = false;
+    }
 
     protected override void Start()
     {
@@ -36,6 +43,7 @@ public class Boss1 : BossBase
 
     protected override void Attack()
     {
+        if (isDeadMotionPlay) return;
         var AState = pattern;
         anim.SetInteger("AttackState", AState);
         anim.SetTrigger("Attack");
@@ -188,6 +196,44 @@ public class Boss1 : BossBase
             Debug.Log(risePatterns[index].riseDelay[i]);
             var b = PoolManager.Instance.GetObject("FireRise", new Vector3(risePatterns[index].riseYs[i], -g.MoveRange.y,0),Quaternion.identity);
         }
+    }
+
+    public override void Damage(int damage)
+    {
+        if (IsSpawning()) return;
+        HP -= damage * damagedMultiplier;
+        if (HP <= 0 && !isDeadMotionPlay)
+        {
+            
+            
+            GameManager.instance.curEnemys.Remove(this.gameObject);
+            for (int i = 0; i < XPRate; i++)
+            {
+                Dead();
+            }
+            StartCoroutine(DeadMotion());
+            
+        }
+        PoolManager.Instance.GetObject("Hit", transform.position, Quaternion.identity);
+    }
+
+    
+
+    IEnumerator DeadMotion()
+    {
+
+        isDeadMotionPlay = true;
+        GameManager.instance.SetCameraShake(7, 0.09f);
+        for(int i = 0; i < 9; i++)
+        {
+            Vector3 exPos = Random.insideUnitSphere;
+            exPos.z = -3;
+            PoolManager.Instance.GetObject("Explosion", transform.position + (exPos * 1.3f), Quaternion.identity);
+            if (i == 5) transform.DOMoveX(15, 4);
+            yield return new WaitForSeconds(0.75f);
+        }
+        
+        PoolManager.Instance.PoolObject(EnemyTag, gameObject);
     }
 
     Vector3 GetTargetDir(Vector3 origin, Vector3 target)

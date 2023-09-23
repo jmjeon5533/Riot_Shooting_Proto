@@ -75,6 +75,27 @@ public class GameManager : MonoBehaviour
         else return false;
     }
 
+    public void SetCameraShake(float time, float power)
+    {
+        StartCoroutine(CameraShake(time, power));
+    }
+
+    IEnumerator CameraShake(float time, float power)
+    {
+        float curTime = 0;
+        Vector3 originPos = Camera.main.transform.position;
+        var cam = Camera.main;
+        while (curTime < time)
+        {
+            var pos = originPos + (Random.insideUnitSphere * power);
+            pos.z = originPos.z;
+            cam.transform.position = pos;
+            curTime += 0.05f;
+            yield return new WaitForSeconds(0.05f);
+        }
+        cam.transform.position = originPos; 
+    }
+
     IEnumerator FadeTime(float target)
     {
         var wait = new WaitForSecondsRealtime(0);

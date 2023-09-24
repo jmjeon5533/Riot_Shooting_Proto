@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ray_Mesh
+  m_Name: Torrent - Copy
   m_Shader: {fileID: 4800000, guid: 53411d7349006fa4db6d91d1af272d98, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a3f1a08e418520a4891772f7e9283b14, type: 3}
+        m_Texture: {fileID: 2800000, guid: c9c88b58e71a80a4eaba07d55bfd805f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -57,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SubTex:
-        m_Texture: {fileID: 2800000, guid: 4aadd3ca5f847044dafb66ff975a5351, type: 3}
+        m_Texture: {fileID: 2800000, guid: 55f112c1089550749a3e72757d157259, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []

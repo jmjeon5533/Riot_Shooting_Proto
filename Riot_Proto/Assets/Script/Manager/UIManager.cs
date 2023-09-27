@@ -21,9 +21,11 @@ public class UIManager : MonoBehaviour
 
     public Image XPBar;
     public Transform canvas;
+    public Transform bgCanvas;
     public Transform ClearTab;
     public Transform OverTab;
     public Image[] Heart;
+    public Text[] RateText;
 
     public Image FadeBg;
     public GameObject StagePrefab;
@@ -73,7 +75,15 @@ public class UIManager : MonoBehaviour
     }
     public void MainMenu()
     {
+        SceneManager.instance.playerData.PlayerMora += GameManager.instance.GetMoney;
         SceneManager.instance.MainMenu();
+    }
+    public void InitRate()
+    {
+        for(int i = 0; i < RateText.Length; i++)
+        {
+            RateText[i].text = GameManager.instance.GetMoney.ToString();
+        }
     }
     public void NextStage()
     {
@@ -94,8 +104,8 @@ public class UIManager : MonoBehaviour
         {
             float b = 0.8f;
 
-            var BG1 = PoolManager.Instance.GetObject("BG",canvas).GetComponent<Image>();
-            var BG2 = PoolManager.Instance.GetObject("BG",canvas).GetComponent<Image>();
+            var BG1 = PoolManager.Instance.GetObject("BG",bgCanvas).GetComponent<Image>();
+            var BG2 = PoolManager.Instance.GetObject("BG",bgCanvas).GetComponent<Image>();
 
             curBGObj.Add(BG1.gameObject);
             curBGObj.Add(BG2.gameObject);

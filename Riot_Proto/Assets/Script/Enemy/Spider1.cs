@@ -8,6 +8,12 @@ public class Spider1 : EnemyBase
     {
         
     }
+    public override void StatMultiplier()
+    {
+        var p = GameManager.instance.EnemyPower * 1.2f;
+        HP = Mathf.Round(p * baseHp);
+        XPRate = Mathf.Round(p * baseXPRate);
+    }
     protected override void Move()
     {
         transform.Translate(Vector3.left * Time.deltaTime * MoveSpeed);

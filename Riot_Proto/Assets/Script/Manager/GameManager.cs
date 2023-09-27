@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public int XP;
     public int Level;
     public int SelectChance;
+    public int GetMoney = 0;
     [Space(10)]
     public List<GameObject> playerPrefab = new();
     public List<GameObject> ItemList = new();
@@ -28,8 +29,6 @@ public class GameManager : MonoBehaviour
     public bool IsGame = false;
 
     public Coroutine FadeCoroutine;
-
-    
 
     void Awake()
     {

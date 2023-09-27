@@ -25,7 +25,6 @@ public class SpawnManager : MonoBehaviour
     }
     IEnumerator SpawnWave()
     {
-        
         yield return new WaitUntil(() => GameManager.instance.IsGame);
         yield return new WaitForSeconds(2f);
         while (SpawnCount < BossSpawnWave)

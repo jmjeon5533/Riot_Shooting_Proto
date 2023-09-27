@@ -22,7 +22,7 @@ public class BuyButton : MonoBehaviour
     {
         ability.index = Random.Range(0, 3);
         ability.level = Random.Range(1, 4);
-        MuchText.text = $"{ability.level * 2000}";
+        MuchText.text = $"{ability.level * 6000}";
 
         saleImage.color = isSale ? new Color(0, 0, 0, 0.8f) : new Color(0, 0, 0, 0f);
 
@@ -32,7 +32,6 @@ public class BuyButton : MonoBehaviour
         button.onClick.AddListener(() =>
         {
             TitleManager.instance.SelectBuySkill(this);
-            print("!");
         });
     }
 }

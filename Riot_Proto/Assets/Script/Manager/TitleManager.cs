@@ -77,11 +77,11 @@ public class TitleManager : MonoBehaviour
     }
     public void BuyButtonSelect()
     {
-        if (SceneManager.instance.playerData.PlayerMora >= selectSkill.ability.level * 2000 && !selectSkill.isSale)
+        if (SceneManager.instance.playerData.PlayerMora >= selectSkill.ability.level * 6000 && !selectSkill.isSale)
         {
             SceneManager.instance.playerData.abilitiy.Add(selectSkill.ability);
             ASkillButtonAdd(SceneManager.instance.playerData.abilitiy.Count - 1);
-            SceneManager.instance.playerData.PlayerMora -= selectSkill.ability.level * 2000;
+            SceneManager.instance.playerData.PlayerMora -= selectSkill.ability.level * 6000;
             selectSkill.saleImage.color = new Color(0, 0, 0, 0.8f);
             selectSkill.isSale = true;
             InitPanel(2);

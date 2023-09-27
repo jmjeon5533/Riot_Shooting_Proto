@@ -17,7 +17,7 @@ public class DamageText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeCount -= Time.deltaTime;
+        timeCount -= Time.deltaTime * 1.5f;
         text.color = new Color(1,1,1,timeCount);
         rect.localScale = new Vector3(1,1,1) * timeCount;
         rect.anchoredPosition += Vector2.up * Time.deltaTime * UpSpeed;

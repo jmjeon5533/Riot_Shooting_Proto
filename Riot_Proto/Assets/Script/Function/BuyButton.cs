@@ -20,19 +20,19 @@ public class BuyButton : MonoBehaviour
     }
     void Start()
     {
-        ability.index = Random.Range(0,3);
-        ability.level = Random.Range(1,4);
+        ability.index = Random.Range(0, 3);
+        ability.level = Random.Range(1, 4);
         MuchText.text = $"{ability.level * 2000}";
 
-        saleImage.color = isSale ? new Color(0,0,0,0.8f) : new Color(0,0,0,0f);
+        saleImage.color = isSale ? new Color(0, 0, 0, 0.8f) : new Color(0, 0, 0, 0f);
 
         button.image.sprite = TitleManager.instance.ASkillSprite[ability.index];
-        Color[] colors = { Color.yellow, new Color(1,0.5f,0,1), Color.red};
+        Color[] colors = { Color.yellow, new Color(1, 0.5f, 0, 1), Color.red };
         border.color = colors[ability.level - 1];
-        button.onClick.AddListener(()=> 
+        button.onClick.AddListener(() =>
         {
-                TitleManager.instance.SelectBuySkill(this);
-                print("!");
+            TitleManager.instance.SelectBuySkill(this);
+            print("!");
         });
     }
 }

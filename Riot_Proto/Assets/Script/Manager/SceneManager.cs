@@ -57,7 +57,11 @@ public class SceneManager : MonoBehaviour
         saveData.PlayerMora = playerData.PlayerMora;
         saveData.abilitiy = new List<Ability>(playerData.abilitiy);
         string data = JsonUtility.ToJson(saveData);
-        PlayerPrefs.SetString("savedata",data);
+        PlayerPrefs.SetString("savedata", data);
+    }
+    void OnApplicationQuit()
+    {
+        JsonSave();
     }
     public void StageStart()
     {

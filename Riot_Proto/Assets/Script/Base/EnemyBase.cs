@@ -147,10 +147,18 @@ public abstract class EnemyBase : MonoBehaviour
             {
                 Dead();
             }
-
+            GameManager.instance.GetMoney += (int)(XPRate * 25);
+            UIManager.instance.InitRate();
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);
         }
         PoolManager.Instance.GetObject("Hit", transform.position, Quaternion.identity);
+        var DamageTextPos = (Vector2)transform.position + (Random.insideUnitCircle * 2);
+        var DmgText = PoolManager.Instance.GetObject("DamageText",UIManager.instance.canvas)
+            .GetComponent<DamageText>();
+        DmgText.rect.position = DamageTextPos;
+        DmgText.text.text = damage.ToString();
+        DmgText.timeCount = 1 + (damage * 0.01f);
+        DmgText.text.color = Color.white;
     }
     protected virtual void Dead()
     {

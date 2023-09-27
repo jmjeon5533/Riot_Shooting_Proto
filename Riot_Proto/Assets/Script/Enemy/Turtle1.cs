@@ -20,6 +20,12 @@ public class Turtle1 : EnemyBase
         transform.position = new Vector3(15, y, 0);
         MovePos = new Vector3(-15, y, 0);
     }
+    public override void StatMultiplier()
+    {
+        var p = GameManager.instance.EnemyPower * 1.2f;
+        HP = Mathf.Round(p * baseHp);
+        XPRate = Mathf.Round(p * baseXPRate);
+    }
     protected override void Update()
     {
         base.Update();

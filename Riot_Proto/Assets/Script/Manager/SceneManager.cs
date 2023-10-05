@@ -10,7 +10,6 @@ using System.IO;
 public class PlayerData
 {
     public int PlayerMora;
-    public List<Ability> abilitiy = new();
 }
 [System.Serializable]
 public class Ability
@@ -55,7 +54,6 @@ public class SceneManager : MonoBehaviour
     {
         PlayerData saveData = new PlayerData();
         saveData.PlayerMora = playerData.PlayerMora;
-        saveData.abilitiy = new List<Ability>(playerData.abilitiy);
         string data = JsonUtility.ToJson(saveData);
         PlayerPrefs.SetString("savedata", data);
     }

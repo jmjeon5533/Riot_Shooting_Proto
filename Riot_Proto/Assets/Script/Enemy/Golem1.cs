@@ -34,11 +34,11 @@ public class Golem1 : EnemyBase
         var alpha = Mathf.MoveTowards(a,0,Time.deltaTime);
         ShieldMaterial.material.SetColor("_Color",new Color(0.5f,0.5f,1,alpha));
     }
-    public override void Damage(int damage)
+    public override void Damage(int damage, bool isCrit)
     {
         if(isAttack)
         {
-            base.Damage(damage);
+            base.Damage(damage, isCrit);
         }
         else
         {

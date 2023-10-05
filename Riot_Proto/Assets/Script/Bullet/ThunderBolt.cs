@@ -19,6 +19,8 @@ public class ThunderBolt : BulletBase
     Vector3 startPos;
     Vector3 middlePos;
 
+    Vector3 prevPos;
+
     
 
     Player player;
@@ -39,9 +41,12 @@ public class ThunderBolt : BulletBase
         else
         {
             target = FindClosestEnemy();
-            targetPos = target.position;
+            if (target == transform) targetPos = (prevPos - transform.position).normalized;
+            else
+                targetPos = target.position;
         }
         time += Time.deltaTime * MoveSpeed;
+        prevPos = targetPos;
         Vector3 up = (targetPos - startPos).normalized;
         //Vector3 middlePos = ((startPos + targetPos) / 2) + (up * power);
         Vector3 pos = GameManager.CalculateBezier(startPos, middlePos, targetPos, time);
@@ -82,8 +87,9 @@ public class ThunderBolt : BulletBase
             if (h.CompareTag("Enemy"))
             {
 
-                h.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
-                    ? (int)(damage * player.CritDamage) : damage);
+                float chance = Random.Range(0, 100f);
+                h.GetComponent<EnemyBase>().Damage((chance <= player.CritRate)
+                        ? (int)(damage * player.CritDamage) : damage, (chance <= player.CritRate) ? true : false);
                 Destroy(gameObject);
             }
         }

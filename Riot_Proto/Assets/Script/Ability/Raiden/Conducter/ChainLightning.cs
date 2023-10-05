@@ -92,8 +92,9 @@ public class ChainLightning : AbilityBase, IListener
         {
             line.SetPosition(i + 1, target.position);
             var enemy = target.GetComponent<EnemyBase>();
-            enemy.Damage((Random.Range(0, 100f) <= player.CritRate)
-                    ? (int)(damage * player.CritDamage) : damage);
+            float chance = Random.Range(0, 100f);
+            enemy.Damage((chance <= player.CritRate)
+                    ? (int)(damage * player.CritDamage) : damage, (chance <= player.CritRate) ? true : false);
 
         }
         StartCoroutine(Delay());

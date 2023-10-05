@@ -136,7 +136,7 @@ public abstract class EnemyBase : MonoBehaviour
         else return true;
     }
 
-    public virtual void Damage(int damage)
+    public virtual void Damage(int damage, bool isCrit)
     {
         if (IsSpawning()) return;
         HP -= damage * damagedMultiplier;
@@ -157,8 +157,10 @@ public abstract class EnemyBase : MonoBehaviour
             .GetComponent<DamageText>();
         DmgText.rect.position = DamageTextPos;
         DmgText.text.text = damage.ToString();
-        DmgText.timeCount = 1 + (damage * 0.01f);
-        DmgText.text.color = Color.white;
+        DmgText.timeCount = 1 + (damage * ((isCrit) ? 0.02f : 0.01f));
+        DmgText.color = (isCrit) ? Color.red : Color.white;
+        if(isCrit) DmgText.text.fontStyle = FontStyle.Bold;
+        else DmgText.text.fontStyle = FontStyle.Normal;
     }
     protected virtual void Dead()
     {

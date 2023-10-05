@@ -30,9 +30,10 @@ public class Flash : AbilityBase
             {
                 if (h.CompareTag("Enemy"))
                 {
-
-                    h.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
-                        ? (int)(damage * player.CritDamage) : damage);
+                    float chance = Random.Range(0, 100f);
+                    h.GetComponent<EnemyBase>().Damage((chance <= player.CritRate)
+                            ? (int)(damage * player.CritDamage) : damage, (chance <= player.CritRate) ? true : false);
+                   
 
                 }
             }

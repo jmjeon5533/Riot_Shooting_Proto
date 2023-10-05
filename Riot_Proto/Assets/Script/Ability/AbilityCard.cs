@@ -312,6 +312,7 @@ public class AbilityCard : MonoBehaviour
 
     void AddSkillList(AbilityBase abi)
     {
+        if (abi.type == AbilityBase.AbilityType.Stats) return;
         var img = Instantiate(skillIconObj, skillListUI.transform).GetComponent<Image>();
         //img.transform.parent = skillListUI.transform;
         img.gameObject.name = abi.skillName;
@@ -342,13 +343,13 @@ public class AbilityCard : MonoBehaviour
                         imgColor.color = Color.blue;
                         break;
                     case 4:
-                        imgColor.color = new Color(100/255f,1 / 255f, 255 / 255f);
+                        imgColor.color = new Color(100/255,1 / 255f, 255 / 255);
                         break;
                     case 5:
-                        imgColor.color = new Color(255 / 255f, 175 / 255f, 1 / 255f);
+                        imgColor.color = new Color(255 / 255, 175 / 255, 1 / 255);
                         break;
                     case 6:
-                        imgColor.color = new Color(1 / 255f, 255 / 255f, 255 / 255f);
+                        imgColor.color = new Color(1 / 255, 255 / 255, 255 / 255);
                         break;
                 }
                 break;

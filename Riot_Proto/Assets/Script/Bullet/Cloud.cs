@@ -40,8 +40,11 @@ public class Cloud : MonoBehaviour
             {
                 if(collider != null )
                 {
+                    var player = GameManager.instance.player;
                     //StartCoroutine(Electric(collider.transform, maxAttackTime/2));
-                    collider.GetComponent<EnemyBase>().Damage(damage);
+                    float chance = Random.Range(0, 100f);
+                    collider.GetComponent<EnemyBase>().Damage((chance <= player.CritRate)
+                            ? (int)(damage * player.CritDamage) : damage, (chance <= player.CritRate) ? true : false);
                     collider.GetComponent<EnemyBase>().AddBuff(new Slow(2, collider.gameObject, BuffBase.TargetType.Enemy, BuffList.Slow, 0.7f));
                     Debug.Log(collider.name);
                 }
@@ -49,23 +52,23 @@ public class Cloud : MonoBehaviour
         }
     }
 
-    IEnumerator Electric(Transform target, float duration) 
-    {
-        GameObject obj = Instantiate(line, transform);
-        lines.Add(obj.transform);
-        obj.GetComponent<LineRenderer>().SetPosition(0, transform.position);
-        obj.GetComponent<LineRenderer>().SetPosition(1, target.position);
-        target.GetComponent<EnemyBase>().Damage(damage);
-        float prevSpeed = target.GetComponent<EnemyBase>().MoveSpeed;
-        target.GetComponent<EnemyBase>().MoveSpeed = prevSpeed/2;
-        yield return new WaitForSeconds(duration);
-        if(target != null)
-        {
-            target.GetComponent<EnemyBase>().MoveSpeed = prevSpeed;
-        }
-        lines.Remove(obj.transform);
-        Destroy(obj);
-    }
+    //IEnumerator Electric(Transform target, float duration) 
+    //{
+    //    GameObject obj = Instantiate(line, transform);
+    //    lines.Add(obj.transform);
+    //    obj.GetComponent<LineRenderer>().SetPosition(0, transform.position);
+    //    obj.GetComponent<LineRenderer>().SetPosition(1, target.position);
+    //    target.GetComponent<EnemyBase>().Damage(damage);
+    //    float prevSpeed = target.GetComponent<EnemyBase>().MoveSpeed;
+    //    target.GetComponent<EnemyBase>().MoveSpeed = prevSpeed/2;
+    //    yield return new WaitForSeconds(duration);
+    //    if(target != null)
+    //    {
+    //        target.GetComponent<EnemyBase>().MoveSpeed = prevSpeed;
+    //    }
+    //    lines.Remove(obj.transform);
+    //    Destroy(obj);
+    //}
          
     public void Duration(float value, float speed, int damage)
     {

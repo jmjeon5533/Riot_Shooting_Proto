@@ -28,8 +28,10 @@ public class ShockBullet : BulletBase
     {
         if(other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
-                   ? (int)(Damage * player.CritDamage) : Damage);
+            float chance = Random.Range(0, 100f);
+            other.GetComponent<EnemyBase>().Damage((chance <= player.CritRate)
+                    ? (int)(Damage * player.CritDamage) : Damage, (chance <= player.CritRate) ? true : false);
+            
         }
     }
 

@@ -28,8 +28,9 @@ public class _ElectricBullet : BulletBase
             if (h.CompareTag("Enemy"))
             {
 
-                h.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= CritRate)
-                    ? (int)(Damage * CritDamage) : Damage);
+                float chance = Random.Range(0, 100f);
+                h.GetComponent<EnemyBase>().Damage((chance <= CritRate)
+                        ? (int)(Damage * CritDamage) : Damage, (chance <= CritRate) ? true : false);
                 RadiusDamage();
             }
         }
@@ -48,8 +49,9 @@ public class _ElectricBullet : BulletBase
                 if (h.CompareTag("Enemy"))
                 {
 
-                    h.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= CritRate)
-                        ? (int)(Damage * CritDamage) : Damage);
+                    float chance = Random.Range(0, 100f);
+                    h.GetComponent<EnemyBase>().Damage((chance <= CritRate)
+                            ? (int)(Damage * CritDamage) : Damage, (chance <= CritRate) ? true : false);
                 }
             } 
         }

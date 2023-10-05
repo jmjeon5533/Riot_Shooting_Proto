@@ -39,8 +39,9 @@ public class ChainBullet : BulletBase
         {
             line.SetPosition(i + 1, target.position);
             var enemy = target.GetComponent<EnemyBase>();
-            enemy.Damage((Random.Range(0, 100f) <= player.CritRate)
-                    ? (int)(Damage * player.CritDamage) : Damage);
+            float chance = Random.Range(0, 100f);
+            enemy.Damage((chance <= player.CritRate)
+                    ? (int)(Damage * player.CritDamage) : Damage, (chance <= player.CritRate) ? true : false);
 
         }
         StartCoroutine(Delay());
@@ -100,8 +101,10 @@ public class ChainBullet : BulletBase
         {
             if (h.CompareTag("Enemy"))
             {
-                h.GetComponent<EnemyBase>().Damage((Random.Range(0, 100f) <= player.CritRate)
-                    ? (int)(Damage * player.CritDamage) : Damage);
+                float chance = Random.Range(0, 100f);
+                h.GetComponent<EnemyBase>().Damage((chance <= player.CritRate)
+                        ? (int)(Damage * player.CritDamage) : Damage, (chance <= player.CritRate) ? true : false);
+                
                 ChainAttack();
                 break;
             }

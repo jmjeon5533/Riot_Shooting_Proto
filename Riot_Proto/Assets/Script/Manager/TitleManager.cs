@@ -12,11 +12,8 @@ public class TitleManager : MonoBehaviour
     public List<GameObject> Panel = new();
 
     [SerializeField] Camera[] Mcamera;
-    [SerializeField] Button OptionButton;
     [Space(10)]
     [SerializeField] RawImage CharImage;
-    [Space(10)]
-    public Text[] moraText;
     [Space(10)]
     [Header("ActiveSkill")]
     public Sprite[] ASkillSprite;
@@ -31,10 +28,6 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Text ASkillExplainText;
     [SerializeField] Text ASkillCoolTimeText;
     [SerializeField] GameObject ASkillPrefab;
-    [Space(10)]
-    RawImage SelectRawImage;
-    Vector3 returnPos;
-
 
     private void Awake()
     {
@@ -42,9 +35,7 @@ public class TitleManager : MonoBehaviour
     }
     private void Start()
     {
-        var p = SceneManager.instance.playerData;
         SceneManager.instance.SetResolution(Mcamera);
-        OptionButton.onClick.AddListener(() => SceneManager.instance.Option(0));
         for (int i = 0; i < 3; i++)
         {
             ASkillButtonAdd(i);
@@ -83,8 +74,6 @@ public class TitleManager : MonoBehaviour
         Panel[index].SetActive(true);
         CharImage.color = Color.clear;
         CharImage.transform.localScale = new Vector3(1, 1, 1);
-        moraText[0].text = SceneManager.instance.playerData.PlayerMora.ToString();
-
     }
     public void GetMora()
     {

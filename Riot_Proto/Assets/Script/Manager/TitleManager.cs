@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using DG.Tweening;
 using System.IO;
+using System.Linq;
 
 public class TitleManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class TitleManager : MonoBehaviour
     [Space(10)]
     [SerializeField] RawImage CharImage;
     [SerializeField] Image loadingbar;
+    [SerializeField] Transform[] titleBtn;
+    bool isButton;
+    [SerializeField] Transform[] SelectUI;
     [Space(10)]
     [Header("ActiveSkill")]
     public Sprite[] ASkillSprite;
@@ -43,6 +47,33 @@ public class TitleManager : MonoBehaviour
         }
         InitPanel(0);
     }
+    public void StartButton()
+    {
+        StartCoroutine(Startbtn());
+    }
+    IEnumerator Startbtn()
+    {
+        if(isButton) yield break;
+        isButton = true;
+        titleBtn[0].DOLocalMoveX(2300,1.5f).SetEase(Ease.InOutBack);
+        yield return new WaitForSeconds(0.2f);
+        yield return titleBtn[1].DOLocalMoveX(2300,1.5f).SetEase(Ease.InOutBack)
+        .OnComplete(()=> isButton = false).WaitForCompletion();
+        SelectStart();
+    }
+    public void SelectStart()
+    {
+        StartCoroutine(selectStart());
+    }
+    IEnumerator selectStart()
+    {
+        InitPanel(1);
+        SelectUI[0].DOLocalMoveX(-930,1);
+        SelectUI[1].DOLocalMoveX(930,1);
+        SelectUI[2].DOLocalMoveY(-520,1);
+        SelectUI[3].DOLocalMoveY(-520,1);
+        yield return null;
+    }
     public void StageStart()
     {
         StartCoroutine(stageStart());
@@ -52,10 +83,10 @@ public class TitleManager : MonoBehaviour
         InitPanel(2);
         var time = 1.5f;
         var curtime = 0f;
-        while(curtime <= time)
+        while (curtime <= time)
         {
             curtime += Time.deltaTime;
-            loadingbar.fillAmount = Mathf.Lerp(curtime,time,0.01f);
+            loadingbar.fillAmount = Mathf.Lerp(curtime, time, 0.01f);
             yield return null;
         }
         SceneManager.instance.StageStart();
@@ -86,6 +117,14 @@ public class TitleManager : MonoBehaviour
             Panel[i].SetActive(false);
         }
         Panel[index].SetActive(true);
+        titleBtn[0].localPosition = new Vector3(1600,-189);
+        titleBtn[1].localPosition = new Vector3(1500,-415);
+
+        SelectUI[0].localPosition = new Vector3(-1658,520);
+        SelectUI[1].localPosition = new Vector3(2200,510);
+        SelectUI[2].localPosition = new Vector3(-930,-760);
+        SelectUI[3].localPosition = new Vector3(930,-760);
+
         CharImage.color = Color.clear;
         CharImage.transform.localScale = new Vector3(1, 1, 1);
     }

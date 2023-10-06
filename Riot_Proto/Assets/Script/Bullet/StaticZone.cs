@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class StaticZone : MonoBehaviour
 {
@@ -25,7 +26,9 @@ public class StaticZone : MonoBehaviour
     void Start()
     {
         player = GameManager.instance.player;
-        transform.localScale = Vector3.one * radius;
+        transform.localScale = Vector3.zero;
+        transform.DOScale(Vector3.one * 0.2f, 0.5f).SetEase(Ease.OutElastic);
+        //transform.localScale = Vector3.one * radius;
     }
 
     // Update is called once per frame

@@ -59,6 +59,6 @@ MonoBehaviour:
   duration: 4
   delay: 0.3
   range: 6
-  field: {fileID: 2553335737244348087, guid: 7844fb4737252e54089e14de04f91a20, type: 3}
+  field: {fileID: 6774775609029403379, guid: 68deceb2e3567804b82b871ea5bc9f8a, type: 3}
   increaseValue: 3
   damageRate: 0.2

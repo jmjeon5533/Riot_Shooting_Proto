@@ -569,6 +569,8 @@ MonoBehaviour:
   MoveSpeed: 5
   AttackCooltime: 50
   damagedMultiplier: 1
+  shader: {fileID: 0}
+  mesh: {fileID: 5968040018876157001}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Spider1
 --- !u!136 &2803538439958359753

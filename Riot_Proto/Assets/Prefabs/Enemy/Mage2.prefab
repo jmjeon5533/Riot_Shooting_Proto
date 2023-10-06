@@ -1319,6 +1319,8 @@ MonoBehaviour:
   MoveSpeed: 8
   AttackCooltime: 4
   damagedMultiplier: 1
+  shader: {fileID: 0}
+  mesh: {fileID: 1289183116543843112}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Mage2
   anim: {fileID: 8805811972798690490}

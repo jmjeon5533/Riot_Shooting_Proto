@@ -55,6 +55,8 @@ MonoBehaviour:
   MoveSpeed: 5
   AttackCooltime: 3
   damagedMultiplier: 1
+  shader: {fileID: 0}
+  mesh: {fileID: 5455262877531881013}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Boss1
   anim: {fileID: 149849303878326942}
@@ -521,3 +523,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!137 &5455262877531881013 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5305420177568457900, guid: a03349ebb223e914c812ebc9c7b0a583, type: 3}
+  m_PrefabInstance: {fileID: 149849303878326937}
+  m_PrefabAsset: {fileID: 0}

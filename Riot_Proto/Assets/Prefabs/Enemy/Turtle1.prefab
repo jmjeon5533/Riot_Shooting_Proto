@@ -334,6 +334,8 @@ MonoBehaviour:
   MoveSpeed: 2
   AttackCooltime: 50
   damagedMultiplier: 1
+  shader: {fileID: 0}
+  mesh: {fileID: 101814808430052113}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Turtle1
   DeadBullet: {fileID: 5001741943408443517, guid: 31492bf93028b574dac4c6b53d273591, type: 3}

@@ -147,9 +147,38 @@ public abstract class Player : MonoBehaviour
     {
         IsShield = true;
         ShieldObj.SetActive(true);
+        var mesh = ShieldObj.GetComponent<MeshRenderer>();
+        mesh.material.SetFloat("_Dissolve", 0.75f);
+        StartCoroutine(FadeShield(false, mesh));
         yield return new WaitForSeconds(time);
         IsShield = false;
-        ShieldObj.SetActive(false);
+        StartCoroutine(FadeShield(true, mesh));
+        
+    }
+
+    IEnumerator FadeShield(bool fade, MeshRenderer mesh)
+    {
+        float time = (fade ? 0 : 0.75f);
+       if(fade)
+        {
+            while(time < 0.75f)
+            {
+                time += Time.deltaTime/1;
+                mesh.material.SetFloat("_Dissolve", time);
+                yield return null;  
+
+            }
+            ShieldObj.SetActive(false);
+        } else
+        {
+            while (time > 0)
+            {
+                time -= Time.deltaTime / 1;
+                mesh.material.SetFloat("_Dissolve", time);
+                yield return null;
+            }
+
+        }
     }
     void Movement()
     {

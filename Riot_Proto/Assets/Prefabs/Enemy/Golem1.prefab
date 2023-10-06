@@ -85,6 +85,8 @@ MonoBehaviour:
   MoveSpeed: 10
   AttackCooltime: 2
   damagedMultiplier: 1
+  shader: {fileID: 4800000, guid: cd6876df32c00e04a90de8e642631c9f, type: 3}
+  mesh: {fileID: 2621052913203813027}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Golem1
   anim1: {fileID: 5135198789432245221}
@@ -258,6 +260,11 @@ PrefabInstance:
 --- !u!4 &2546011752633263502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 03764742c03e711498e2669475522067, type: 3}
+  m_PrefabInstance: {fileID: 2657116420236739173}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &2621052913203813027 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -9187307013026768698, guid: 03764742c03e711498e2669475522067, type: 3}
   m_PrefabInstance: {fileID: 2657116420236739173}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2890907025659445044 stripped

@@ -1260,6 +1260,10 @@ MonoBehaviour:
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Mage1
   anim: {fileID: 8805811972798690490}
+  magicCircle: {fileID: 3269380017145615663, guid: d0d82b7d8a50d954dbd594fc65ceec99, type: 3}
+  spawnDelay: 1
+  spawnTime: 1
+  offset: {x: 0, y: -0.3, z: 0}
 --- !u!136 &45070708461894365
 CapsuleCollider:
   m_ObjectHideFlags: 0

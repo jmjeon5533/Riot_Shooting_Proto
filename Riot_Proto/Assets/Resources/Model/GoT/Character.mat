@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: crystalgolem
+  m_Name: Character
   m_Shader: {fileID: 4800000, guid: d24c8ebf89b8c4e45be477a0b910851f, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e5c59cbe69c7b284eab5c33a94a1ca87, type: 3}
+        m_Texture: {fileID: 2800000, guid: bab1ee59f84b95a4893c38b03e00f043, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -56,6 +56,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SubTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _Brightness: 0.3
@@ -66,19 +70,37 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _InitRotate: 0
+    - _InitRotate2: 0
+    - _InitScale: 1
+    - _InitScale2: 1
+    - _InitUOffset: 0
+    - _InitUOffset2: 0
+    - _InitVOffset: 0
+    - _InitVOffset2: 0
     - _Metallic: 0
     - _Mode: 0
+    - _Multiplier: 1
     - _OcclusionStrength: 1
-    - _Outline_Bold: 0.1
+    - _Outline_Bold: 0
     - _Parallax: 0.02
+    - _RotateSpeed: 0
+    - _RotateSpeed2: 0
+    - _ScaleSpeed: 0
+    - _ScaleSpeed2: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Strength: 0.5
+    - _USpeed: 0
+    - _USpeed2: 0
     - _UVSec: 0
+    - _VSpeed: 0
+    - _VSpeed2: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TintColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

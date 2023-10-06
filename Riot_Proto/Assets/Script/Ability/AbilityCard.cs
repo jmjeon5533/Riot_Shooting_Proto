@@ -343,13 +343,13 @@ public class AbilityCard : MonoBehaviour
                         imgColor.color = Color.blue;
                         break;
                     case 4:
-                        imgColor.color = new Color(100/255,1 / 255f, 255 / 255);
+                        imgColor.color = new Color(100/255f,1 / 255f, 255 / 255f);
                         break;
                     case 5:
-                        imgColor.color = new Color(255 / 255, 175 / 255, 1 / 255);
+                        imgColor.color = new Color(255 / 255f, 175 / 255f, 1 / 255f);
                         break;
                     case 6:
-                        imgColor.color = new Color(1 / 255, 255 / 255, 255 / 255);
+                        imgColor.color = new Color(1 / 255f, 255 / 255f, 255 / 255f);
                         break;
                 }
                 break;

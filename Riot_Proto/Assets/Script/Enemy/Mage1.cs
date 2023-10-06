@@ -1,10 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Mage1 : EnemyBase
 {
     [SerializeField] Animator anim;
+    [SerializeField] ParticleSystem magicCircle;
+    [SerializeField] float spawnDelay;
+    [SerializeField] float spawnTime;
+    [SerializeField] Vector3 offset;
+
+    bool isSpawn = false;
+
     protected override void Attack()
     {
         StartCoroutine(AttackCoroutine());
@@ -12,14 +20,29 @@ public class Mage1 : EnemyBase
     protected override void Start()
     {
         base.Start();
-        var g = GameManager.instance;
+        transform.position = new Vector3(20, 0, 0);
+        StartCoroutine(Spawn());
     }
+
+    IEnumerator Spawn()
+    {
+        var g = GameManager.instance;
+        var circle = Instantiate(magicCircle, new Vector3(Random.Range(0, g.MoveRange.x/2), Random.Range((-g.MoveRange.y + 1), (g.MoveRange.y - 1)), 0), Quaternion.identity);
+        yield return new WaitForSeconds(spawnDelay);
+        transform.position = circle.transform.position + offset;
+        transform.localScale = Vector3.zero;
+        transform.DOScale(Vector3.one, spawnTime).SetEase(Ease.OutBack);
+        Attack();
+
+    }
+         
     protected override void Move()
     {
         
     }
     protected override void Update()
     {
+        if (!isSpawn) return; 
         base.Update();
         float Speed = UIManager.instance.BGList[SceneManager.instance.StageIndex].bgs[0].speed;
         transform.Translate(Vector3.left * Time.deltaTime * Speed);

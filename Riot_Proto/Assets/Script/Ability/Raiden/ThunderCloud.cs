@@ -42,14 +42,14 @@ public class ThunderCloud : AbilityBase
     {
         base.LevelUp();
         defaultDamage += (int)(2 * Mathf.Pow((1 + 0.15f), level));
-        maxCooltime -= (0.5f * Mathf.Pow((1 + 0.1f), level));
+        maxCooltime -= (Mathf.Round(maxCooltime - (0.4f * Mathf.Pow((1 + 0.1f), level)) * 100) / 100);
         
     }
 
     public override string GetStatText()
     {
         return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(2 * Mathf.Pow((1 + 0.15f), level)))
-            + "\n스킬 쿨타임 " + maxCooltime + " → " + (maxCooltime - (0.5f * Mathf.Pow((1 + 0.1f), level)));
+            + "\n스킬 쿨타임 " + maxCooltime + " → " + (Mathf.Round(maxCooltime - (0.4f * Mathf.Pow((1 + 0.1f), level)) * 100) / 100);
         
 
     }

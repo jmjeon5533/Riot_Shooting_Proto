@@ -34,7 +34,7 @@ public class ThunderDrop : AbilityBase
             Transform target = nearbyEnemies[Random.Range(0, nearbyEnemies.Count)].transform;
             if (target == null) return;
             Instantiate(thunder, new Vector3(target.position.x, 0, target.position.z), Quaternion.identity).GetComponent<Thunder>()
-                .SetDamage(defaultDamage * level);
+                .SetDamage(defaultDamage);
 
             curCooltime = 0;
         }
@@ -61,14 +61,14 @@ public class ThunderDrop : AbilityBase
     public override void LevelUp()
     {
         base.LevelUp();
-        defaultDamage += (int)(5 * Mathf.Pow((1 + 0.2f), level));
-        maxCooltime -= (Mathf.Round((0.15f * Mathf.Pow((1 + 0.2f), level)) * 10.0f) / 10.0f);
+        defaultDamage += (int)(3 * Mathf.Pow((1 + 0.15f), level));
+        maxCooltime -= (Mathf.Round((0.3f * Mathf.Pow((1 + 0.2f), level)) * 100) / 100);
 
     }
 
     public override string GetStatText()
     {
-        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(5 * Mathf.Pow((1 + 0.2f), level))) + 
-            "\n스킬 쿨타임 " + maxCooltime + " → " + (maxCooltime - Mathf.Round((0.15f * Mathf.Pow((1 + 0.2f), level)) * 10.0f) / 10.0f);
+        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(3 * Mathf.Pow((1 + 0.15f), level))) + 
+            "\n스킬 쿨타임 " + maxCooltime + " → " + (maxCooltime - Mathf.Round((0.3f * Mathf.Pow((1 + 0.2f), level)) * 100) / 100);
     }
 }

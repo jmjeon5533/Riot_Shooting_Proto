@@ -53,9 +53,9 @@ MonoBehaviour:
     \uC77C\uC73C\uCF1C \uAD11\uC5ED \uACF5\uACA9\uC744 \uAC00\uD55C\uB2E4."
   stats: 
   curCooltime: 0
-  maxCooltime: 5
+  maxCooltime: 4
   defaultDamage: 4
   explosion: {fileID: 5727989236820037991, guid: b6d019f1075d60943960e84691c3b528, type: 3}
   radius: 2.5
-  increaseValue: 4
+  increaseValue: 3
   damageRate: 0.25

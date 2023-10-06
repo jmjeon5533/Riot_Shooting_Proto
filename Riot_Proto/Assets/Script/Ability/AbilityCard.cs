@@ -141,6 +141,7 @@ public class AbilityCard : MonoBehaviour
             if (GameManager.instance.IsLevelDupe())
             {
                 isDuplicate = true;
+                panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0.5f), 0.5f);
                 GameManager.instance.AddXP(0);
                 Debug.Log("1");
             }

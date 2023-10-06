@@ -14,6 +14,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Camera[] Mcamera;
     [Space(10)]
     [SerializeField] RawImage CharImage;
+    [SerializeField] Image loadingbar;
     [Space(10)]
     [Header("ActiveSkill")]
     public Sprite[] ASkillSprite;
@@ -44,6 +45,19 @@ public class TitleManager : MonoBehaviour
     }
     public void StageStart()
     {
+        StartCoroutine(stageStart());
+    }
+    IEnumerator stageStart()
+    {
+        InitPanel(2);
+        var time = 1.5f;
+        var curtime = 0f;
+        while(curtime <= time)
+        {
+            curtime += Time.deltaTime;
+            loadingbar.fillAmount = Mathf.Lerp(curtime,time,0.01f);
+            yield return null;
+        }
         SceneManager.instance.StageStart();
     }
     public void ASkillButtonAdd(int i)

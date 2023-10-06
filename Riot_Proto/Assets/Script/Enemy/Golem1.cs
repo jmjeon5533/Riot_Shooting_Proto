@@ -22,7 +22,7 @@ public class Golem1 : EnemyBase
             float angle = i * Mathf.Deg2Rad; // 각도를 라디안으로 변환
             Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0); // 라디안 각도로 방향 벡터 생성
             b.dir = direction; // 방향을 총알에 할당
-            b.MoveSpeed = 5f;
+            b.SetMoveSpeed(3f);
         }
         yield return new WaitForSeconds(1.5f);
         isAttack = false;

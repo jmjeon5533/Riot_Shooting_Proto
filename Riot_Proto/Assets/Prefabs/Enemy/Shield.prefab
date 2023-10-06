@@ -111,15 +111,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d95523fa2cc2f04c932f243c125a0c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 25
+  HP: 20
   baseHp: 0
   XPRate: 0
   baseXPRate: 0
   MoveSpeed: 0
   AttackCooltime: 0
   damagedMultiplier: 1
+  shader: {fileID: 0}
+  mesh: {fileID: 0}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Shield
+  isDeath: 0
 --- !u!54 &5906104113625280685
 Rigidbody:
   m_ObjectHideFlags: 0

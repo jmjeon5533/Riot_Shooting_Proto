@@ -114,8 +114,9 @@ public class PoolManager : MonoBehaviour
         var mesh = obj.GetComponent<EnemyBase>().mesh;
         
         mesh.material = pools[key].info.obj.GetComponent<EnemyBase>().mesh.sharedMaterial;
-        
-        
-        
+        mesh.material.SetColor("_OutlineColor", mesh.sharedMaterial.GetColor("_OutlineColor"));
+        mesh.material.SetFloat("_Outline_Bold", mesh.sharedMaterial.GetFloat("_Outline_Bold"));
+
+
     }
 }

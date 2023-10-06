@@ -16,11 +16,16 @@ MonoBehaviour:
   WaveList:
   - Enemy: Bat2
     SpawnDelay: 0.5
+    SpawnPos: {x: 99, y: 99, z: 99}
   - Enemy: Bat2
     SpawnDelay: 0.5
+    SpawnPos: {x: 99, y: 99, z: 99}
   - Enemy: Spider1
     SpawnDelay: 0.5
+    SpawnPos: {x: 99, y: 99, z: 99}
   - Enemy: Mage1
-    SpawnDelay: 0.5
+    SpawnDelay: 0.7
+    SpawnPos: {x: 99, y: 99, z: 99}
   - Enemy: Mage2
-    SpawnDelay: 0.5
+    SpawnDelay: 0.8
+    SpawnPos: {x: 99, y: 99, z: 99}

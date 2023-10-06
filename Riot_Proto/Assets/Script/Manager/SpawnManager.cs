@@ -42,6 +42,7 @@ public class SpawnManager : MonoBehaviour
             SpawnCount++;
             GameManager.instance.EnemyPower += 0.1f;
         }
+        yield return new WaitUntil(() => GameManager.instance.curEnemys.Count == 0);
         GameObject Boss = PoolManager.Instance.GetObject($"Boss{StageLevel + 1}", new Vector3(15, 0, 0), Quaternion.identity);
         GameManager.instance.curEnemys.Add(Boss);
         yield return new WaitUntil(() => !Boss.activeSelf);

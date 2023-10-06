@@ -6,6 +6,10 @@ public class Slow : BuffBase
 {
     private float multiplier;
     private float originSpeed;
+
+    private Color prevColor;
+    private float depth;
+
     
     public Slow(float duration, GameObject target, TargetType type, BuffList buff, float multiplier) : base(duration, target, type, buff)
     {
@@ -29,6 +33,16 @@ public class Slow : BuffBase
         else if (type == TargetType.Enemy)
         {
             originSpeed = enemy.MoveSpeed;
+
+            var e = target.GetComponent<EnemyBase>();
+            if(!e.IsDeath())
+            {
+                if (e.mesh.Equals(null)) return;
+                prevColor = e.mesh.material.GetColor("_OutlineColor");
+                depth = e.mesh.material.GetFloat("_Outline_Bold");
+                e.mesh.material.SetColor("_OutlineColor", Color.white);
+                e.mesh.material.SetFloat("_Outline_Bold", 0.3f);
+            }
         }
     }
 
@@ -55,6 +69,11 @@ public class Slow : BuffBase
         else if (type == TargetType.Enemy)
         {
             enemy.MoveSpeed = originSpeed;
+            var e = target.GetComponent<EnemyBase>();
+            if (e.mesh.Equals(null)) return;
+            Debug.Log(e.name + "End");
+            e.mesh.material.SetColor("_OutlineColor", prevColor);
+            e.mesh.material.SetFloat("_Outline_Bold", depth);
         }
     }
 

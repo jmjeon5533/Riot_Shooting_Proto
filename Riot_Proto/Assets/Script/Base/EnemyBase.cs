@@ -50,6 +50,7 @@ public abstract class EnemyBase : MonoBehaviour
        col = GetComponent<Collider>();
         col.enabled = true;
         isDeath = false;
+        
     }
 
     protected void InitStat()
@@ -156,6 +157,11 @@ public abstract class EnemyBase : MonoBehaviour
         else return true;
     }
 
+    public bool IsDeath()
+    {
+        return isDeath;
+    }
+
     public virtual void Damage(int damage, bool isCrit)
     {
         if (IsSpawning() || isDeath) return;
@@ -170,6 +176,12 @@ public abstract class EnemyBase : MonoBehaviour
             }
             GameManager.instance.GetMoney += (int)(XPRate * 25);
             UIManager.instance.InitRate();
+            for (int i = 0; i < EnemyBuffList.Count; i++)
+            {
+
+                EnemyBuffList[i].End();
+
+            }
             col = GetComponent<Collider>();
             col.enabled = false;
             StartCoroutine(DeathMotion());

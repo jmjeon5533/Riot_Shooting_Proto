@@ -36,10 +36,7 @@ public class Mage1 : EnemyBase
 
     }
          
-    protected override void Move()
-    {
-        
-    }
+    
     protected override void Update()
     {
         if (!isSpawn) return; 

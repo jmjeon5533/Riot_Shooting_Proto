@@ -120,6 +120,8 @@ MonoBehaviour:
   MoveSpeed: 10
   AttackCooltime: 2
   damagedMultiplier: 1
+  shader: {fileID: 0}
+  mesh: {fileID: 5270341966852434153}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Bat1
 --- !u!54 &4975858086642769411
@@ -195,6 +197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d73ddb6b15a279409fe90e8223f275a, type: 3}
+--- !u!137 &5270341966852434153 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3002809788350176792, guid: 1d73ddb6b15a279409fe90e8223f275a, type: 3}
+  m_PrefabInstance: {fileID: 6955839928181667569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7422674299867255066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1d73ddb6b15a279409fe90e8223f275a, type: 3}

@@ -120,6 +120,8 @@ MonoBehaviour:
   MoveSpeed: 10
   AttackCooltime: 2.5
   damagedMultiplier: 1
+  shader: {fileID: 0}
+  mesh: {fileID: 7602775440227457266}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Bat2
 --- !u!54 &552714892077556101
@@ -226,3 +228,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!137 &7602775440227457266 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3002809788350176792, guid: 577464f58c5e63a429b03c11630adb8c, type: 3}
+  m_PrefabInstance: {fileID: 4624744284648621802}
+  m_PrefabAsset: {fileID: 0}

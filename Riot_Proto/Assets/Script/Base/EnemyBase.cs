@@ -17,8 +17,16 @@ public abstract class EnemyBase : MonoBehaviour
 
     public float damagedMultiplier = 1;
 
+    [SerializeField] Shader shader;
+
+    public Renderer mesh;
+
+    Collider col;
+
     public Vector3 MovePos;
     public string EnemyTag;
+
+    [SerializeField] bool isDeath = false;
 
     protected bool isAttack = false;
 
@@ -29,10 +37,21 @@ public abstract class EnemyBase : MonoBehaviour
         var g = GameManager.instance;
         var x = Random.Range(0, g.MoveRange.x + g.MovePivot.x);
         var y = Random.Range(-g.MoveRange.y + g.MovePivot.y, g.MoveRange.y + g.MovePivot.y);
+        
+        
+        
         MovePos = new Vector3(x, y, 0);
         InitStat();
         StatMultiplier();
     }
+
+    private void OnEnable()
+    {
+       col = GetComponent<Collider>();
+        col.enabled = true;
+        isDeath = false;
+    }
+
     protected void InitStat()
     {
         baseHp = HP;
@@ -105,6 +124,7 @@ public abstract class EnemyBase : MonoBehaviour
    
     protected virtual void Update()
     {
+        if (isDeath) return;
         BuffTimer();
         if (AttackCurtime >= AttackCooltime)
         {
@@ -138,10 +158,11 @@ public abstract class EnemyBase : MonoBehaviour
 
     public virtual void Damage(int damage, bool isCrit)
     {
-        if (IsSpawning()) return;
+        if (IsSpawning() || isDeath) return;
         HP -= damage * damagedMultiplier;
         if (HP <= 0)
         {
+            isDeath = true;
             GameManager.instance.curEnemys.Remove(this.gameObject);
             for (int i = 0; i < XPRate; i++)
             {
@@ -149,7 +170,9 @@ public abstract class EnemyBase : MonoBehaviour
             }
             GameManager.instance.GetMoney += (int)(XPRate * 25);
             UIManager.instance.InitRate();
-            PoolManager.Instance.PoolObject(EnemyTag, gameObject);
+            col = GetComponent<Collider>();
+            col.enabled = false;
+            StartCoroutine(DeathMotion());
         }
         PoolManager.Instance.GetObject("Hit", transform.position, Quaternion.identity);
         var DamageTextPos = (Vector2)transform.position + (Random.insideUnitCircle * 2);
@@ -162,6 +185,44 @@ public abstract class EnemyBase : MonoBehaviour
         if(isCrit) DmgText.text.fontStyle = FontStyle.Bold;
         else DmgText.text.fontStyle = FontStyle.Normal;
     }
+
+    IEnumerator DeathMotion()
+    {
+        
+        if (mesh == null)
+        {
+            PoolManager.Instance.PoolObject(EnemyTag, gameObject);
+            
+        } else
+        {
+            
+            mesh.material.shader = GameManager.instance.dissolveShader;
+            //mesh.material.SetFloat("_Dissolve_Power", 0); 
+            mesh.material.SetTexture("_NoiseTex", GameManager.instance.dissolveSprite);
+            mesh.material.SetTextureOffset("_NoiseTex", new Vector2(0,0));
+            mesh.material.SetTextureScale("_NoiseTex", new Vector2(3, 3));
+            float power = 0;
+
+            while(power < 0.5f)
+            {
+                //Material mat = new Material(mesh.material);
+                power += Time.deltaTime / 1.5f;
+                mesh.material.SetFloat("_DissolvePower", power);
+                
+                //Debug.Log(mat.GetFloat("Dissolve_Power"));
+                //mesh.material = mat;
+                yield return null;
+            }
+            yield return new WaitForSeconds(0.05f);
+            
+            //Debug.Log("Test");
+            PoolManager.Instance.PoolObject(EnemyTag, gameObject);
+        }
+        isDeath = false;
+
+
+    }
+
     protected virtual void Dead()
     {
         PoolManager.Instance.GetObject("XP", transform.position, Quaternion.identity);

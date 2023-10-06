@@ -42,6 +42,8 @@ public class Turtle1 : EnemyBase
             GameManager.instance.curEnemys.Remove(gameObject);
         }
     }
+
+    
     protected override void Dead()
     {
         base.Dead();

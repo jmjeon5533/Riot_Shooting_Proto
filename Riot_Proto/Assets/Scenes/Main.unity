@@ -4511,6 +4511,8 @@ MonoBehaviour:
   - {fileID: 6332685398307081435, guid: c63eed9c18d0ed34f8f2d208ba702ad0, type: 3}
   ItemList: []
   curEnemys: []
+  dissolveShader: {fileID: 4800000, guid: cd6876df32c00e04a90de8e642631c9f, type: 3}
+  dissolveSprite: {fileID: 2800000, guid: 105f727177d6088478cbf9817caa623b, type: 3}
   IsGame: 0
 --- !u!114 &1679633663
 MonoBehaviour:

@@ -60,7 +60,7 @@ public class Mage2 : EnemyBase
         }
         yield return new WaitForSeconds(0.7f);
         //transform.position = new Vector3(g.player.transform.position.x + Random.Range(3, 4.5f), g.player.transform.position.y, 0);
-        MovePos = new Vector3(g.player.transform.position.x + Random.Range(6.5f, 10f), g.player.transform.position.y, 0);
+        MovePos = new Vector3(g.player.transform.position.x + Random.Range(5f, 10f), g.player.transform.position.y, 0);
         if(MovePos.x > g.MoveRange.x) MovePos = new Vector3(g.MoveRange.x-1, g.player.transform.position.y, 0);
 
     }

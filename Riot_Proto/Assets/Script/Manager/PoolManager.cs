@@ -53,6 +53,10 @@ public class PoolManager : MonoBehaviour
         target.transform.rotation = rotation;
         target.transform.SetParent(null);
         target.SetActive(true);
+        if (target.CompareTag("Enemy"))
+        {
+            ResetMaterial(target.gameObject, key);
+        }
         return target;
     }
     public GameObject GetObject(string key, Transform parent = null)
@@ -70,6 +74,10 @@ public class PoolManager : MonoBehaviour
         target.transform.SetParent(parent);
         target.transform.localScale = new Vector3(1,1,1);
         target.SetActive(true);
+        if(target.CompareTag("Enemy"))
+        {
+            ResetMaterial(target.gameObject, key);
+        }
         return target;
     }
 
@@ -98,5 +106,16 @@ public class PoolManager : MonoBehaviour
             pObj.transform.SetParent(transform);
             pools.Add(info.key, new ObjectPoolQueueInfo(pObj.transform, info));
         }
+    }
+
+    void ResetMaterial(GameObject obj, string key)
+    {
+        if (obj.GetComponent<EnemyBase>().mesh == null) return;
+        var mesh = obj.GetComponent<EnemyBase>().mesh;
+        
+        mesh.material = pools[key].info.obj.GetComponent<EnemyBase>().mesh.sharedMaterial;
+        
+        
+        
     }
 }

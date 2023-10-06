@@ -53,12 +53,12 @@ MonoBehaviour:
     \uB9DE\uC740 \uB300\uC0C1\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C \uC7A0\uC2DC \uAC10\uC18C\uC2DC\uD0A8\uB2E4"
   stats: 
   curTime: 0
-  maxCooltime: 8
+  maxCooltime: 9
   delay: 0
-  range: 10
+  range: 16
   duration: 3
   slowRate: 0.4
-  speed: 15
-  wave: {fileID: 7071399243583040461, guid: 204eb1d2285c43d4ca5ecd257b1e4d65, type: 3}
+  speed: 3
+  wave: {fileID: 3133196275370619884, guid: 363a6d426cd07814f9a831707d159d6e, type: 3}
   increaseValue: 3
   damageRate: 0

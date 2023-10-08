@@ -42,7 +42,7 @@ public class ThunderCloud : AbilityBase
     {
         base.LevelUp();
         defaultDamage += (int)(2 * Mathf.Pow((1 + 0.15f), level));
-        maxCooltime -= (Mathf.Round((maxCooltime - (0.4f * Mathf.Pow((1 + 0.1f), level))) * 100) / 100);
+        maxCooltime -= (Mathf.Round(((0.4f * Mathf.Pow((1 + 0.1f), level))) * 100) / 100);
         
     }
 

@@ -39,6 +39,7 @@ public class ElectricCall : AbilityBase
     {
         ThunderDrain();
         yield return new WaitForSeconds(1.5f);
+        if (attackCount > 7) attackCount = 7; 
         for(int i=0;i<attackCount;i++)
         {
             ThunderDrop();

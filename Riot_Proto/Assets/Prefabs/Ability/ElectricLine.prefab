@@ -63,5 +63,5 @@ MonoBehaviour:
   - {fileID: 4017179739931288192, guid: d88a39a6beb85dd47acf532757a0d8a8, type: 3}
   - {fileID: 4017179739931288192, guid: d88a39a6beb85dd47acf532757a0d8a8, type: 3}
   - {fileID: 5826500511644766688, guid: a43b2bd998017c147a685df249e52b8b, type: 3}
-  increaseValue: 2
+  increaseValue: 3
   damageRate: 0.4

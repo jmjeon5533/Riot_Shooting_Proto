@@ -53,7 +53,7 @@ public class DefDecrease : BuffBase
         }
         else if (type == TargetType.Enemy)
         {
-            enemy.damagedMultiplier = originDef + multiplier;
+            enemy.damagedMultiplier = originDef;
         }
     }
 }

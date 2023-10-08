@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6463e2c9078d4f144afec5a897b5202e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 15
   baseHp: 0
   XPRate: 4
   baseXPRate: 0
@@ -1328,7 +1328,7 @@ MonoBehaviour:
   Shield: {fileID: 5932559034786085994, guid: 37ff599bcce2f694c93f82d917986758, type: 3}
   count: 4
   ShieldPoint: {fileID: 8222975352380207722}
-  rotSpeed: 180
+  rotSpeed: 250
 --- !u!1 &8898225441531131264
 GameObject:
   m_ObjectHideFlags: 0

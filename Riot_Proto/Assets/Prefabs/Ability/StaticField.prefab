@@ -58,7 +58,7 @@ MonoBehaviour:
   defaultDamage: 2
   duration: 4
   delay: 0.3
-  range: 6
+  range: 5
   field: {fileID: 6774775609029403379, guid: 68deceb2e3567804b82b871ea5bc9f8a, type: 3}
   increaseValue: 3
   damageRate: 0.2

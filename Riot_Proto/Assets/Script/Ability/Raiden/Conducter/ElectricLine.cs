@@ -53,7 +53,7 @@ public class ElectricLine : AbilityBase, IListener
     {
         if (type == Event_Type.PlayerAttack)
         {
-           
+          
         }
     }
 
@@ -68,7 +68,7 @@ public class ElectricLine : AbilityBase, IListener
     // Start is called before the first frame update
     public override void Start()
     {
-        //EventManager.Instance.AddListener(Event_Type.PlayerAttack, this);
+        EventManager.Instance.AddListener(Event_Type.PlayerAttack, this);
         Initalize();
         duration = beams[level - 1].GetComponent<ElectricBeam>().duration;
     }

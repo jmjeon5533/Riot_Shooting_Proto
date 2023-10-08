@@ -15,14 +15,14 @@ MonoBehaviour:
   startDelay: 1
   WaveList:
   - Enemy: Mage1
-    SpawnDelay: 1
+    SpawnDelay: 1.5
     SpawnPos: {x: 12, y: 3, z: 0}
   - Enemy: Mage2
     SpawnDelay: 2
     SpawnPos: {x: 11, y: 1.5, z: 0}
   - Enemy: Mage1
-    SpawnDelay: 2
+    SpawnDelay: 2.5
     SpawnPos: {x: 12, y: -3, z: 0}
   - Enemy: Mage2
-    SpawnDelay: 3
+    SpawnDelay: 1.5
     SpawnPos: {x: 11, y: 1.5, z: 0}

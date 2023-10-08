@@ -15,7 +15,7 @@ MonoBehaviour:
   startDelay: 1
   WaveList:
   - Enemy: Mage1
-    SpawnDelay: 0.5
+    SpawnDelay: 1
     SpawnPos: {x: 99, y: 99, z: 99}
   - Enemy: Spider1
     SpawnDelay: 1
@@ -27,5 +27,5 @@ MonoBehaviour:
     SpawnDelay: 0.7
     SpawnPos: {x: 99, y: 99, z: 99}
   - Enemy: Golem1
-    SpawnDelay: 1.5
+    SpawnDelay: 1
     SpawnPos: {x: 99, y: 99, z: 99}

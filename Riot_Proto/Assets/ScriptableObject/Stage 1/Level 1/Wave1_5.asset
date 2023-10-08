@@ -15,19 +15,19 @@ MonoBehaviour:
   startDelay: 1
   WaveList:
   - Enemy: Bat1
-    SpawnDelay: 0.1
+    SpawnDelay: 0.3
     SpawnPos: {x: 15, y: 0, z: 0}
   - Enemy: Bat1
-    SpawnDelay: 0.1
+    SpawnDelay: 0.3
     SpawnPos: {x: 15, y: 0, z: 0}
   - Enemy: Bat1
-    SpawnDelay: 1
+    SpawnDelay: 1.25
     SpawnPos: {x: 15, y: 0, z: 0}
   - Enemy: Bat2
     SpawnDelay: 2
     SpawnPos: {x: 15, y: 0, z: 0}
   - Enemy: Bat2
-    SpawnDelay: 0.1
+    SpawnDelay: 0.5
     SpawnPos: {x: 15, y: 0, z: 0}
   - Enemy: Bat2
     SpawnDelay: 2

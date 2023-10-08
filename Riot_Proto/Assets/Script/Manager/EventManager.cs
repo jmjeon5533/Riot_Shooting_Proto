@@ -22,6 +22,7 @@ public class EventManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            
         }else
         {
             DestroyImmediate(this);

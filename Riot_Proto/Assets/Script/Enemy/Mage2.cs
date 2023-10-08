@@ -53,8 +53,8 @@ public class Mage2 : EnemyBase
         for (int i = 0; i < 3; i++)
         {
             var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
-            float _angle = z * Mathf.Deg2Rad; // °¢µµ¸¦ ¶óµð¾ÈÀ¸·Î º¯È¯
-            Vector3 direction = new Vector3(Mathf.Cos(_angle), Mathf.Sin(_angle), 0); // ¶óµð¾È °¢µµ·Î ¹æÇâ º¤ÅÍ »ý¼º
+            float _angle = z * Mathf.Deg2Rad; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
+            Vector3 direction = new Vector3(Mathf.Cos(_angle), Mathf.Sin(_angle), 0); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             b.dir = -direction;
             z += amount;
         }
@@ -85,5 +85,10 @@ public class Mage2 : EnemyBase
             damage = 0;
         }
         base.Damage(damage,isCrit);
+    }
+    protected override void Dead()
+    {
+        base.Dead();
+        anim.SetBool("Death",IsDeath());
     }
 }

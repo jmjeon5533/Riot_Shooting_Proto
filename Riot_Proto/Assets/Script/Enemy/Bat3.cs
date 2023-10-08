@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bat3 : EnemyBase
 {
     Vector3 movedir;
+    [SerializeField] Animator anim;
     protected override void Attack()
     {
 
@@ -32,5 +33,10 @@ public class Bat3 : EnemyBase
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);
             GameManager.instance.curEnemys.Remove(gameObject);
         }
+    }
+    protected override void Dead()
+    {
+        base.Dead();
+        anim.SetBool("Death",IsDeath());
     }
 }

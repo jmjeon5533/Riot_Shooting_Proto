@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spider1 : EnemyBase
 {
+    [SerializeField] Animator anim;
     protected override void Attack()
     {
         
@@ -36,5 +37,10 @@ public class Spider1 : EnemyBase
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);
             GameManager.instance.curEnemys.Remove(gameObject);
         }
+    }
+    protected override void Dead()
+    {
+        base.Dead();
+        anim.SetBool("Death",IsDeath());
     }
 }

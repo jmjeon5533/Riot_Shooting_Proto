@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyBullet : BulletBase
 {
+    private void OnEnable() {
+        GameManager.instance.curBullet.Add(gameObject);   
+    }
     protected override void Update()
     {
         base.Update();

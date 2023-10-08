@@ -37,12 +37,18 @@ public class ActiveSkill : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        var g = GameManager.instance;
         AbilityBase skill = AbilityCard.Instance.GetActiveSKill();
         if (skill == null) return;
         if (!skill.IsSkillCool())
         {
             coolTimeUI.fillAmount = 1;
             skill.Ability();
+            for(int i = 0; i < g.curBullet.Count; i++)
+            {
+                PoolManager.Instance.PoolObject("EnemyBullet",g.curBullet[i]);
+            }
+            Instantiate(g.Bomb,g.player.transform.position,Quaternion.identity);
             maxCooltime = skill.GetMaxCool();
             useSkill = true;
         }

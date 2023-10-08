@@ -45,4 +45,11 @@ public class Golem1 : EnemyBase
             ShieldMaterial.material.SetColor("_Color",new Color(0.5f,0.5f,1,0.5f));
         }
     }
+    protected override void Dead()
+    {
+        base.Dead();
+        anim1.SetBool("Death",IsDeath());
+        anim2.SetBool("Death",IsDeath());
+
+    }
 }

@@ -573,6 +573,8 @@ MonoBehaviour:
   mesh: {fileID: 5968040018876157001}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Spider1
+  isDeath: 0
+  anim: {fileID: 2253596743509030469}
 --- !u!136 &2803538439958359753
 CapsuleCollider:
   m_ObjectHideFlags: 0

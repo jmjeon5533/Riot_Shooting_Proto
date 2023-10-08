@@ -172,8 +172,9 @@ public abstract class EnemyBase : MonoBehaviour
             GameManager.instance.curEnemys.Remove(this.gameObject);
             for (int i = 0; i < XPRate; i++)
             {
-                Dead();
+                DeadEffect();
             }
+            Dead();
             GameManager.instance.GetMoney += (int)(XPRate * 25);
             UIManager.instance.InitRate();
             for (int i = 0; i < EnemyBuffList.Count; i++)
@@ -188,7 +189,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
         PoolManager.Instance.GetObject("Hit", transform.position, Quaternion.identity);
         var DamageTextPos = (Vector2)transform.position + (Random.insideUnitCircle * 2);
-        var DmgText = PoolManager.Instance.GetObject("DamageText",UIManager.instance.canvas)
+        var DmgText = PoolManager.Instance.GetObject("DamageText",UIManager.instance.DmgTextParant)
             .GetComponent<DamageText>();
         DmgText.rect.position = DamageTextPos;
         DmgText.text.text = damage.ToString();
@@ -197,7 +198,10 @@ public abstract class EnemyBase : MonoBehaviour
         if(isCrit) DmgText.text.fontStyle = FontStyle.Bold;
         else DmgText.text.fontStyle = FontStyle.Normal;
     }
-
+    protected virtual void Dead()
+    {
+        
+    }
     IEnumerator DeathMotion()
     {
         
@@ -235,7 +239,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     }
 
-    protected virtual void Dead()
+    protected virtual void DeadEffect()
     {
         PoolManager.Instance.GetObject("XP", transform.position, Quaternion.identity);
     }

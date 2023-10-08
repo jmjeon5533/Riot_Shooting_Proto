@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     public Image XPBar;
     public Transform canvas;
     public Transform bgCanvas;
+    public Transform DmgTextParant;
     public Transform ClearTab;
     public Transform OverTab;
     public Image[] Heart;

@@ -35,8 +35,6 @@ public class Mage1 : EnemyBase
         Attack();
 
     }
-         
-    
     protected override void Update()
     {
         if (!isSpawn) return; 
@@ -72,5 +70,10 @@ public class Mage1 : EnemyBase
         {
             return Quaternion.Euler(0,90,0);
         }
+    }
+    protected override void Dead()
+    {
+        base.Dead();
+        anim.SetBool("Death",IsDeath());
     }
 }

@@ -124,6 +124,8 @@ MonoBehaviour:
   mesh: {fileID: 7602775440227457266}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Bat2
+  isDeath: 0
+  anim: {fileID: 4754811207894995059}
 --- !u!54 &552714892077556101
 Rigidbody:
   m_ObjectHideFlags: 0

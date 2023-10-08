@@ -1250,7 +1250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28e95a6e05cae54493a6061e3019bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 25
+  HP: 30
   baseHp: 0
   XPRate: 3
   baseXPRate: 0
@@ -1261,6 +1261,7 @@ MonoBehaviour:
   mesh: {fileID: 1289183116543843112}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Mage1
+  isDeath: 0
   anim: {fileID: 8805811972798690490}
   magicCircle: {fileID: 3269380017145615663, guid: d0d82b7d8a50d954dbd594fc65ceec99, type: 3}
   spawnDelay: 1

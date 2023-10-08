@@ -17,8 +17,7 @@ public class PlayerBullet : BulletBase
                         ? (int)(Damage * CritDamage) : Damage, (chance <= CritRate) ? true : false);
                
                 EventManager.Instance.PostNotification(Event_Type.PlayerAttacked, this, h.gameObject.GetComponent<EnemyBase>());
-                Destroy(gameObject);
-                
+                PoolManager.Instance.PoolObject(BulletTag,gameObject);
             }
         }
     }

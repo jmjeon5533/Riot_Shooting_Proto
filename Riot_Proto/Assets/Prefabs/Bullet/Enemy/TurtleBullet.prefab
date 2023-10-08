@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 269225301555661973}
   - component: {fileID: 269225301555661972}
   - component: {fileID: 5001741943408443517}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TurtleBullet
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

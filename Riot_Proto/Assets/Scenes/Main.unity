@@ -1507,7 +1507,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -4705,7 +4705,6 @@ MonoBehaviour:
   - {fileID: 6332685398307081435, guid: c63eed9c18d0ed34f8f2d208ba702ad0, type: 3}
   ItemList: []
   curEnemys: []
-  curBullet: []
   Bomb: {fileID: 2598661049487990157, guid: 51fc12e8a22fa614bae17a70058e9bbf, type: 3}
   dissolveShader: {fileID: 4800000, guid: cd6876df32c00e04a90de8e642631c9f, type: 3}
   dissolveSprite: {fileID: 2800000, guid: 105f727177d6088478cbf9817caa623b, type: 3}

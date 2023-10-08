@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dade780c5cb8984e8c30cce45d74da6, type: 3}
   m_Name: Wave1_6
   m_EditorClassIdentifier: 
-  startDelay: 3
+  startDelay: 1.5
   WaveList:
   - Enemy: Bat2
     SpawnDelay: 0.5
-    SpawnPos: {x: 99, y: 99, z: 99}
+    SpawnPos: {x: 15, y: 0, z: 0}
   - Enemy: Bat2
     SpawnDelay: 1
-    SpawnPos: {x: 99, y: 99, z: 99}
+    SpawnPos: {x: 15, y: 0, z: 0}
   - Enemy: Spider1
     SpawnDelay: 1
-    SpawnPos: {x: 99, y: 99, z: 99}
+    SpawnPos: {x: 15, y: 0, z: 0}
   - Enemy: Mage1
     SpawnDelay: 1
-    SpawnPos: {x: 99, y: 99, z: 99}
+    SpawnPos: {x: 15, y: 0, z: 0}
   - Enemy: Mage2
-    SpawnDelay: 1
-    SpawnPos: {x: 99, y: 99, z: 99}
+    SpawnDelay: 2
+    SpawnPos: {x: 15, y: 0, z: 0}

@@ -44,10 +44,7 @@ public class ActiveSkill : MonoBehaviour, IPointerDownHandler
         {
             coolTimeUI.fillAmount = 1;
             skill.Ability();
-            for(int i = 0; i < g.curBullet.Count; i++)
-            {
-                PoolManager.Instance.PoolObject("EnemyBullet",g.curBullet[i]);
-            }
+            
             Instantiate(g.Bomb,g.player.transform.position,Quaternion.identity);
             maxCooltime = skill.GetMaxCool();
             useSkill = true;

@@ -52,5 +52,6 @@
         "temp/":true,
         "Temp/":true
     },
-    "editor.codeLens": false
+    "editor.codeLens": false,
+    "unity-code-snippets.style": "allman"
 }

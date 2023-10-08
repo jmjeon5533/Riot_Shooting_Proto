@@ -12,4 +12,12 @@ public class Bomb : MonoBehaviour
     {
         transform.localScale += new Vector3(10,10,10) * Time.deltaTime;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("EnemyBullet"))
+        {
+            var b = other.GetComponent<EnemyBullet>();
+            PoolManager.Instance.PoolObject(b.BulletTag,other.gameObject);
+        }
+    }
 }

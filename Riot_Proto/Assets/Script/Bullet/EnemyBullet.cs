@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EnemyBullet : BulletBase
 {
-    private void OnEnable() {
-        GameManager.instance.curBullet.Add(gameObject);   
-    }
     protected override void Update()
     {
         base.Update();
@@ -17,7 +14,7 @@ public class EnemyBullet : BulletBase
             if (h.CompareTag("Player"))
             {
                 h.GetComponent<Player>().Damage();
-                Destroy(gameObject);
+                PoolManager.Instance.PoolObject(BulletTag, gameObject);
             }
         }
     }

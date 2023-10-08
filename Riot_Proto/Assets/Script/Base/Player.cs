@@ -151,8 +151,8 @@ public abstract class Player : MonoBehaviour
         mesh.material.SetFloat("_Dissolve", 0.75f);
         StartCoroutine(FadeShield(false, mesh));
         yield return new WaitForSeconds(time);
+        yield return StartCoroutine(FadeShield(true, mesh));
         IsShield = false;
-        StartCoroutine(FadeShield(true, mesh));
         
     }
 

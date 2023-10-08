@@ -59,6 +59,7 @@ MonoBehaviour:
   mesh: {fileID: 5455262877531881013}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Boss1
+  isDeath: 0
   anim: {fileID: 149849303878326942}
   pattern: 0
   AttackPivot: {x: -5, y: 0, z: 0}

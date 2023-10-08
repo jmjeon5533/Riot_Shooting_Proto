@@ -33,6 +33,7 @@ public class Mage1 : EnemyBase
         transform.localScale = Vector3.zero;
         transform.DOScale(Vector3.one, spawnTime).SetEase(Ease.OutBack);
         Attack();
+        isSpawn = true;
 
     }
     protected override void Update()

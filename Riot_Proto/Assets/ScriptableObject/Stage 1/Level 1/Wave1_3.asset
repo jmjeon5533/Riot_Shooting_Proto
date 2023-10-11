@@ -12,17 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dade780c5cb8984e8c30cce45d74da6, type: 3}
   m_Name: Wave1_3
   m_EditorClassIdentifier: 
-  startDelay: 1
+  startDelay: 0
   WaveList:
   - Enemy: Mage1
     SpawnDelay: 1.5
     SpawnPos: {x: 12, y: 3, z: 0}
   - Enemy: Mage2
+    SpawnDelay: 3
+    SpawnPos: {x: 11, y: 1.5, z: 0}
+  - Enemy: Bat1
     SpawnDelay: 2
     SpawnPos: {x: 11, y: 1.5, z: 0}
+  - Enemy: Bat2
+    SpawnDelay: 2
+    SpawnPos: {x: 11, y: 1.5, z: 0}
+  - Enemy: Bat2
+    SpawnDelay: 4
+    SpawnPos: {x: 11, y: 1.5, z: 0}
   - Enemy: Mage1
-    SpawnDelay: 2.5
-    SpawnPos: {x: 12, y: -3, z: 0}
-  - Enemy: Mage2
     SpawnDelay: 1.5
+    SpawnPos: {x: 11, y: 1.5, z: 0}
+  - Enemy: Mage2
+    SpawnDelay: 2
     SpawnPos: {x: 11, y: 1.5, z: 0}

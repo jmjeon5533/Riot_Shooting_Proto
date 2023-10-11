@@ -14,7 +14,7 @@ public class EnemyBullet : BulletBase
             if (h.CompareTag("Player"))
             {
                 h.GetComponent<Player>().Damage();
-                Destroy(gameObject);
+                PoolManager.Instance.PoolObject(BulletTag, gameObject);
             }
         }
     }

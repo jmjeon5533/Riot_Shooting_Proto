@@ -38,8 +38,6 @@ public abstract class EnemyBase : MonoBehaviour
         var x = Random.Range(0, g.MoveRange.x + g.MovePivot.x);
         var y = Random.Range(-g.MoveRange.y + g.MovePivot.y, g.MoveRange.y + g.MovePivot.y);
         
-        
-        
         MovePos = new Vector3(x, y, 0);
         InitStat();
         StatMultiplier();

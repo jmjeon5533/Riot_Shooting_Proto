@@ -11,7 +11,7 @@ public class BulletBase : MonoBehaviour
     [HideInInspector] public int Damage;
     [HideInInspector] public int CritRate;
     [HideInInspector] public float CritDamage;
-    [SerializeField] protected string BulletTag;
+    public string BulletTag;
     protected virtual void Start()
     {
 

@@ -566,7 +566,7 @@ MonoBehaviour:
   baseHp: 0
   XPRate: 3
   baseXPRate: 0
-  MoveSpeed: 5
+  MoveSpeed: 3
   AttackCooltime: 50
   damagedMultiplier: 1
   shader: {fileID: 0}

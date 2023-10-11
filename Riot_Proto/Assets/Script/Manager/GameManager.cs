@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> ItemList = new();
     public List<GameObject> curEnemys = new();
 
+    public GameObject Bomb;
+
     public Shader dissolveShader;
     public Texture2D dissolveSprite;
 

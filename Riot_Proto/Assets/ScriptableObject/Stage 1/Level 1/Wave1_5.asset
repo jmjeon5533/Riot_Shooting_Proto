@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dade780c5cb8984e8c30cce45d74da6, type: 3}
   m_Name: Wave1_5
   m_EditorClassIdentifier: 
-  startDelay: 1
+  startDelay: 0
   WaveList:
   - Enemy: Bat1
     SpawnDelay: 0.3

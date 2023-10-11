@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
     public Transform DmgTextParant;
     public Transform ClearTab;
     public Transform OverTab;
+    public GameObject Bossbar;
+    public Image BossbarImage;
     public Image[] Heart;
     public Text[] RateText;
 
@@ -40,6 +42,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         XPBarUpdate();
+        Bossbar.SetActive(false);
     }
     public void InitHeart()
     {

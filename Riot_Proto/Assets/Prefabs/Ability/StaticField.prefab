@@ -55,10 +55,10 @@ MonoBehaviour:
   stats: 
   curTime: 0
   maxCooltime: 10
-  defaultDamage: 2
+  defaultDamage: 1
   duration: 4
-  delay: 0.3
+  delay: 0.1
   range: 5
   field: {fileID: 6774775609029403379, guid: 68deceb2e3567804b82b871ea5bc9f8a, type: 3}
-  increaseValue: 3
+  increaseValue: 2
   damageRate: 0.2

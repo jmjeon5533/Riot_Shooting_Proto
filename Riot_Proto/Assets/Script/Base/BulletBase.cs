@@ -11,7 +11,7 @@ public class BulletBase : MonoBehaviour
     [HideInInspector] public int Damage;
     [HideInInspector] public int CritRate;
     [HideInInspector] public float CritDamage;
-    [SerializeField] string BulletTag;
+    [SerializeField] protected string BulletTag;
     protected virtual void Start()
     {
 
@@ -23,7 +23,7 @@ public class BulletBase : MonoBehaviour
         MoveSpeed = prevSpeed;
     }
 
-    public void SetMoveSpeed(float value)
+    public virtual void SetMoveSpeed(float value)
     {
         prevSpeed = MoveSpeed;
         MoveSpeed = value;

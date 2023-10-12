@@ -173,7 +173,7 @@ public abstract class EnemyBase : MonoBehaviour
                 DeadEffect();
             }
             Dead();
-            GameManager.instance.GetMoney += (int)(XPRate * 25);
+            if(GameManager.instance.IsGame) GameManager.instance.GetMoney += (int)(XPRate * 25);
             UIManager.instance.InitRate();
             for (int i = 0; i < EnemyBuffList.Count; i++)
             {

@@ -95,5 +95,6 @@ public class SceneManager : MonoBehaviour
                 camera[i].rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight); // 새로운 Rect 적용
             }
         }
+        Application.targetFrameRate = 60;
     }
 }

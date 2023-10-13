@@ -18,4 +18,9 @@ public abstract class ItemBase : MonoBehaviour
             PoolManager.Instance.PoolObject(itemTag,gameObject);
         }
     }
+    protected virtual void Update()
+    {
+        if(transform.position.x <= -15)
+        PoolManager.Instance.PoolObject(itemTag,gameObject);
+    }
 }

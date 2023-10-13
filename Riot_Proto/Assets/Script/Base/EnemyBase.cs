@@ -25,6 +25,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     public Vector3 MovePos;
     public string EnemyTag;
+    [SerializeField] protected float ItemAddCount = 1;
 
     [SerializeField] bool isDeath = false;
 
@@ -200,11 +201,16 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Item()
     {
         var rand = Random.Range(0, 100);
-        if (rand <= 7)
+        if (rand <= 1 || GameManager.instance.itemCoolCount >= 25)
         {
             //var itemrand = Random.Range(0, 10);
             var key =/* itemrand >= 2 ? "HP" : */"Power";
             PoolManager.Instance.GetObject(key, transform.position, Quaternion.identity);
+            GameManager.instance.itemCoolCount = 0;
+        }
+        else
+        {
+            GameManager.instance.itemCoolCount += ItemAddCount;
         }
     }
     protected virtual void Dead()

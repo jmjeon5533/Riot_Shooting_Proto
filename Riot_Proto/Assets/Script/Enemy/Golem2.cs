@@ -20,11 +20,16 @@ public class Golem2 : EnemyBase
     protected override void Item()
     {
         var rand = Random.Range(0, 100);
-        if (rand <= 14)
+        if (rand <= 3 || GameManager.instance.itemCoolCount >= 25)
         {
             var itemrand = Random.Range(0, 10);
-            var key = itemrand >= 2 ? "HP" : "Power";
+            var key = itemrand >= 6 ? "HP" : "Power";
             PoolManager.Instance.GetObject(key, transform.position, Quaternion.identity);
+            GameManager.instance.itemCoolCount = 0;
+        }
+        else
+        {
+            GameManager.instance.itemCoolCount++;
         }
     }
     protected override void Attack()

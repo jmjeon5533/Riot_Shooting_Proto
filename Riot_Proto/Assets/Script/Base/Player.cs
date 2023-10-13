@@ -84,8 +84,19 @@ public abstract class Player : MonoBehaviour
 
     public void Damage()
     {
+        var g = GameManager.instance;
         if (IsShield) return;
         HP--;
+        if(bulletLevel > 2)
+        {
+            for(int i = 3; i < bulletLevel; i++)
+            {
+                var pos = new Vector3(15,Random.Range(-g.MoveRange.y + g.MovePivot.y, g.MoveRange.y + g.MovePivot.y),0);
+                PoolManager.Instance.GetObject("Power",pos,Quaternion.identity);
+            }
+        }
+        bulletLevel = 1;
+
         StartCoroutine(Dead());
         UIManager.instance.InitHeart();
     }
@@ -114,7 +125,7 @@ public abstract class Player : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1.3f);
             rigid.useGravity = false;
             rigid.velocity = Vector3.zero;
             StartCoroutine(Spawned());
@@ -183,7 +194,6 @@ public abstract class Player : MonoBehaviour
     void Movement()
     {
         Vector2 input = joystick.input.normalized;
-        print(input);
 
         anim.SetInteger("MoveState", Mathf.RoundToInt(input.x));
 

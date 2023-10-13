@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startDelay: 1
   WaveList:
-  - Enemy: Mage1
+  - Enemy: Bat2
     SpawnDelay: 0.5
     SpawnPos: {x: 15, y: 0, z: 0}
   - Enemy: Spider1
     SpawnDelay: 1
     SpawnPos: {x: 15, y: 0, z: 0}
-  - Enemy: Spider1
+  - Enemy: Bat1
     SpawnDelay: 1
     SpawnPos: {x: 15, y: 0, z: 0}
   - Enemy: Golem1
     SpawnDelay: 1
     SpawnPos: {x: 15, y: 0, z: 0}
-  - Enemy: Golem1
+  - Enemy: Golem2
     SpawnDelay: 2
     SpawnPos: {x: 15, y: 0, z: 0}

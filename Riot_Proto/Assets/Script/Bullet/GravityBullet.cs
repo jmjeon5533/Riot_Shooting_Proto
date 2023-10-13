@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GravityBullet : BulletBase
+public class GravityBullet : EnemyBullet
 {
     bool isBounce = false;
 
@@ -14,13 +14,21 @@ public class GravityBullet : BulletBase
     protected override void Start()
     {
         base.Start();
-        
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         MapOut();
+        var hit = Physics.OverlapSphere(transform.position,radius);
+        foreach (var h in hit)
+        {
+            if (h.CompareTag("Player"))
+            {
+                h.GetComponent<Player>().Damage();
+                PoolManager.Instance.PoolObject(BulletTag, gameObject);
+            }
+        }
     }
 
     private void OnEnable()
@@ -55,7 +63,7 @@ public class GravityBullet : BulletBase
     private void OnTriggerEnter(Collider other)
     {
         Player p = GameManager.instance.player;
-        if (other.gameObject.Equals(p.gameObject))
+        if (other.CompareTag("Player"))
         {
             p.Damage();
             PoolManager.Instance.PoolObject(BulletTag, this.gameObject);    

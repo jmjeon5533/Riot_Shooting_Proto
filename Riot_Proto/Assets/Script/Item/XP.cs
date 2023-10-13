@@ -17,8 +17,9 @@ public class XP : ItemBase
         startPos = transform.position;
         middlePos = transform.position + ((Vector3)Random.insideUnitCircle * dirPower);
     }
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         curtime += Time.deltaTime * moveRate;
         transform.position = GameManager.CalculateBezier(startPos, 
             middlePos, player.position, curtime);

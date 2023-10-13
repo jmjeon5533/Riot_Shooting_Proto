@@ -5,8 +5,9 @@ using UnityEngine;
 public class Power : ItemBase
 {
     [SerializeField] float MoveSpeed;
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         transform.position += new Vector3(-1,0) * MoveSpeed * Time.deltaTime;
     }
     protected override void GetItem()
@@ -14,5 +15,6 @@ public class Power : ItemBase
         var b = GameManager.instance.player.bulletLevel;
         if(b <= 4) GameManager.instance.player.bulletLevel++; 
         GameManager.instance.GetMoney += 150;
+        UIManager.instance.InitRate();
     }
 }

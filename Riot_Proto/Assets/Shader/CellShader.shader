@@ -11,60 +11,61 @@ Shader "Unlit/CellShader"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderPipeline"="UniversalPipeline"
+            "RenderType"="Opaque"
+            "UniversalMaterialType" = "Unlit"
+            "Queue"="Geometry"
+            "ShaderGraphShader"="true"
+            "ShaderGraphTargetId"="UniversalUnlitSubTarget" }
         LOD 100
-        cull front
-        Pass
-        {
-            CGPROGRAM
-            #pragma vertex _VertexFuc
-            #pragma fragment _FragmentFuc
-            #include "UnityCG.cginc"
+        //Cull front
+        //Pass
+        //{
+        //    HLSLPROGRAM
+        //    #pragma vertex _VertexFuc
+        //    #pragma fragment _FragmentFuc
+        //    #include "UnityCG.cginc"
 
-            float _Outline_Bold;
-            float4 _OutlineColor;
+        //    float _Outline_Bold;
+        //    float4 _OutlineColor;
 
-            struct ST_VertexInput
-            {
-                    float4 vertex : POSITION;
-                    float3 normal : NORMAL;
-                    float4 color : COLOR;
-            }; 
-            struct ST_VertexOutput
-            {
-                float4 vertex : SV_POSITION;
-                float4 color : COLOR;
-            }; 
-            ST_VertexOutput _VertexFuc(ST_VertexInput stInput) 
-            {
-                ST_VertexOutput stOutput;
-                stInput.color = _OutlineColor;
-                float3 fNormalized_Normal = normalize(stInput.normal);
-                float3 fOutline_Position = stInput.vertex + fNormalized_Normal * (_Outline_Bold * 0.1f);
-                stOutput.vertex = UnityObjectToClipPos(fOutline_Position);
-                stOutput.color = stInput.color;
-                return stOutput;
+        //    struct ST_VertexInput
+        //    {
+        //            float4 vertex : POSITION;
+        //            float3 normal : NORMAL;
+        //            float4 color : COLOR;
+        //    }; 
+        //    struct ST_VertexOutput
+        //    {
+        //        float4 vertex : SV_POSITION;
+        //        float4 color : COLOR;
+        //    }; 
+        //    ST_VertexOutput _VertexFuc(ST_VertexInput stInput) 
+        //    {
+        //        ST_VertexOutput stOutput;
+        //        stInput.color = _OutlineColor;
+        //        float3 fNormalized_Normal = normalize(stInput.normal);
+        //        float3 fOutline_Position = stInput.vertex + fNormalized_Normal * (_Outline_Bold * 0.1f);
+        //        stOutput.vertex = UnityObjectToClipPos(fOutline_Position);
+        //        stOutput.color = stInput.color;
+        //        return stOutput;
                     
-            }
-
-            //float4 _FragmentFuc(ST_VertexOutput intBitsToFloat) : SV_Target 
-            //{
-            //    return 1.0f;
-            //}
-
-            float4 _FragmentFuc(ST_VertexOutput frag) : SV_Target
-            {
-                return frag.color; // 픽셀 쉐이더에서 정점 색을 반환합니다.
-            }
+        //    }
 
             
-            ENDCG
-        }
-         cull back
+        //    float4 _FragmentFuc(ST_VertexOutput frag) : SV_Target
+        //    {
+        //        return frag.color; // 픽셀 쉐이더에서 정점 색을 반환합니다.
+        //    }
+
+            
+        //    ENDHLSL
+        //}
+         Cull back
         Pass
         {
            
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
             // make fog work
@@ -119,7 +120,7 @@ Shader "Unlit/CellShader"
                 col *= Toon(i.worldNormal,_WorldSpaceLightPos0.xyz)*_Strength*_Color+_Brightness;
                 return col;
             }
-            ENDCG
+            ENDHLSL
         }
     }
 }

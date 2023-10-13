@@ -580,6 +580,18 @@ MonoBehaviour:
   - key: GravityBullet
     obj: {fileID: 269225301555661974, guid: 6beafa54c429bf74e86f0ea29b6323b6, type: 3}
     maxAmount: 100
+  - key: Slime1
+    obj: {fileID: 7684168178492651272, guid: 386f084ae0099c34eaa5a765c0182fbc, type: 3}
+    maxAmount: 50
+  - key: Slime2
+    obj: {fileID: 6368654899048205436, guid: 62100c3913ac45b45bb56c1a3c715b6e, type: 3}
+    maxAmount: 50
+  - key: Skeleton1
+    obj: {fileID: 865951433652983531, guid: f36dcb4109e97eb49ae6c84aebc15b50, type: 3}
+    maxAmount: 50
+  - key: Skeleton2
+    obj: {fileID: 1984841726293759475, guid: fc08fec59fc17fa4b85e9b32a2859d4f, type: 3}
+    maxAmount: 50
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

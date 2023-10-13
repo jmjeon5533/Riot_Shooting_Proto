@@ -13,13 +13,13 @@ public class XP : ItemBase
     Vector3 middlePos;
     private void Start()
     {
-        Destroy(gameObject,moveRate);
         player = GameManager.instance.player.transform;
         startPos = transform.position;
         middlePos = transform.position + ((Vector3)Random.insideUnitCircle * dirPower);
     }
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         curtime += Time.deltaTime * moveRate;
         transform.position = GameManager.CalculateBezier(startPos, 
             middlePos, player.position, curtime);

@@ -9,10 +9,10 @@ public class BossBase : EnemyBase
     protected override void Start()
     {
         UIManager.instance.Bossbar.SetActive(true);
-        maxHp = HP;
         MovePos = new Vector3(6, 0, 0);
         InitStat();
         StatMultiplier();
+        maxHp = HP;
     }
     protected override void Update()
     {

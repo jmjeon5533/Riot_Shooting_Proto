@@ -99,7 +99,6 @@ public class AbilityCard : MonoBehaviour
         panel.SetActive(true);
         if (!end && !isDuplicate)
         {
-            Debug.Log("0");
             panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0);
             panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0.5f), 0.5f);
 

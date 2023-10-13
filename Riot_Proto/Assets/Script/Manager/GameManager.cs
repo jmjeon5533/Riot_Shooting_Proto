@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
 
     public Coroutine FadeCoroutine;
 
+    [SerializeField] public float itemCoolCount;
+
     void Awake()
     {
         instance = this;

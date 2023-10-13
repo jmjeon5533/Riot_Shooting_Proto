@@ -32,19 +32,23 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnBeginDrag(PointerEventData eventData)
     {
         var s = SceneManager.instance;
-        var x = Mathf.Abs(s.ScreenArea.x - s.minusScreen.x) / 2;
-        var y = Mathf.Abs(s.ScreenArea.y - s.minusScreen.y) / 2;
+        var x = Mathf.Abs(s.ScreenArea.x - s.ScreenWidth.x) / 2;
+        var y = Mathf.Abs(s.ScreenArea.y - s.ScreenWidth.y) / 2;
         minusVec = new Vector2(x, y);
         
-        Stick.anchoredPosition = eventData.position - minusVec;
-        input = eventData.position - Stick.anchoredPosition - minusVec;
+        Stick.anchoredPosition = eventData.position - minusVec - (Stick.sizeDelta / 2);
+        input = eventData.position - Stick.anchoredPosition - minusVec - (Stick.sizeDelta / 2);
         Lever.anchoredPosition = Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f);
         AlphaTarget = 0.7f;
+        //print($"{eventData.position} : {Stick.anchoredPosition} : {minusVec}");
     }
     public void OnDrag(PointerEventData eventData)
     {
-        input = eventData.position - Stick.anchoredPosition - minusVec;
+        var s = SceneManager.instance;
+        input = eventData.position - Stick.anchoredPosition - minusVec - (Stick.sizeDelta / 2);
         Lever.anchoredPosition = Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f);
+        //print($"{eventData.position} : {Stick.anchoredPosition} : {minusVec}\n{s.ScreenArea.x}-{s.ScreenWidth.x}");
+        AlphaTarget = 0.7f;
     }
     public void OnEndDrag(PointerEventData eventData)
     {

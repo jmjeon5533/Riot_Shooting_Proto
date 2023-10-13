@@ -26,7 +26,7 @@ public class SceneManager : MonoBehaviour
     public int ActiveIndex = -1; //액티브 스킬 번호
     public int ActiveLevel; //액티브 스킬 레벨
     public Vector2 ScreenArea;
-    public Vector2 minusScreen;
+    public Vector2 ScreenWidth;
 
     [Space(10)]
     public PlayerData playerData;
@@ -80,20 +80,21 @@ public class SceneManager : MonoBehaviour
     public void SetResolution(Camera[] camera)
     {
         ScreenArea = new Vector2(1920, 1080);
-        minusScreen = new Vector2(Screen.width, Screen.height);
-        Screen.SetResolution((int)ScreenArea.x, (int)(((float)minusScreen.y / minusScreen.x) * ScreenArea.x), true); // SetResolution 함수 제대로 사용하기
+        ScreenWidth = new Vector2(Screen.width, Screen.height);
+        Screen.SetResolution((int)ScreenArea.x, (int)(((float)ScreenWidth.y / ScreenWidth.x) * ScreenArea.x), true); // SetResolution 함수 제대로 사용하기
         for (int i = 0; i < camera.Length; i++)
         {
-            if ((float)ScreenArea.x / ScreenArea.y < (float)minusScreen.x / minusScreen.y) // 기기의 해상도 비가 더 큰 경우
+            if ((float)ScreenArea.x / ScreenArea.y < (float)ScreenWidth.x / ScreenWidth.y) // 기기의 해상도 비가 더 큰 경우
             {
-                float newWidth = ((float)ScreenArea.x / ScreenArea.y) / ((float)minusScreen.x / minusScreen.y); // 새로운 너비
+                float newWidth = ((float)ScreenArea.x / ScreenArea.y) / ((float)ScreenWidth.x / ScreenWidth.y); // 새로운 너비
                 camera[i].rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f); // 새로운 Rect 적용
             }
             else // 게임의 해상도 비가 더 큰 경우
             {
-                float newHeight = ((float)minusScreen.x / minusScreen.y) / ((float)ScreenArea.x / ScreenArea.y); // 새로운 높이
+                float newHeight = ((float)ScreenWidth.x / ScreenWidth.y) / ((float)ScreenArea.x / ScreenArea.y); // 새로운 높이
                 camera[i].rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight); // 새로운 Rect 적용
             }
         }
+        Application.targetFrameRate = 60;
     }
 }

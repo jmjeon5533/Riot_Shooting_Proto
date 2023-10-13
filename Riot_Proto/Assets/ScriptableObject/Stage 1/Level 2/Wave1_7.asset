@@ -15,9 +15,9 @@ MonoBehaviour:
   startDelay: 1
   WaveList:
   - Enemy: Bat1
-    SpawnDelay: 0.5
+    SpawnDelay: 0.2
     SpawnPos: {x: 15, y: 0, z: 0}
-  - Enemy: Bat1
+  - Enemy: Bat3
     SpawnDelay: 2
     SpawnPos: {x: 15, y: 0, z: 0}
   - Enemy: Spider1

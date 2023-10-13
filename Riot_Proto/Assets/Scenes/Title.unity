@@ -5378,7 +5378,7 @@ MonoBehaviour:
   ActiveIndex: -1
   ActiveLevel: 0
   ScreenArea: {x: 0, y: 0}
-  minusScreen: {x: 0, y: 0}
+  ScreenWidth: {x: 0, y: 0}
   playerData:
     PlayerMora: 0
   OptionPanel: {fileID: 1759216702}

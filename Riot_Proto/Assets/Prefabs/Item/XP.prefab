@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e9e176f9c49a54a84a8e0a9f0c0c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemTag: XP
   AddValue: 3
   moveRate: 2
   dirPower: 10

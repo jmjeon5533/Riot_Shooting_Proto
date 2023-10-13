@@ -10,6 +10,16 @@ public class Golem1 : EnemyBase
     {
         StartCoroutine(AttackCoroutine());
     }
+    protected override void Item()
+    {
+        var rand = Random.Range(0, 100);
+        if (rand <= 14)
+        {
+            var itemrand = Random.Range(0, 10);
+            var key = itemrand >= 2 ? "HP" : "Power";
+            PoolManager.Instance.GetObject(key, transform.position, Quaternion.identity);
+        }
+    }
     IEnumerator AttackCoroutine()
     {
         isAttack = true;

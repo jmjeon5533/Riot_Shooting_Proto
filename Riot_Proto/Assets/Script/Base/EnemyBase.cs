@@ -37,7 +37,7 @@ public abstract class EnemyBase : MonoBehaviour
         var g = GameManager.instance;
         var x = Random.Range(0, g.MoveRange.x + g.MovePivot.x);
         var y = Random.Range(-g.MoveRange.y + g.MovePivot.y, g.MoveRange.y + g.MovePivot.y);
-        
+
         MovePos = new Vector3(x, y, 0);
         InitStat();
         StatMultiplier();
@@ -45,10 +45,10 @@ public abstract class EnemyBase : MonoBehaviour
 
     private void OnEnable()
     {
-       col = GetComponent<Collider>();
+        col = GetComponent<Collider>();
         col.enabled = true;
         isDeath = false;
-        
+
     }
 
     protected void InitStat()
@@ -63,10 +63,10 @@ public abstract class EnemyBase : MonoBehaviour
         XPRate = Mathf.Round(p * baseXPRate);
     }
 
-    public void AddBuff(BuffBase buff) 
+    public void AddBuff(BuffBase buff)
     {
         BuffBase _buff = buff;
-        if(!CheckBuff(_buff))
+        if (!CheckBuff(_buff))
         {
             List<BuffBase> list = new List<BuffBase>(EnemyBuffList);
             foreach (BuffBase b in list)
@@ -87,7 +87,7 @@ public abstract class EnemyBase : MonoBehaviour
         List<BuffBase> list = new List<BuffBase>(EnemyBuffList);
         foreach (BuffBase _buff in list)
         {
-            if(buff.GetBuffClass().Equals(_buff.GetBuffClass()))
+            if (buff.GetBuffClass().Equals(_buff.GetBuffClass()))
             {
                 return false;
             }
@@ -97,30 +97,30 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected void BuffTimer()
     {
-        List<BuffBase> list = null; 
-        if(EnemyBuffList.Count > 0)
+        List<BuffBase> list = null;
+        if (EnemyBuffList.Count > 0)
         {
-            list = new List<BuffBase>();    
-            for(int i = 0; i < EnemyBuffList.Count; i++)
+            list = new List<BuffBase>();
+            for (int i = 0; i < EnemyBuffList.Count; i++)
             {
                 EnemyBuffList[i].Run();
-                if(EnemyBuffList[i].IsOnTimer())
+                if (EnemyBuffList[i].IsOnTimer())
                 {
                     EnemyBuffList[i].End();
                     list.Add(EnemyBuffList[i]);
                 }
             }
         }
-        if(list != null && list.Count > 0)
+        if (list != null && list.Count > 0)
         {
-            for(int i = 0; i < list.Count;i++)
+            for (int i = 0; i < list.Count; i++)
             {
                 EnemyBuffList.Remove(list[i]);
             }
         }
-    } 
+    }
 
-   
+
     protected virtual void Update()
     {
         if (isDeath) return;
@@ -128,12 +128,12 @@ public abstract class EnemyBase : MonoBehaviour
         if (AttackCurtime >= AttackCooltime)
         {
             AttackCurtime -= AttackCooltime;
-            if(IsInScreen())
+            if (IsInScreen())
                 Attack();
         }
         else
         {
-            if(!isAttack)
+            if (!isAttack)
                 AttackCurtime += Time.deltaTime;
         }
         Move();
@@ -151,7 +151,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected bool IsInScreen()
     {
-        if(transform.position.x <= -10) return false;
+        if (transform.position.x <= -10) return false;
         else return true;
     }
 
@@ -173,7 +173,7 @@ public abstract class EnemyBase : MonoBehaviour
                 DeadEffect();
             }
             Dead();
-            if(GameManager.instance.IsGame) GameManager.instance.GetMoney += (int)(XPRate * 25);
+            if (GameManager.instance.IsGame) GameManager.instance.GetMoney += (int)(XPRate * 25);
             UIManager.instance.InitRate();
             for (int i = 0; i < EnemyBuffList.Count; i++)
             {
@@ -184,51 +184,63 @@ public abstract class EnemyBase : MonoBehaviour
             col = GetComponent<Collider>();
             col.enabled = false;
             StartCoroutine(DeathMotion());
+            Item();
         }
         PoolManager.Instance.GetObject("Hit", transform.position, Quaternion.identity);
         var DamageTextPos = (Vector2)transform.position + (Random.insideUnitCircle * 2);
-        var DmgText = PoolManager.Instance.GetObject("DamageText",UIManager.instance.DmgTextParant)
+        var DmgText = PoolManager.Instance.GetObject("DamageText", UIManager.instance.DmgTextParant)
             .GetComponent<DamageText>();
         DmgText.rect.position = DamageTextPos;
         DmgText.text.text = damage.ToString();
         DmgText.timeCount = 1 + (damage * ((isCrit) ? 0.02f : 0.01f));
         DmgText.color = (isCrit) ? Color.red : Color.white;
-        if(isCrit) DmgText.text.fontStyle = FontStyle.Bold;
+        if (isCrit) DmgText.text.fontStyle = FontStyle.Bold;
         else DmgText.text.fontStyle = FontStyle.Normal;
+    }
+    protected virtual void Item()
+    {
+        var rand = Random.Range(0, 100);
+        if (rand <= 7)
+        {
+            //var itemrand = Random.Range(0, 10);
+            var key =/* itemrand >= 2 ? "HP" : */"Power";
+            PoolManager.Instance.GetObject(key, transform.position, Quaternion.identity);
+        }
     }
     protected virtual void Dead()
     {
-        
+
     }
     IEnumerator DeathMotion()
     {
-        
+
         if (mesh == null)
         {
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);
-            
-        } else
+
+        }
+        else
         {
-            
+
             mesh.material.shader = GameManager.instance.dissolveShader;
             //mesh.material.SetFloat("_Dissolve_Power", 0); 
             mesh.material.SetTexture("_NoiseTex", GameManager.instance.dissolveSprite);
-            mesh.material.SetTextureOffset("_NoiseTex", new Vector2(0,0));
+            mesh.material.SetTextureOffset("_NoiseTex", new Vector2(0, 0));
             mesh.material.SetTextureScale("_NoiseTex", new Vector2(3, 3));
             float power = 0;
 
-            while(power < 0.5f)
+            while (power < 0.5f)
             {
                 //Material mat = new Material(mesh.material);
                 power += Time.deltaTime / 1.5f;
                 mesh.material.SetFloat("_DissolvePower", power);
-                
+
                 //Debug.Log(mat.GetFloat("Dissolve_Power"));
                 //mesh.material = mat;
                 yield return null;
             }
             yield return new WaitForSeconds(0.05f);
-            
+
             //Debug.Log("Test");
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);
         }
@@ -245,7 +257,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             other.GetComponent<Player>().Damage();
         }

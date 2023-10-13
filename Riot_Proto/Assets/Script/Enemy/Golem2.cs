@@ -17,7 +17,16 @@ public class Golem2 : EnemyBase
     {
         base.Update();
     }
-
+    protected override void Item()
+    {
+        var rand = Random.Range(0, 100);
+        if (rand <= 14)
+        {
+            var itemrand = Random.Range(0, 10);
+            var key = itemrand >= 2 ? "HP" : "Power";
+            PoolManager.Instance.GetObject(key, transform.position, Quaternion.identity);
+        }
+    }
     protected override void Attack()
     {
         StartCoroutine(AttackCoroutine());

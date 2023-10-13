@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class ItemBase : MonoBehaviour
 {
+    [SerializeField] string itemTag;
     void Start()
     {
 
@@ -14,7 +15,7 @@ public abstract class ItemBase : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GetItem();
-            Destroy(gameObject);
+            PoolManager.Instance.PoolObject(itemTag,gameObject);
         }
     }
 }

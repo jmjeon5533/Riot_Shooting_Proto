@@ -21,6 +21,16 @@ public class Turtle1 : EnemyBase
         transform.position = new Vector3(15, y, 0);
         MovePos = new Vector3(-15, y, 0);
     }
+    protected override void Item()
+    {
+        var rand = Random.Range(0, 100);
+        if (rand <= 11)
+        {
+            var itemrand = Random.Range(0, 10);
+            var key = itemrand >= 2 ? "HP" : "Power";
+            PoolManager.Instance.GetObject(key, transform.position, Quaternion.identity);
+        }
+    }
     public override void StatMultiplier()
     {
         var p = GameManager.instance.EnemyPower * 1.2f;

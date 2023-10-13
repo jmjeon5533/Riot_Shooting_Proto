@@ -44,3 +44,6 @@ MonoBehaviour:
   - Enemy: Bat3
     SpawnDelay: 1
     SpawnPos: {x: 15, y: 0, z: 0}
+  - Enemy: Skeleton1
+    SpawnDelay: 5
+    SpawnPos: {x: 15, y: 0, z: 0}

@@ -47,7 +47,7 @@ public class SceneManager : MonoBehaviour
     public void JsonLoad()
     {
         string data = PlayerPrefs.GetString("savedata", "null");
-        print(data);
+        //print(data);
         playerData = data.Equals("null") || string.IsNullOrEmpty(data) ? new PlayerData() : JsonUtility.FromJson<PlayerData>(data);
     }
     public void JsonSave()

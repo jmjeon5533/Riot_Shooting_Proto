@@ -67,7 +67,7 @@ public class Golem2 : EnemyBase
 
 
 
-protected override void Dead()
+    protected override void Dead()
     {
         base.Dead();
         anim1.SetBool("Death", IsDeath());

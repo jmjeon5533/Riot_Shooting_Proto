@@ -16,6 +16,8 @@ public class ThunderDrop : AbilityBase
     public override void Start()
     {
         Initalize();
+        useSkill = true;
+        maxCool = maxCooltime;
     }
 
     // Update is called once per frame
@@ -27,16 +29,20 @@ public class ThunderDrop : AbilityBase
     public override void Ability()
     {
         curCooltime += Time.deltaTime;
+        minCool = curCooltime;
         if (GameManager.instance.curEnemys != null && curCooltime >= maxCooltime && GameManager.instance.curEnemys.Count > 0 )
         {
+            
             List<GameObject> nearbyEnemies = GetNearbyEnemies();
             if (nearbyEnemies != null && nearbyEnemies.Count == 0) return;
             Transform target = nearbyEnemies[Random.Range(0, nearbyEnemies.Count)].transform;
             if (target == null) return;
+            ResetTimerUI(1);
             Instantiate(thunder, new Vector3(target.position.x, 0, target.position.z), Quaternion.identity).GetComponent<Thunder>()
                 .SetDamage(defaultDamage);
 
             curCooltime = 0;
+            useSkill = true;
         }
     }
 
@@ -63,6 +69,7 @@ public class ThunderDrop : AbilityBase
         base.LevelUp();
         defaultDamage += (int)(3 * Mathf.Pow((1 + 0.15f), level));
         maxCooltime -= (Mathf.Round((0.3f * Mathf.Pow((1 + 0.2f), level)) * 100) / 100);
+        maxCool = maxCooltime;
 
     }
 

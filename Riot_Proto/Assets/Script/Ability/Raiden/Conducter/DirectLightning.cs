@@ -19,7 +19,11 @@ public class DirectLightning : AbilityBase, IListener
     {
         if(stack >= maxStack)
         {
+            useSkill = false;
             stack = 0;
+            minCool = stack;
+            ResetTimerUI(1);
+            useSkill = true;
             var b = Instantiate(bullet, player.transform.position, Quaternion.identity);
             b.GetComponent<BulletBase>().Damage = defaultDamage + (int)(player.damage * damageRate);
            
@@ -37,6 +41,7 @@ public class DirectLightning : AbilityBase, IListener
         if(type == Event_Type.PlayerAttack)
         {
             stack++;
+            minCool = stack;
         }
     }
 
@@ -45,14 +50,18 @@ public class DirectLightning : AbilityBase, IListener
         base.LevelUp();
         defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
         maxStack--;
+        maxCool = maxStack;
     }
 
     // Start is called before the first frame update
     public override void Start()
     {
         EventManager.Instance.AddListener(Event_Type.PlayerAttack, this);
-        Initalize();    
+        Initalize();
+        maxCool = maxStack;
+        useSkill = true;
     }
+
 
     // Update is called once per frame
     void Update()

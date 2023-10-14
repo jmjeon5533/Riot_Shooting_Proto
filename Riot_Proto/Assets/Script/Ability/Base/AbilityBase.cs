@@ -18,6 +18,8 @@ public abstract class AbilityBase : MonoBehaviour
 
     public Sprite skillImage;
 
+    public SkillIcon skillIcon;
+
     public string skillName;
     public string skillDescription;
 
@@ -26,6 +28,11 @@ public abstract class AbilityBase : MonoBehaviour
     protected float maxCool;
     protected float minCool;
 
+    protected void ResetTimerUI(float value)
+    {
+        skillIcon.ResetTimer(value);
+    }
+         
     public float GetMinCool()
     {
         return minCool;
@@ -71,6 +78,7 @@ public abstract class AbilityBase : MonoBehaviour
     public virtual void Initalize()
     {
         player = GameManager.instance.player;
+        if (type == AbilityType.Passive) ResetTimerUI(1);
     }
 
     public abstract void Ability();

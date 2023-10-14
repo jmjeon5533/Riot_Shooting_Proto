@@ -22,11 +22,15 @@ public class ShockWave : AbilityBase
     public override void Ability()
     {
         curTime += Time.deltaTime;
+        minCool = curTime;
         if (curTime >= maxCooltime)
         {
             curTime = 0;
+            useSkill = false;
+            ResetTimerUI(1);
             var b = Instantiate(wave, player.transform.position, Quaternion.identity).GetComponent<ElectricWave>();
             b.Init(range, speed, duration, 1 - slowRate);
+            useSkill = true;
         }
     }
 
@@ -49,6 +53,8 @@ public class ShockWave : AbilityBase
     public override void Start()
     {
         Initalize();
+        maxCool = maxCooltime;
+        useSkill = true;
     }
 
     // Update is called once per frame

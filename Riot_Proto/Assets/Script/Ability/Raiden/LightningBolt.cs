@@ -14,11 +14,13 @@ public class LightningBolt : AbilityBase
     public override void Ability()
     {
         curCooltime += Time.deltaTime;
+        minCool = curCooltime;
         if(curCooltime >= maxCooltime)
         {
             curCooltime = 0;
+            ResetTimerUI(1);
             //List<GameObject> list = GetNearbyEnemies();
-            for(int i = 0; i < 4 + ((level -1) * 2); i++)
+            for (int i = 0; i < 4 + ((level -1) * 2); i++)
             {
                 Instantiate(bullet, player.transform.position, Quaternion.identity);
             }

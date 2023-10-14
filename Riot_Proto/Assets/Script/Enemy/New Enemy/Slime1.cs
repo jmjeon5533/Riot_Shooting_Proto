@@ -18,8 +18,8 @@ public class Slime1 : EnemyBase
         anim.SetTrigger("Attack");
         yield return new WaitForSeconds(2.5f);
         var b = PoolManager.Instance.GetObject("GravityBullet", transform.position - (Vector3.down * 0.3f), Quaternion.identity).GetComponent<GravityBullet>();
-        b.SetMoveSpeed(700);
-        b.SetGravity(3);
+        b.SetMoveSpeed(500);
+        b.SetGravity(1);
         b.Bounce();
 
     }

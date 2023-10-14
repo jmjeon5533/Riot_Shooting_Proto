@@ -21,11 +21,15 @@ public class StaticField : AbilityBase
     public override void Ability()
     {
         curTime += Time.deltaTime;
+        minCool = curTime;
         if(curTime >= maxCooltime)
         {
             curTime = 0;
+            useSkill = true;
+            ResetTimerUI(1);
             var b = Instantiate(field,player.transform.position,Quaternion.identity).GetComponent<StaticZone>();
             b.Init(defaultDamage + (int)(player.damage * damageRate), range, duration, delay);
+            useSkill = false;
         }
     }
 
@@ -40,12 +44,16 @@ public class StaticField : AbilityBase
         base.LevelUp();
         defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
         duration++;
+
     }
 
     // Start is called before the first frame update
     public override void Start()
     {
         player = GameManager.instance.player;
+        useSkill = true;
+        maxCool = maxCooltime;
+        Initalize();
     }
 
     // Update is called once per frame

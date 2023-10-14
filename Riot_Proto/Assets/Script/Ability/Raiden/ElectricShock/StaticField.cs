@@ -24,12 +24,14 @@ public class StaticField : AbilityBase
         minCool = curTime;
         if(curTime >= maxCooltime)
         {
+            useSkill = false;
             curTime = 0;
-            useSkill = true;
+            minCool = curTime;
             ResetTimerUI(1);
             var b = Instantiate(field,player.transform.position,Quaternion.identity).GetComponent<StaticZone>();
             b.Init(defaultDamage + (int)(player.damage * damageRate), range, duration, delay);
-            useSkill = false;
+            useSkill = true;
+            
         }
     }
 

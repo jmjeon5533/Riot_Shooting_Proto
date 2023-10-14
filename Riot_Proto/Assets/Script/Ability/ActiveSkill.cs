@@ -9,12 +9,11 @@ public class ActiveSkill : MonoBehaviour, IPointerDownHandler
     float maxCooltime;
     float cooltime = 0;
 
-    [SerializeField] float speed;
-
     bool useSkill = false;
 
     [SerializeField] Image coolTimeUI;
-    
+
+    [SerializeField] float speed = 3;
 
 
     // Start is called before the first frame update

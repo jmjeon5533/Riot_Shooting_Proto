@@ -19,10 +19,13 @@ public class ElectricShock : AbilityBase, IListener
     {
         if (stack >= maxStack)
         {
+            //useSkill = false;
+            ResetTimerUI(1);
             stack = 0;
+            minCool = stack;
             var b = Instantiate(bullet, player.transform.position, Quaternion.identity);
             b.GetComponent<BulletBase>().Damage = defaultDamage + (int)(player.damage * damageRate);
-
+            useSkill = true;
         }
     }
 
@@ -37,6 +40,7 @@ public class ElectricShock : AbilityBase, IListener
         if (type == Event_Type.PlayerAttack)
         {
             stack++;
+            minCool = stack;
         }
     }
 
@@ -45,6 +49,7 @@ public class ElectricShock : AbilityBase, IListener
         base.LevelUp();
         defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
         maxStack--;
+        maxCool = maxStack;
     }
 
     // Start is called before the first frame update
@@ -52,6 +57,8 @@ public class ElectricShock : AbilityBase, IListener
     {
         EventManager.Instance.AddListener(Event_Type.PlayerAttack, this);
         Initalize();
+        maxCool = maxStack;
+        useSkill = true;
     }
 
     // Update is called once per frame

@@ -18,8 +18,11 @@ public class Flash : AbilityBase
     public override void Ability()
     {
         curCooltime+=Time.deltaTime;
-        if(curCooltime >= maxCooltime && GameManager.instance.curEnemys.Count > 0)
+        minCool = curCooltime;
+        
+        if (curCooltime >= maxCooltime && GameManager.instance.curEnemys.Count > 0)
         {
+            //useSkill = false;
             curCooltime=0;
             Vector3 targetPos = GetEnemyPos();
             Destroy(Instantiate(explosion, targetPos, Quaternion.identity),0.7f);
@@ -37,6 +40,8 @@ public class Flash : AbilityBase
 
                 }
             }
+            useSkill = true;
+            ResetTimerUI(1);
 
         }
     }
@@ -79,7 +84,9 @@ public class Flash : AbilityBase
     // Start is called before the first frame update
     public override void Start()
     {
-        
+        maxCool = maxCooltime;
+        useSkill = true;
+        Initalize();
     }
 
     // Update is called once per frame

@@ -26,9 +26,12 @@ public class ChainLightning : AbilityBase, IListener
     public override void Ability()
     {
         curCooltime += Time.deltaTime;
+        minCool = curCooltime;
         if(curCooltime >= maxCooltime)
         {
             isAttack = true;
+            ResetTimerUI(1);
+            useSkill = false;
         }
     }
 
@@ -55,6 +58,7 @@ public class ChainLightning : AbilityBase, IListener
             if(enemy != null && isAttack && GameManager.instance.curEnemys.Contains(enemy.gameObject))
             {
                 curCooltime = 0;
+                useSkill = true;
                 targets.Clear();
                 target = enemy.transform;
                 ChainAttack();
@@ -66,6 +70,8 @@ public class ChainLightning : AbilityBase, IListener
     public override void Start()
     {
         Initalize();
+        maxCool = maxCooltime;
+        useSkill = true;
         EventManager.Instance.AddListener(Event_Type.PlayerAttacked, this);
     }
 

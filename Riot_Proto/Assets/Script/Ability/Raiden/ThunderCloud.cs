@@ -19,9 +19,11 @@ public class ThunderCloud : AbilityBase
     public override void Ability()
     {
         curCooltime+=Time.deltaTime;
+        minCool = curCooltime;
         if(curCooltime > maxCooltime)
         {
             curCooltime=0;
+            ResetTimerUI(1);
             Instantiate(cloud,GameManager.instance.player.transform.position, Quaternion.identity).GetComponent<Cloud>().Duration(livingDuration, speed,defaultDamage);
         }
     }
@@ -29,7 +31,9 @@ public class ThunderCloud : AbilityBase
     // Start is called before the first frame update
     public override void Start()
     {
-        
+        useSkill = true;
+        Initalize();
+        maxCool = maxCooltime;
     }
 
     // Update is called once per frame
@@ -43,6 +47,7 @@ public class ThunderCloud : AbilityBase
         base.LevelUp();
         defaultDamage += (int)(2 * Mathf.Pow((1 + 0.15f), level));
         maxCooltime -= (Mathf.Round(((0.4f * Mathf.Pow((1 + 0.1f), level))) * 100) / 100);
+        maxCool = maxCooltime;
         
     }
 

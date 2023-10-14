@@ -36,11 +36,5 @@ MonoBehaviour:
     SpawnDelay: 2
     SpawnPos: {x: 11, y: 1.5, z: 0}
   - Enemy: Slime1
-    SpawnDelay: 2
-    SpawnPos: {x: 11, y: 1.5, z: 0}
-  - Enemy: Skeleton1
-    SpawnDelay: 5
-    SpawnPos: {x: 11, y: 1.5, z: 0}
-  - Enemy: Skeleton2
-    SpawnDelay: 2
-    SpawnPos: {x: 11, y: 1.5, z: 0}
+    SpawnDelay: 3
+    SpawnPos: {x: 10, y: -1, z: 0}

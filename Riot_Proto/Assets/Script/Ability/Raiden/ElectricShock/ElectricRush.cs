@@ -28,9 +28,12 @@ public class ElectricRush : AbilityBase
     public override void Ability()
     {
         curCooltime+=Time.deltaTime;
+        minCool = curCooltime;
         if(curCooltime >= maxCooltime)
         {
             curCooltime = 0;
+            useSkill = false;
+            ResetTimerUI(1);
             float radius = angle;
             
             float amount = radius / (count - 1);
@@ -44,6 +47,7 @@ public class ElectricRush : AbilityBase
                 b.transform.rotation = rotation;
                 z += amount;
             }
+            useSkill = true;
         }
     }
 
@@ -66,6 +70,8 @@ public class ElectricRush : AbilityBase
     public override void Start()
     {
         Initalize();
+        useSkill = true;
+        maxCool = maxCooltime;
     }
 
     // Update is called once per frame

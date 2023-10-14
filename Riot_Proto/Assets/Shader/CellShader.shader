@@ -23,7 +23,7 @@ Shader "Unlit/CellShader"
 
             float _Outline_Bold;
             float4 _OutlineColor;
-
+                
             struct ST_VertexInput
             {
                     float4 vertex : POSITION;
@@ -60,7 +60,7 @@ Shader "Unlit/CellShader"
             
             ENDCG
         }
-         cull back
+        cull back
         Pass
         {
            

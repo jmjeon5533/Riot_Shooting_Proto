@@ -27,11 +27,11 @@ public class Mage1 : EnemyBase
     IEnumerator Spawn()
     {
         var g = GameManager.instance;
-        var circle = Instantiate(magicCircle, new Vector3(Random.Range(0, g.MoveRange.x/2), Random.Range((-g.MoveRange.y + 1), (g.MoveRange.y - 1)), 0), Quaternion.identity);
+        var circle = Instantiate(magicCircle, new Vector3(Random.Range(0, g.MoveRange.x / 2), Random.Range((-g.MoveRange.y + 1), (g.MoveRange.y - 1)), 0), Quaternion.identity);
         yield return new WaitForSeconds(spawnDelay);
         transform.position = circle.transform.position + offset;
         transform.localScale = Vector3.zero;
-        transform.DOScale(Vector3.one, spawnTime).SetEase(Ease.OutBack);
+        yield return transform.DOScale(Vector3.one, spawnTime).SetEase(Ease.OutBack);
         Attack();
         isSpawn = true;
 
@@ -60,6 +60,7 @@ public class Mage1 : EnemyBase
 
         var b = PoolManager.Instance.GetObject("EnemyBullet",transform.position,Quaternion.identity).GetComponent<BulletBase>();
         b.dir = (g.player.transform.position - transform.position).normalized;
+        MovePos = new Vector3(Random.Range(0, g.MoveRange.x / 2), Random.Range((-g.MoveRange.y + 1), (g.MoveRange.y - 1)), 0);
     }
 
     Quaternion GetRotation(Transform target)

@@ -26,10 +26,12 @@ public class Transmission : AbilityBase, IListener
     public override void Ability()
     {
         curCooltime += Time.deltaTime;
+        minCool = curCooltime;
         if(curCooltime >= maxCooltime)
         {
             isAttack = true;
-           
+           useSkill = false;
+            ResetTimerUI(0);
             
         }
     }
@@ -60,6 +62,8 @@ public class Transmission : AbilityBase, IListener
                     }
                 }
                 ChainAttack();
+                ResetTimerUI(1);
+                useSkill = true;
             }
         }
     }
@@ -152,7 +156,10 @@ public class Transmission : AbilityBase, IListener
 
     public override void Initalize()
     {
+        base.Initalize();
         player = GameManager.instance.player;
+        useSkill = true;
+        maxCool = maxCooltime;
     }
 
     // Update is called once per frame

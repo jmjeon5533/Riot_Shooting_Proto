@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc51368c4c61a5945a325518f99eb568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 50
+  HP: 40
   baseHp: 0
   XPRate: 1
   baseXPRate: 0
@@ -88,6 +88,7 @@ MonoBehaviour:
   mesh: {fileID: 6282746329492524220}
   MovePos: {x: -12, y: 0, z: 0}
   EnemyTag: Slime2
+  ItemAddCount: 1
   isDeath: 0
   anim: {fileID: 6368654898735201793}
 --- !u!1001 &6368654899015073614

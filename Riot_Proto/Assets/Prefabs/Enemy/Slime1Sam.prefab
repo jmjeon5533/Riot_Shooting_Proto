@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 20
   baseHp: 0
-  XPRate: 5
+  XPRate: 1
   baseXPRate: 0
   MoveSpeed: 3
   AttackCooltime: 1
@@ -88,6 +88,7 @@ MonoBehaviour:
   mesh: {fileID: 7345770812677573269}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Slime1
+  ItemAddCount: 1
   isDeath: 0
   anim: {fileID: 7684168178276432229}
   spawnDelay: 1

@@ -20,12 +20,12 @@ public class Skeleton1 : EnemyBase
         anim.SetTrigger("Attack");
         yield return new WaitForSeconds(0.7f);
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 6; i++)
         {
 
             var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position + (Vector3.up * 0.7f), Quaternion.identity).GetComponent<EnemyBullet>();
             b.dir = Vector3.left;
-            b.SetMoveSpeed(i+1f);
+            b.SetMoveSpeed(i+2f);
         }
         yield return new WaitForSeconds(1f);
         MovePos = new Vector3(Random.Range(0, g.MoveRange.x / 2), Random.Range((-g.MoveRange.y + 1), (g.MoveRange.y - 1)), 0);

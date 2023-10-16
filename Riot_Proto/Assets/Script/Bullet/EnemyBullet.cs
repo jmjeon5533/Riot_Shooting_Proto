@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class EnemyBullet : BulletBase
 {
+    private const float originSpeed = 10;
+
+    protected void OnEnable()
+    {
+        MoveSpeed = originSpeed;
+    }
+
     protected override void Update()
     {
         base.Update();

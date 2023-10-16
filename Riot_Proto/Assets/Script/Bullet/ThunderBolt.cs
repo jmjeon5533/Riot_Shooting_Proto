@@ -41,7 +41,11 @@ public class ThunderBolt : BulletBase
         else
         {
             target = FindClosestEnemy();
-            if (target == transform) targetPos = (prevPos - transform.position).normalized;
+            if (target == transform)
+            {
+                targetPos = (prevPos - transform.position).normalized;
+                Destroy(gameObject);
+            }
             else
                 targetPos = target.position;
         }

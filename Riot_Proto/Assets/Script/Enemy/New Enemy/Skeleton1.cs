@@ -15,19 +15,20 @@ public class Skeleton1 : EnemyBase
 
     IEnumerator AttackCoroutine()
     {
+        var g = GameManager.instance;
         isAttack = true;
         anim.SetTrigger("Attack");
-        yield return new WaitForSeconds(2.5f);
-        float spawnSlimeY = 3.5f;
-        int spawnPosNum = Random.Range(0, 4);
+        yield return new WaitForSeconds(0.7f);
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 8; i++)
         {
-            if (spawnPosNum != i)
-            PoolManager.Instance.GetObject("Slime2", new Vector3(13, spawnSlimeY, 0), Quaternion.identity).GetComponent<Slime2>();
-            spawnSlimeY -= 2.5f;
+
+            var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position + (Vector3.up * 0.7f), Quaternion.identity).GetComponent<EnemyBullet>();
+            b.dir = Vector3.left;
+            b.SetMoveSpeed(i+1f);
         }
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
+        MovePos = new Vector3(Random.Range(0, g.MoveRange.x / 2), Random.Range((-g.MoveRange.y + 1), (g.MoveRange.y - 1)), 0);
         isAttack = false;
     }
 
@@ -40,5 +41,11 @@ public class Skeleton1 : EnemyBase
     protected override void Move()
     {
         base.Move();
+    }
+
+    protected override void Start()
+    {
+        //base.Start();
+
     }
 }

@@ -21,6 +21,7 @@ public class StrongThunder : AbilityBase
     {
             List<GameObject> list = new List<GameObject>(GameManager.instance.curEnemys);
             if (list.Count == 0) return;
+            var g = GameManager.instance;
             player.Shield(2.5f);
             curCooltime = 0;
             useSkill = true;
@@ -36,7 +37,7 @@ public class StrongThunder : AbilityBase
                 //    target = null;
                 //}   
             }
-            Thunder t = Instantiate(thunders[level-1], new Vector3(target.position.x, 0, target.position.z), Quaternion.identity).GetComponent<Thunder>();
+            Thunder t = Instantiate(thunders[level-1], new Vector3(0, 0, 0), Quaternion.identity).GetComponent<Thunder>();
              t.SetDamage(damage);
             t.radius = radius;
             t.transform.localScale = new Vector3(t.transform.localScale.x, t.transform.localScale.y, t.transform.localScale.z);

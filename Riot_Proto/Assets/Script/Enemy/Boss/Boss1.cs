@@ -24,6 +24,8 @@ public class Boss1 : BossBase
     [SerializeField] float breathDuration;
     [SerializeField] float limitY;
 
+    Coroutine coroutine;
+
     [SerializeField] List<RisePattern> risePatterns = new List<RisePattern>();
 
     bool isDeadMotionPlay = false;
@@ -53,22 +55,22 @@ public class Boss1 : BossBase
         {
             case 0:
                 {
-                    StartCoroutine(Attack1());
+                    coroutine = StartCoroutine(Attack1());
                     break;
                 }
             case 1:
                 {
-                    StartCoroutine(Attack2());
+                    coroutine = StartCoroutine(Attack2());
                     break;
                 }
             case 2:
                 {
-                    StartCoroutine(Attack3());
+                    coroutine = StartCoroutine(Attack3());
                     break;
                 }
             case 3:
                 {
-                    StartCoroutine(Attack4());
+                    coroutine = StartCoroutine(Attack4());
                     break;
                 }
         }
@@ -212,6 +214,7 @@ public class Boss1 : BossBase
             }
             GameManager.instance.GetMoney += (int)(XPRate * 25);
             UIManager.instance.InitRate();
+            StopAllCoroutines();
             StartCoroutine(DeadMotion());
         }
         PoolManager.Instance.GetObject("Hit", transform.position, Quaternion.identity);
@@ -230,6 +233,7 @@ public class Boss1 : BossBase
     {
 
         isDeadMotionPlay = true;
+        
         GameManager.instance.SetCameraShake(7, 0.09f);
         for (int i = 0; i < 9; i++)
         {

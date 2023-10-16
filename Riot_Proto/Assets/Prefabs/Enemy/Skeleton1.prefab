@@ -45,10 +45,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.72
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.81, z: 0}
 --- !u!54 &865951433652983528
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -79,15 +79,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 40
   baseHp: 0
-  XPRate: 10
+  XPRate: 5
   baseXPRate: 0
   MoveSpeed: 3
-  AttackCooltime: 1
+  AttackCooltime: 2.5
   damagedMultiplier: 1
   shader: {fileID: 0}
   mesh: {fileID: 240581532393623787}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Skeleton1
+  ItemAddCount: 1
   isDeath: 0
   anim: {fileID: 865951433428951839}
   spawnDelay: 1

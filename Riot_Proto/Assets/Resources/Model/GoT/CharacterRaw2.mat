@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Character 2
-  m_Shader: {fileID: 4800000, guid: d24c8ebf89b8c4e45be477a0b910851f, type: 3}
+  m_Name: CharacterRaw2
+  m_Shader: {fileID: 4800000, guid: fbc2d3fc8bb247249b0e22fb365f63e3, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4

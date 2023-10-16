@@ -152,7 +152,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected bool IsInScreen()
     {
-        if (transform.position.x <= -10) return false;
+        if (transform.position.x <= -10 || transform.position.x >= 10) return false;
         else return true;
     }
 
@@ -163,7 +163,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     public virtual void Damage(int damage, bool isCrit)
     {
-        if (IsSpawning() || isDeath) return;
+        if (IsSpawning() || IsDeath() || !IsInScreen()) return;
         HP -= damage * damagedMultiplier;
         if (HP <= 0)
         {

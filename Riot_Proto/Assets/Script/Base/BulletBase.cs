@@ -5,7 +5,9 @@ using UnityEngine;
 public class BulletBase : MonoBehaviour
 {
     public float MoveSpeed;
-    private float prevSpeed = 99999;
+
+    
+
     public Vector3 dir;
     [SerializeField] protected float radius;
     [HideInInspector] public int Damage;
@@ -19,13 +21,12 @@ public class BulletBase : MonoBehaviour
 
     private void OnEnable()
     {
-        if (prevSpeed == 99999) return;
-        MoveSpeed = prevSpeed;
+        
+        
     }
 
     public virtual void SetMoveSpeed(float value)
     {
-        prevSpeed = MoveSpeed;
         MoveSpeed = value;
     }
 

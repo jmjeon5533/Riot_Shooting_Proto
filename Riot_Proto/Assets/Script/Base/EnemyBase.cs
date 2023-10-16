@@ -188,15 +188,15 @@ public abstract class EnemyBase : MonoBehaviour
             Item();
         }
         PoolManager.Instance.GetObject("Hit", transform.position, Quaternion.identity);
-        var DamageTextPos = (Vector2)transform.position + (Random.insideUnitCircle * 2);
-        var DmgText = PoolManager.Instance.GetObject("DamageText", UIManager.instance.DmgTextParant)
-            .GetComponent<DamageText>();
-        DmgText.rect.position = DamageTextPos;
-        DmgText.text.text = damage.ToString();
-        DmgText.timeCount = 1 + (damage * ((isCrit) ? 0.02f : 0.01f));
-        DmgText.color = (isCrit) ? Color.red : Color.white;
-        if (isCrit) DmgText.text.fontStyle = FontStyle.Bold;
-        else DmgText.text.fontStyle = FontStyle.Normal;
+        // var DamageTextPos = (Vector2)transform.position + (Random.insideUnitCircle * 2);
+        // var DmgText = PoolManager.Instance.GetObject("DamageText", UIManager.instance.DmgTextParant)
+        //     .GetComponent<DamageText>();
+        // DmgText.rect.position = DamageTextPos;
+        // DmgText.text.text = damage.ToString();
+        // DmgText.timeCount = 1 + (damage * ((isCrit) ? 0.02f : 0.01f));
+        // DmgText.color = (isCrit) ? Color.red : Color.white;
+        // if (isCrit) DmgText.text.fontStyle = FontStyle.Bold;
+        // else DmgText.text.fontStyle = FontStyle.Normal;
     }
     protected virtual void Item()
     {

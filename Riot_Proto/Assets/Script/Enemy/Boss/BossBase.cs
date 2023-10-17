@@ -13,6 +13,7 @@ public class BossBase : EnemyBase
         InitStat();
         StatMultiplier();
         maxHp = HP;
+        UIManager.instance.StartCoroutine(UIManager.instance.NextStageCoroutine(true,SceneManager.instance.StageIndex));
     }
     protected override void Update()
     {

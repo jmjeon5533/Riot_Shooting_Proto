@@ -14,6 +14,7 @@ public class BG
         public float speed;
     }
     public List<BGGroup> bgs = new();
+    public List<BGGroup> BossBgs = new();
 }
 public class UIManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class UIManager : MonoBehaviour
     public Image XPBar;
     public Transform canvas;
     public Transform bgCanvas;
+    public Transform bgFolder;
     public Transform DmgTextParant;
     public Transform ClearTab;
     public Transform OverTab;
@@ -84,7 +86,7 @@ public class UIManager : MonoBehaviour
     }
     public void InitRate()
     {
-        for(int i = 0; i < RateText.Length; i++)
+        for (int i = 0; i < RateText.Length; i++)
         {
             RateText[i].text = GameManager.instance.GetMoney.ToString();
         }
@@ -96,60 +98,68 @@ public class UIManager : MonoBehaviour
         isUseTab = true;
         ClearTab.DOLocalMoveY(800, 1).SetEase(Ease.OutQuad).OnComplete(() => isUseTab = false);
 
-        StartCoroutine(NextStageCoroutine());
+        StartCoroutine(NextStageCoroutine(false));
     }
-    public void InitBackGround(int BackNum)
+    public void InitBackGround(int BackNum, bool isBoss)
     {
         for (int i = 0; i < curBGObj.Count; i++)
         {
             PoolManager.Instance.PoolObject("BG", curBGObj[i]);
         }
-        for (int i = 0; i < BGList[BackNum].bgs.Count; i++)
+        var loopbg = isBoss ? BGList[BackNum].BossBgs : BGList[BackNum].bgs;
+        for (int i = 0; i < loopbg.Count; i++)
         {
             float b = 0.8f;
+            var bg = isBoss ? BGList[BackNum].BossBgs[i] : BGList[BackNum].bgs[i];
 
-            var BG1 = PoolManager.Instance.GetObject("BG",bgCanvas).GetComponent<Image>();
-            var BG2 = PoolManager.Instance.GetObject("BG",bgCanvas).GetComponent<Image>();
+            var BG1 = PoolManager.Instance.GetObject("BG", bgFolder).GetComponent<Image>();
+            var BG2 = PoolManager.Instance.GetObject("BG", bgFolder).GetComponent<Image>();
 
             curBGObj.Add(BG1.gameObject);
             curBGObj.Add(BG2.gameObject);
 
-            BG1.sprite = BGList[BackNum].bgs[i].sprite;
+            BG1.sprite = bg.sprite;
             var ratio = 1080 / BG1.sprite.rect.height;
             BG1.rectTransform.sizeDelta = new Vector2(BG1.sprite.rect.width, BG1.sprite.rect.height) * ratio;
             BG1.transform.localPosition = Vector3.zero;
 
 
-            BG2.sprite = BGList[BackNum].bgs[i].sprite;
+            BG2.sprite = bg.sprite;
             BG2.rectTransform.sizeDelta = new Vector2(BG2.sprite.rect.width, BG2.sprite.rect.height) * ratio;
             BG2.transform.localPosition = new Vector3(BG2.GetComponent<RectTransform>().rect.width, 0, 0);
 
-            var speed = BGList[BackNum].bgs[i].speed;
+            var speed = bg.speed;
             BG1.GetComponent<Map>().MoveSpeed = speed;
             BG2.GetComponent<Map>().MoveSpeed = speed;
 
-            BG1.color = new Color(b,b,b,1);
-            BG2.color = new Color(b,b,b,1);
+            BG1.color = new Color(b, b, b, 1);
+            BG2.color = new Color(b, b, b, 1);
         }
     }
-    IEnumerator NextStageCoroutine()
+    public IEnumerator NextStageCoroutine(bool isBoss, int index = -99)
     {
         int rand = SceneManager.instance.StageIndex;
-        while (rand == SceneManager.instance.StageIndex)
+        if (!isBoss)
         {
-            rand = Random.Range(0, BGList.Count);
+            while (rand == SceneManager.instance.StageIndex)
+            {
+                rand = Random.Range(0, BGList.Count);
+            }
+            print($"stage {rand + 1}");
         }
-        print($"stage {rand + 1}");
         yield return FadeBg.DOColor(new Color(0, 0, 0, 1), 1).WaitForCompletion();
         print(1);
-        SceneManager.instance.StageIndex = rand;
-        InitBackGround(rand);
+        if (!isBoss) SceneManager.instance.StageIndex = rand;
+        InitBackGround(isBoss ? index : rand, isBoss);
         yield return new WaitForSeconds(0.5f);
         print(2);
         yield return FadeBg.DOColor(new Color(0, 0, 0, 0), 1).WaitForCompletion();
         print(3);
-        SpawnManager.instance.SpawnCount = 0;
-        GameManager.instance.IsGame = true;
-        SpawnManager.instance.Spawn();
+        if (!isBoss)
+        {
+            SpawnManager.instance.SpawnCount = 0;
+            GameManager.instance.IsGame = true;
+            SpawnManager.instance.Spawn();
+        }
     }
 }

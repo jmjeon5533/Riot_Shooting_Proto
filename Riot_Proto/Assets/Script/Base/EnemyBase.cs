@@ -211,7 +211,7 @@ public abstract class EnemyBase : MonoBehaviour
         {
             GameManager.instance.itemCoolCount += ItemAddCount;
         }
-        UIManager.instance.curPowerCount.text = (40 - GameManager.instance.itemCoolCount).ToString();
+        UIManager.instance.curPowerCount.fillAmount = GameManager.instance.itemCoolCount / 40;
     }
     protected virtual void Dead()
     {

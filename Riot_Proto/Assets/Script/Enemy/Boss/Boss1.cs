@@ -217,6 +217,7 @@ public class Boss1 : BossBase
             StopAllCoroutines();
             StartCoroutine(DeadMotion());
         }
+        GameManager.instance.GetMoney += Mathf.RoundToInt(damage * 0.5f);
         PoolManager.Instance.GetObject("Hit", transform.position, Quaternion.identity);
         // var DamageTextPos = (Vector2)transform.position + (Random.insideUnitCircle * 2);
         // var DmgText = PoolManager.Instance.GetObject("DamageText", UIManager.instance.canvas)
@@ -243,7 +244,6 @@ public class Boss1 : BossBase
             if (i == 5) transform.DOMoveX(15, 4);
             yield return new WaitForSeconds(0.75f);
         }
-
         PoolManager.Instance.PoolObject(EnemyTag, gameObject);
     }
 

@@ -174,7 +174,7 @@ public abstract class EnemyBase : MonoBehaviour
                 DeadEffect();
             }
             Dead();
-            if (GameManager.instance.IsGame) GameManager.instance.GetMoney += (int)(XPRate * 25);
+            if (GameManager.instance.IsGame) GameManager.instance.GetMoney += (int)(XPRate * 10);
             UIManager.instance.InitRate();
             for (int i = 0; i < EnemyBuffList.Count; i++)
             {
@@ -187,6 +187,7 @@ public abstract class EnemyBase : MonoBehaviour
             StartCoroutine(DeathMotion());
             Item();
         }
+        GameManager.instance.GetMoney += Mathf.RoundToInt(damage * 0.5f);
         PoolManager.Instance.GetObject("Hit", transform.position, Quaternion.identity);
         // var DamageTextPos = (Vector2)transform.position + (Random.insideUnitCircle * 2);
         // var DmgText = PoolManager.Instance.GetObject("DamageText", UIManager.instance.DmgTextParant)
@@ -201,11 +202,10 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Item()
     {
         var rand = Random.Range(0, 100);
-        if (rand <= 1 || GameManager.instance.itemCoolCount >= 25)
+        if (rand <= 1 || GameManager.instance.itemCoolCount >= 40)
         {
-            //var itemrand = Random.Range(0, 10);
-            var key =/* itemrand >= 2 ? "HP" : */"Power";
-            PoolManager.Instance.GetObject(key, transform.position, Quaternion.identity);
+            
+            PoolManager.Instance.GetObject("Power", transform.position, Quaternion.identity);
             GameManager.instance.itemCoolCount = 0;
         }
         else
@@ -215,7 +215,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
     protected virtual void Dead()
     {
-
+        
     }
     IEnumerator DeathMotion()
     {

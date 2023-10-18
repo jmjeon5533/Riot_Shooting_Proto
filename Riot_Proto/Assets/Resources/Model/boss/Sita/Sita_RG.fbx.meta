@@ -3,7 +3,17 @@ guid: f26e5ee9f4af4ee4dae2b87c4f37c0cb
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sita_Body_Mat
+    second: {fileID: 2100000, guid: 34553cc94f7c3824d99de369050b1056, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sita_Hair_Mat
+    second: {fileID: 2100000, guid: 1d2d61a871e56b24aaab72276066b306, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

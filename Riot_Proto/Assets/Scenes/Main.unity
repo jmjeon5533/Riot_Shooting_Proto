@@ -3318,7 +3318,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e042b6e10beae4745ae435e257ebbfea, type: 2}
     - {fileID: 11400000, guid: 89d96d9d9cfb01740bdba47c9fa635bf, type: 2}
   BossSpawnWave: 20
-  SpawnCount: 20
+  SpawnCount: 0
 --- !u!4 &1118154654
 Transform:
   m_ObjectHideFlags: 0
@@ -4102,10 +4102,10 @@ MonoBehaviour:
   - {fileID: 919840544}
   - {fileID: 872683005}
   - {fileID: 1793730573}
+  MainRateText: {fileID: 2044522421}
   RateText:
   - {fileID: 83380217}
   - {fileID: 1895190280}
-  - {fileID: 2044522421}
   FadeBg: {fileID: 47389105}
   StagePrefab: {fileID: 1221886862955168235, guid: 1d4a10627c2ac13448a6eecd660adc25, type: 3}
   BGList:
@@ -4129,6 +4129,7 @@ MonoBehaviour:
     - sprite: {fileID: 21300000, guid: 252006ecf2756fa49b0072d2985a73ed, type: 3}
       speed: 5
     BossBgs: []
+  NextHPCount: 5000
 --- !u!4 &1480380334
 Transform:
   m_ObjectHideFlags: 0

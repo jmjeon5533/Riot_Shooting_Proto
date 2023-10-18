@@ -38,9 +38,7 @@ public class SpawnManager : MonoBehaviour
                 GameObject enemy = PoolManager.Instance.GetObject(wave.WaveList[i].Enemy, wave.WaveList[i].SpawnPos, Quaternion.identity);
                 GameManager.instance.curEnemys.Add(enemy);
                 yield return new WaitForSeconds(wave.WaveList[i].SpawnDelay);
-                print("i");
             }
-            print("retry");
             SpawnCount++;
             GameManager.instance.EnemyPower += 0.1f;
         }

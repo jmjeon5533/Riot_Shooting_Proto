@@ -17,21 +17,6 @@ public class Golem2 : EnemyBase
     {
         base.Update();
     }
-    protected override void Item()
-    {
-        var rand = Random.Range(0, 100);
-        if (rand <= 3 || GameManager.instance.itemCoolCount >= 25)
-        {
-            var itemrand = Random.Range(0, 10);
-            var key = itemrand >= 6 ? "HP" : "Power";
-            PoolManager.Instance.GetObject(key, transform.position, Quaternion.identity);
-            GameManager.instance.itemCoolCount = 0;
-        }
-        else
-        {
-            GameManager.instance.itemCoolCount++;
-        }
-    }
     protected override void Attack()
     {
         StartCoroutine(AttackCoroutine());
@@ -51,10 +36,6 @@ public class Golem2 : EnemyBase
             b.SetMoveSpeed(power);
             b.SetGravity(gravityScale);
             b.Bounce();
-            
-            
-           
-
         }
         yield return new WaitForSeconds(1.5f);
         var g = GameManager.instance;

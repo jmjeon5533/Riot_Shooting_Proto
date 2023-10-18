@@ -10,22 +10,6 @@ public class Golem1 : EnemyBase
     {
         StartCoroutine(AttackCoroutine());
     }
-    protected override void Item()
-    {
-        var rand = Random.Range(0, 100);
-        if (rand <= 3 || GameManager.instance.itemCoolCount >= 25)
-        {
-            var itemrand = Random.Range(0, 10);
-            var key = itemrand >= 6 ? "HP" : "Power";
-            PoolManager.Instance.GetObject(key, transform.position, Quaternion.identity);
-            GameManager.instance.itemCoolCount = 0;
-        }
-        else
-        {
-            GameManager.instance.itemCoolCount++;
-        }
-
-    }
     IEnumerator AttackCoroutine()
     {
         isAttack = true;

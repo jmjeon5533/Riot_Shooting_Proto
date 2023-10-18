@@ -30,6 +30,8 @@ public class UIManager : MonoBehaviour
     public GameObject Bossbar;
     public Image BossbarImage;
     public Image[] Heart;
+    public Text MainRateText;
+    int Ratevalue;
     public Text[] RateText;
 
     public Image FadeBg;
@@ -37,6 +39,9 @@ public class UIManager : MonoBehaviour
     public List<BG> BGList = new();
     bool isUseTab = false;
     List<GameObject> curBGObj = new();
+    [Space(10)]
+    [Header("Item")]
+    public int NextHPCount = 5000;
     private void Awake()
     {
         instance = this;
@@ -45,6 +50,15 @@ public class UIManager : MonoBehaviour
     {
         XPBarUpdate();
         Bossbar.SetActive(false);
+    }
+    private void Update()
+    {
+        var g = GameManager.instance;
+        if(Ratevalue < g.GetMoney)
+        {
+            Ratevalue = (int)Mathf.MoveTowards(Ratevalue,g.GetMoney,1);
+        }
+        MainRateText.text = Ratevalue.ToString();
     }
     public void InitHeart()
     {
@@ -89,6 +103,13 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < RateText.Length; i++)
         {
             RateText[i].text = GameManager.instance.GetMoney.ToString();
+        }
+        if(GameManager.instance.GetMoney >= NextHPCount)
+        {
+            var g = GameManager.instance;
+            var pos = new Vector3(15,Random.Range(-g.MoveRange.y + g.MovePivot.y, g.MoveRange.y + g.MovePivot.y),0);
+            PoolManager.Instance.GetObject("HP", pos, Quaternion.identity);
+            NextHPCount += 5000;
         }
     }
     public void NextStage()
@@ -147,13 +168,13 @@ public class UIManager : MonoBehaviour
             }
             print($"stage {rand + 1}");
         }
-        yield return FadeBg.DOColor(new Color(0, 0, 0, 1), 1).WaitForCompletion();
+        yield return FadeBg.DOColor(new Color(0, 0, 0, 1), 0.75f).WaitForCompletion();
         print(1);
         if (!isBoss) SceneManager.instance.StageIndex = rand;
         InitBackGround(isBoss ? index : rand, isBoss);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.05f);
         print(2);
-        yield return FadeBg.DOColor(new Color(0, 0, 0, 0), 1).WaitForCompletion();
+        yield return FadeBg.DOColor(new Color(0, 0, 0, 0), 0.75f).WaitForCompletion();
         print(3);
         if (!isBoss)
         {

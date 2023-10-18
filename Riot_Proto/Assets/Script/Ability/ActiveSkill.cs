@@ -32,10 +32,18 @@ public class ActiveSkill : MonoBehaviour, IPointerDownHandler
         {
             coolTimeUI.fillAmount = 0;
         }
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            OnClick();
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        OnClick();
+    }
+
+    public void OnClick() {
         var g = GameManager.instance;
         AbilityBase skill = AbilityCard.Instance.GetActiveSKill();
         if (skill == null) return;

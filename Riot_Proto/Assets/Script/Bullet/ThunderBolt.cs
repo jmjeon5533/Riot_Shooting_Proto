@@ -76,7 +76,7 @@ public class ThunderBolt : BulletBase
                 closestEnemy = enemyTransform.transform;
             }
         }
-        if (closestEnemy == null) closestEnemy = transform;
+        if (closestEnemy == null) Destroy(gameObject);
         return closestEnemy;
     }
 

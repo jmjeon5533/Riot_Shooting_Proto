@@ -244,7 +244,6 @@ public class Boss1 : BossBase
             if (i == 5) transform.DOMoveX(15, 4);
             yield return new WaitForSeconds(0.75f);
         }
-
         PoolManager.Instance.PoolObject(EnemyTag, gameObject);
     }
 

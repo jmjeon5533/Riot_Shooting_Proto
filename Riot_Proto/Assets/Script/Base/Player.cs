@@ -121,6 +121,7 @@ public abstract class Player : MonoBehaviour
         rigid.AddForce(Vector3.left, ForceMode.Impulse);
         if (HP <= 0)
         {
+            UIManager.instance.InitRate();
             UIManager.instance.UseOverTab();
         }
         else

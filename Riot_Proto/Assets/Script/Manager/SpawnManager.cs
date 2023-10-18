@@ -47,6 +47,7 @@ public class SpawnManager : MonoBehaviour
         GameManager.instance.curEnemys.Add(Boss);
         yield return new WaitUntil(() => !Boss.activeSelf);
         yield return new WaitForSeconds(1.5f);
+        UIManager.instance.InitRate();
         UIManager.instance.UseClearTab();
     }
 }

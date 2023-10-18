@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
     List<GameObject> curBGObj = new();
     [Space(10)]
     [Header("Item")]
-    public int NextHPCount = 5000;
+    public int NextHPCount = 3000;
     private void Awake()
     {
         instance = this;
@@ -109,7 +109,7 @@ public class UIManager : MonoBehaviour
             var g = GameManager.instance;
             var pos = new Vector3(15,Random.Range(-g.MoveRange.y + g.MovePivot.y, g.MoveRange.y + g.MovePivot.y),0);
             PoolManager.Instance.GetObject("HP", pos, Quaternion.identity);
-            NextHPCount += 5000;
+            NextHPCount += 3000;
         }
     }
     public void NextStage()

@@ -202,7 +202,7 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Item()
     {
         var rand = Random.Range(0, 100);
-        if (rand <= 1 || GameManager.instance.itemCoolCount >= 25)
+        if (rand <= 1 || GameManager.instance.itemCoolCount >= 40)
         {
             
             PoolManager.Instance.GetObject("Power", transform.position, Quaternion.identity);
@@ -215,7 +215,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
     protected virtual void Dead()
     {
-
+        
     }
     IEnumerator DeathMotion()
     {

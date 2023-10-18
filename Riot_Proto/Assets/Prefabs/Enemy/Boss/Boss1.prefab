@@ -62,13 +62,14 @@ MonoBehaviour:
   EnemyTag: Boss1
   ItemAddCount: 1
   isDeath: 0
-  anim: {fileID: 149849303878326942}
+  anim: {fileID: 7584328626560333230}
   maxHp: 0
   pattern: 0
   AttackPivot: {x: -5, y: 0, z: 0}
   AttackRange: {x: 5, y: 10}
-  breathPos: {fileID: 4450597322930471677}
-  breathDuration: 21
+  r_ShootPos: {fileID: 8935480570936699243}
+  l_ShootPos: {fileID: 2739301913827679383}
+  patternDuration: 20
   limitY: 2.5
   risePatterns:
   - riseYs:
@@ -82,13 +83,13 @@ MonoBehaviour:
     - 0
     - 0
   - riseYs:
-    - -9
-    - -7
-    - -5
-    - -3
-    - -1
-    - 1
-    - 3
+    - -10
+    - -8
+    - -6
+    - -4
+    - -2
+    - 0
+    - -2
     riseDelay:
     - 0
     - 0.4
@@ -168,82 +169,80 @@ MonoBehaviour:
     - 0
     - 0
   - riseYs:
-    - -9
-    - -7
-    - -1
-    - -3
-    - 7
-    - 5
-    - 3
-    - 1
-    - 5
-    - 3
-    - -3
-    - -5
-    riseDelay:
-    - 0
-    - 0
-    - 0
-    - 0
-    - 1
-    - 0
-    - 0
-    - 0
-    - 1
-    - 0
-    - 0
-    - 0
-  - riseYs:
-    - -9
-    - -7
-    - -5
-    - -3
-    - 0
+    - -10
+    - -8
     - -2
     - -4
+    - 8
+    - 4
+    - 2
+    - 0
+    - 6
+    - 4
+    - -4
     - -6
-    - -8
-    - -10
     riseDelay:
     - 0
     - 0
     - 0
     - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-  - riseYs:
-    - -9
-    - 9
-    - -7
-    - 7
-    - -5
-    - 5
-    - -3
-    - 3
-    riseDelay:
-    - 0
-    - 0
-    - 0.3
-    - 0
-    - 0.3
-    - 0
-    - 0.3
-    - 0
-  - riseYs:
-    - -9
-    - -5
-    - -1
-    - 3
-    - 7
-    - -7
-    - -3
     - 1
-    - 5
-    - 9
+    - 0
+    - 0
+    - 0
+    - 1
+    - 0
+    - 0
+    - 0
+  - riseYs:
+    - -10
+    - -8
+    - -6
+    - -4
+    - -2
+    - 4
+    - 6
+    - 8
+    - 10
+    riseDelay:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+  - riseYs:
+    - -10
+    - 10
+    - -8
+    - 8
+    - -6
+    - 6
+    - -4
+    - 4
+    riseDelay:
+    - 0
+    - 0
+    - 0.3
+    - 0
+    - 0.3
+    - 0
+    - 0.3
+    - 0
+  - riseYs:
+    - -10
+    - -6
+    - -2
+    - 4
+    - 8
+    - -8
+    - -4
+    - 2
+    - 6
+    - 10
     riseDelay:
     - 0
     - 0
@@ -314,6 +313,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 149849303624063122}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2299601144231109918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2739301913827679383}
+  m_Layer: 0
+  m_Name: L_ShootPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2739301913827679383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2299601144231109918}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0667, y: -0.0279, z: -0.0087}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6387390625238838179}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3787171201643687549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8935480570936699243}
+  m_Layer: 0
+  m_Name: R_ShootPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8935480570936699243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3787171201643687549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0478, y: 0.0213, z: 0.0034}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8646385671606820871}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &149849303878326937
 PrefabInstance:
@@ -609,6 +670,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f26e5ee9f4af4ee4dae2b87c4f37c0cb, type: 3}
+--- !u!4 &6387390625238838179 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4394422141977442292, guid: f26e5ee9f4af4ee4dae2b87c4f37c0cb, type: 3}
+  m_PrefabInstance: {fileID: 7230685647112526935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7192872252282846140 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f26e5ee9f4af4ee4dae2b87c4f37c0cb, type: 3}
@@ -640,3 +706,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &8646385671606820871 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1416012356815600720, guid: f26e5ee9f4af4ee4dae2b87c4f37c0cb, type: 3}
+  m_PrefabInstance: {fileID: 7230685647112526935}
+  m_PrefabAsset: {fileID: 0}

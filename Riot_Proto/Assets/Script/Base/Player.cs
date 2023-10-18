@@ -137,6 +137,7 @@ public abstract class Player : MonoBehaviour
         yield return StartCoroutine(Spawned());
         GameManager.instance.IsGame = true;
         UIManager.instance.InitHeart();
+        UIManager.instance.ShowImg();
     }
     IEnumerator Spawned()
     {

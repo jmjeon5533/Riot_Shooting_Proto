@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
     public Text MainRateText;
     public int Ratevalue;
     public Text[] RateText;
+    public Text curPowerCount;
 
     public Image FadeBg;
     public GameObject StagePrefab;

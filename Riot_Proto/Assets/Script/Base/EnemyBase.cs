@@ -201,8 +201,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
     protected virtual void Item()
     {
-        var rand = Random.Range(0, 100);
-        if (rand <= 1 || GameManager.instance.itemCoolCount >= 40)
+        if (GameManager.instance.itemCoolCount >= 40)
         {
             
             PoolManager.Instance.GetObject("Power", transform.position, Quaternion.identity);
@@ -212,6 +211,7 @@ public abstract class EnemyBase : MonoBehaviour
         {
             GameManager.instance.itemCoolCount += ItemAddCount;
         }
+        UIManager.instance.curPowerCount.text = (40 - GameManager.instance.itemCoolCount).ToString();
     }
     protected virtual void Dead()
     {

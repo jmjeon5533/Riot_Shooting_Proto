@@ -20,8 +20,12 @@ public class Boss1 : BossBase
 
     [SerializeField] Vector3 AttackPivot;
     [SerializeField] Vector2 AttackRange;
-    [SerializeField] Transform breathPos;
-    [SerializeField] float breathDuration;
+    //[SerializeField] Transform breathPos;
+
+    [SerializeField] Transform r_ShootPos;
+    [SerializeField] Transform l_ShootPos;
+ 
+    [SerializeField] float patternDuration;
     [SerializeField] float limitY;
 
     Coroutine coroutine;
@@ -47,7 +51,7 @@ public class Boss1 : BossBase
     {
         if (isDeadMotionPlay) return;
         var AState = pattern;
-        anim.SetInteger("AttackState", AState);
+        anim.SetInteger("AttackState", (AState+1) % 2);
         anim.SetTrigger("Attack");
         print(AState);
         isAttack = true;
@@ -76,33 +80,57 @@ public class Boss1 : BossBase
         }
         pattern++;
         if (pattern > 3) pattern = 0;
-        AttackCooltime = Random.Range(3f, 4f);
+        AttackCooltime = Random.Range(5f, 7f);
     }
 
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.localPosition + AttackPivot, AttackRange);
     }
-    IEnumerator Attack1()
-    {
-        yield return new WaitForSeconds(2f);
-        Collider[] enemy = Physics.OverlapBox(transform.localPosition + AttackPivot, AttackRange * 0.5f,
-            Quaternion.identity, LayerMask.GetMask("Player"));
-        foreach (var e in enemy) e.GetComponent<Player>().Damage();
-        isAttack = false;
-    }
     IEnumerator Attack2()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+        Vector3 spawnPos = r_ShootPos.position;
+        spawnPos.z = 0;
+        var b = PoolManager.Instance.GetObject("EnemyBullet",spawnPos + (Vector3.left * 0.3f),Quaternion.identity).GetComponent<EnemyBullet>();
+        b.dir = Vector3.zero;
+        b.transform.localScale = Vector3.one;
+        Vector3 originPos = b.transform.position;
+        yield return b.transform.DOMove(originPos + (Vector3.left * 3.5f), 1.5f).WaitForCompletion();
+        yield return b.transform.DOScale(Vector3.zero, 0.1f).WaitForCompletion();
+        for(int i = 0; i < 15; i++)
+        {
+            for(int j = 0; j < 7; j++)
+            {
+                
+                var tempB = PoolManager.Instance.GetObject("EnemyBullet", b.transform.position, Quaternion.identity).GetComponent<EnemyBullet>();
+                tempB.SetMoveSpeed(Random.Range(3.3f,4.8f));
+                tempB.dir = Vector3.left;
+                float _angle = (j % 2 ==0 ? Random.Range(-60, 240f) : Random.Range(120, 420f)) * Mathf.Deg2Rad; // ������ �������� ��ȯ
+                Vector3 direction = new Vector3(Mathf.Cos(_angle), Mathf.Sin(_angle), 0); // ���� ������ ���� ���� ����
+                tempB.dir = -direction;
+            }
+            yield return new WaitForSeconds(0.25f);
+            //tempB.transform.rotation = Quaternion.Euler(0, Random.Range(0, 360f), 0);
+        }
+        PoolManager.Instance.PoolObject("EnemyBullet", b.gameObject);
+
+        isAttack = false;
+    }
+    IEnumerator Attack1()
+    {
+        yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < Random.Range(45, 60); i++)
         {
-            yield return new WaitForSeconds(0.025f);
+            yield return new WaitForSeconds(0.05f);
             Vector2 rand = Vector2.zero;
             while (rand.x >= 0)
             {
                 rand = Random.insideUnitCircle;
             }
-            var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
+            Vector3 spawnPos = l_ShootPos.position;
+            spawnPos.z = 0;
+            var b = PoolManager.Instance.GetObject("EnemyBullet", spawnPos, Quaternion.identity).GetComponent<BulletBase>();
             b.dir = rand.normalized;
 
         }
@@ -154,19 +182,40 @@ public class Boss1 : BossBase
 
     }
 
+    IEnumerator Attack4_2()
+    {
+        Vector3 shootPos1 = transform.position + (Vector3.up * 1.7f);
+        Vector3 shootPos2 = transform.position;
+        Vector3 shootPos3 = transform.position + (Vector3.down * 1.7f);
+        var p = GameManager.instance.player;
+        for (int i = 0; i < 10; i++)
+        {
+            var b1 = PoolManager.Instance.GetObject("EnemyBullet", shootPos1, Quaternion.identity).GetComponent<BulletBase>();
+            b1.dir = GetTargetDir(shootPos1, p.transform.position);
+            var b2 = PoolManager.Instance.GetObject("EnemyBullet", shootPos2, Quaternion.identity).GetComponent<BulletBase>();
+            b2.dir = GetTargetDir(shootPos2, p.transform.position);
+            var b3 = PoolManager.Instance.GetObject("EnemyBullet", shootPos3, Quaternion.identity).GetComponent<BulletBase>();
+            b3.dir = GetTargetDir(shootPos3, p.transform.position);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+    }
+
     IEnumerator Attack4()
     {
         var g = GameManager.instance;
-        var breath = PoolManager.Instance.GetObject("Breath", breathPos);
-        breath.transform.rotation = Quaternion.Euler(0f, -90, 0f);
-        breath.transform.localScale = Vector3.one * 1.5f;
-        breath.transform.localPosition = Vector3.zero;
+        //var breath = PoolManager.Instance.GetObject("Breath", breathPos);
+        
         int flip = 1;
-        for (int i = 0; i < (int)breathDuration; i++)
+        for (int i = 0; i < (int)patternDuration; i++)
         {
+            if(Mathf.Abs(g.player.transform.position.x) >= 9.5f && !g.player.IsShield)
+            {
+                StartCoroutine(Attack4_2());
+            }
             if (i % 2 == 0)
             {
-                transform.DOMoveY(limitY * flip, 1.5f);
+                //transform.DOMoveY(limitY * flip, 1.5f);
                 flip *= -1;
             }
             if (i % 5 == 0 && i > 0)

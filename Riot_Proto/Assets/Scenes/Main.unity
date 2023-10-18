@@ -3301,6 +3301,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c3ea46e55713bf646afad26421c0a770, type: 2}
     - {fileID: 11400000, guid: 211e692c4d33df04b957c55c9ab0dd0b, type: 2}
     - {fileID: 11400000, guid: 361b41629ade1aa48872badf5a54733c, type: 2}
+    - {fileID: 11400000, guid: bf95aba204dc62a4698bf290e8aa67fb, type: 2}
     - {fileID: 11400000, guid: 8c408be02bbd774428a8274aac659945, type: 2}
     - {fileID: 11400000, guid: b602778fe56ce2941b24edae522369d5, type: 2}
     - {fileID: 11400000, guid: 51440f657a6840f498e4f96dfa9292bc, type: 2}
@@ -4095,6 +4096,9 @@ MonoBehaviour:
   OverTab: {fileID: 561147248}
   Bossbar: {fileID: 22622170}
   BossbarImage: {fileID: 1618791898}
+  hpPanel: {fileID: 136970026}
+  abilityPanel: {fileID: 889950124}
+  activeSkill: {fileID: 33267873}
   Heart:
   - {fileID: 2143043815}
   - {fileID: 1161969468}

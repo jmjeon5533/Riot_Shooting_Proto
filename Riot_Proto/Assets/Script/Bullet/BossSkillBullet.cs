@@ -35,6 +35,18 @@ public class BossSkillBullet : MonoBehaviour
         
     }
 
+
+    private void OnTriggerStay(Collider other)
+    {
+        var g = GameManager.instance;
+        if (time > delay && time <= attackTime)
+        {
+            if (other.gameObject == g.player.gameObject)
+            {
+                g.player.Damage();
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         var g = GameManager.instance;

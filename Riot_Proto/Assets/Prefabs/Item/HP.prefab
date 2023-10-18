@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemTag: HP
   MoveSpeed: 3
+  getEffect: {fileID: 198566116396328362, guid: 6943138a0c4a8fd4ea27b63049acac96, type: 3}
 --- !u!135 &5727898829731563804
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -29,6 +29,11 @@ public class UIManager : MonoBehaviour
     public Transform OverTab;
     public GameObject Bossbar;
     public Image BossbarImage;
+
+    public RectTransform hpPanel;
+    public RectTransform abilityPanel;
+    public Transform activeSkill;
+
     public Image[] Heart;
     public Text MainRateText;
     int Ratevalue;
@@ -50,11 +55,15 @@ public class UIManager : MonoBehaviour
     {
         XPBarUpdate();
         Bossbar.SetActive(false);
+        hpPanel.transform.DOMoveX(-15, 0);
+        abilityPanel.transform.DOMoveX(-15, 0);
+        MainRateText.transform.DOMoveX(15, 0);
+        activeSkill.DOMoveX(14, 0);
     }
     private void Update()
     {
         var g = GameManager.instance;
-        if(Ratevalue < g.GetMoney)
+        if(Ratevalue <= g.GetMoney)
         {
             Ratevalue = (int)Mathf.MoveTowards(Ratevalue,g.GetMoney,(g.GetMoney - Ratevalue) * 0.1f);
         }
@@ -70,7 +79,27 @@ public class UIManager : MonoBehaviour
         {
             Heart[i].enabled = true;
         }
+        
+
     }
+
+    public void ShowImg()
+    {
+        hpPanel.transform.DOMoveX(-10, 1f).SetEase(Ease.OutExpo);
+        abilityPanel.transform.DOMoveX(-10, 1f).SetEase(Ease.OutExpo);
+        MainRateText.transform.DOMoveX(10, 1f).SetEase(Ease.OutExpo);
+        activeSkill.transform.DOMoveX(9, 1f).SetEase(Ease.OutExpo);
+        //StartCoroutine(ShowUI());
+    }
+
+    IEnumerator ShowUI()
+    {
+        //yield return hpPanel.transform.DOMoveX(-15, 0);
+        //yield return abilityPanel.transform.DOMoveX(-15, 0);
+        Sequence sequence = DOTween.Sequence();
+        yield return sequence.Append(hpPanel.transform.DOMoveX(-10, 1.5f).SetEase(Ease.InExpo)).Append(abilityPanel.transform.DOMoveX(-10, 1.5f).SetEase(Ease.OutExpo)).WaitForCompletion();
+    }
+
     public void XPBarUpdate()
     {
         float xp = GameManager.instance.XP;

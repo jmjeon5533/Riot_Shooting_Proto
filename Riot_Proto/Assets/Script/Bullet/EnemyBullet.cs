@@ -5,10 +5,12 @@ using UnityEngine;
 public class EnemyBullet : BulletBase
 {
     private const float originSpeed = 10;
+    private const float originSize = 0.3f;
 
     protected void OnEnable()
     {
         MoveSpeed = originSpeed;
+        transform.localScale = Vector3.one * originSize;
     }
 
     protected override void Update()

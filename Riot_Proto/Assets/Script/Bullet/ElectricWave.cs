@@ -35,22 +35,31 @@ public class ElectricWave : MonoBehaviour
         curRadius += Time.deltaTime * speed;
         //Debug.Log(curRadius);
         //transform.localScale = Vector3.one * curRadius;
+        var bulletHit = Physics.OverlapSphere(transform.position, curRadius/3);
+        foreach (var h in bulletHit)
+        {
+            var bullet = h.GetComponent<EnemyBullet>();
+            if(bullet != null && !hits.Contains(h.transform))
+            {
+                var b = bullet;
+                hits.Add(h.transform);
+                var g = GameManager.instance;
+
+                b.dir = -((g.player.transform.position - b.transform.position).normalized);
+                //b.SetMoveSpeed(b.MoveSpeed * slowRate);
+            }
+        }
         var hit = Physics.OverlapSphere(transform.position, curRadius);
         foreach (var h in hit)
         {
             var bullet = h.GetComponent<EnemyBullet>();
             if (h.CompareTag("Enemy") && !hits.Contains(h.transform))
             {
-                BuffBase buff = new Slow(duration, h.gameObject, BuffBase.TargetType.Enemy, BuffList.Slow,slowRate);
+                BuffBase buff = new Slow(duration, h.gameObject, BuffBase.TargetType.Enemy, BuffList.Slow, slowRate);
                 h.GetComponent<EnemyBase>().AddBuff(buff);
 
                 //Debug.Log(h.name);
                 hits.Add(h.transform);
-            } else if(bullet != null && !hits.Contains(h.transform))
-            {
-                var b = bullet;
-                hits.Add(h.transform);
-                b.SetMoveSpeed(b.MoveSpeed * slowRate);
             }
         }
         if (curRadius > radius)

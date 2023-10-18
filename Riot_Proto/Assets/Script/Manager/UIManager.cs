@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
 
     public Image[] Heart;
     public Text MainRateText;
-    int Ratevalue;
+    public int Ratevalue;
     public Text[] RateText;
 
     public Image FadeBg;
@@ -65,7 +65,9 @@ public class UIManager : MonoBehaviour
         var g = GameManager.instance;
         if(Ratevalue <= g.GetMoney)
         {
-            Ratevalue = (int)Mathf.MoveTowards(Ratevalue,g.GetMoney,(g.GetMoney - Ratevalue) * 0.1f);
+            var value = 1 + Mathf.Clamp(g.GetMoney - Ratevalue,0,200) * 0.1f;
+            print($"{value} : {Mathf.Clamp(g.GetMoney - Ratevalue,0,200)}");
+            Ratevalue = (int)Mathf.MoveTowards(Ratevalue,g.GetMoney,value);
         }
         MainRateText.text = Ratevalue.ToString();
     }

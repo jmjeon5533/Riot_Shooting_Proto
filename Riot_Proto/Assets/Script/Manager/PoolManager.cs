@@ -49,7 +49,6 @@ public class PoolManager : MonoBehaviour
         }
 
         var target = pools[key].queue.Dequeue();
-        print($"{target == null}");
         target.transform.position = position;
         target.transform.rotation = rotation;
         target.transform.SetParent(null);

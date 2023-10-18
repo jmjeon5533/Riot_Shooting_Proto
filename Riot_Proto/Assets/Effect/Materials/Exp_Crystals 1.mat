@@ -7,11 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Make_Lighting_shader_Spark
-  m_Shader: {fileID: 4800000, guid: 0e9b5b3833bdf3a4d827885f4e9b26bf, type: 3}
+  m_Name: Exp_Crystals 1
+  m_Shader: {fileID: 4800000, guid: b8dd827fb7234a0439bf6b7f3f994120, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 0
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -21,11 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 3432b17e993f446419589d037cb706f0, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _TextureSample0:
-        m_Texture: {fileID: 2800000, guid: 67dfe5779a3c2f1498ebe4d328121c7d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 825b8a666804c5b459dbaac1b7e28e71, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureSample1:
@@ -36,17 +32,32 @@ Material:
         m_Texture: {fileID: 2800000, guid: 67dfe5779a3c2f1498ebe4d328121c7d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TextureSample3:
+        m_Texture: {fileID: 2800000, guid: 42ea7f5e834b5d446b2dd259a8b2a32f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample4:
+        m_Texture: {fileID: 2800000, guid: cd460ee4ac5c1e746b7a734cc7cc64dd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample5:
+        m_Texture: {fileID: 2800000, guid: cd460ee4ac5c1e746b7a734cc7cc64dd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Final_Intence: 2.667703
+    - _Final_Intence: 5
+    - _Float0: 0.1
+    - _Float2: 1.117647
+    - _Float3: 2
     - _Flow_Power: 0.1
-    - _UFlowSpeed: 4
     - _VFlowSpeed: 2
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 0.9811321, g: 0.98113203, b: 0.31933072, a: 0}
+    - _Color: {r: 0.30649486, g: 1, b: 0.01415092, a: 0}
+    - _Color0: {r: 0.14593075, g: 1, b: 0.0141509175, a: 0}
   m_BuildTextureStacks: []

@@ -39,6 +39,7 @@ public class UIManager : MonoBehaviour
     public int Ratevalue;
     public Text[] RateText;
     public Image curPowerCount;
+    public Transform powerPanel;
 
     public Image FadeBg;
     public GameObject StagePrefab;
@@ -58,7 +59,8 @@ public class UIManager : MonoBehaviour
         Bossbar.SetActive(false);
         hpPanel.transform.DOMoveX(-15, 0);
         abilityPanel.transform.DOMoveX(-15, 0);
-        MainRateText.transform.DOMoveX(15, 0);
+        MainRateText.transform.DOMoveX(15.5f, 0);
+        powerPanel.transform.DOMoveX(15, 0);
         activeSkill.DOMoveX(14, 0);
     }
     private void Update()
@@ -81,6 +83,7 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < GameManager.instance.player.HP; i++)
         {
             Heart[i].enabled = true;
+           
         }
         
 
@@ -92,16 +95,11 @@ public class UIManager : MonoBehaviour
         abilityPanel.transform.DOMoveX(-10, 1f).SetEase(Ease.OutExpo);
         MainRateText.transform.DOMoveX(10, 1f).SetEase(Ease.OutExpo);
         activeSkill.transform.DOMoveX(9, 1f).SetEase(Ease.OutExpo);
+        powerPanel.transform.DOMoveX(10, 1f).SetEase(Ease.OutExpo);
         //StartCoroutine(ShowUI());
     }
 
-    IEnumerator ShowUI()
-    {
-        //yield return hpPanel.transform.DOMoveX(-15, 0);
-        //yield return abilityPanel.transform.DOMoveX(-15, 0);
-        Sequence sequence = DOTween.Sequence();
-        yield return sequence.Append(hpPanel.transform.DOMoveX(-10, 1.5f).SetEase(Ease.InExpo)).Append(abilityPanel.transform.DOMoveX(-10, 1.5f).SetEase(Ease.OutExpo)).WaitForCompletion();
-    }
+    
 
     public void XPBarUpdate()
     {

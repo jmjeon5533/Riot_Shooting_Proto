@@ -15,7 +15,7 @@ public class HpItem : ItemBase
     {
         if(GameManager.instance.player.HP <= 5) GameManager.instance.player.HP++;
         GameManager.instance.GetMoney += 150;
-        Instantiate(getEffect,GameManager.instance.player.transform.position,Quaternion.identity);
+        Instantiate(getEffect,GameManager.instance.player.transform);
         UIManager.instance.InitHeart();
         UIManager.instance.InitRate();
     }

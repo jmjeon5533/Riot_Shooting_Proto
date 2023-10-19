@@ -4189,6 +4189,7 @@ MonoBehaviour:
   - {fileID: 83380217}
   - {fileID: 1895190280}
   curPowerCount: {fileID: 654146069}
+  powerPanel: {fileID: 2032912433}
   FadeBg: {fileID: 47389105}
   StagePrefab: {fileID: 1221886862955168235, guid: 1d4a10627c2ac13448a6eecd660adc25, type: 3}
   BGList:

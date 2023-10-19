@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
     List<GameObject> curBGObj = new();
     [Space(10)]
     [Header("Item")]
-    public int NextHPCount = 3000;
+    public int NextHPCount = 200000;
     private void Awake()
     {
         instance = this;
@@ -113,6 +113,7 @@ public class UIManager : MonoBehaviour
 
         GameManager.instance.IsGame = false;
         isUseTab = true;
+        InitRate();
         ClearTab.DOLocalMoveY(0, 1).SetEase(Ease.OutQuad).OnComplete(() => isUseTab = false);
     }
     public void UseOverTab()
@@ -121,6 +122,7 @@ public class UIManager : MonoBehaviour
 
         GameManager.instance.IsGame = false;
         isUseTab = true;
+        InitRate();
         OverTab.DOLocalMoveY(0, 1).SetEase(Ease.OutQuad).OnComplete(() => isUseTab = false);
     }
     public void MainMenu()
@@ -139,7 +141,7 @@ public class UIManager : MonoBehaviour
             var g = GameManager.instance;
             var pos = new Vector3(15,Random.Range(-g.MoveRange.y + g.MovePivot.y, g.MoveRange.y + g.MovePivot.y),0);
             PoolManager.Instance.GetObject("HP", pos, Quaternion.identity);
-            NextHPCount += 3000;
+            NextHPCount += 300000;
         }
     }
     public void NextStage()

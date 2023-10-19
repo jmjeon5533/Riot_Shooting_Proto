@@ -50,7 +50,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Final_Intence: 5
+    - _Final_Intence: 5.33
     - _Float0: 0.1
     - _Float2: 1.117647
     - _Float3: 2
@@ -58,6 +58,6 @@ Material:
     - _VFlowSpeed: 2
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 0.30649486, g: 1, b: 0.01415092, a: 0}
+    - _Color: {r: 0.21406753, g: 1, b: 0.19339621, a: 0}
     - _Color0: {r: 0.14593075, g: 1, b: 0.0141509175, a: 0}
   m_BuildTextureStacks: []

@@ -174,7 +174,7 @@ public abstract class EnemyBase : MonoBehaviour
                 DeadEffect();
             }
             Dead();
-            if (GameManager.instance.IsGame) GameManager.instance.GetMoney += (int)(XPRate * 10);
+            if (GameManager.instance.IsGame) GameManager.instance.GetMoney += (int)(XPRate * 1000);
             UIManager.instance.InitRate();
             for (int i = 0; i < EnemyBuffList.Count; i++)
             {
@@ -187,7 +187,7 @@ public abstract class EnemyBase : MonoBehaviour
             StartCoroutine(DeathMotion());
             Item();
         }
-        GameManager.instance.GetMoney += Mathf.RoundToInt(damage * 0.5f);
+        GameManager.instance.GetMoney += Mathf.RoundToInt(damage * 50f);
         PoolManager.Instance.GetObject("Hit", transform.position, Quaternion.identity);
         // var DamageTextPos = (Vector2)transform.position + (Random.insideUnitCircle * 2);
         // var DmgText = PoolManager.Instance.GetObject("DamageText", UIManager.instance.DmgTextParant)

@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager instance { get; private set; }
-    public WaveScript[] WavePrefab;
     public int BossSpawnWave;
     public int SpawnCount;
     int StageLevel;
@@ -29,11 +28,11 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         while (SpawnCount < BossSpawnWave)
         {
-            var Level = SpawnCount <= 10 ? Random.Range(0,5) : Random.Range(5,10);
-            var wave = WavePrefab[StageLevel];
+            var wave = WaveExcuter.instance.waveScripts[StageLevel];
             var rand = Random.Range(0,wave.Waves.Count);
+            print(rand);
 
-            wave.Waves[rand]();
+            yield return StartCoroutine(wave.Waves[rand]());
 
             SpawnCount++;
             GameManager.instance.EnemyPower += 0.1f;

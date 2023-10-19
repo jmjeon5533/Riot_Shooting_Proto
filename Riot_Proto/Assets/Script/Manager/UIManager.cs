@@ -69,7 +69,6 @@ public class UIManager : MonoBehaviour
         if(Ratevalue <= g.GetMoney)
         {
             var value = 1 + Mathf.Clamp(g.GetMoney - Ratevalue,0,200);
-            print($"{value} : {Mathf.Clamp(g.GetMoney - Ratevalue,0,200)}");
             Ratevalue = (int)Mathf.MoveTowards(Ratevalue,g.GetMoney,value);
         }
         MainRateText.text = string.Format("{0:D10}",Ratevalue);

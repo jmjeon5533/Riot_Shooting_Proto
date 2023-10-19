@@ -46,6 +46,7 @@ public class ElectricWave : MonoBehaviour
                 var g = GameManager.instance;
 
                 b.dir = -((g.player.transform.position - b.transform.position).normalized);
+                b.SetMoveSpeed(b.MoveSpeed * 0.75f);
                 //b.SetMoveSpeed(b.MoveSpeed * slowRate);
             }
         }

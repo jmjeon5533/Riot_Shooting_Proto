@@ -3371,29 +3371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WavePrefab:
-  - Wavelist:
-    - {fileID: 11400000, guid: 213ccf80ba44f754e87dab95028fd118, type: 2}
-    - {fileID: 11400000, guid: 7f547d4255a7ba84da0d8cb40e025ce8, type: 2}
-    - {fileID: 11400000, guid: c3ea46e55713bf646afad26421c0a770, type: 2}
-    - {fileID: 11400000, guid: 211e692c4d33df04b957c55c9ab0dd0b, type: 2}
-    - {fileID: 11400000, guid: 361b41629ade1aa48872badf5a54733c, type: 2}
-    - {fileID: 11400000, guid: bf95aba204dc62a4698bf290e8aa67fb, type: 2}
-    - {fileID: 11400000, guid: 8c408be02bbd774428a8274aac659945, type: 2}
-    - {fileID: 11400000, guid: b602778fe56ce2941b24edae522369d5, type: 2}
-    - {fileID: 11400000, guid: 51440f657a6840f498e4f96dfa9292bc, type: 2}
-    - {fileID: 11400000, guid: ea82b25a5fba2f142974fb1ea412cf73, type: 2}
-    - {fileID: 11400000, guid: 8ddefc63b1ee7824991c43ba8084900d, type: 2}
-  - Wavelist:
-    - {fileID: 11400000, guid: 2dc27d09ccc4b5845ba5db370561d610, type: 2}
-    - {fileID: 11400000, guid: ff6b4b78528471746b8e549c557a888f, type: 2}
-    - {fileID: 11400000, guid: de4c2512089af9743925e9036c263940, type: 2}
-    - {fileID: 11400000, guid: 3620af8fd8fa7894986d3f6269420983, type: 2}
-    - {fileID: 11400000, guid: dab58b77f2b561849b614f11794055eb, type: 2}
-    - {fileID: 11400000, guid: f8b0237d5293f024f92fdaac8e7f23e5, type: 2}
-    - {fileID: 11400000, guid: 56f226e7b0a636e4f9653da1f6868680, type: 2}
-    - {fileID: 11400000, guid: df0c9f16143a10a4e95b301dfc884355, type: 2}
-    - {fileID: 11400000, guid: e042b6e10beae4745ae435e257ebbfea, type: 2}
-    - {fileID: 11400000, guid: 89d96d9d9cfb01740bdba47c9fa635bf, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   BossSpawnWave: 20
   SpawnCount: 0
 --- !u!4 &1118154654

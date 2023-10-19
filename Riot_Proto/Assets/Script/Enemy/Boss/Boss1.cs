@@ -80,7 +80,7 @@ public class Boss1 : BossBase
         }
         pattern++;
         if (pattern > 3) pattern = 0;
-        AttackCooltime = Random.Range(5f, 7f);
+        AttackCooltime = Random.Range(1f,2.5f);
     }
 
     void OnDrawGizmos()

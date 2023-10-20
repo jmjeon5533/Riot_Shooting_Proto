@@ -19,9 +19,8 @@ public class Spider1 : EnemyBase
     {
         transform.Translate(Vector3.left * Time.deltaTime * MoveSpeed);
     }
-    protected override void Start()
+    public override void Init()
     {
-        InitStat();
         StatMultiplier();
         var g = GameManager.instance;
         int[] m = {1, -1};

@@ -10,10 +10,9 @@ public class Bat3 : EnemyBase
     {
 
     }
-    protected override void Start()
+    public override void Init()
     {
         ItemAddCount = 0.2f;
-        InitStat();
         StatMultiplier();
         var g = GameManager.instance;
         int[] m = {1, -1};

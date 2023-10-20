@@ -4,41 +4,54 @@ using UnityEngine;
 
 public class Bat4 : EnemyBase
 {
-    Vector3 movedir;
+    float moveRate;
     [SerializeField] Animator anim;
-
-    [SerializeField] Vector3 startOffset, endOffset;
-
-    Vector3 p1,p2,p3,p4;
+    float randA,randB, randC, firevalue;
+    bool isfire;
     protected override void Attack()
     {
 
     }
-    protected override void Start()
+    public override void Init()
     {
+        moveRate = 0;
+        isfire = false;
         ItemAddCount = 0.2f;
-        InitStat();
         StatMultiplier();
-        var g = GameManager.instance;
-        int[] m = { 1, -1 };
-        var y = Random.Range(3f, 6f) * m[Random.Range(0, 2)];
-        transform.position = new Vector3(15, y, 0);
-        movedir = (GameManager.instance.player.transform.position - transform.position).normalized;
-        p1 = transform.position;
-        //p2
-        p4 = GameManager.instance.player.transform.position;
-
+        transform.position = new Vector3(15, 4, 0);
+        randA = Random.Range(18f,15f);
+        randC = Random.Range(3f, 5f);
+        randB = Random.Range(-11f,-4f);
+        firevalue = Random.Range(0.3f,0.7f);
     }
     protected override void Move()
     {
-        transform.position = BazierMath.Lerp(p1, );
+        moveRate += Time.deltaTime * Random.Range(0.5f, 1f);
+        var ab = Vector2.Lerp(new Vector2(randA, randC), new Vector2(randB,0), moveRate);
+        var bc = Vector2.Lerp(new Vector2(randB,0), new Vector2(randA, -randC), moveRate);
+        var abbc = Vector2.Lerp(ab, bc, moveRate);
+        transform.position = abbc;
+        if (moveRate >= 1 && !isDeath)
+        {
+            PoolManager.Instance.PoolObject(EnemyTag, gameObject);
+            isDeath = true;
+        }
+        if(moveRate >= firevalue && !isfire) 
+        {
+            var b = PoolManager.Instance.GetObject("EnemyBullet",transform.position,Quaternion.identity).GetComponent<BulletBase>();
+            b.dir = (GameManager.instance.player.transform.position - transform.position).normalized;
+            isfire = true;
+        }
     }
     protected override void Update()
     {
         base.Update();
-        if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 5
+
+        if ((Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 5
         || Mathf.Abs(transform.position.y) >= GameManager.instance.MoveRange.y + 5)
+        && !isDeath)
         {
+            isDeath = true;
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);
             GameManager.instance.curEnemys.Remove(gameObject);
         }

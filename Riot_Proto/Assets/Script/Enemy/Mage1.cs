@@ -17,9 +17,9 @@ public class Mage1 : EnemyBase
     {
         StartCoroutine(AttackCoroutine());
     }
-    protected override void Start()
+    public override void Init()
     {
-        base.Start();
+        base.Init();
         transform.position = new Vector3(20, 0, 0);
         StartCoroutine(Spawn());
     }

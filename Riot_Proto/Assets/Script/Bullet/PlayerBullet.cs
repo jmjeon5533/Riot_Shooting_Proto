@@ -18,6 +18,7 @@ public class PlayerBullet : BulletBase
                
                 EventManager.Instance.PostNotification(Event_Type.PlayerAttacked, this, h.gameObject.GetComponent<EnemyBase>());
                 PoolManager.Instance.PoolObject(BulletTag,gameObject);
+                break;
             }
         }
     }

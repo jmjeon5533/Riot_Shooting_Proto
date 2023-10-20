@@ -83,7 +83,6 @@ public class PoolManager : MonoBehaviour
 
     public void PoolObject(string key, GameObject obj)
     {
-        print($"{pools[key].queue.Count} : {pools[key].info.maxAmount} : {key}");
         if (pools[key].queue.Count >= pools[key].info.maxAmount)
         {
             Destroy(obj);

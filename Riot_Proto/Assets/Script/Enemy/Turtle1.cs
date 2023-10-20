@@ -12,11 +12,9 @@ public class Turtle1 : EnemyBase
     {
 
     }
-    protected override void Start()
+    public override void Init()
     {
-        InitStat();
         StatMultiplier();
-        var g = GameManager.instance;
         var y = Random.Range(3f, 3f);
         transform.position = new Vector3(15, y, 0);
         MovePos = new Vector3(-16, y, 0);

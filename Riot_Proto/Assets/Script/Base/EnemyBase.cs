@@ -6,11 +6,11 @@ using UnityEngine;
 public abstract class EnemyBase : MonoBehaviour
 {
     public float HP;
-    [HideInInspector] public float baseHp;
+    public float baseHp;
     [Space(10)]
     public float XPRate;
-    [HideInInspector] public float baseXPRate;
-    [Space()]
+    public float baseXPRate;
+    [Space]
     public float MoveSpeed;
     public float AttackCooltime;
     private float AttackCurtime;
@@ -27,21 +27,26 @@ public abstract class EnemyBase : MonoBehaviour
     public string EnemyTag;
     [SerializeField] protected float ItemAddCount = 1;
 
-    [SerializeField] bool isDeath = false;
+    [SerializeField] protected bool isDeath = false;
 
     protected bool isAttack = false;
 
     [SerializeField] List<BuffBase> EnemyBuffList = new List<BuffBase>();
 
-    protected virtual void Start()
+    public virtual void Init()
     {
         var g = GameManager.instance;
         var x = Random.Range(0, g.MoveRange.x + g.MovePivot.x);
         var y = Random.Range(-g.MoveRange.y + g.MovePivot.y, g.MoveRange.y + g.MovePivot.y);
 
         MovePos = new Vector3(x, y, 0);
-        InitStat();
+        HP = baseHp;
         StatMultiplier();
+    }
+
+    protected virtual void Awake()
+    {
+        InitStat();
     }
 
     private void OnEnable()
@@ -49,7 +54,6 @@ public abstract class EnemyBase : MonoBehaviour
         col = GetComponent<Collider>();
         col.enabled = true;
         isDeath = false;
-
     }
 
     protected void InitStat()
@@ -203,7 +207,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (GameManager.instance.itemCoolCount >= 40)
         {
-            
+
             PoolManager.Instance.GetObject("Power", transform.position, Quaternion.identity);
             GameManager.instance.itemCoolCount = 0;
         }
@@ -215,7 +219,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
     protected virtual void Dead()
     {
-        
+
     }
     IEnumerator DeathMotion()
     {

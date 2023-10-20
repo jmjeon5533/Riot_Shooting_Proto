@@ -10,9 +10,8 @@ public class Slime2 : EnemyBase
     {
 
     }
-    protected override void Start()
+    public override void Init()
     {
-        InitStat();
         StatMultiplier();
     }
     protected override void Move()

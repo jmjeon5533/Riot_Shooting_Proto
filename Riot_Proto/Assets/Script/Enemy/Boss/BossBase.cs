@@ -6,7 +6,7 @@ public class BossBase : EnemyBase
 {
     public Animator anim;
     public float maxHp;
-    protected override void Start()
+    public override void Init()
     {
         UIManager.instance.Bossbar.SetActive(true);
         MovePos = new Vector3(6, 0, 0);

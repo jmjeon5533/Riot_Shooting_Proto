@@ -597,7 +597,7 @@ MonoBehaviour:
     maxAmount: 50
   - key: Bat4
     obj: {fileID: 960719984618054119, guid: 3d10f887dc2b2f046bd6a6d5f378700c, type: 3}
-    maxAmount: 50
+    maxAmount: 100
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

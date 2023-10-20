@@ -8,10 +8,13 @@ public class Stage1 : WaveScript
     public override IEnumerator wave1()
     {
         yield return new WaitForSeconds(1);
-        for(int i = 0; i < 20; i++)
+        for(int i = 0; i < 50; i++)
         {
-            PoolManager.Instance.GetObject("Bat4",new Vector3(15,4,0),Quaternion.identity);
-            yield return new WaitForSeconds(0.1f);
+            for(int j = 0; j < Random.Range(1,3); j++)
+            {
+                PoolManager.Instance.GetObject("Bat4",new Vector3(15,4,0),Quaternion.identity).GetComponent<EnemyBase>().Init();
+            }
+            yield return new WaitForSeconds(0.06f);
         }
         Debug.Log(1);
     }

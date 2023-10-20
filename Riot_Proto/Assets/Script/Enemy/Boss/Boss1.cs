@@ -41,9 +41,9 @@ public class Boss1 : BossBase
         isDeadMotionPlay = false;
     }
 
-    protected override void Start()
+    public override void Init()
     {
-        base.Start();
+        base.Init();
         maxHP = HP;
     }
 

@@ -12,7 +12,7 @@ public class WaveExcuter : MonoBehaviour
         foreach (var waveScript in waveScripts)
         {
             waveScript.Waves.Add(waveScript.wave1);
-            // waveScript.Waves.Add(waveScript.wave2);
+            waveScript.Waves.Add(waveScript.wave2);
             // waveScript.Waves.Add(waveScript.wave3);
             // waveScript.Waves.Add(waveScript.wave4);
             // waveScript.Waves.Add(waveScript.wave5);

@@ -6,6 +6,7 @@ public class Golem1 : EnemyBase
 {
     [SerializeField] Animator anim1, anim2;
     [SerializeField] SkinnedMeshRenderer ShieldMaterial;
+    public bool IsShield = true;
     protected override void Attack()
     {
         StartCoroutine(AttackCoroutine());
@@ -18,7 +19,7 @@ public class Golem1 : EnemyBase
         yield return new WaitForSeconds(0.75f);
         for (int i = 0; i < 360; i += 360 / 10)
         {
-            var b = PoolManager.Instance.GetObject("EnemyBullet",transform.position,Quaternion.identity).GetComponent<BulletBase>();
+            var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
             float angle = i * Mathf.Deg2Rad; // 각도를 라디안으로 변환
             Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0); // 라디안 각도로 방향 벡터 생성
             b.dir = direction; // 방향을 총알에 할당
@@ -31,25 +32,25 @@ public class Golem1 : EnemyBase
     {
         base.Update();
         var a = ShieldMaterial.material.color.a;
-        var alpha = Mathf.MoveTowards(a,0,Time.deltaTime);
-        ShieldMaterial.material.SetColor("_Color",new Color(0.5f,0.5f,1,alpha));
+        var alpha = Mathf.MoveTowards(a, 0, Time.deltaTime);
+        ShieldMaterial.material.SetColor("_Color", new Color(0.5f, 0.5f, 1, alpha));
     }
     public override void Damage(int damage, bool isCrit)
     {
-        if(isAttack)
+        if (IsShield || !isAttack)
         {
-            base.Damage(damage, isCrit);
+            ShieldMaterial.material.SetColor("_Color", new Color(0.5f, 0.5f, 1, 0.5f));
         }
         else
         {
-            ShieldMaterial.material.SetColor("_Color",new Color(0.5f,0.5f,1,0.5f));
+            base.Damage(damage, isCrit);
         }
     }
     protected override void Dead()
     {
         base.Dead();
-        anim1.SetBool("Death",IsDeath());
-        anim2.SetBool("Death",IsDeath());
+        anim1.SetBool("Death", IsDeath());
+        anim2.SetBool("Death", IsDeath());
 
     }
 }

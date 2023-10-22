@@ -48,6 +48,10 @@ public abstract class EnemyBase : MonoBehaviour
     {
         InitStat();
     }
+    public void MoveVecInit(Vector3 movePos)
+    {
+        MovePos = movePos;
+    }
 
     private void OnEnable()
     {

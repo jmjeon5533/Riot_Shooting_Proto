@@ -19,7 +19,7 @@ public class Bat4 : EnemyBase
         ItemAddCount = 0.2f;
         StatMultiplier();
         transform.position = new Vector3(15, 4, 0);
-        randA = Random.Range(18f,15f);
+        randA = Random.Range(18f,13f);
         randC = Random.Range(3f, 5f);
         randB = Random.Range(-11f,-4f);
         firevalue = Random.Range(0.3f,0.7f);
@@ -34,6 +34,7 @@ public class Bat4 : EnemyBase
         if (moveRate >= 1 && !isDeath)
         {
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);
+            GameManager.instance.curEnemys.Remove(gameObject);
             isDeath = true;
         }
         if(moveRate >= firevalue && !isfire) 

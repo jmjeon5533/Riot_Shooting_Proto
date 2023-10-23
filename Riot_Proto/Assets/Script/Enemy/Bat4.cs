@@ -40,7 +40,7 @@ public class Bat4 : EnemyBase
         if(moveRate >= firevalue && !isfire) 
         {
             var b = PoolManager.Instance.GetObject("EnemyBullet",transform.position,Quaternion.identity).GetComponent<BulletBase>();
-            b.dir = (GameManager.instance.player.transform.position - transform.position).normalized;
+            b.dir = (GameManager.instance.player.transform.position + ((Vector3)Random.insideUnitCircle * 2) - transform.position).normalized;
             isfire = true;
         }
     }

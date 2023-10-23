@@ -19,6 +19,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Transform[] titleBtn;
     bool isButton;
     [SerializeField] Transform[] SelectUI;
+    [SerializeField] Transform[] Selectbg;
     [Space(10)]
     [Header("ActiveSkill")]
     public Sprite[] ASkillSprite;
@@ -68,6 +69,10 @@ public class TitleManager : MonoBehaviour
     IEnumerator selectStart()
     {
         InitPanel(1);
+        Selectbg[0].DOLocalMoveY(0,0.7f);
+        yield return Selectbg[1].DOLocalMoveY(0,0.7f).WaitForCompletion();
+
+        yield return new WaitForSeconds(0.1f);
         SelectUI[0].DOLocalMoveX(-930,1);
         SelectUI[1].DOLocalMoveX(930,1);
         SelectUI[2].DOLocalMoveY(-520,1);
@@ -90,6 +95,32 @@ public class TitleManager : MonoBehaviour
             yield return null;
         }
         SceneManager.instance.StageStart();
+    }
+    public void MainMenu()
+    {
+        StartCoroutine(mainMenu());
+    }
+    IEnumerator mainMenu()
+    {
+        SelectUI[0].DOLocalMove(new Vector3(-1658,520),1);
+        SelectUI[1].DOLocalMove(new Vector3(2200,510),1);
+        SelectUI[2].DOLocalMove(new Vector3(-930,-760),1);
+        yield return SelectUI[3].DOLocalMove(new Vector3(930,-760),1).WaitForCompletion();
+        yield return new WaitForSeconds(0.1f);
+
+        Selectbg[0].DOLocalMove(new Vector3(0,-540),1);
+        Selectbg[1].DOLocalMove(new Vector3(0,540),1);
+        
+        InitPanel(0);
+        titleBtn[0].localPosition = new Vector2(2300,-189);
+        titleBtn[1].localPosition = new Vector2(2300,-415);
+
+        if(isButton) yield break;
+        isButton = true;
+        titleBtn[0].DOLocalMoveX(1600,1.5f).SetEase(Ease.InOutBack);
+        yield return new WaitForSeconds(0.2f);
+        yield return titleBtn[1].DOLocalMoveX(1500,1.5f).SetEase(Ease.InOutBack)
+        .OnComplete(()=> isButton = false).WaitForCompletion();
     }
     public void ASkillButtonAdd(int i)
     {
@@ -124,6 +155,9 @@ public class TitleManager : MonoBehaviour
         SelectUI[1].localPosition = new Vector3(2200,510);
         SelectUI[2].localPosition = new Vector3(-930,-760);
         SelectUI[3].localPosition = new Vector3(930,-760);
+
+        // Selectbg[0].localPosition = new Vector3(0,-540);
+        // Selectbg[1].localPosition = new Vector3(0,540);
 
         CharImage.color = Color.clear;
         CharImage.transform.localScale = new Vector3(1, 1, 1);

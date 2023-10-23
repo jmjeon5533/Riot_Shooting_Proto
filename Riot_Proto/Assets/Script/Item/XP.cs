@@ -6,7 +6,7 @@ public class XP : ItemBase
 {
     Transform player;
     public int AddValue;
-    float curtime;
+    public float curtime;
     public float moveRate;
     public float dirPower;
     Vector3 startPos;

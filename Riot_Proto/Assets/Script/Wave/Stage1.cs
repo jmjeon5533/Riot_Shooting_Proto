@@ -27,7 +27,7 @@ public class Stage1 : WaveScript
         e.GetComponent<Golem1>().IsShield = false;
         
         yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         {
             var vecY = 3 - (i * 6);
             var enemy = PoolManager.Instance.GetObject("Golem1", new Vector3(15, vecY, 0), Quaternion.identity);

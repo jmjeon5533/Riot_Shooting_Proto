@@ -7,6 +7,14 @@ public class Golem1 : EnemyBase
     [SerializeField] Animator anim1, anim2;
     [SerializeField] SkinnedMeshRenderer ShieldMaterial;
     public bool IsShield = true;
+
+    private float bulletSpd;
+
+    public void SetBulletSpeed(float value)
+    {
+        bulletSpd = value;
+    }
+
     protected override void Attack()
     {
         StartCoroutine(AttackCoroutine());

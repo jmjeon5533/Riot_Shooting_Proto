@@ -29,7 +29,8 @@ public class TitleManager : MonoBehaviour
     [Space(10)]
     [SerializeField] Transform ASkillParent;
     [SerializeField] Image ASkillImage;
-    [SerializeField] Image ASkillBorder;
+    [SerializeField] Image ASkillIcon;
+    [SerializeField] Image ASkillTime;
     [SerializeField] Text ASkillNameText;
     [SerializeField] Text ASkillExplainText;
     [SerializeField] Text ASkillCoolTimeText;
@@ -127,18 +128,18 @@ public class TitleManager : MonoBehaviour
         var p = SceneManager.instance.playerData;
         var b = Instantiate(ASkillPrefab, ASkillParent).GetComponent<Button>();
         b.image.sprite = ASkillSprite[i];
-        Color[] colors = { Color.yellow, new Color(1, 0.5f, 0, 1), Color.red };
-        b.transform.GetChild(0).GetComponent<Image>().color = colors[2];
         var num = i;
         b.onClick.AddListener(() =>
         {
             SceneManager.instance.ActiveIndex = num;
             SceneManager.instance.ActiveLevel = 3;
             ASkillImage.sprite = ASkillSprite[num];
-            ASkillBorder.color = colors[2];
             ASkillNameText.text = ASkillName[num];
             ASkillCoolTimeText.text = ASkillCoolTime[num].ToString() + "s";
             ASkillExplainText.text = ASkillExplain[num];
+            ASkillIcon.color = Color.white;
+            ASkillTime.color = Color.white;
+
         });
     }
     public void InitPanel(int index) //타이틀 패널 바꾸기

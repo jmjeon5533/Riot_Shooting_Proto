@@ -60,8 +60,8 @@ public class UIManager : MonoBehaviour
         hpPanel.transform.DOMoveX(-15, 0);
         abilityPanel.transform.DOMoveX(-15, 0);
         MainRateText.transform.DOMoveX(15.5f, 0);
-        powerPanel.transform.DOMoveX(15, 0);
-        activeSkill.DOMoveX(14, 0);
+        powerPanel.transform.DOLocalMoveX(-1015, 0);
+        activeSkill.DOMoveX(15, 0);
     }
     private void Update()
     {
@@ -94,7 +94,7 @@ public class UIManager : MonoBehaviour
         abilityPanel.transform.DOMoveX(-10, 1f).SetEase(Ease.OutExpo);
         MainRateText.transform.DOMoveX(10, 1f).SetEase(Ease.OutExpo);
         activeSkill.transform.DOMoveX(9, 1f).SetEase(Ease.OutExpo);
-        powerPanel.transform.DOMoveX(10, 1f).SetEase(Ease.OutExpo);
+        powerPanel.transform.DOLocalMoveX(-910, 1f).SetEase(Ease.OutExpo);
         //StartCoroutine(ShowUI());
     }
 

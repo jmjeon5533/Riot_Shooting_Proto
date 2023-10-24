@@ -47,7 +47,7 @@ MonoBehaviour:
   cardLevel: 1
   level: 1
   type: 1
-  skillImage: {fileID: 21300000, guid: 79d944f3c08facf4f9c676a4f892215f, type: 3}
+  skillImage: {fileID: 21300000, guid: c82c8612bae4f764891bab3be6226ba9, type: 3}
   skillIcon: {fileID: 0}
   skillName: "\uC6B0\uB808"
   skillDescription: "\uD070 \uBC88\uAC1C\uB97C \uB5A8\uC5B4\uB728\uB824 \uB113\uC740

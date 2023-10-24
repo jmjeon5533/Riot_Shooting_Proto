@@ -265,7 +265,8 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void DeadEffect()
     {
-        PoolManager.Instance.GetObject("XP", transform.position, Quaternion.identity);
+        var xp = PoolManager.Instance.GetObject("XP", transform.position, Quaternion.identity).GetComponent<XP>();
+        xp.curtime = 0;
     }
     protected abstract void Attack();
 

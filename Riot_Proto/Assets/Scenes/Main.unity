@@ -506,6 +506,9 @@ MonoBehaviour:
     obj: {fileID: 7488623435463272498, guid: b7c2e428f26f83343a39d3baa0b35720, type: 3}
     maxAmount: 150
   - key: EnemyBullet
+    obj: {fileID: 269225301555661974, guid: 697ae42c6d56bce4682a2614d67adc8f, type: 3}
+    maxAmount: 100
+  - key: EnemyBullet2
     obj: {fileID: 269225301555661974, guid: 77a3fadfd0297b64db4d4d36bc443111, type: 3}
     maxAmount: 100
   - key: ElectricBullet
@@ -538,9 +541,6 @@ MonoBehaviour:
   - key: Spider1
     obj: {fileID: 5148704164904888988, guid: 847edf739fbc82d4aab6f9fc832be794, type: 3}
     maxAmount: 50
-  - key: Mage1
-    obj: {fileID: 8805811973873897148, guid: c1c27284a62473d44827a35569477ca3, type: 3}
-    maxAmount: 50
   - key: Turtle1
     obj: {fileID: 4887867709369130154, guid: 5a44a717591f274468b4ef6b780a1cdf, type: 3}
     maxAmount: 50
@@ -553,9 +553,15 @@ MonoBehaviour:
   - key: RushBullet
     obj: {fileID: 8658052103336013023, guid: a03f565b18fe2c643a5271a1c72c3861, type: 3}
     maxAmount: 100
+  - key: Mage1
+    obj: {fileID: 8805811973873897148, guid: c1c27284a62473d44827a35569477ca3, type: 3}
+    maxAmount: 50
   - key: Mage2
     obj: {fileID: 8805811973873897148, guid: 60ff72008db73fa48bd228f30a542cc9, type: 3}
     maxAmount: 50
+  - key: Mage3
+    obj: {fileID: 8805811973873897148, guid: 4dce350e193b0d343a9135d4e3685252, type: 3}
+    maxAmount: 100
   - key: Shield
     obj: {fileID: 5932559034786085994, guid: 37ff599bcce2f694c93f82d917986758, type: 3}
     maxAmount: 200
@@ -598,6 +604,9 @@ MonoBehaviour:
   - key: Bat4
     obj: {fileID: 960719984618054119, guid: 3d10f887dc2b2f046bd6a6d5f378700c, type: 3}
     maxAmount: 100
+  - key: Turtle2
+    obj: {fileID: 4887867709369130154, guid: 4db85c102737e7043b0bfbd8fd300a4a, type: 3}
+    maxAmount: 50
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0
@@ -4790,8 +4799,8 @@ MonoBehaviour:
   MovePivot: {x: 0, y: -0.5}
   EnemyPower: 1
   XPPrefab: {fileID: 8339991442943732091, guid: b379a882caa8ed14ba39e2a473ce3ce2, type: 3}
-  MaxXP: 40
-  AddMaxXP: 20
+  MaxXP: 100
+  AddMaxXP: 60
   XP: 0
   Level: 1
   SelectChance: 0

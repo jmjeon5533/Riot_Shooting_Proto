@@ -68,7 +68,7 @@ public class UIManager : MonoBehaviour
         var g = GameManager.instance;
         if(Ratevalue <= g.GetMoney)
         {
-            var value = 1 + Mathf.Clamp(g.GetMoney - Ratevalue,0,200);
+            var value = 1 + Mathf.Clamp(g.GetMoney - Ratevalue,0,1000);
             Ratevalue = (int)Mathf.MoveTowards(Ratevalue,g.GetMoney,value);
         }
         MainRateText.text = string.Format("{0:D10}",Ratevalue);

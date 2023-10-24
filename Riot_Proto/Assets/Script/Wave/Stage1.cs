@@ -34,6 +34,7 @@ public class Stage1 : WaveScript
             GameManager.instance.curEnemys.Add(enemy);
             enemy.GetComponent<EnemyBase>().MovePos = new Vector3(3, vecY, 0);
             enemy.GetComponent<Golem1>().IsShield = false;
+            //enemy.GetComponent<Golem1>().SetBulletSpeed(3 + i);
         }
         yield return new WaitForSeconds(2);
         for (int i = 0; i < 2; i++)
@@ -43,6 +44,7 @@ public class Stage1 : WaveScript
             GameManager.instance.curEnemys.Add(enemy);
             enemy.GetComponent<EnemyBase>().MovePos = new Vector3(8, vecY, 0);
             enemy.GetComponent<Golem1>().IsShield = false;
+            //enemy.GetComponent<Golem1>().SetBulletSpeed(2 + i);
         }
     }
     public override IEnumerator wave3()

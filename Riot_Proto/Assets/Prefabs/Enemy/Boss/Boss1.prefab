@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 149849303624063122}
   - component: {fileID: 149849303624063123}
-  - component: {fileID: 3704637008827353322}
   - component: {fileID: 6083469395481767078}
+  - component: {fileID: 1516559720679416570}
   m_Layer: 6
   m_Name: Boss1
   m_TagString: Enemy
@@ -254,19 +254,6 @@ MonoBehaviour:
     - 0
     - 0
     - 0
---- !u!135 &3704637008827353322
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149849303624063132}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6083469395481767078
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -283,6 +270,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!136 &1516559720679416570
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149849303624063132}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.92
+  m_Height: 8.14
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2118857567677555085
 GameObject:
   m_ObjectHideFlags: 0

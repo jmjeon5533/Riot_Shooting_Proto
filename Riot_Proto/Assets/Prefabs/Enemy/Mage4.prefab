@@ -1262,8 +1262,8 @@ Transform:
   m_GameObject: {fileID: 8805811973873897148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9060747846049944412}
   - {fileID: 8222975352380207722}
@@ -1314,7 +1314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 100
   baseHp: 0
-  XPRate: 4
+  XPRate: 7
   baseXPRate: 0
   MoveSpeed: 8
   AttackCooltime: 4

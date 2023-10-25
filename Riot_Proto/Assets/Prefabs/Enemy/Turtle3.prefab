@@ -329,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 50
   baseHp: 0
-  XPRate: 3
+  XPRate: 4
   baseXPRate: 0
   MoveSpeed: 10
   AttackCooltime: 3
@@ -338,7 +338,7 @@ MonoBehaviour:
   mesh: {fileID: 101814808430052113}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Turtle3
-  ItemAddCount: 1
+  ItemAddCount: 2.5
   isDeath: 0
   anim: {fileID: 2376586625589630021}
   DeadBullet: {fileID: 5001741943408443517, guid: 31492bf93028b574dac4c6b53d273591, type: 3}

@@ -31,13 +31,13 @@ public class Mage4 : EnemyBase
             return;
         }    
         var shield = PoolManager.Instance.GetObject("Shield", ShieldPoint);
-            shield.transform.position = ShieldPoint.position + (Vector3.up * 1.5f);
+            shield.transform.position = ShieldPoint.position + (Vector3.up * 3f);
             shield = PoolManager.Instance.GetObject("Shield", ShieldPoint);
-            shield.transform.position = ShieldPoint.position + (Vector3.down * 1.5f);
+            shield.transform.position = ShieldPoint.position + (Vector3.down * 3f);
             shield = PoolManager.Instance.GetObject("Shield", ShieldPoint);
-            shield.transform.position = ShieldPoint.position + (Vector3.right * 1.5f);
+            shield.transform.position = ShieldPoint.position + (Vector3.right * 3f);
             shield = PoolManager.Instance.GetObject("Shield", ShieldPoint);
-            shield.transform.position = ShieldPoint.position + (Vector3.left * 1.5f);
+            shield.transform.position = ShieldPoint.position + (Vector3.left * 3f);
     }
     IEnumerator BatSpawn()
     {
@@ -67,12 +67,12 @@ public class Mage4 : EnemyBase
 
         anim.SetTrigger("Attack");
         yield return new WaitForSeconds(0.3f);
-        float radius = 30;
+        float radius = 70;
 
-        float amount = radius / (3 - 1);
+        float amount = radius / (7 - 1);
         float z = radius / -2f;
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 7; i++)
         {
             var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
             float _angle = z * Mathf.Deg2Rad; // ������ �������� ��ȯ

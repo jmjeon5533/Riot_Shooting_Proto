@@ -7,7 +7,6 @@ public class Stage1 : WaveScript
 {
     public override IEnumerator wave1()
     {
-        yield return new WaitForSeconds(1);
         for (int i = 0; i < 20; i++)
         {
             for (int j = 0; j < Random.Range(1, 3); j++)
@@ -90,7 +89,20 @@ public class Stage1 : WaveScript
     }
     public override IEnumerator wave6()
     {
+        var enemy = PoolManager.Instance.GetObject("Golem1", new Vector3(15, 0, 0));
+        GameManager.instance.curEnemys.Add(enemy);
+        enemy.GetComponent<EnemyBase>().MovePos = new Vector3(8, 0, 0);
+        enemy.GetComponent<Golem1>().IsShield = true;
         yield return new WaitForSeconds(3);
         Debug.Log(6);
+        for (int i = 0; i < 15; i++)
+        {
+            var y = Random.Range(-5f,5f);
+            var bat = PoolManager.Instance.GetObject("Bat3", new Vector3(15, y, 0));
+            GameManager.instance.curEnemys.Add(bat);
+            bat.GetComponent<Bat3>().movedir = (GameManager.instance.player.transform.position + 
+                (Vector3)Random.insideUnitCircle - bat.transform.position).normalized;
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 }

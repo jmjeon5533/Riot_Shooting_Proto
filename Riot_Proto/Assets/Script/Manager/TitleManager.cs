@@ -50,7 +50,8 @@ public class TitleManager : MonoBehaviour
             ASkillButtonAdd(i);
         }
         InitPanel(0);
-        
+        titleBtn[0].localPosition = new Vector2(2300,-189);
+        titleBtn[1].localPosition = new Vector2(2300,-415);
     }
 
 
@@ -62,8 +63,6 @@ public class TitleManager : MonoBehaviour
 
     IEnumerator StartMotion()
     {
-        titleBtn[0].localPosition = new Vector2(2300,-189);
-        titleBtn[1].localPosition = new Vector2(2300,-415);
         startPanel.DOFade(1, 0);
         yield return new WaitForSeconds(1);
         yield return logo.DOFade(1, 1f).WaitForCompletion();

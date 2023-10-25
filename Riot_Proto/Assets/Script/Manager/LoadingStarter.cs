@@ -13,6 +13,8 @@ public class LoadingStarter : MonoBehaviour
     private void Start()
     {
         StartCoroutine(stageStart());
+        Camera[] camera = { Camera.main };
+        SceneManager.instance.SetResolution(camera);
     }
      IEnumerator stageStart()
     {

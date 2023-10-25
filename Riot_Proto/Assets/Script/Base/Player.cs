@@ -195,7 +195,7 @@ public abstract class Player : MonoBehaviour
     }
     void Movement()
     {
-        Vector2 input = joystick.input.normalized;
+        Vector2 input = joystick.Input;
 
         anim.SetInteger("MoveState", Mathf.RoundToInt(input.x));
 

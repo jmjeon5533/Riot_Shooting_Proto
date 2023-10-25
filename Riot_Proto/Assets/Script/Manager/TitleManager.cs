@@ -50,7 +50,14 @@ public class TitleManager : MonoBehaviour
             ASkillButtonAdd(i);
         }
         InitPanel(0);
-        StartCoroutine(StartMotion());
+        
+    }
+
+
+    [RuntimeInitializeOnLoadMethod] 
+    static void OnAppStart()
+    {
+        instance.StartCoroutine(instance.StartMotion());  
     }
 
     IEnumerator StartMotion()

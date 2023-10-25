@@ -30,12 +30,12 @@ public class Mage3 : EnemyBase
 
         float radius = 45;
 
-        float amount = radius / (3 - 1);
+        float amount = radius / (5 - 1);
         float z = radius / -2f;
 
         float angle = Mathf.Atan2(-transform.position.y,-transform.position.x) * Mathf.Rad2Deg;
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
         {
             var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
             float _angle = z * Mathf.Deg2Rad + angle;

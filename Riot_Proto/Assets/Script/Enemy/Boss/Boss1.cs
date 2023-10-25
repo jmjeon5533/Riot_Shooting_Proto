@@ -77,15 +77,39 @@ public class Boss1 : BossBase
                     coroutine = StartCoroutine(Attack4());
                     break;
                 }
+                case 4:
+                {
+                    coroutine = StartCoroutine(Attack5());
+                    break;
+                }
         }
         pattern++;
-        if (pattern > 3) pattern = 0;
+        if (pattern > 4) pattern = 0;
         AttackCooltime = Random.Range(1f,2.5f);
     }
 
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.localPosition + AttackPivot, AttackRange);
+    }
+    IEnumerator Attack1()
+    {
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < Random.Range(45, 60); i++)
+        {
+            yield return new WaitForSeconds(0.05f);
+            Vector2 rand = Vector2.zero;
+            while (rand.x >= 0)
+            {
+                rand = Random.insideUnitCircle;
+            }
+            Vector3 spawnPos = l_ShootPos.position;
+            spawnPos.z = 0;
+            var b = PoolManager.Instance.GetObject("EnemyBullet", spawnPos, Quaternion.identity).GetComponent<BulletBase>();
+            b.dir = rand.normalized;
+
+        }
+        isAttack = false;
     }
     IEnumerator Attack2()
     {
@@ -115,25 +139,6 @@ public class Boss1 : BossBase
         }
         PoolManager.Instance.PoolObject("EnemyBullet", b.gameObject);
 
-        isAttack = false;
-    }
-    IEnumerator Attack1()
-    {
-        yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < Random.Range(45, 60); i++)
-        {
-            yield return new WaitForSeconds(0.05f);
-            Vector2 rand = Vector2.zero;
-            while (rand.x >= 0)
-            {
-                rand = Random.insideUnitCircle;
-            }
-            Vector3 spawnPos = l_ShootPos.position;
-            spawnPos.z = 0;
-            var b = PoolManager.Instance.GetObject("EnemyBullet", spawnPos, Quaternion.identity).GetComponent<BulletBase>();
-            b.dir = rand.normalized;
-
-        }
         isAttack = false;
     }
 
@@ -247,6 +252,40 @@ public class Boss1 : BossBase
             yield return new WaitForSeconds(risePatterns[index].riseDelay[i]);
             Debug.Log(risePatterns[index].riseDelay[i]);
             var b = PoolManager.Instance.GetObject("FireRise", new Vector3(risePatterns[index].riseYs[i], -g.MoveRange.y, 0), Quaternion.identity);
+        }
+    }
+    IEnumerator Attack5()
+    {
+        for (int i = 0; i < 720; i += 720 / 50)
+        {
+            var b1 = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
+            var b2 = PoolManager.Instance.GetObject("EnemyBullet2", transform.position, Quaternion.identity).GetComponent<BulletBase>();
+            float angle = i * Mathf.Deg2Rad; // 각도를 라디안으로 변환
+            Vector3 direction1 = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0); // 라디안 각도로 방향 벡터 생성
+            Vector3 direction2 = new Vector3(Mathf.Cos(angle), -Mathf.Sin(angle), 0);
+            b1.dir = direction1; // 방향을 총알에 할당
+            b2.dir = direction2; // 방향을 총알에 할당
+            b1.SetMoveSpeed(6f);
+            b2.SetMoveSpeed(6f);
+            yield return new WaitForSeconds(0.01f);
+        }
+        yield return new WaitForSeconds(0.5f);
+        var count = 30;
+        for (int j = 0; j < 3; j++)
+        {
+            string bulletTag;
+            if(j % 2 == 0) bulletTag = "EnemyBullet";
+            else bulletTag = "EnemyBullet2";
+
+            for (int i = 0; i < 360; i += 360 / count)
+            {
+                var b = PoolManager.Instance.GetObject(bulletTag, transform.position, Quaternion.identity).GetComponent<BulletBase>();
+                float angle = i * Mathf.Deg2Rad; // 각도를 라디안으로 변환
+                Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0); // 라디안 각도로 방향 벡터 생성
+                b.dir = direction; // 방향을 총알에 할당
+            }
+            yield return new WaitForSeconds(0.3f);
+            count += 5;
         }
     }
 

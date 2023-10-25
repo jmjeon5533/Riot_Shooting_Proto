@@ -607,6 +607,9 @@ MonoBehaviour:
   - key: Turtle2
     obj: {fileID: 4887867709369130154, guid: 4db85c102737e7043b0bfbd8fd300a4a, type: 3}
     maxAmount: 50
+  - key: Turtle3
+    obj: {fileID: 4887867709369130154, guid: 68e7ec6f3e94d4a46a1b4f9fd8767be6, type: 3}
+    maxAmount: 50
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

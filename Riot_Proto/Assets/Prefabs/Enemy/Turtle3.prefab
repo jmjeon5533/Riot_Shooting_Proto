@@ -289,11 +289,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6430318055042962846}
-  - component: {fileID: 5285991253071914365}
+  - component: {fileID: 3303397614432179605}
   - component: {fileID: 8504775369255192104}
   - component: {fileID: 1888079016688131575}
   m_Layer: 6
-  m_Name: Turtle2
+  m_Name: Turtle3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,7 +315,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5285991253071914365
+--- !u!114 &3303397614432179605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -324,25 +324,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4887867709369130154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f7d6e6eb92623542b9fffcae44f9d20, type: 3}
+  m_Script: {fileID: 11500000, guid: ff2fa832c98721c4696174fdc39e7f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 50
+  HP: 30
   baseHp: 0
   XPRate: 3
   baseXPRate: 0
-  MoveSpeed: 5
-  AttackCooltime: 6
+  MoveSpeed: 10
+  AttackCooltime: 5
   damagedMultiplier: 1
   shader: {fileID: 0}
   mesh: {fileID: 101814808430052113}
   MovePos: {x: 0, y: 0, z: 0}
-  EnemyTag: Turtle2
+  EnemyTag: 
   ItemAddCount: 1
   isDeath: 0
   anim: {fileID: 2376586625589630021}
   DeadBullet: {fileID: 5001741943408443517, guid: 31492bf93028b574dac4c6b53d273591, type: 3}
-  DeadBulletCount: 30
+  DeadBulletCount: 10
 --- !u!136 &8504775369255192104
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -732,8 +732,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7285879359736600911}
-  m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.08249092, y: 0.12, z: 0.056739695}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.08249092, y: -0.563, z: 0.056739695}
   m_LocalScale: {x: 1.63, y: 1.63, z: 1.63}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -741,7 +741,7 @@ Transform:
   - {fileID: 7270218977631291429}
   m_Father: {fileID: 6430318055042962846}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!95 &2376586625589630021
 Animator:
   serializedVersion: 5

@@ -50,17 +50,28 @@ public class TitleManager : MonoBehaviour
         {
             ASkillButtonAdd(i);
         }
-        StartCoroutine(StartMotion());
         InitPanel(0);
+        StartCoroutine(StartMotion());
     }
 
     IEnumerator StartMotion()
     {
+        titleBtn[0].localPosition = new Vector2(2300,-189);
+        titleBtn[1].localPosition = new Vector2(2300,-415);
         startPanel.DOFade(1, 0);
         yield return new WaitForSeconds(1);
         yield return logo.DOFade(1, 1f).WaitForCompletion();
-        yield return startPanel.DOFade(0, 1.5f).WaitForCompletion();
-        yield return logo.DOFade(0, 1f).WaitForCompletion();
+        startPanel.DOFade(0, 1.5f);
+        yield return new WaitForSeconds(1);
+        logo.DOFade(0, 1f);
+
+
+        if(isButton) yield break;
+        isButton = true;
+        titleBtn[0].DOLocalMoveX(1600,1.5f).SetEase(Ease.InOutBack);
+        yield return new WaitForSeconds(0.2f);
+        yield return titleBtn[1].DOLocalMoveX(1500,1.5f).SetEase(Ease.InOutBack)
+        .OnComplete(()=> isButton = false).WaitForCompletion();
 
     }
 
@@ -87,7 +98,7 @@ public class TitleManager : MonoBehaviour
         InitPanel(1);
         Selectbg[0].DOLocalMoveY(0,0.7f);
         yield return Selectbg[1].DOLocalMoveY(0,0.7f).WaitForCompletion();
-
+        
         yield return new WaitForSeconds(0.1f);
         SelectUI[0].DOLocalMoveX(-930,1);
         SelectUI[1].DOLocalMoveX(930,1);

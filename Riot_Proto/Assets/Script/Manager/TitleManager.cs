@@ -10,12 +10,11 @@ using System.Linq;
 public class TitleManager : MonoBehaviour
 {
     public static TitleManager instance { get; private set; }
-    public List<GameObject> Panel = new();
+    public GameObject[] Panel;
 
     [SerializeField] Camera[] Mcamera;
     [Space(10)]
     [SerializeField] RawImage CharImage;
-    [SerializeField] Image loadingbar;
     [SerializeField] Transform[] titleBtn;
     bool isButton;
     [SerializeField] Transform[] SelectUI;
@@ -108,20 +107,7 @@ public class TitleManager : MonoBehaviour
     }
     public void StageStart()
     {
-        StartCoroutine(stageStart());
-    }
-    IEnumerator stageStart()
-    {
-        InitPanel(2);
-        var time = 1.5f;
-        var curtime = 0f;
-        while (curtime <= time)
-        {
-            curtime += Time.deltaTime;
-            loadingbar.fillAmount = Mathf.Lerp(curtime, time, 0.01f);
-            yield return null;
-        }
-        SceneManager.instance.StageStart();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Loading");
     }
     public void MainMenu()
     {
@@ -170,7 +156,7 @@ public class TitleManager : MonoBehaviour
     }
     public void InitPanel(int index) //타이틀 패널 바꾸기
     {
-        for (int i = 0; i < Panel.Count; i++)
+        for (int i = 0; i < Panel.Length; i++)
         {
             Panel[i].SetActive(false);
         }

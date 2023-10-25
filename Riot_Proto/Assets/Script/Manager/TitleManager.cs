@@ -36,6 +36,9 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Text ASkillCoolTimeText;
     [SerializeField] GameObject ASkillPrefab;
 
+    [SerializeField] Image startPanel;
+    [SerializeField] Image logo;
+
     private void Awake()
     {
         instance = this;
@@ -47,8 +50,20 @@ public class TitleManager : MonoBehaviour
         {
             ASkillButtonAdd(i);
         }
+        StartCoroutine(StartMotion());
         InitPanel(0);
     }
+
+    IEnumerator StartMotion()
+    {
+        startPanel.DOFade(1, 0);
+        yield return new WaitForSeconds(1);
+        yield return logo.DOFade(1, 1f).WaitForCompletion();
+        yield return startPanel.DOFade(0, 1.5f).WaitForCompletion();
+        yield return logo.DOFade(0, 1f).WaitForCompletion();
+
+    }
+
     public void StartButton()
     {
         StartCoroutine(Startbtn());

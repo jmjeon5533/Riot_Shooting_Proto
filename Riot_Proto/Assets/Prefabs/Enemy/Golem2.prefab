@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b199d2ba2516bab41b5680c847ec10b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 80
+  HP: 60
   baseHp: 0
   XPRate: 5
   baseXPRate: 0
@@ -89,6 +89,7 @@ MonoBehaviour:
   mesh: {fileID: 2621052913203813027}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Golem2
+  ItemAddCount: 1
   isDeath: 0
   anim1: {fileID: 5135198789432245221}
 --- !u!1001 &2657116420236739173

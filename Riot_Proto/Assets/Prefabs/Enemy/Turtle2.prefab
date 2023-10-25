@@ -327,12 +327,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7d6e6eb92623542b9fffcae44f9d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 50
+  HP: 80
   baseHp: 0
   XPRate: 3
   baseXPRate: 0
   MoveSpeed: 5
-  AttackCooltime: 6
+  AttackCooltime: 4
   damagedMultiplier: 1
   shader: {fileID: 0}
   mesh: {fileID: 101814808430052113}

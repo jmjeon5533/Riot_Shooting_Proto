@@ -8,6 +8,11 @@ public class Turtle3 : EnemyBase
     [SerializeField] Animator anim;
     [SerializeField] BulletBase DeadBullet;
     public int DeadBulletCount = 10;
+    protected override void Awake()
+    {
+        base.Awake();
+        AttackCurtime = 2.5f;
+    }
     protected override void Attack()
     {
         StartCoroutine(AttackCoroutine());
@@ -23,8 +28,8 @@ public class Turtle3 : EnemyBase
             {
                 movePos = transform.position + (Vector3)Random.insideUnitCircle.normalized * 5;
             }
-            while (Mathf.Abs(movePos.x) >= GameManager.instance.MoveRange.x + 5 
-                || Mathf.Abs(movePos.y) >= GameManager.instance.MoveRange.y + 5 || movePos.x < 0);
+            while (Mathf.Abs(movePos.x) >= GameManager.instance.MoveRange.x 
+                || Mathf.Abs(movePos.y) >= GameManager.instance.MoveRange.y || movePos.x < -5);
 
             MovePos = movePos;
             yield return new WaitUntil(() => Vector3.Distance(movePos, transform.position) <= 0.1f);
@@ -62,13 +67,6 @@ public class Turtle3 : EnemyBase
     protected override void Dead()
     {
         base.Dead();
-        for (int i = 0; i < 360; i += 360 / DeadBulletCount)
-        {
-            var b = Instantiate(DeadBullet, transform.position, Quaternion.identity).GetComponent<BulletBase>();
-            float angle = i * Mathf.Deg2Rad; // 각도를 라디안으로 변환
-            Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0); // 라디안 각도로 방향 벡터 생성
-            b.dir = direction; // 방향을 총알에 할당
-        }
         anim.SetBool("Death", IsDeath());
     }
 }

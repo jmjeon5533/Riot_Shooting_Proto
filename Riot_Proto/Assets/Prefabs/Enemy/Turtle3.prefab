@@ -327,17 +327,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2fa832c98721c4696174fdc39e7f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 30
+  HP: 50
   baseHp: 0
   XPRate: 3
   baseXPRate: 0
   MoveSpeed: 10
-  AttackCooltime: 5
+  AttackCooltime: 3
   damagedMultiplier: 1
   shader: {fileID: 0}
   mesh: {fileID: 101814808430052113}
   MovePos: {x: 0, y: 0, z: 0}
-  EnemyTag: 
+  EnemyTag: Turtle3
   ItemAddCount: 1
   isDeath: 0
   anim: {fileID: 2376586625589630021}
@@ -353,8 +353,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.8
-  m_Height: 2.39
+  m_Radius: 0.53
+  m_Height: 1.47
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1888079016688131575
@@ -733,8 +733,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7285879359736600911}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.08249092, y: -0.563, z: 0.056739695}
-  m_LocalScale: {x: 1.63, y: 1.63, z: 1.63}
+  m_LocalPosition: {x: -0.08249092, y: -0.409, z: 0.056739695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6670079058044296132}

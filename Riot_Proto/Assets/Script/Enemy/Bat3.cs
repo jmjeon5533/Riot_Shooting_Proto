@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bat3 : EnemyBase
 {
-    Vector3 movedir;
+    public Vector3 movedir;
     [SerializeField] Animator anim;
     protected override void Attack()
     {

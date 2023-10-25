@@ -87,15 +87,10 @@ public abstract class Player : MonoBehaviour
         var g = GameManager.instance;
         if (IsShield) return;
         HP--;
-        if(bulletLevel > 2)
+        if(bulletLevel >= 2)
         {
-            for(int i = 3; i < bulletLevel; i++)
-            {
-                var pos = new Vector3(15,Random.Range(-g.MoveRange.y + g.MovePivot.y, g.MoveRange.y + g.MovePivot.y),0);
-                PoolManager.Instance.GetObject("Power",pos,Quaternion.identity);
-            }
+            bulletLevel--;
         }
-        bulletLevel = 1;
 
         StartCoroutine(Dead());
         UIManager.instance.InitHeart();

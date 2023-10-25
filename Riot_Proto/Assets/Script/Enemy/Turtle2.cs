@@ -81,13 +81,6 @@ public class Turtle2 : EnemyBase
     protected override void Dead()
     {
         base.Dead();
-        for (int i = 0; i < 360; i += 360 / DeadBulletCount)
-        {
-            var b = Instantiate(DeadBullet, transform.position, Quaternion.identity).GetComponent<BulletBase>();
-            float angle = i * Mathf.Deg2Rad; // 각도를 라디안으로 변환
-            Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0); // 라디안 각도로 방향 벡터 생성
-            b.dir = direction; // 방향을 총알에 할당
-        }
         anim.SetBool("Death", IsDeath());
     }
 }

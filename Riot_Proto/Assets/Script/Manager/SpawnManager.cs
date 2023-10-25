@@ -8,6 +8,12 @@ public class SpawnManager : MonoBehaviour
     public int BossSpawnWave;
     public int SpawnCount;
     int StageLevel;
+
+    int rand;
+    int curWaveIndex;
+
+    public float coolMobSpawn = 10;
+    float curMobSpawn;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -16,6 +22,32 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         Spawn();
+    }
+    private void Update()
+    {
+        curMobSpawn += Time.deltaTime;
+        if(curMobSpawn >= coolMobSpawn)
+        {
+            curMobSpawn = 0;
+            coolMobSpawn = Random.Range(3f,8f);
+            int index = 0;
+            switch(index)
+            {
+                case 0:
+                {
+                    var enemy1 = PoolManager.Instance.GetObject("Bat3",new Vector3(14,-6,0),Quaternion.identity).GetComponent<Bat3>();
+                    var enemy2 = PoolManager.Instance.GetObject("Bat3",new Vector3(14,6,0),Quaternion.identity).GetComponent<Bat3>();
+                    var dir1 = (GameManager.instance.player.transform.position - enemy1.transform.position).normalized;
+                    var dir2 = (GameManager.instance.player.transform.position - enemy2.transform.position).normalized;
+                    enemy1.movedir = dir1;
+                    enemy2.movedir = dir2;
+
+                    enemy1.MoveSpeed = 8;
+                    enemy2.MoveSpeed = 8;
+                    break;
+                }
+            }
+        }
     }
     public void Spawn()
     {
@@ -29,13 +61,18 @@ public class SpawnManager : MonoBehaviour
         while (SpawnCount < BossSpawnWave)
         {
             var wave = WaveExcuter.instance.waveScripts[StageLevel];
-            var rand = Random.Range(0,wave.Waves.Count);
+            while(rand == curWaveIndex)
+            {
+                rand = Random.Range(0,wave.Waves.Count);
+            }
+            curWaveIndex = rand;
+            
             print(rand);
 
             yield return StartCoroutine(wave.Waves[rand]());
 
             SpawnCount++;
-            GameManager.instance.EnemyPower += 0.1f;
+            GameManager.instance.EnemyPower += 0.13f;
             yield return new WaitUntil(() => GameManager.instance.curEnemys.Count == 0 || GameManager.instance.curEnemys.Equals(null));
         }
         yield return new WaitUntil(() => GameManager.instance.curEnemys.Count == 0 || GameManager.instance.curEnemys.Equals(null));

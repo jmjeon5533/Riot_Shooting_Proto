@@ -10,9 +10,6 @@ class RisePattern
     public float[] riseYs;
     public float[] riseDelay;
 }
-
-
-
 public class Boss1 : BossBase
 {
 
@@ -40,7 +37,6 @@ public class Boss1 : BossBase
     {
         isDeadMotionPlay = false;
     }
-
     public override void Init()
     {
         base.Init();

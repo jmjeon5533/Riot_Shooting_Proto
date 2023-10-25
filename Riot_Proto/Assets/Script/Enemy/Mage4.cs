@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mage2 : EnemyBase
+public class Mage4 : EnemyBase
 {
     [SerializeField] Animator anim;
 
     [SerializeField] GameObject Shield;
-
-    [SerializeField] int count;
 
     [SerializeField] Transform ShieldPoint;
     [SerializeField] float rotSpeed;
 
     bool isSpawned = false;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     protected override void Attack()
     {
         StartCoroutine(AttackCoroutine());
     }
+    public void batSpawn() => StartCoroutine(BatSpawn());
 
     private void OnEnable()
     {
@@ -35,6 +38,25 @@ public class Mage2 : EnemyBase
             shield.transform.position = ShieldPoint.position + (Vector3.right * 1.5f);
             shield = PoolManager.Instance.GetObject("Shield", ShieldPoint);
             shield.transform.position = ShieldPoint.position + (Vector3.left * 1.5f);
+    }
+    IEnumerator BatSpawn()
+    {
+        int count = 0;
+        print("a");
+        while(gameObject.activeSelf)
+        {
+            print("b");
+            count++;
+            var rand = count % 2 == 0 ? -1 : 1;
+            var rand2 = count % 2 == 0 ? -1 : 1;
+            var Y = Random.Range(3f,3.6f) * rand;
+            var enemy = PoolManager.Instance.GetObject("Bat3",new Vector3(13,Y + (Random.Range(0.5f,4f) * rand2),0)).GetComponent<Bat3>();
+            enemy.movedir = Vector3.left;
+            enemy.XPRate = 0;
+            enemy.ItemAddCount = 0;
+            yield return new WaitForSeconds(0.01f);
+        }
+
     }
 
     IEnumerator AttackCoroutine()

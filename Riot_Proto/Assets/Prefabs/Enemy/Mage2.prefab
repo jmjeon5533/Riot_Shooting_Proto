@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6463e2c9078d4f144afec5a897b5202e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 15
+  HP: 20
   baseHp: 0
   XPRate: 4
   baseXPRate: 0
@@ -1323,6 +1323,7 @@ MonoBehaviour:
   mesh: {fileID: 1289183116543843112}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Mage2
+  ItemAddCount: 1
   isDeath: 0
   anim: {fileID: 8805811972798690490}
   Shield: {fileID: 5932559034786085994, guid: 37ff599bcce2f694c93f82d917986758, type: 3}

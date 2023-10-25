@@ -13,7 +13,7 @@ public abstract class EnemyBase : MonoBehaviour
     [Space]
     public float MoveSpeed;
     public float AttackCooltime;
-    private float AttackCurtime;
+    protected float AttackCurtime;
 
     public float damagedMultiplier = 1;
 
@@ -25,7 +25,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     public Vector3 MovePos;
     public string EnemyTag;
-    [SerializeField] protected float ItemAddCount = 1;
+    public float ItemAddCount = 1;
 
     [SerializeField] protected bool isDeath = false;
 
@@ -209,7 +209,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
     protected virtual void Item()
     {
-        if (GameManager.instance.itemCoolCount >= 40)
+        if (GameManager.instance.itemCoolCount >= 20)
         {
 
             PoolManager.Instance.GetObject("Power", transform.position, Quaternion.identity);
@@ -219,7 +219,7 @@ public abstract class EnemyBase : MonoBehaviour
         {
             GameManager.instance.itemCoolCount += ItemAddCount;
         }
-        UIManager.instance.curPowerCount.fillAmount = GameManager.instance.itemCoolCount / 40;
+        UIManager.instance.curPowerCount.fillAmount = GameManager.instance.itemCoolCount / 20;
     }
     protected virtual void Dead()
     {

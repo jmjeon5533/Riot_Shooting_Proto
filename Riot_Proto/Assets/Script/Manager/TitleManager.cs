@@ -10,12 +10,11 @@ using System.Linq;
 public class TitleManager : MonoBehaviour
 {
     public static TitleManager instance { get; private set; }
-    public List<GameObject> Panel = new();
+    public GameObject[] Panel;
 
     [SerializeField] Camera[] Mcamera;
     [Space(10)]
     [SerializeField] RawImage CharImage;
-    [SerializeField] Image loadingbar;
     [SerializeField] Transform[] titleBtn;
     bool isButton;
     [SerializeField] Transform[] SelectUI;
@@ -39,8 +38,6 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Image startPanel;
     [SerializeField] Image logo;
 
-    bool isPlaying = false; 
-
     private void Awake()
     {
         instance = this;
@@ -52,26 +49,28 @@ public class TitleManager : MonoBehaviour
         {
             ASkillButtonAdd(i);
         }
-        //if(!isPlaying) StartCoroutine(StartMotion());
         InitPanel(0);
-    }
-
-    [RuntimeInitializeOnLoadMethod]
-
-    static void OnApplicationStart()
-    {
-        isPlaying = true;
         StartCoroutine(StartMotion());
     }
 
     IEnumerator StartMotion()
     {
+        titleBtn[0].localPosition = new Vector2(2300,-189);
+        titleBtn[1].localPosition = new Vector2(2300,-415);
         startPanel.DOFade(1, 0);
         yield return new WaitForSeconds(1);
         yield return logo.DOFade(1, 1f).WaitForCompletion();
-        yield return startPanel.DOFade(0, 1.5f).WaitForCompletion();
-        yield return logo.DOFade(0, 1f).WaitForCompletion();
-        
+        startPanel.DOFade(0, 1.5f);
+        yield return new WaitForSeconds(1);
+        logo.DOFade(0, 1f);
+
+
+        if(isButton) yield break;
+        isButton = true;
+        titleBtn[0].DOLocalMoveX(1600,1.5f).SetEase(Ease.InOutBack);
+        yield return new WaitForSeconds(0.2f);
+        yield return titleBtn[1].DOLocalMoveX(1500,1.5f).SetEase(Ease.InOutBack)
+        .OnComplete(()=> isButton = false).WaitForCompletion();
 
     }
 
@@ -98,7 +97,7 @@ public class TitleManager : MonoBehaviour
         InitPanel(1);
         Selectbg[0].DOLocalMoveY(0,0.7f);
         yield return Selectbg[1].DOLocalMoveY(0,0.7f).WaitForCompletion();
-
+        
         yield return new WaitForSeconds(0.1f);
         SelectUI[0].DOLocalMoveX(-930,1);
         SelectUI[1].DOLocalMoveX(930,1);
@@ -108,20 +107,7 @@ public class TitleManager : MonoBehaviour
     }
     public void StageStart()
     {
-        StartCoroutine(stageStart());
-    }
-    IEnumerator stageStart()
-    {
-        InitPanel(2);
-        var time = 1.5f;
-        var curtime = 0f;
-        while (curtime <= time)
-        {
-            curtime += Time.deltaTime;
-            loadingbar.fillAmount = Mathf.Lerp(curtime, time, 0.01f);
-            yield return null;
-        }
-        SceneManager.instance.StageStart();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Loading");
     }
     public void MainMenu()
     {
@@ -170,7 +156,7 @@ public class TitleManager : MonoBehaviour
     }
     public void InitPanel(int index) //타이틀 패널 바꾸기
     {
-        for (int i = 0; i < Panel.Count; i++)
+        for (int i = 0; i < Panel.Length; i++)
         {
             Panel[i].SetActive(false);
         }

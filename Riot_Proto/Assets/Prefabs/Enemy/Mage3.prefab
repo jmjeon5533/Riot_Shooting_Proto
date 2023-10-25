@@ -1285,7 +1285,7 @@ MonoBehaviour:
   XPRate: 3
   baseXPRate: 0
   MoveSpeed: 8
-  AttackCooltime: 1.7
+  AttackCooltime: 2
   damagedMultiplier: 1
   shader: {fileID: 0}
   mesh: {fileID: 1289183116543843112}
@@ -1294,10 +1294,6 @@ MonoBehaviour:
   ItemAddCount: 1
   isDeath: 0
   anim: {fileID: 8805811972798690490}
-  magicCircle: {fileID: 0}
-  spawnDelay: 0
-  spawnTime: 0
-  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &8898225441531131264
 GameObject:
   m_ObjectHideFlags: 0

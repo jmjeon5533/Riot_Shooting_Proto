@@ -15,6 +15,8 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     float AlphaTarget;
     Vector2 minusVec;
 
+    public Vector2 Input { get; private set; }
+
     private void Awake()
     {
         StickImg = Stick.GetComponent<Image>();
@@ -38,14 +40,17 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         
         Stick.anchoredPosition = eventData.position - minusVec - (Stick.sizeDelta / 2);
         input = eventData.position - Stick.anchoredPosition - minusVec - (Stick.sizeDelta / 2);
+        Input = input.normalized;
+        Input *= input.magnitude / (Stick.rect.width * 0.5f);
         Lever.anchoredPosition = Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f);
         AlphaTarget = 0.7f;
         //print($"{eventData.position} : {Stick.anchoredPosition} : {minusVec}");
     }
     public void OnDrag(PointerEventData eventData)
     {
-        var s = SceneManager.instance;
         input = eventData.position - Stick.anchoredPosition - minusVec - (Stick.sizeDelta / 2);
+        Input = input.normalized;
+        Input *= Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f).magnitude / (Stick.rect.width * 0.5f);
         Lever.anchoredPosition = Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f);
         //print($"{eventData.position} : {Stick.anchoredPosition} : {minusVec}\n{s.ScreenArea.x}-{s.ScreenWidth.x}");
         AlphaTarget = 0.7f;
@@ -53,6 +58,7 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnEndDrag(PointerEventData eventData)
     {
         input = Vector2.zero;
+        Input = Vector2.zero;
         Lever.anchoredPosition = input;
         AlphaTarget = 0;
     }

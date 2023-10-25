@@ -39,6 +39,8 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Image startPanel;
     [SerializeField] Image logo;
 
+    bool isPlaying = false; 
+
     private void Awake()
     {
         instance = this;
@@ -50,8 +52,16 @@ public class TitleManager : MonoBehaviour
         {
             ASkillButtonAdd(i);
         }
-        StartCoroutine(StartMotion());
+        //if(!isPlaying) StartCoroutine(StartMotion());
         InitPanel(0);
+    }
+
+    [RuntimeInitializeOnLoadMethod]
+
+    static void OnApplicationStart()
+    {
+        isPlaying = true;
+        StartCoroutine(StartMotion());
     }
 
     IEnumerator StartMotion()
@@ -61,6 +71,7 @@ public class TitleManager : MonoBehaviour
         yield return logo.DOFade(1, 1f).WaitForCompletion();
         yield return startPanel.DOFade(0, 1.5f).WaitForCompletion();
         yield return logo.DOFade(0, 1f).WaitForCompletion();
+        
 
     }
 

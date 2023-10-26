@@ -30,7 +30,7 @@ public class ShockBullet : BulletBase
         {
             float chance = Random.Range(0, 100f);
             other.GetComponent<EnemyBase>().Damage((chance <= player.CritRate)
-                    ? (int)(Damage * player.CritDamage) : Damage, (chance <= player.CritRate) ? true : false);
+                    ? (int)(Damage * player.CritDamage) : Damage, (chance <= player.CritRate) ? true : false, "ShockHit");
             
         }
     }

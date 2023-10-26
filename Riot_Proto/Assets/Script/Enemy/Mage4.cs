@@ -42,10 +42,8 @@ public class Mage4 : EnemyBase
     IEnumerator BatSpawn()
     {
         int count = 0;
-        print("a");
         while(gameObject.activeSelf)
         {
-            print("b");
             count++;
             var rand = count % 2 == 0 ? -1 : 1;
             var rand2 = count % 2 == 0 ? -1 : 1;
@@ -86,20 +84,24 @@ public class Mage4 : EnemyBase
         if(MovePos.x > g.MoveRange.x) MovePos = new Vector3(g.MoveRange.x-1, g.player.transform.position.y, 0);
 
     }
-
+    public override void Init()
+    {
+        HP = baseHp;
+        StatMultiplier();
+    }
     protected override void Update()
     {
         base.Update();
         ShieldPoint.Rotate(new Vector3(0,0,rotSpeed * Time.deltaTime)); 
     }
 
-    public override void Damage(int damage, bool isCrit)
+    public override void Damage(int damage, bool isCrit, string hitTag = null)
     {
         if(ShieldPoint.childCount>0)
         {
             damage = 0;
         }
-        base.Damage(damage,isCrit);
+        base.Damage(damage,isCrit,hitTag);
     }
     protected override void Dead()
     {

@@ -12,13 +12,8 @@ public class Bat3 : EnemyBase
     }
     public override void Init()
     {
-        ItemAddCount = 0.2f;
+        HP = baseHp;
         StatMultiplier();
-        var g = GameManager.instance;
-        int[] m = {1, -1};
-        var y = Random.Range(3f, 6f) * m[Random.Range(0,2)];
-        transform.position = new Vector3(15, y, 0);
-        movedir = (GameManager.instance.player.transform.position - transform.position).normalized;
     }
     protected override void Move()
     {

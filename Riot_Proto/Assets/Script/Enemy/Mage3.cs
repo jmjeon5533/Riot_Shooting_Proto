@@ -14,7 +14,8 @@ public class Mage3 : EnemyBase
     }
     public override void Init()
     {
-        base.Init();
+        HP = baseHp;
+        StatMultiplier();
     }
     protected override void Update()
     {

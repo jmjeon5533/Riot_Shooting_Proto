@@ -48783,7 +48783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 1
-  radius: 2
+  radius: 4
 --- !u!1 &3611024029783811291
 GameObject:
   m_ObjectHideFlags: 0

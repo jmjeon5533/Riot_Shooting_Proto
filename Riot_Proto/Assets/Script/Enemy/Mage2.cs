@@ -71,13 +71,13 @@ public class Mage2 : EnemyBase
         ShieldPoint.Rotate(new Vector3(0,0,rotSpeed * Time.deltaTime)); 
     }
 
-    public override void Damage(int damage, bool isCrit)
+    public override void Damage(int damage, bool isCrit, string hitTag = null)
     {
         if(ShieldPoint.childCount>0)
         {
             damage = 0;
         }
-        base.Damage(damage,isCrit);
+        base.Damage(damage,isCrit,hitTag);
     }
     protected override void Dead()
     {

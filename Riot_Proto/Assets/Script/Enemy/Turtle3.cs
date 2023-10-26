@@ -13,6 +13,11 @@ public class Turtle3 : EnemyBase
         base.Awake();
         AttackCurtime = 2.5f;
     }
+    public override void Init()
+    {
+        HP = baseHp;
+        StatMultiplier();
+    }
     protected override void Attack()
     {
         StartCoroutine(AttackCoroutine());

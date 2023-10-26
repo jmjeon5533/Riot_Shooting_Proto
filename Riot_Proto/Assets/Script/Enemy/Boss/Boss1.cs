@@ -285,7 +285,7 @@ public class Boss1 : BossBase
         }
     }
 
-    public override void Damage(int damage, bool isCrit)
+    public override void Damage(int damage, bool isCrit,string hitTag = null)
     {
         if (IsSpawning()) return;
         HP -= damage * damagedMultiplier;

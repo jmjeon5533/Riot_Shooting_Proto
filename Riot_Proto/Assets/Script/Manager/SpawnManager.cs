@@ -72,7 +72,7 @@ public class SpawnManager : MonoBehaviour
             yield return StartCoroutine(wave.Waves[rand]());
 
             SpawnCount++;
-            GameManager.instance.EnemyPower += 0.13f;
+            GameManager.instance.EnemyPower += 0.06f;
             yield return new WaitUntil(() => GameManager.instance.curEnemys.Count == 0 || GameManager.instance.curEnemys.Equals(null));
         }
         yield return new WaitUntil(() => GameManager.instance.curEnemys.Count == 0 || GameManager.instance.curEnemys.Equals(null));

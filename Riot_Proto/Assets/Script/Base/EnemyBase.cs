@@ -47,6 +47,9 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Awake()
     {
         InitStat();
+    }
+    void Start()
+    {
         Init();
     }
     public void MoveVecInit(Vector3 movePos)
@@ -70,7 +73,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         var p = GameManager.instance.EnemyPower;
         HP = Mathf.Round(p * baseHp);
-        XPRate = Mathf.Round(p * baseXPRate);
+        XPRate = Mathf.Round(p/10 * baseXPRate);
     }
 
     public void AddBuff(BuffBase buff)
@@ -170,7 +173,7 @@ public abstract class EnemyBase : MonoBehaviour
         return isDeath;
     }
 
-    public virtual void Damage(int damage, bool isCrit)
+    public virtual void Damage(int damage, bool isCrit, string hitTag = null)
     {
         if (IsSpawning() || IsDeath() || !IsInScreen()) return;
         HP -= damage * damagedMultiplier;
@@ -197,7 +200,11 @@ public abstract class EnemyBase : MonoBehaviour
             Item();
         }
         GameManager.instance.GetMoney += Mathf.RoundToInt(damage * 50f);
-        PoolManager.Instance.GetObject("Hit", transform.position, Quaternion.identity);
+        if(hitTag != null) {
+            PoolManager.Instance.GetObject(hitTag, transform.position, Quaternion.identity);
+            
+        } else
+            PoolManager.Instance.GetObject("Hit", transform.position, Quaternion.identity);
         // var DamageTextPos = (Vector2)transform.position + (Random.insideUnitCircle * 2);
         // var DmgText = PoolManager.Instance.GetObject("DamageText", UIManager.instance.DmgTextParant)
         //     .GetComponent<DamageText>();

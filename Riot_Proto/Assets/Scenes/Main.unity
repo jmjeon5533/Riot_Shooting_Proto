@@ -500,7 +500,7 @@ MonoBehaviour:
     obj: {fileID: 8339991442943732091, guid: b379a882caa8ed14ba39e2a473ce3ce2, type: 3}
     maxAmount: 100
   - key: Hit
-    obj: {fileID: 7474502817962377300, guid: a86f3c687c7d6eb4480a8586826e5e82, type: 3}
+    obj: {fileID: 4719135335007947625, guid: 57cd90cf684aada418ec966d7db0f620, type: 3}
     maxAmount: 100
   - key: PlayerBullet
     obj: {fileID: 7488623435463272498, guid: b7c2e428f26f83343a39d3baa0b35720, type: 3}
@@ -613,6 +613,9 @@ MonoBehaviour:
   - key: Mage4
     obj: {fileID: 8805811973873897148, guid: deaf64110cda0d0489b51032644b8c2e, type: 3}
     maxAmount: 50
+  - key: ShockHit
+    obj: {fileID: 4478257873100720701, guid: 0a86f4d42de56444b85ca1c2fbb6ee15, type: 3}
+    maxAmount: 100
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,7 +1597,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 45, y: 245}
+  m_SizeDelta: {x: 295, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &654146069
 MonoBehaviour:
@@ -1620,7 +1623,7 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 1
+  m_FillMethod: 0
   m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -5927,8 +5930,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -915.2998, y: 203}
-  m_SizeDelta: {x: 50, y: 250}
+  m_AnchoredPosition: {x: -790, y: 309.7}
+  m_SizeDelta: {x: 300, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2032912434
 MonoBehaviour:

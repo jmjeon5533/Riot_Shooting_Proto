@@ -14,6 +14,11 @@ public class Golem1 : EnemyBase
     {
         bulletSpd = value;
     }
+    public override void Init()
+    {
+        HP = baseHp;
+        StatMultiplier();
+    }
 
     protected override void Attack()
     {
@@ -25,7 +30,7 @@ public class Golem1 : EnemyBase
         anim1.SetTrigger("Attack");
         anim2.SetTrigger("Attack");
         yield return new WaitForSeconds(0.75f);
-        for (int i = 0; i < 360; i += 360 / 25)
+        for (int i = 0; i < 360; i += 360 / 18)
         {
             var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
             float angle = i * Mathf.Deg2Rad; // 각도를 라디안으로 변환
@@ -43,7 +48,7 @@ public class Golem1 : EnemyBase
         var alpha = Mathf.MoveTowards(a, 0, Time.deltaTime);
         ShieldMaterial.material.SetColor("_Color", new Color(0.5f, 0.5f, 1, alpha));
     }
-    public override void Damage(int damage, bool isCrit)
+    public override void Damage(int damage, bool isCrit, string hitTag = null)
     {
         if (IsShield)
         {
@@ -53,12 +58,12 @@ public class Golem1 : EnemyBase
             }
             else
             {
-                base.Damage(damage, isCrit);
+                base.Damage(damage, isCrit,hitTag);
             }
         }
         else
         {
-            base.Damage(damage, isCrit);
+            base.Damage(damage, isCrit,hitTag);
         }
     }
     protected override void Dead()

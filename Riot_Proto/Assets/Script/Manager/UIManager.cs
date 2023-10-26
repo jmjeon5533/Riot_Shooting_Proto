@@ -57,16 +57,11 @@ public class UIManager : MonoBehaviour
     {
         XPBarUpdate();
         Bossbar.SetActive(false);
-        //hpPanel.transform.DOMoveX(-15, 0);
-        //abilityPanel.transform.DOMoveX(-15, 0);
-        //MainRateText.transform.DOMoveX(15.5f, 0);
-        powerPanel.transform.DOLocalMoveX(-1015, 0);
-        (hpPanel.transform as RectTransform).DOAnchorPosX(-119, 0f);
-
-        (abilityPanel.transform as RectTransform).DOAnchorPosX(-152, 0f);
-        (MainRateText.transform as RectTransform).DOAnchorPosX(+422, 0f);
-        (activeSkill.transform as RectTransform).DOAnchorPosX(+181, 0f);
-        
+        hpPanel.transform.DOMoveX(-15, 0);
+        abilityPanel.transform.DOMoveX(-15, 0);
+        MainRateText.transform.DOMoveX(15.5f, 0);
+        powerPanel.transform.DOLocalMoveX(-1138, 0);
+        activeSkill.DOMoveX(15, 0);
     }
     private void Update()
     {
@@ -74,7 +69,6 @@ public class UIManager : MonoBehaviour
         if(Ratevalue <= g.GetMoney)
         {
             var value = 1 + Mathf.Clamp(g.GetMoney - Ratevalue,0,1000);
-         
             Ratevalue = (int)Mathf.MoveTowards(Ratevalue,g.GetMoney,value);
         }
         MainRateText.text = string.Format("{0:D10}",Ratevalue);
@@ -90,18 +84,15 @@ public class UIManager : MonoBehaviour
             Heart[i].enabled = true;
            
         }
-        
-
     }
 
     public void ShowImg()
     {
-        Debug.Log("ShowImg");
-        (hpPanel.transform as RectTransform).DOAnchorPosX(19, 1f).SetEase(Ease.OutExpo);
-        (abilityPanel.transform as RectTransform).DOAnchorPosX(52, 1f).SetEase(Ease.OutExpo);
-        (MainRateText.transform as RectTransform).DOAnchorPosX(-22, 1f).SetEase(Ease.OutExpo);
-        (activeSkill.transform as RectTransform).DOAnchorPosX(-181, 1f).SetEase(Ease.OutExpo);
-        (powerPanel.transform as RectTransform).DOLocalMoveX(-910, 1f).SetEase(Ease.OutExpo);
+        hpPanel.transform.DOMoveX(-10, 1f).SetEase(Ease.OutExpo);
+        abilityPanel.transform.DOMoveX(-10, 1f).SetEase(Ease.OutExpo);
+        MainRateText.transform.DOMoveX(10, 1f).SetEase(Ease.OutExpo);
+        activeSkill.transform.DOMoveX(9, 1f).SetEase(Ease.OutExpo);
+        powerPanel.transform.DOLocalMoveX(-790, 1f).SetEase(Ease.OutExpo);
         //StartCoroutine(ShowUI());
     }
 

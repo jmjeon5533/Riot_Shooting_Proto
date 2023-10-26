@@ -47,6 +47,7 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Awake()
     {
         InitStat();
+        Init();
     }
     public void MoveVecInit(Vector3 movePos)
     {

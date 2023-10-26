@@ -44,7 +44,7 @@ Material:
     - _ScaleSpeed: 0
     - _ScaleSpeed2: 0
     - _USpeed: 0
-    - _USpeed2: -1.5
+    - _USpeed2: -2
     - _VSpeed: 0
     - _VSpeed2: 0
     m_Colors:

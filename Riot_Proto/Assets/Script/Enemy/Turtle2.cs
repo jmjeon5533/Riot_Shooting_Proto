@@ -14,7 +14,7 @@ public class Turtle2 : EnemyBase
     }
     IEnumerator AttackCoroutine()
     {
-        var count = 18;
+        var count = 15;
         for (int j = 0; j < 3; j++)
         {
             for (int i = 0; i < 360; i += 360 / count)
@@ -30,11 +30,11 @@ public class Turtle2 : EnemyBase
 
             float radius = 50;
 
-            float amount = radius / (3 + (j * 2)) - 1;
+            float amount = radius / (3 + j) - 1;
             
             float z = radius / -2f;
             
-            for (int i = 0; i < (3 + (j * 2)); i++)
+            for (int i = 0; i < (3 + j); i++)
             {
                 var b = PoolManager.Instance.GetObject("EnemyBullet2", transform.position, Quaternion.identity).GetComponent<BulletBase>();
                 float _angle = z * Mathf.Deg2Rad; // ������ �������� ��ȯ

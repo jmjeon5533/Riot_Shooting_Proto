@@ -50,24 +50,24 @@ public class TitleManager : MonoBehaviour
             ASkillButtonAdd(i);
         }
         InitPanel(0);
-        titleBtn[0].localPosition = new Vector2(2300,-189);
-        titleBtn[1].localPosition = new Vector2(2300,-415);
+        titleBtn[0].localPosition = new Vector2(2300, -189);
+        titleBtn[1].localPosition = new Vector2(2300, -415);
 
         SceneManager.instance.ActiveIndex = 0;
-            SceneManager.instance.ActiveLevel = 3;
-            ASkillImage.sprite = ASkillSprite[0];
-            ASkillNameText.text = ASkillName[0];
-            ASkillCoolTimeText.text = ASkillCoolTime[0].ToString() + "s";
-            ASkillExplainText.text = ASkillExplain[0];
-            ASkillIcon.color = Color.white;
-            ASkillTime.color = Color.white;
+        SceneManager.instance.ActiveLevel = 3;
+        ASkillImage.sprite = ASkillSprite[0];
+        ASkillNameText.text = ASkillName[0];
+        ASkillCoolTimeText.text = ASkillCoolTime[0].ToString() + "s";
+        ASkillExplainText.text = ASkillExplain[0];
+        ASkillIcon.color = Color.white;
+        ASkillTime.color = Color.white;
     }
 
 
-    [RuntimeInitializeOnLoadMethod] 
+    [RuntimeInitializeOnLoadMethod]
     static void OnAppStart()
     {
-        instance.StartCoroutine(instance.StartMotion());  
+        instance.StartCoroutine(instance.StartMotion());
     }
 
     IEnumerator StartMotion()
@@ -80,12 +80,12 @@ public class TitleManager : MonoBehaviour
         logo.DOFade(0, 1f);
 
 
-        if(isButton) yield break;
+        if (isButton) yield break;
         isButton = true;
-        titleBtn[0].DOLocalMoveX(1600,1.5f).SetEase(Ease.InOutBack);
+        titleBtn[0].DOLocalMoveX(1600, 1.5f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.2f);
-        yield return titleBtn[1].DOLocalMoveX(1500,1.5f).SetEase(Ease.InOutBack)
-        .OnComplete(()=> isButton = false).WaitForCompletion();
+        yield return titleBtn[1].DOLocalMoveX(1500, 1.5f).SetEase(Ease.InOutBack)
+        .OnComplete(() => isButton = false).WaitForCompletion();
 
     }
 
@@ -95,12 +95,12 @@ public class TitleManager : MonoBehaviour
     }
     IEnumerator Startbtn()
     {
-        if(isButton) yield break;
+        if (isButton) yield break;
         isButton = true;
-        titleBtn[0].DOLocalMoveX(2300,1.5f).SetEase(Ease.InOutBack);
+        titleBtn[0].DOLocalMoveX(2300, 1.5f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.2f);
-        yield return titleBtn[1].DOLocalMoveX(2300,1.5f).SetEase(Ease.InOutBack)
-        .OnComplete(()=> isButton = false).WaitForCompletion();
+        yield return titleBtn[1].DOLocalMoveX(2300, 1.5f).SetEase(Ease.InOutBack)
+        .OnComplete(() => isButton = false).WaitForCompletion();
         SelectStart();
     }
     public void SelectStart()
@@ -110,14 +110,14 @@ public class TitleManager : MonoBehaviour
     IEnumerator selectStart()
     {
         InitPanel(1);
-        Selectbg[0].DOLocalMoveY(0,0.7f);
-        yield return Selectbg[1].DOLocalMoveY(0,0.7f).WaitForCompletion();
-        
+        Selectbg[0].DOLocalMoveY(0, 0.7f);
+        yield return Selectbg[1].DOLocalMoveY(0, 0.7f).WaitForCompletion();
+
         yield return new WaitForSeconds(0.1f);
-        SelectUI[0].DOLocalMoveX(-930,1);
-        SelectUI[1].DOLocalMoveX(800,1);
-        SelectUI[2].DOLocalMoveY(-520,1);
-        SelectUI[3].DOLocalMoveY(-520,1);
+        SelectUI[0].DOLocalMoveX(-930, 1);
+        SelectUI[1].DOLocalMoveX(800, 1);
+        SelectUI[2].DOLocalMoveY(-520, 1);
+        SelectUI[3].DOLocalMoveY(-520, 1);
         yield return null;
     }
     public void StageStart()
@@ -130,25 +130,25 @@ public class TitleManager : MonoBehaviour
     }
     IEnumerator mainMenu()
     {
-        SelectUI[0].DOLocalMove(new Vector3(-1658,520),1);
-        SelectUI[1].DOLocalMove(new Vector3(2200,510),1);
-        SelectUI[2].DOLocalMove(new Vector3(-930,-760),1);
-        yield return SelectUI[3].DOLocalMove(new Vector3(930,-760),1).WaitForCompletion();
+        SelectUI[0].DOLocalMove(new Vector3(-1658, 520), 1);
+        SelectUI[1].DOLocalMove(new Vector3(2200, 510), 1);
+        SelectUI[2].DOLocalMove(new Vector3(-930, -760), 1);
+        yield return SelectUI[3].DOLocalMove(new Vector3(930, -760), 1).WaitForCompletion();
         yield return new WaitForSeconds(0.1f);
 
-        Selectbg[0].DOLocalMove(new Vector3(0,-540),1);
-        Selectbg[1].DOLocalMove(new Vector3(0,540),1);
-        
-        InitPanel(0);
-        titleBtn[0].localPosition = new Vector2(2300,-189);
-        titleBtn[1].localPosition = new Vector2(2300,-415);
+        Selectbg[0].DOLocalMove(new Vector3(0, -540), 1);
+        Selectbg[1].DOLocalMove(new Vector3(0, 540), 1);
 
-        if(isButton) yield break;
+        InitPanel(0);
+        titleBtn[0].localPosition = new Vector2(2300, -189);
+        titleBtn[1].localPosition = new Vector2(2300, -415);
+
+        if (isButton) yield break;
         isButton = true;
-        titleBtn[0].DOLocalMoveX(1600,1.5f).SetEase(Ease.InOutBack);
+        titleBtn[0].DOLocalMoveX(1600, 1.5f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.2f);
-        yield return titleBtn[1].DOLocalMoveX(1500,1.5f).SetEase(Ease.InOutBack)
-        .OnComplete(()=> isButton = false).WaitForCompletion();
+        yield return titleBtn[1].DOLocalMoveX(1500, 1.5f).SetEase(Ease.InOutBack)
+        .OnComplete(() => isButton = false).WaitForCompletion();
     }
     public void ASkillButtonAdd(int i)
     {
@@ -176,13 +176,13 @@ public class TitleManager : MonoBehaviour
             Panel[i].SetActive(false);
         }
         Panel[index].SetActive(true);
-        titleBtn[0].localPosition = new Vector3(1600,-189);
-        titleBtn[1].localPosition = new Vector3(1500,-415);
+        titleBtn[0].localPosition = new Vector3(1600, -189);
+        titleBtn[1].localPosition = new Vector3(1500, -415);
 
-        SelectUI[0].localPosition = new Vector3(-1658,520);
-        SelectUI[1].localPosition = new Vector3(2200,510);
-        SelectUI[2].localPosition = new Vector3(-930,-800);
-        SelectUI[3].localPosition = new Vector3(930,-800);
+        SelectUI[0].localPosition = new Vector3(-1658, 520);
+        SelectUI[1].localPosition = new Vector3(2200, 510);
+        SelectUI[2].localPosition = new Vector3(-930, -800);
+        SelectUI[3].localPosition = new Vector3(930, -800);
 
         // Selectbg[0].localPosition = new Vector3(0,-540);
         // Selectbg[1].localPosition = new Vector3(0,540);

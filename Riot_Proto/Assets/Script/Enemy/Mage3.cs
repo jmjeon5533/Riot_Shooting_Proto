@@ -48,7 +48,7 @@ public class Mage3 : EnemyBase
         yield return new WaitForSeconds(0.35f);
         anim.SetTrigger("Attack");
         yield return new WaitForSeconds(0.3f);
-        for (int i = 0; i < 360; i += 360 / 10)
+        for (int i = 0; i < 360; i += 360 / 8)
         {
             var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
             float angle2 = i * Mathf.Deg2Rad; // 각도를 라디안으로 변환

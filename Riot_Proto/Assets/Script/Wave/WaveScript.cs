@@ -14,8 +14,10 @@ public abstract class WaveScript : ScriptableObject
     public abstract IEnumerator wave4();
     public abstract IEnumerator wave5();
     public abstract IEnumerator wave6();
-
+    
     //Extra Wave
     public abstract IEnumerator wave7();
+
+    public abstract IEnumerator wave8();
 
 }

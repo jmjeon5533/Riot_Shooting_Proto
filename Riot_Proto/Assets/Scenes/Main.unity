@@ -622,6 +622,9 @@ MonoBehaviour:
   - key: Bat5
     obj: {fileID: 2638758462304634181, guid: d95de8154da93094faa1c36e1efdd1fe, type: 3}
     maxAmount: 100
+  - key: Slime3
+    obj: {fileID: 4420454689332797134, guid: 79a69d07a4889ba4e9c95822b2a3dd65, type: 3}
+    maxAmount: 100
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

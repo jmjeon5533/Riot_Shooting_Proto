@@ -65,6 +65,7 @@ public class SpawnManager : MonoBehaviour
             {
                 rand = Random.Range(0,wave.Waves.Count);
             }
+            print($"{rand} : {curWaveIndex}");
             curWaveIndex = rand;
             
             print(rand);

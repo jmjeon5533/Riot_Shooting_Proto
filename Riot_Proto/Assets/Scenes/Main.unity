@@ -616,6 +616,15 @@ MonoBehaviour:
   - key: ShockHit
     obj: {fileID: 4478257873100720701, guid: 0a86f4d42de56444b85ca1c2fbb6ee15, type: 3}
     maxAmount: 100
+  - key: Mage5
+    obj: {fileID: 6014841573406028338, guid: 2b66cce1a123ec94386c03b74e8f6529, type: 3}
+    maxAmount: 100
+  - key: Bat5
+    obj: {fileID: 2638758462304634181, guid: d95de8154da93094faa1c36e1efdd1fe, type: 3}
+    maxAmount: 100
+  - key: Slime3
+    obj: {fileID: 4420454689332797134, guid: 79a69d07a4889ba4e9c95822b2a3dd65, type: 3}
+    maxAmount: 100
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

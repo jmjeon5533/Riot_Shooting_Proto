@@ -105,4 +105,25 @@ public class Stage1 : WaveScript
             yield return new WaitForSeconds(0.2f);
         }
     }
+
+    //Extra Wave
+    public override IEnumerator wave7()
+    {
+        var enemy = PoolManager.Instance.GetObject("Mage5", new Vector3(15, 0, 0));
+        GameManager.instance.curEnemys.Add(enemy);
+        enemy.GetComponent<EnemyBase>().MovePos = new Vector3(8, 0, 0);
+        yield return new WaitForSeconds(2f);
+    }
+
+    public override IEnumerator wave8()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            var enemy = PoolManager.Instance.GetObject("Slime3", new Vector3(15, 0, 0));
+            GameManager.instance.curEnemys.Add(enemy);
+            float vecY = Random.Range(-6.5f, 3.5f);
+            enemy.GetComponent<EnemyBase>().MovePos = new Vector3(8, vecY, 0);
+        }
+        yield return new WaitForSeconds(1f);
+    }
 }

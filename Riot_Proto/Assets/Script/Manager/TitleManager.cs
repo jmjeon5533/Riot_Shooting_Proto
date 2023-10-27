@@ -106,7 +106,7 @@ public class TitleManager : MonoBehaviour
         
         yield return new WaitForSeconds(0.1f);
         SelectUI[0].DOLocalMoveX(-930,1);
-        SelectUI[1].DOLocalMoveX(930,1);
+        SelectUI[1].DOLocalMoveX(800,1);
         SelectUI[2].DOLocalMoveY(-520,1);
         SelectUI[3].DOLocalMoveY(-520,1);
         yield return null;
@@ -172,8 +172,8 @@ public class TitleManager : MonoBehaviour
 
         SelectUI[0].localPosition = new Vector3(-1658,520);
         SelectUI[1].localPosition = new Vector3(2200,510);
-        SelectUI[2].localPosition = new Vector3(-930,-760);
-        SelectUI[3].localPosition = new Vector3(930,-760);
+        SelectUI[2].localPosition = new Vector3(-930,-800);
+        SelectUI[3].localPosition = new Vector3(930,-800);
 
         // Selectbg[0].localPosition = new Vector3(0,-540);
         // Selectbg[1].localPosition = new Vector3(0,540);

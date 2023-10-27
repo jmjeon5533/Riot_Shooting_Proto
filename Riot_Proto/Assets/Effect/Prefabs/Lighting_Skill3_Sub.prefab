@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1970680299657382923}
   - component: {fileID: 1970680299657382917}
   - component: {fileID: 1970680299657382922}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: rayMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4913,7 +4913,7 @@ GameObject:
   - component: {fileID: 1970680299941637121}
   - component: {fileID: 1970680299941637123}
   - component: {fileID: 1970680299941637120}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fireEmber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9783,7 +9783,7 @@ GameObject:
   - component: {fileID: 1970680300191971528}
   - component: {fileID: 1970680300191971530}
   - component: {fileID: 1970680300191971531}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14662,7 +14662,7 @@ GameObject:
   - component: {fileID: 1970680300472151125}
   - component: {fileID: 1970680300472151127}
   - component: {fileID: 1970680300472151124}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Glow_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19532,7 +19532,7 @@ GameObject:
   - component: {fileID: 1970680301061605334}
   - component: {fileID: 1970680301061605328}
   - component: {fileID: 1970680301061605329}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Glow_h
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4599874235934848565}
   - component: {fileID: 4599874235934848567}
   - component: {fileID: 4599874235934848564}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ExpBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4879,7 +4879,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4599874236661149105}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EXP 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4913,7 +4913,7 @@ GameObject:
   - component: {fileID: 4599874236793341354}
   - component: {fileID: 4599874236793341356}
   - component: {fileID: 4599874236793341357}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ExpBall_Crystals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9785,7 +9785,7 @@ GameObject:
   - component: {fileID: 4599874237704131658}
   - component: {fileID: 4599874237704131660}
   - component: {fileID: 4599874237704131661}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ExpBall_Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}

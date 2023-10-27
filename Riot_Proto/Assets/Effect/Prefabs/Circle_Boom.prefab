@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3560674585327136091}
   - component: {fileID: 3560674585327136093}
   - component: {fileID: 3560674585327136090}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4880,7 +4880,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3560674586520330743}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle_Boom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4914,7 +4914,7 @@ GameObject:
   - component: {fileID: 3560674586919900825}
   - component: {fileID: 3560674586919900827}
   - component: {fileID: 3560674586919900824}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SubEmitter0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

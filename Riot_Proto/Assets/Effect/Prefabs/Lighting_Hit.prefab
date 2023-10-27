@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4478257873064247796}
   - component: {fileID: 4478257873064247802}
   - component: {fileID: 4478257873064247797}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4881,7 +4881,7 @@ GameObject:
   - component: {fileID: 4478257873100720706}
   - component: {fileID: 2970028163957308817}
   - component: {fileID: 7935616548954196374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lighting_Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9697,7 +9697,7 @@ GameObject:
   - component: {fileID: 4478257873135462932}
   - component: {fileID: 4478257873135462938}
   - component: {fileID: 4478257873135462933}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14576,7 +14576,7 @@ GameObject:
   - component: {fileID: 4478257873741839481}
   - component: {fileID: 4478257873741839487}
   - component: {fileID: 4478257873741839486}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lighting_Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19455,7 +19455,7 @@ GameObject:
   - component: {fileID: 4478257874010578897}
   - component: {fileID: 4478257874010578903}
   - component: {fileID: 4478257874010578902}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ray
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8279026110447359758}
   - component: {fileID: 8279026110447359756}
   - component: {fileID: 8279026110447359759}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 'Spark '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4832,7 +4832,7 @@ GameObject:
   - component: {fileID: 8279026110705413162}
   - component: {fileID: 8279026110705413160}
   - component: {fileID: 8279026110705413163}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ray_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9702,7 +9702,7 @@ GameObject:
   - component: {fileID: 8279026110917753775}
   - component: {fileID: 8279026110917753773}
   - component: {fileID: 8279026110917753772}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14570,7 +14570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8279026111720888597}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lighting_Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14604,7 +14604,7 @@ GameObject:
   - component: {fileID: 8279026112037900042}
   - component: {fileID: 8279026112037900040}
   - component: {fileID: 8279026112037900043}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LIghting_Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

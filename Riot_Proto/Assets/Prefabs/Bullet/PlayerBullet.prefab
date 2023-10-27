@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 1093077502824078888}
   - component: {fileID: 925151883261679398}
   - component: {fileID: 7703977817736618774}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: rayMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4997,7 +4997,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8972867204190565382}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LightingBullet 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5031,7 +5031,7 @@ GameObject:
   - component: {fileID: 8972867204630717010}
   - component: {fileID: 8972867204630717012}
   - component: {fileID: 8972867204630717011}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lighting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9901,7 +9901,7 @@ GameObject:
   - component: {fileID: 8972867204877237710}
   - component: {fileID: 8972867204877237744}
   - component: {fileID: 8972867204877237711}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

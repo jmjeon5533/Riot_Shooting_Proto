@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4719135335007947624}
   - component: {fileID: 4719135335007947630}
   - component: {fileID: 4719135335007947631}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lighting_Hit_Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 4719135335007947625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4719135336851653531}
   - {fileID: 4719135336626959271}
@@ -4883,7 +4883,7 @@ GameObject:
   - component: {fileID: 4719135336626959271}
   - component: {fileID: 4719135336626959269}
   - component: {fileID: 4719135336626959270}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lighting_Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9771,7 +9771,7 @@ GameObject:
   - component: {fileID: 4719135336851653531}
   - component: {fileID: 4719135336851653529}
   - component: {fileID: 4719135336851653530}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lighting_Hit_Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}

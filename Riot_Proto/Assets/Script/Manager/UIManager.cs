@@ -49,6 +49,9 @@ public class UIManager : MonoBehaviour
     [Space(10)]
     [Header("Item")]
     public int NextHPCount = 200000;
+
+    public void StageStart() => SceneManager.instance.StageStart();
+    
     private void Awake()
     {
         instance = this;

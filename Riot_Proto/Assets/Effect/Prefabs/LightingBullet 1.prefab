@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2758063265590522658}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LightingBullet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2758063265695163766}
   - component: {fileID: 2758063265695163760}
   - component: {fileID: 2758063265695163767}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lighting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4913,7 +4913,7 @@ GameObject:
   - component: {fileID: 2758063265973140202}
   - component: {fileID: 2758063265973140180}
   - component: {fileID: 2758063265973140203}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9786,7 +9786,7 @@ GameObject:
   - component: {fileID: 6191315827876731148}
   - component: {fileID: 6203234046261907458}
   - component: {fileID: 3470757721185870898}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: rayMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14656,7 +14656,7 @@ GameObject:
   - component: {fileID: 7785448268807476660}
   - component: {fileID: 128774148226770998}
   - component: {fileID: 7407340584022925019}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

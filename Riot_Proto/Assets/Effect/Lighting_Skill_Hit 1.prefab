@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1844766113195572378}
   - component: {fileID: 1844766113195572380}
   - component: {fileID: 1844766113195572381}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Skill_Hit_Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4890,7 +4890,7 @@ GameObject:
   - component: {fileID: 1844766114240602007}
   - component: {fileID: 1844766114240602009}
   - component: {fileID: 1844766114240602006}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Twinkel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9763,7 +9763,7 @@ GameObject:
   - component: {fileID: 1844766114636145150}
   - component: {fileID: 1844766114636145088}
   - component: {fileID: 1844766114636145089}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Skill_Hit_Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14631,7 +14631,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1844766114942998967}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lighting_Skill_Hit 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14665,7 +14665,7 @@ GameObject:
   - component: {fileID: 8383083729089047478}
   - component: {fileID: 8383083729089047464}
   - component: {fileID: 8383083729089047479}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Skill_Hit_Ray
   m_TagString: Untagged
   m_Icon: {fileID: 0}

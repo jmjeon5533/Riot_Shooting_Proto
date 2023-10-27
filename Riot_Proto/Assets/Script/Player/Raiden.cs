@@ -69,40 +69,41 @@ public class Raiden : Player
 
     protected override void Attack()
     {
+        var firePivot = transform.position + new Vector3(0,0.5f,0);
         switch(bulletLevel)
         {
             case 1:
             {
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 1),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",firePivot + (Vector3.right * 1),Quaternion.identity));
                 break;
             }
             case 2:
             {
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 1) + (Vector3.up * 0.2f), Quaternion.identity));
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 1) + (Vector3.down * 0.2f), Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",firePivot + (Vector3.right * 1) + (Vector3.up * 0.2f), Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",firePivot + (Vector3.right * 1) + (Vector3.down * 0.2f), Quaternion.identity));
                 break;
             }
             case 3:
             {
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 1),Quaternion.identity));
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 0.3f) + (Vector3.up * 0.3f),Quaternion.identity));
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 0.3f) + (Vector3.down * 0.3f),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",firePivot + (Vector3.right * 1),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",firePivot + (Vector3.right * 0.3f) + (Vector3.up * 0.3f),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",firePivot + (Vector3.right * 0.3f) + (Vector3.down * 0.3f),Quaternion.identity));
                 break;
             }
             case 4:
             {
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 1),Quaternion.identity));
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 0.3f) + (Vector3.up * 0.3f),Quaternion.identity));
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 0.3f) + (Vector3.down * 0.3f),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",firePivot + (Vector3.right * 1),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",firePivot + (Vector3.right * 0.3f) + (Vector3.up * 0.3f),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",firePivot + (Vector3.right * 0.3f) + (Vector3.down * 0.3f),Quaternion.identity));
                 break;
             }
             case 5:
             {
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 1),Quaternion.identity));
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 0.3f) + (Vector3.up * 0.3f),Quaternion.identity));
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * 0.3f) + (Vector3.down * 0.3f),Quaternion.identity));
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * -0.3f) + (Vector3.up * 0.6f),Quaternion.identity));
-                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",transform.position + (Vector3.right * -0.3f) + (Vector3.down * 0.6f),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",firePivot + (Vector3.right * 1),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",firePivot + (Vector3.right * 0.3f) + (Vector3.up * 0.3f),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",firePivot + (Vector3.right * 0.3f) + (Vector3.down * 0.3f),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",firePivot + (Vector3.right * -0.3f) + (Vector3.up * 0.6f),Quaternion.identity));
+                InitBullet(PoolManager.Instance.GetObject("PlayerBullet",firePivot + (Vector3.right * -0.3f) + (Vector3.down * 0.6f),Quaternion.identity));
                 break;
             }
         }

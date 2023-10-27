@@ -52,6 +52,15 @@ public class TitleManager : MonoBehaviour
         InitPanel(0);
         titleBtn[0].localPosition = new Vector2(2300,-189);
         titleBtn[1].localPosition = new Vector2(2300,-415);
+
+        SceneManager.instance.ActiveIndex = 0;
+            SceneManager.instance.ActiveLevel = 3;
+            ASkillImage.sprite = ASkillSprite[0];
+            ASkillNameText.text = ASkillName[0];
+            ASkillCoolTimeText.text = ASkillCoolTime[0].ToString() + "s";
+            ASkillExplainText.text = ASkillExplain[0];
+            ASkillIcon.color = Color.white;
+            ASkillTime.color = Color.white;
     }
 
 

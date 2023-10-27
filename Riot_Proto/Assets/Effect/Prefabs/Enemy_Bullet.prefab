@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1449271524122633725}
   - component: {fileID: 1449271524122633727}
   - component: {fileID: 1449271524122633726}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sub_Color 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4881,7 +4881,7 @@ GameObject:
   - component: {fileID: 1449271524164205636}
   - component: {fileID: 7795139059977379437}
   - component: {fileID: 7369485582959888883}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9696,7 +9696,7 @@ GameObject:
   - component: {fileID: 1449271524179212189}
   - component: {fileID: 1449271524179212191}
   - component: {fileID: 1449271524179212190}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sub_Color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14566,7 +14566,7 @@ GameObject:
   - component: {fileID: 1449271524223283662}
   - component: {fileID: 1449271524223283632}
   - component: {fileID: 1449271524223283663}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

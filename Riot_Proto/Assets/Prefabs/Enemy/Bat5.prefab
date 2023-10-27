@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2638758462304634178}
   m_Layer: 0
   m_Name: Bat5
-  m_TagString: EnemyBullet
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   baseHp: 0
   XPRate: 1
   baseXPRate: 0
-  MoveSpeed: 5
+  MoveSpeed: 8
   AttackCooltime: 1
   damagedMultiplier: 1
   shader: {fileID: 0}
@@ -61,6 +61,7 @@ MonoBehaviour:
   ItemAddCount: 1
   isDeath: 0
   anim: {fileID: 2638758462668147766}
+  BulletTag: 
 --- !u!54 &2638758462304634177
 Rigidbody:
   m_ObjectHideFlags: 0

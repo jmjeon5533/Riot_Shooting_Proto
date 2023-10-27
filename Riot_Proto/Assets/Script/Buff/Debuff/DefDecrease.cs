@@ -54,6 +54,7 @@ public class DefDecrease : BuffBase
         else if (type == TargetType.Enemy)
         {
             enemy.damagedMultiplier = originDef + multiplier;
+            Debug.Log(enemy.damagedMultiplier);
         }
     }
 

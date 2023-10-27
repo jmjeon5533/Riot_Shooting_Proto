@@ -126,7 +126,7 @@ public class TitleManager : MonoBehaviour
         while (size <= 1010)
         {
             selectPanelRect.sizeDelta = new Vector2(size, 750);
-            size += Time.deltaTime*700;
+            size += Time.deltaTime*800;
             yield return null;
         }
     }

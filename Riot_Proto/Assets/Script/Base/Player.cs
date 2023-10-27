@@ -85,7 +85,11 @@ public abstract class Player : MonoBehaviour
     public void Damage()
     {
         var g = GameManager.instance;
-        if (IsShield) return;
+        if (IsShield)
+        {
+            EventManager.Instance.PostNotification(Event_Type.PlayerDefend,this);
+            return;
+        }
         HP--;
         if(bulletLevel >= 2)
         {
@@ -148,11 +152,38 @@ public abstract class Player : MonoBehaviour
     }
     public void Shield(float time)
     {
+        if(time < 0)
+        {
+
+        }
         if (ShieldCoroutine != null) StopCoroutine(ShieldCoroutine);
         ShieldCoroutine = StartCoroutine(Protect(time));
     }
+
+    public void ShieldOn()
+    {
+        IsShield = true;
+        ShieldObj.SetActive(true);
+        var mesh = ShieldObj.GetComponent<MeshRenderer>();
+        mesh.material.SetFloat("_Dissolve", 0.75f);
+        StartCoroutine(FadeShield(false, mesh));
+    }
+
+    public void ShieldOff()
+    {
+       StartCoroutine(ShieldOffMotion());
+        
+    }
+    IEnumerator ShieldOffMotion()
+    {
+        var mesh = ShieldObj.GetComponent<MeshRenderer>();
+        yield return StartCoroutine(FadeShield(true, mesh));
+        IsShield = false;
+    }
+
     IEnumerator Protect(float time)
     {
+        
         IsShield = true;
         ShieldObj.SetActive(true);
         var mesh = ShieldObj.GetComponent<MeshRenderer>();

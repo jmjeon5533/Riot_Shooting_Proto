@@ -6,6 +6,7 @@ Shader "Unlit/CellShader"
         _Brightness("Brightness", Range(0,1)) = 0.3
         _Strength("Strength", Range(0,1)) = 0.5
         _Color("Color", COLOR) = (1,1,1,1)
+        [HDR] _BaseColor("BaseColor",COLOR) = (1,1,1,1)
         _Outline_Bold ("Outline Bold", float) = 0
         _OutlineColor("Outline Color", Color) = (1,1,1,1)
     }
@@ -90,6 +91,7 @@ Shader "Unlit/CellShader"
             sampler2D _MainTex;
             float4 _MainTex_ST;
             float _Brightness;
+            float4 _BaseColor;  
             float _Strength;
             float4 _Color;
 
@@ -116,7 +118,8 @@ Shader "Unlit/CellShader"
                 fixed4 col = tex2D(_MainTex, i.uv); 
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                col *= Toon(i.worldNormal,_WorldSpaceLightPos0.xyz)*_Strength*_Color+_Brightness;
+                col *= (Toon(i.worldNormal,_WorldSpaceLightPos0.xyz)*_Strength*_Color+_Brightness)*_BaseColor;
+                
                 return col;
             }
             ENDCG

@@ -64,7 +64,6 @@ public class ElectricShock : AbilityBase, IListener
     // Update is called once per frame
     void Update()
     {
-        
         Ability();
     }
 

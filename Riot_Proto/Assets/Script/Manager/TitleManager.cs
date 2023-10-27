@@ -38,6 +38,8 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Image startPanel;
     [SerializeField] Image logo;
 
+    [SerializeField] Image selectPanel;
+
     private void Awake()
     {
         instance = this;
@@ -115,10 +117,18 @@ public class TitleManager : MonoBehaviour
         
         yield return new WaitForSeconds(0.1f);
         SelectUI[0].DOLocalMoveX(-930,1);
-        SelectUI[1].DOLocalMoveX(800,1);
         SelectUI[2].DOLocalMoveY(-520,1);
         SelectUI[3].DOLocalMoveY(-520,1);
-        yield return null;
+        var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
+        float size = 70;
+        selectPanelRect.sizeDelta = new Vector2(size, 750);
+        SelectUI[1].DOLocalMoveX(800,1);
+        while (size <= 1010)
+        {
+            selectPanelRect.sizeDelta = new Vector2(size, 750);
+            size += Time.deltaTime*700;
+            yield return null;
+        }
     }
     public void StageStart()
     {

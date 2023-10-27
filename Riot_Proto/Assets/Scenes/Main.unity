@@ -625,6 +625,9 @@ MonoBehaviour:
   - key: Slime3
     obj: {fileID: 4420454689332797134, guid: 79a69d07a4889ba4e9c95822b2a3dd65, type: 3}
     maxAmount: 100
+  - key: Mage6
+    obj: {fileID: 8805811973873897148, guid: b8eb5f246c045ec4a97f8b25795fe6c5, type: 3}
+    maxAmount: 50
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

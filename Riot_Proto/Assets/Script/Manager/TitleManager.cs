@@ -27,19 +27,13 @@ public class TitleManager : MonoBehaviour
     public int[] ASkillCoolTime;
     [Space(10)]
     [SerializeField] Transform ASkillParent;
-    [SerializeField] Image ASkillImage;
-    [SerializeField] Image ASkillIcon;
-    [SerializeField] Image ASkillTime;
-    [SerializeField] Text ASkillNameText;
-    [SerializeField] Text ASkillExplainText;
-    [SerializeField] Text ASkillCoolTimeText;
     [SerializeField] GameObject ASkillPrefab;
 
     [SerializeField] Image startPanel;
     [SerializeField] Image logo;
-
-    [SerializeField] Image selectPanel;
-
+    [SerializeField] MeshFilter meshFilter;
+    Mesh statusPentagon;
+    Vector2[] vertices;
     private void Awake()
     {
         instance = this;
@@ -56,15 +50,31 @@ public class TitleManager : MonoBehaviour
         titleBtn[1].localPosition = new Vector2(2300,-415);
 
         SceneManager.instance.ActiveIndex = 0;
-            SceneManager.instance.ActiveLevel = 3;
-            ASkillImage.sprite = ASkillSprite[0];
-            ASkillNameText.text = ASkillName[0];
-            ASkillCoolTimeText.text = ASkillCoolTime[0].ToString() + "s";
-            ASkillExplainText.text = ASkillExplain[0];
-            ASkillIcon.color = Color.white;
-            ASkillTime.color = Color.white;
+        SceneManager.instance.ActiveLevel = 3;
+        statusPentagon = new Mesh();
+        meshFilter.mesh = statusPentagon;
+        pentagonInit();
     }
+    void pentagonInit()
+    {
+        List<Vector3> vertices = new List<Vector3>();
+        for(float i = 0; i < 360; i += 360 / 5)
+        {
+            Vector3 vec = new Vector3(Mathf.Cos(i * Mathf.Deg2Rad),Mathf.Sin(i * Mathf.Deg2Rad));
+            vertices.Add(vec);
+        }
+        statusPentagon.vertices = vertices.ToArray();
+        int[] triangles = new int[15];
+        for(int i = 0; i < 5; i++)
+        {
+            triangles[(i * 3) + 0] = 0;
 
+            triangles[(i * 3) + 1] = i + 1;
+
+            triangles[(i * 3) + 2] = (i + 2 > 5) ? 1 : i + 2;
+        }
+        statusPentagon.triangles = triangles;
+    }
 
     [RuntimeInitializeOnLoadMethod] 
     static void OnAppStart()
@@ -117,18 +127,13 @@ public class TitleManager : MonoBehaviour
         
         yield return new WaitForSeconds(0.1f);
         SelectUI[0].DOLocalMoveX(-930,1);
-        SelectUI[2].DOLocalMoveY(-520,1);
+        SelectUI[2].DOLocalMoveY(355,1);
         SelectUI[3].DOLocalMoveY(-520,1);
+        SelectUI[4].DOLocalMoveX(-500,1);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
         float size = 70;
-        selectPanelRect.sizeDelta = new Vector2(size, 750);
-        SelectUI[1].DOLocalMoveX(800,1);
-        while (size <= 1010)
-        {
-            selectPanelRect.sizeDelta = new Vector2(size, 750);
-            size += Time.deltaTime*800;
-            yield return null;
-        }
+        selectPanelRect.sizeDelta = new Vector2(size, 0);
+        DOTween.To(() => selectPanelRect.sizeDelta , x => selectPanelRect.sizeDelta = x, new Vector2(1000,0), 1);
     }
     public void StageStart()
     {
@@ -141,8 +146,10 @@ public class TitleManager : MonoBehaviour
     IEnumerator mainMenu()
     {
         SelectUI[0].DOLocalMove(new Vector3(-1658,520),1);
-        SelectUI[1].DOLocalMove(new Vector3(2200,510),1);
         SelectUI[2].DOLocalMove(new Vector3(-930,-760),1);
+        SelectUI[4].DOLocalMove(new Vector3(-1450,-383),1);
+        var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
+        DOTween.To(() => selectPanelRect.sizeDelta , x => selectPanelRect.sizeDelta = x, new Vector2(0,0), 1);
         yield return SelectUI[3].DOLocalMove(new Vector3(930,-760),1).WaitForCompletion();
         yield return new WaitForSeconds(0.1f);
 
@@ -170,13 +177,6 @@ public class TitleManager : MonoBehaviour
         {
             SceneManager.instance.ActiveIndex = num;
             SceneManager.instance.ActiveLevel = 3;
-            ASkillImage.sprite = ASkillSprite[num];
-            ASkillNameText.text = ASkillName[num];
-            ASkillCoolTimeText.text = ASkillCoolTime[num].ToString() + "s";
-            ASkillExplainText.text = ASkillExplain[num];
-            ASkillIcon.color = Color.white;
-            ASkillTime.color = Color.white;
-
         });
     }
     public void InitPanel(int index) //타이틀 패널 바꾸기
@@ -190,9 +190,10 @@ public class TitleManager : MonoBehaviour
         titleBtn[1].localPosition = new Vector3(1500,-415);
 
         SelectUI[0].localPosition = new Vector3(-1658,520);
-        SelectUI[1].localPosition = new Vector3(2200,510);
-        SelectUI[2].localPosition = new Vector3(-930,-800);
+        SelectUI[1].GetComponent<RectTransform>().sizeDelta = new Vector3(0,0);
+        SelectUI[2].localPosition = new Vector3(-930, 570);
         SelectUI[3].localPosition = new Vector3(930,-800);
+        SelectUI[4].localPosition = new Vector3(-1450,-383);
 
         // Selectbg[0].localPosition = new Vector3(0,-540);
         // Selectbg[1].localPosition = new Vector3(0,540);

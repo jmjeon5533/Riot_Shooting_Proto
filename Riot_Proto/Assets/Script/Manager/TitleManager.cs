@@ -32,6 +32,8 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Image startPanel;
     [SerializeField] Image logo;
     [SerializeField] MeshFilter meshFilter;
+
+    [SerializeField] RadarGraph graph;
     Mesh statusPentagon;
     Vector2[] vertices;
     private void Awake()
@@ -53,7 +55,7 @@ public class TitleManager : MonoBehaviour
         SceneManager.instance.ActiveLevel = 3;
         statusPentagon = new Mesh();
         meshFilter.mesh = statusPentagon;
-        pentagonInit();
+        //pentagonInit();
     }
     void pentagonInit()
     {
@@ -133,7 +135,8 @@ public class TitleManager : MonoBehaviour
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
         float size = 70;
         selectPanelRect.sizeDelta = new Vector2(size, 0);
-        DOTween.To(() => selectPanelRect.sizeDelta , x => selectPanelRect.sizeDelta = x, new Vector2(1000,0), 1);
+        yield return DOTween.To(() => selectPanelRect.sizeDelta , x => selectPanelRect.sizeDelta = x, new Vector2(1000,0), 1).WaitForCompletion();
+        graph.InitRaderGraph();
     }
     public void StageStart()
     {

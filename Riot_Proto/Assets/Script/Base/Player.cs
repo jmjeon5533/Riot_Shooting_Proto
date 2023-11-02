@@ -156,6 +156,7 @@ public abstract class Player : MonoBehaviour
         {
 
         }
+        if (IsShield) return;
         if (ShieldCoroutine != null) StopCoroutine(ShieldCoroutine);
         ShieldCoroutine = StartCoroutine(Protect(time));
     }
@@ -183,6 +184,7 @@ public abstract class Player : MonoBehaviour
 
     IEnumerator Protect(float time)
     {
+
         
         IsShield = true;
         ShieldObj.SetActive(true);

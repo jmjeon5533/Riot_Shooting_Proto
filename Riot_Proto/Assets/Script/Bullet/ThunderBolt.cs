@@ -16,6 +16,8 @@ public class ThunderBolt : BulletBase
 
     [SerializeField] float power;
 
+    bool isAttack = false;
+
     Vector3 startPos;
     Vector3 middlePos;
 
@@ -56,7 +58,8 @@ public class ThunderBolt : BulletBase
         Vector3 pos = GameManager.CalculateBezier(startPos, middlePos, targetPos, time);
         transform.LookAt(pos);
         transform.position = pos;
-        Attack();
+        if(!isAttack)
+            Attack();
 
     }
 
@@ -93,8 +96,9 @@ public class ThunderBolt : BulletBase
 
                 float chance = Random.Range(0, 100f);
                 h.GetComponent<EnemyBase>().Damage((chance <= player.CritRate)
-                        ? (int)(damage * player.CritDamage) : damage, (chance <= player.CritRate) ? true : false);
-                Destroy(gameObject);
+                        ? (int)(damage * player.CritDamage) : damage, (chance <= player.CritRate) ? true : false, "KaisaHit");
+                isAttack = true;
+                Destroy(gameObject, 1);
             }
         }
         

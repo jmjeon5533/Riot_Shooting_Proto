@@ -28,6 +28,15 @@ public abstract class AbilityBase : MonoBehaviour
     protected float maxCool;
     protected float minCool;
 
+    protected static float subtractCool = 0;
+
+    public static float SubtractCool { get { return subtractCool; } private set { subtractCool = value; } }
+
+    protected static void SetSubtractCool(float value)
+    {
+        SubtractCool = value;
+    }
+
     protected void ResetTimerUI(float value)
     {
         skillIcon.ResetTimer(value);
@@ -73,6 +82,11 @@ public abstract class AbilityBase : MonoBehaviour
     void Update()
     {
        
+    }
+
+    protected virtual void ResizingCooldown()
+    {
+
     }
 
     public virtual void Initalize()

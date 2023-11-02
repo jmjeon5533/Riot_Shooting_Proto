@@ -628,6 +628,9 @@ MonoBehaviour:
   - key: Mage6
     obj: {fileID: 8805811973873897148, guid: b8eb5f246c045ec4a97f8b25795fe6c5, type: 3}
     maxAmount: 50
+  - key: KaisaHit
+    obj: {fileID: 4719135335007947625, guid: bc7b09cd14332be478ad658aa244fe51, type: 3}
+    maxAmount: 50
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

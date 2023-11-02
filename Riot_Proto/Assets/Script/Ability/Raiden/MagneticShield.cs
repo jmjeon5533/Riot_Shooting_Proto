@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MagneticShield : AbilityBase, IListener
 {
-    [SerializeField] bool isDamaged = false;
+    [SerializeField] bool isDamaged = true;
     [SerializeField] float curCooltime;
     [SerializeField] float maxCooltime;
 
@@ -56,7 +56,7 @@ public class MagneticShield : AbilityBase, IListener
     // Update is called once per frame
     void Update()
     {
-        if(!isDamaged)
+        if(isDamaged)
             Ability();
     }
 

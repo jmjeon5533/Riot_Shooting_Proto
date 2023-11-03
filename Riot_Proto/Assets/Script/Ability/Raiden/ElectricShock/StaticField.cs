@@ -37,7 +37,7 @@ public class StaticField : AbilityBase
 
     public override string GetStatText()
     {
-        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level))) + 
+        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1))) + 
             " 스킬 지속 시간 " + duration + "s → " + (duration +1) + "s";
     }
 
@@ -55,6 +55,7 @@ public class StaticField : AbilityBase
         player = GameManager.instance.player;
         useSkill = true;
         maxCool = maxCooltime;
+        originCooltime = maxCooltime;
         Initalize();
     }
 

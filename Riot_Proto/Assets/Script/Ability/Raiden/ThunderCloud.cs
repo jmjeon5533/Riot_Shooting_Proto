@@ -16,6 +16,8 @@ public class ThunderCloud : AbilityBase
 
     [SerializeField] float livingDuration;
 
+    float totalMinusCooltime = 0;
+
     public override void Ability()
     {
         curCooltime+=Time.deltaTime;
@@ -34,6 +36,14 @@ public class ThunderCloud : AbilityBase
         useSkill = true;
         Initalize();
         maxCool = maxCooltime;
+        originCooltime = maxCooltime;
+    }
+
+    public override void ResizingCooldown()
+    {
+        maxCooltime = originCooltime - (originCooltime * SubtractCool);
+        maxCooltime -= totalMinusCooltime;
+        maxCool = maxCooltime;
     }
 
     // Update is called once per frame
@@ -46,6 +56,7 @@ public class ThunderCloud : AbilityBase
     {
         base.LevelUp();
         defaultDamage += (int)(2 * Mathf.Pow((1 + 0.15f), level));
+        totalMinusCooltime += (Mathf.Round(((0.4f * Mathf.Pow((1 + 0.1f), level))) * 100) / 100);
         maxCooltime -= (Mathf.Round(((0.4f * Mathf.Pow((1 + 0.1f), level))) * 100) / 100);
         maxCool = maxCooltime;
         
@@ -53,8 +64,8 @@ public class ThunderCloud : AbilityBase
 
     public override string GetStatText()
     {
-        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(2 * Mathf.Pow((1 + 0.15f), level)))
-            + "\n스킬 쿨타임 " + maxCooltime + " → " + (Mathf.Round((maxCooltime - (0.4f * Mathf.Pow((1 + 0.1f), level))) * 100) / 100);
+        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(2 * Mathf.Pow((1 + 0.15f), level+1)))
+            + "\n스킬 쿨타임 " + maxCooltime + " → " + (Mathf.Round((maxCooltime - (0.4f * Mathf.Pow((1 + 0.1f), level+1))) * 100) / 100);
         
 
     }

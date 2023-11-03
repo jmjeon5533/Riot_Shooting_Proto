@@ -6,12 +6,17 @@ public class DecreaseCooldown : AbilityBase
 {
     public override void Ability()
     {
-        
+        SetSubtractCool(SubtractCool+0.05f);
+        Debug.Log(SubtractCool);
+        foreach(var c in AbilityCard.Instance.curAbilityList)
+        {
+            c.ResizingCooldown();
+        }
     }
 
     public override string GetStatText()
     {
-        return "";
+        return $"ÄðÅ¸ÀÓ {SubtractCool * 100}% ¡æ {(SubtractCool+0.05f) * 100}% °¨¼Ò";
     }
 
     // Start is called before the first frame update
@@ -34,5 +39,6 @@ public class DecreaseCooldown : AbilityBase
     public override void LevelUp()
     {
         base.LevelUp();
+        Ability();
     }
 }

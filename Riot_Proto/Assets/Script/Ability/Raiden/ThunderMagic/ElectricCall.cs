@@ -101,7 +101,7 @@ public class ElectricCall : AbilityBase
     public override void LevelUp()
     {
         base.LevelUp();
-        defaultDamage+= defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
+        defaultDamage+= defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1));
     }
 
     // Update is called once per frame

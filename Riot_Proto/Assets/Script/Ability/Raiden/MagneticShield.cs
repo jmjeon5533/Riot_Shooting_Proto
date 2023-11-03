@@ -10,7 +10,7 @@ public class MagneticShield : AbilityBase, IListener
 
     [SerializeField] int increaseValue;
 
-        
+    float totalMinusCooltime = 0;    
 
     public override void Ability()
     {
@@ -28,7 +28,7 @@ public class MagneticShield : AbilityBase, IListener
 
     public override string GetStatText()
     {
-        return "";
+        return $"ÄðÅ¸ÀÓ {maxCooltime} ¡æ {maxCooltime-2.5f} °¨¼Ò";
     }
 
     // Start is called before the first frame update
@@ -38,7 +38,15 @@ public class MagneticShield : AbilityBase, IListener
         useSkill = true;
         EventManager.Instance.AddListener(Event_Type.PlayerDefend, this);
         base.Start();
+        originCooltime = maxCooltime;
         Initalize();
+    }
+
+    public override void ResizingCooldown()
+    {
+        maxCooltime = originCooltime - (originCooltime * SubtractCool);
+        maxCooltime -= totalMinusCooltime;
+        maxCool = maxCooltime;
     }
 
     public override void Initalize()
@@ -49,7 +57,8 @@ public class MagneticShield : AbilityBase, IListener
     public override void LevelUp()
     {
         base.LevelUp();
-        maxCooltime -= maxCooltime / 20;
+        maxCooltime -= 2.5f;
+        totalMinusCooltime += 2.5f;
         maxCool = maxCooltime;
     }
 

@@ -10,6 +10,8 @@ public abstract class AbilityBase : MonoBehaviour
         Passive, Active, Stats
     }
 
+    protected float originCooltime;
+
     public int cardLevel = 1;
 
     public int level = 1;
@@ -84,7 +86,7 @@ public abstract class AbilityBase : MonoBehaviour
        
     }
 
-    protected virtual void ResizingCooldown()
+    public virtual void ResizingCooldown()
     {
 
     }

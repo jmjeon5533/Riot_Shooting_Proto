@@ -32,6 +32,7 @@ public class ThunderBolt : BulletBase
         Destroy(gameObject, livingTime);
         startPos = transform.position;
         middlePos = transform.position + ((Vector3)Random.insideUnitCircle * power) + (transform.right * -1 * power);
+       
     }
 
     // Update is called once per frame

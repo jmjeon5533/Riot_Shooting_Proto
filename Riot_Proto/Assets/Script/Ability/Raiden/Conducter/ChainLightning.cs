@@ -35,11 +35,15 @@ public class ChainLightning : AbilityBase, IListener
         }
     }
 
-    
+    public override void ResizingCooldown()
+    {
+        maxCooltime = originCooltime - (originCooltime * SubtractCool);
+        maxCool = maxCooltime;
+    }
 
     public override string GetStatText()
     {
-        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level)))
+        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1)))
             + " 연쇄 공격 횟수 " + maxAttack + " → " + (maxAttack +1);
     }
 
@@ -72,6 +76,7 @@ public class ChainLightning : AbilityBase, IListener
         Initalize();
         maxCool = maxCooltime;
         useSkill = true;
+        originCooltime = maxCooltime;
         EventManager.Instance.AddListener(Event_Type.PlayerAttacked, this);
     }
 

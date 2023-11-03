@@ -73,7 +73,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         var p = GameManager.instance.EnemyPower;
         HP = Mathf.Round(p * baseHp);
-        XPRate = Mathf.Round(p/10 * baseXPRate);
+        XPRate = Mathf.Round(p * baseXPRate);
     }
 
     public void AddBuff(BuffBase buff)

@@ -628,6 +628,9 @@ MonoBehaviour:
   - key: Mage6
     obj: {fileID: 8805811973873897148, guid: b8eb5f246c045ec4a97f8b25795fe6c5, type: 3}
     maxAmount: 50
+  - key: Mage7
+    obj: {fileID: 311829892890109020, guid: 6fc59b3b8b18f45448bba0607ab890b0, type: 3}
+    maxAmount: 50
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

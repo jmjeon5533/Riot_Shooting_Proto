@@ -537,7 +537,7 @@ MonoBehaviour:
     maxAmount: 50
   - key: Bat3
     obj: {fileID: 960719984618054119, guid: adc18e6514cd7d540aa0ea6caff01017, type: 3}
-    maxAmount: 50
+    maxAmount: 200
   - key: Spider1
     obj: {fileID: 5148704164904888988, guid: 847edf739fbc82d4aab6f9fc832be794, type: 3}
     maxAmount: 50
@@ -629,7 +629,10 @@ MonoBehaviour:
     obj: {fileID: 8805811973873897148, guid: b8eb5f246c045ec4a97f8b25795fe6c5, type: 3}
     maxAmount: 50
   - key: KaisaHit
-    obj: {fileID: 4719135335007947625, guid: bc7b09cd14332be478ad658aa244fe51, type: 3}
+    obj: {fileID: 8653997705584115803, guid: fbd7dae1702256742bce28f9b0fc7b1d, type: 3}
+    maxAmount: 50
+  - key: Mage7
+    obj: {fileID: 311829892890109020, guid: 6fc59b3b8b18f45448bba0607ab890b0, type: 3}
     maxAmount: 50
 --- !u!1 &125394331
 GameObject:

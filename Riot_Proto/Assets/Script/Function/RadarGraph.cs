@@ -16,7 +16,7 @@ public class RadarGraph : MonoBehaviour
 
     public void InitRaderGraph()
     {
-        Debug.Log("Test");
+        
         canvasRenderer = GetComponent<CanvasRenderer>();
         tempStats = new float[stats.Length];
         for(int i = 0; i < stats.Length; i++)
@@ -56,6 +56,101 @@ public class RadarGraph : MonoBehaviour
         }
         //s.Play();
 
+    }
+
+    IEnumerator RemoveRader(int index)
+    {
+        //float plus = stats[index] / 60;
+        float plus = Time.deltaTime * 4;
+        while (tempStats[index] > 0)
+        {
+            tempStats[index] -= plus;
+            if (tempStats[index] < 0)
+            {
+                tempStats[index] = 0;
+            }
+            UpdateRadar();
+            yield return null;
+        }
+        
+    }
+
+    public void ResetRadar()
+    {
+        canvasRenderer = GetComponent<CanvasRenderer>();
+        tempStats = new float[stats.Length];
+        for (int i = 0; i < stats.Length; i++)
+        {
+            tempStats[i] = stats[i];
+        }
+        mesh = new Mesh();
+        int len = stats.Length;
+        Vector3[] vertexs = new Vector3[len];
+
+        float radius = 360 / len;
+
+        for (int i = 0; i < len; i++)
+        {
+            vertexs[i] = Quaternion.Euler(0, 0, i * radius) * Vector3.up * 0 * tempStats[i];
+        }
+
+        int[] triangles = new int[(len - 2) * 3];
+
+        for (int i = 0; i < (len - 2); i++)
+        {
+            int verIndex = i * 3;
+            triangles[verIndex] = 0;
+            triangles[verIndex + 1] = 1 + i;
+            triangles[verIndex + 2] = 2 + i;
+        }
+
+        mesh.vertices = vertexs;
+        mesh.triangles = triangles;
+        canvasRenderer.SetMesh(mesh);
+        canvasRenderer.SetMaterial(material, null);
+        
+    }
+
+    public void DisableRadar()
+    {
+        canvasRenderer = GetComponent<CanvasRenderer>();
+        tempStats = new float[stats.Length];
+        for (int i = 0; i < stats.Length; i++)
+        {
+            tempStats[i] = stats[i];
+        }
+        mesh = new Mesh();
+        int len = stats.Length;
+        Vector3[] vertexs = new Vector3[len];
+
+        float radius = 360 / len;
+
+        for (int i = 0; i < len; i++)
+        {
+            vertexs[i] = Quaternion.Euler(0, 0, i * radius) * Vector3.up * size * tempStats[i];
+        }
+
+        int[] triangles = new int[(len - 2) * 3];
+
+        for (int i = 0; i < (len - 2); i++)
+        {
+            int verIndex = i * 3;
+            triangles[verIndex] = 0;
+            triangles[verIndex + 1] = 1 + i;
+            triangles[verIndex + 2] = 2 + i;
+        }
+
+        mesh.vertices = vertexs;
+        mesh.triangles = triangles;
+        canvasRenderer.SetMesh(mesh);
+        canvasRenderer.SetMaterial(material, null);
+        for (int i = 0; i < len; i++)
+        {
+            //s.Append(DOVirtual.Float(0, stats[i], 1f, v => SetFloat(i, v)));
+            StartCoroutine(RemoveRader(i));
+        }
+       
+        
     }
 
 

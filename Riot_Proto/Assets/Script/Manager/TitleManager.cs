@@ -137,9 +137,10 @@ public class TitleManager : MonoBehaviour
     IEnumerator selectStart()
     {
         InitPanel(1);
+        graph.ResetRadar();
         Selectbg[0].DOLocalMoveY(0, 0.7f);
         yield return Selectbg[1].DOLocalMoveY(0, 0.7f).WaitForCompletion();
-
+        
         yield return new WaitForSeconds(0.1f);
         SelectUI[0].DOLocalMoveX(-930, 1);
         SelectUI[2].DOLocalMoveY(355, 1);
@@ -168,12 +169,14 @@ public class TitleManager : MonoBehaviour
         SelectSkillImage.rectTransform.anchoredPosition = new Vector2(-355,0);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
         DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(0, 0), 1);
+        graph.DisableRadar();
         yield return SelectUI[3].DOLocalMove(new Vector3(930, -760), 1).WaitForCompletion();
+        
         yield return new WaitForSeconds(0.1f);
 
         Selectbg[0].DOLocalMove(new Vector3(0, -540), 1);
         Selectbg[1].DOLocalMove(new Vector3(0, 540), 1);
-
+        
         InitPanel(0);
         titleBtn[0].localPosition = new Vector2(2300, -189);
         titleBtn[1].localPosition = new Vector2(2300, -415);

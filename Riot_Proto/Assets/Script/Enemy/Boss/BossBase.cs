@@ -10,6 +10,7 @@ public class BossBase : EnemyBase
     void Start()
     {
         Init();
+        collider = GetComponent<CapsuleCollider>();
     }
     public override void Init()
     {

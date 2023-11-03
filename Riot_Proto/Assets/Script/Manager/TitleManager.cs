@@ -165,6 +165,7 @@ public class TitleManager : MonoBehaviour
         SelectUI[0].DOLocalMove(new Vector3(-1658, 520), 1);
         SelectUI[2].DOLocalMove(new Vector3(-930, -760), 1);
         SelectUI[4].DOLocalMove(new Vector3(-1450, -383), 1);
+        SelectSkillImage.rectTransform.anchoredPosition = new Vector2(-355,0);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
         DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(0, 0), 1);
         yield return SelectUI[3].DOLocalMove(new Vector3(930, -760), 1).WaitForCompletion();

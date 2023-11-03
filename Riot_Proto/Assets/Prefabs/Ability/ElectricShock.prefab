@@ -44,12 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f9eb2a144ab3464ca6602fbeb882244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardLevel: 1
   level: 1
   type: 0
   skillImage: {fileID: 21300000, guid: b165e3c9e4a7d184db5bd6ec2ee60b3b, type: 3}
+  skillIcon: {fileID: 0}
   skillName: "\uC950\uC5B4\uC9C0\uB294 \uC804\uACA9"
   skillDescription: "\uAE30\uBCF8 \uACF5\uACA9\uC744 \uC77C\uC815 \uD69F\uC218 \uC2E4\uD589
-    \uC2DC \uC801\uC744 \uAD00\uD1B5\uD558\uB294 \uBC88\uAC1C \uCC3D\uC744 \uB358\uC9D1\uB2C8\uB2E4"
+    \uC2DC \uC801\uC744 \uAD00\uD1B5\uD558\uB294 \uBC88\uAC1C \uCC3D\uC744 \uB358\uC9D1\uB2C8\uB2E4
+    *\uCFE8\uD0C0\uC784 \uAC10\uC18C \uC601\uD5A5\uC744 \uBC1B\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4*"
   stats: 
   stack: 0
   maxStack: 20

@@ -21,7 +21,7 @@ public class Boss1 : BossBase
 
     [SerializeField] Transform r_ShootPos;
     [SerializeField] Transform l_ShootPos;
- 
+
     [SerializeField] float patternDuration;
     [SerializeField] float limitY;
 
@@ -47,7 +47,7 @@ public class Boss1 : BossBase
     {
         if (isDeadMotionPlay) return;
         var AState = pattern;
-        anim.SetInteger("AttackState", (AState+1) % 2);
+        anim.SetInteger("AttackState", (AState + 1) % 2);
         anim.SetTrigger("Attack");
         print(AState);
         isAttack = true;
@@ -73,7 +73,7 @@ public class Boss1 : BossBase
                     coroutine = StartCoroutine(Attack4());
                     break;
                 }
-                case 4:
+            case 4:
                 {
                     coroutine = StartCoroutine(Attack5());
                     break;
@@ -81,7 +81,7 @@ public class Boss1 : BossBase
         }
         pattern++;
         if (pattern > 4) pattern = 0;
-        AttackCooltime = Random.Range(1f,2.5f);
+        AttackCooltime = Random.Range(1f, 2.5f);
     }
 
     void OnDrawGizmos()
@@ -112,21 +112,21 @@ public class Boss1 : BossBase
         yield return new WaitForSeconds(0.5f);
         Vector3 spawnPos = r_ShootPos.position;
         spawnPos.z = 0;
-        var b = PoolManager.Instance.GetObject("EnemyBullet",spawnPos + (Vector3.left * 0.3f),Quaternion.identity).GetComponent<EnemyBullet>();
+        var b = PoolManager.Instance.GetObject("EnemyBullet", spawnPos + (Vector3.left * 0.3f), Quaternion.identity).GetComponent<EnemyBullet>();
         b.dir = Vector3.zero;
         b.transform.localScale = Vector3.one;
         Vector3 originPos = b.transform.position;
         yield return b.transform.DOMove(originPos + (Vector3.left * 3.5f), 1.5f).WaitForCompletion();
         yield return b.transform.DOScale(Vector3.zero, 0.1f).WaitForCompletion();
-        for(int i = 0; i < 15; i++)
+        for (int i = 0; i < 15; i++)
         {
-            for(int j = 0; j < 7; j++)
+            for (int j = 0; j < 7; j++)
             {
-                
+
                 var tempB = PoolManager.Instance.GetObject("EnemyBullet", b.transform.position, Quaternion.identity).GetComponent<EnemyBullet>();
-                tempB.SetMoveSpeed(Random.Range(3.3f,4.8f));
+                tempB.SetMoveSpeed(Random.Range(3.3f, 4.8f));
                 tempB.dir = Vector3.left;
-                float _angle = (j % 2 ==0 ? Random.Range(-60, 240f) : Random.Range(120, 420f)) * Mathf.Deg2Rad; // ������ �������� ��ȯ
+                float _angle = (j % 2 == 0 ? Random.Range(-60, 240f) : Random.Range(120, 420f)) * Mathf.Deg2Rad; // ������ �������� ��ȯ
                 Vector3 direction = new Vector3(Mathf.Cos(_angle), Mathf.Sin(_angle), 0); // ���� ������ ���� ���� ����
                 tempB.dir = -direction;
             }
@@ -206,11 +206,11 @@ public class Boss1 : BossBase
     {
         var g = GameManager.instance;
         //var breath = PoolManager.Instance.GetObject("Breath", breathPos);
-        
+
         int flip = 1;
         for (int i = 0; i < (int)patternDuration; i++)
         {
-            if(Mathf.Abs(g.player.transform.position.x) >= 9.5f && !g.player.IsShield)
+            if (Mathf.Abs(g.player.transform.position.x) >= 9.5f && !g.player.IsShield)
             {
                 StartCoroutine(Attack4_2());
             }
@@ -270,7 +270,7 @@ public class Boss1 : BossBase
         for (int j = 0; j < 3; j++)
         {
             string bulletTag;
-            if(j % 2 == 0) bulletTag = "EnemyBullet";
+            if (j % 2 == 0) bulletTag = "EnemyBullet";
             else bulletTag = "EnemyBullet2";
 
             for (int i = 0; i < 360; i += 360 / count)
@@ -285,7 +285,7 @@ public class Boss1 : BossBase
         }
     }
 
-    public override void Damage(int damage, bool isCrit,string hitTag = null)
+    public override void Damage(int damage, bool isCrit, string hitTag = null)
     {
         if (IsSpawning()) return;
         HP -= damage * damagedMultiplier;
@@ -302,7 +302,11 @@ public class Boss1 : BossBase
             StartCoroutine(DeadMotion());
         }
         GameManager.instance.GetMoney += Mathf.RoundToInt(damage * 0.5f);
-        PoolManager.Instance.GetObject("Hit", transform.position, Quaternion.identity);
+        var x = Random.Range(-collider.radius / 4, collider.radius / 4);
+        var y = Random.Range(-collider.height / 4, collider.height / 4);
+
+        var rand = new Vector3(x, y, 0);
+        PoolManager.Instance.GetObject("Hit", transform.position + rand, Quaternion.identity);
         // var DamageTextPos = (Vector2)transform.position + (Random.insideUnitCircle * 2);
         // var DmgText = PoolManager.Instance.GetObject("DamageText", UIManager.instance.canvas)
         //     .GetComponent<DamageText>();
@@ -318,7 +322,7 @@ public class Boss1 : BossBase
     {
 
         isDeadMotionPlay = true;
-        
+
         GameManager.instance.SetCameraShake(7, 0.09f);
         for (int i = 0; i < 9; i++)
         {

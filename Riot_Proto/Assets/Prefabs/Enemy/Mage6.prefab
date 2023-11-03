@@ -1312,9 +1312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd29df93007d284dab170e58bdd0560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 80
+  HP: 90
   baseHp: 0
-  XPRate: 15
+  XPRate: 10
   baseXPRate: 0
   MoveSpeed: 8
   AttackCooltime: 4

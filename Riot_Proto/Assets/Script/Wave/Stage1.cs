@@ -132,7 +132,7 @@ public class Stage1 : WaveScript
     }
     public override IEnumerator wave9()
     {
-        var enemy = PoolManager.Instance.GetObject("Mage6", new Vector3(15,0,0));
+        var enemy = PoolManager.Instance.GetObject("Mage7", new Vector3(15,0,0));
         GameManager.instance.curEnemys.Add(enemy);
         enemy.GetComponent<EnemyBase>().MovePos = new Vector3(8,0,0);
         yield return new WaitForSeconds(2f);

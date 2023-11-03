@@ -74,7 +74,8 @@ public class UIManager : MonoBehaviour
             var value = 1 + Mathf.Clamp(g.GetMoney - Ratevalue,0,1000);
             Ratevalue = (int)Mathf.MoveTowards(Ratevalue,g.GetMoney,value);
         }
-        MainRateText.text = string.Format("{0:D10}",Ratevalue);
+        MainRateText.text = (Ratevalue < 1000) ? string.Format("{0:D4}", Ratevalue) : Ratevalue.ToString();
+
     }
     public void InitHeart()
     {

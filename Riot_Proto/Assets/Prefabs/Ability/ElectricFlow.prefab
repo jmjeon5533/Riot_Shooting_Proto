@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1587895777119811261
+--- !u!1 &6503303342187038618
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,55 +8,53 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3671440276873685802}
-  - component: {fileID: 1260307834432912256}
+  - component: {fileID: 5365207519996303731}
+  - component: {fileID: 8018033854734518954}
   m_Layer: 0
-  m_Name: DirectLightning
+  m_Name: ElectricFlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3671440276873685802
+--- !u!4 &5365207519996303731
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1587895777119811261}
+  m_GameObject: {fileID: 6503303342187038618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.305244, y: 37.24641, z: 5.9890137}
+  m_LocalPosition: {x: -0.8654401, y: 0.10733464, z: -5.224379}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1260307834432912256
+--- !u!114 &8018033854734518954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1587895777119811261}
+  m_GameObject: {fileID: 6503303342187038618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16e2637c13c11c247bff22ad7e73db95, type: 3}
+  m_Script: {fileID: 11500000, guid: 7dca29b83c4db6a498f0ab963b5f6cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardLevel: 1
   level: 1
   type: 0
-  skillImage: {fileID: 21300000, guid: 762eb109a503d624aae7c290797889aa, type: 3}
+  skillImage: {fileID: 0}
   skillIcon: {fileID: 0}
-  skillName: "\uC9C1\uB958"
-  skillDescription: "\uAE30\uBCF8 \uACF5\uACA9\uC744 \uC77C\uC815 \uD69F\uC218 \uC2E4\uD589
-    \uC2DC \uCD94\uAC00\uD0C0\uB97C \uBC1C\uC0AC\uD569\uB2C8\uB2E4 *\uCFE8\uD0C0\uC784
-    \uAC10\uC18C \uC601\uD5A5\uC744 \uBC1B\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4*"
+  skillName: "\uC804\uB958"
+  skillDescription: "\uC0C1\uB300\uB97C \uAD00\uD1B5\uD558\uB294 \uAD11\uC120\uC744
+    \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
   stats: 
-  stack: 0
-  maxStack: 6
-  defaultDamage: 6
-  bullet: {fileID: 7488623435463272498, guid: 54bb67ef9acf8c447bf9f4f2491c8920, type: 3}
-  increaseValue: 2
-  damageRate: 0.2
+  maxCooltime: 3
+  curCooltime: 0
+  defaultDamage: 3
+  increaseValue: 3
+  damageRate: 0.4

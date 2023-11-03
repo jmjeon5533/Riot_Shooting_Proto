@@ -13,7 +13,7 @@ public class HpItem : ItemBase
     }
     protected override void GetItem()
     {
-        if(GameManager.instance.player.HP <= 5) GameManager.instance.player.HP++;
+        if(GameManager.instance.player.HP < GameManager.instance.player.MaxHP) GameManager.instance.player.HP++;
         GameManager.instance.GetMoney += 150;
         Instantiate(getEffect,GameManager.instance.player.transform);
         UIManager.instance.InitHeart();

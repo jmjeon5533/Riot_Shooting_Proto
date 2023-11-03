@@ -34,6 +34,7 @@ public class DecreaseCooldown : AbilityBase
     public override void Initalize()
     {
         base.Initalize();
+        Ability();
     }
 
     public override void LevelUp()

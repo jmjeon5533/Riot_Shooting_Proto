@@ -12,11 +12,21 @@ public class ThunderDrop : AbilityBase
     [SerializeField] GameObject thunder;
 
     [SerializeField] float distance;
+
+    float totalMinusCooltime = 0;
     // Start is called before the first frame update
     public override void Start()
     {
         Initalize();
         useSkill = true;
+        maxCool = maxCooltime;
+        originCooltime = maxCooltime;
+    }
+
+    public override void ResizingCooldown()
+    {
+        maxCooltime = originCooltime - (originCooltime * SubtractCool);
+        maxCooltime -= totalMinusCooltime;
         maxCool = maxCooltime;
     }
 
@@ -68,6 +78,7 @@ public class ThunderDrop : AbilityBase
     {
         base.LevelUp();
         defaultDamage += (int)(3 * Mathf.Pow((1 + 0.15f), level));
+        totalMinusCooltime += (Mathf.Round((0.3f * Mathf.Pow((1 + 0.2f), level)) * 100) / 100);
         maxCooltime -= (Mathf.Round((0.3f * Mathf.Pow((1 + 0.2f), level)) * 100) / 100);
         maxCool = maxCooltime;
 
@@ -75,7 +86,7 @@ public class ThunderDrop : AbilityBase
 
     public override string GetStatText()
     {
-        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(3 * Mathf.Pow((1 + 0.15f), level))) + 
-            "\n스킬 쿨타임 " + maxCooltime + " → " + (maxCooltime - Mathf.Round((0.3f * Mathf.Pow((1 + 0.2f), level)) * 100) / 100);
+        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(3 * Mathf.Pow((1 + 0.15f), level+1))) + 
+            "\n스킬 쿨타임 " + maxCooltime + " → " + (maxCooltime - Mathf.Round((0.3f * Mathf.Pow((1 + 0.2f), level+1)) * 100) / 100);
     }
 }

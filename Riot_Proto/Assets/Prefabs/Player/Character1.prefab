@@ -14267,7 +14267,7 @@ MonoBehaviour:
   IsShield: 0
   ShieldObj: {fileID: 596910838836457825}
   AttackCooltime: 0.13
-  maxCooltime: 3
+  maxCooltime: 2
   curCooltime: 0
   autoTargetBullet: {fileID: 2819709690657902326, guid: ac4605118bfab0c4e8af565366249595, type: 3}
   numClosestEnemies: 4

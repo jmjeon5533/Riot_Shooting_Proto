@@ -14,8 +14,9 @@ public class RadarGraph : MonoBehaviour
 
 
 
-    void InitRaderGraph()
+    public void InitRaderGraph()
     {
+        Debug.Log("Test");
         canvasRenderer = GetComponent<CanvasRenderer>();
         tempStats = new float[stats.Length];
         for(int i = 0; i < stats.Length; i++)
@@ -57,18 +58,11 @@ public class RadarGraph : MonoBehaviour
 
     }
 
-    void SetFloat(int index, float value)
-    {
-
-        Debug.Log(tempStats[index]);
-        tempStats[index] = value;
-        UpdateRadar();
-        
-    }
 
     IEnumerator TowardsRader(int index)
     {
-        float plus = stats[index] / 60;
+        //float plus = stats[index] / 60;
+        float plus = Time.deltaTime * 2;
         while (tempStats[index] <= stats[index])
         {
             tempStats[index] += plus;
@@ -118,7 +112,7 @@ public class RadarGraph : MonoBehaviour
 
     private void Start()
     {
-        InitRaderGraph();
+        //InitRaderGraph();
     }
 
 }

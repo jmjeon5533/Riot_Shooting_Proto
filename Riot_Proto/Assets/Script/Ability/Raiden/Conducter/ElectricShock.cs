@@ -47,7 +47,7 @@ public class ElectricShock : AbilityBase, IListener
     public override void LevelUp()
     {
         base.LevelUp();
-        defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
+        defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1));
         maxStack--;
         maxCool = maxStack;
     }
@@ -57,9 +57,12 @@ public class ElectricShock : AbilityBase, IListener
     {
         EventManager.Instance.AddListener(Event_Type.PlayerAttack, this);
         Initalize();
+        
         maxCool = maxStack;
         useSkill = true;
     }
+
+    
 
     // Update is called once per frame
     void Update()

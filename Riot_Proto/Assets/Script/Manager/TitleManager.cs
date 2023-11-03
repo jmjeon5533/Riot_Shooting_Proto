@@ -7,6 +7,17 @@ using DG.Tweening;
 using System.IO;
 using System.Linq;
 
+[System.Serializable]
+public class ASkillInfo
+{
+    public Sprite sprite;
+    public string name;
+    public string explain;
+    [Space(10)]
+    public int dmg;
+    [Range(0, 10)] public float range;
+    public int coolTime;
+}
 public class TitleManager : MonoBehaviour
 {
     public static TitleManager instance { get; private set; }
@@ -21,17 +32,19 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Transform[] Selectbg;
     [Space(10)]
     [Header("ActiveSkill")]
-    public Sprite[] ASkillSprite;
-    public string[] ASkillName;
-    public string[] ASkillExplain;
-    public int[] ASkillCoolTime;
+    public ASkillInfo[] aSkillInfos;
     [Space(10)]
+    [SerializeField] Transform[] ASkillList = new Transform[3];
     [SerializeField] Transform ASkillParent;
     [SerializeField] GameObject ASkillPrefab;
+    [SerializeField] Image[] ASkillStatus;
+    [SerializeField] RawImage SelectSkillImage;
 
     [SerializeField] Image startPanel;
     [SerializeField] Image logo;
     [SerializeField] MeshFilter meshFilter;
+
+    [SerializeField] RadarGraph graph;
     Mesh statusPentagon;
     Vector2[] vertices;
     private void Awake()
@@ -46,26 +59,29 @@ public class TitleManager : MonoBehaviour
             ASkillButtonAdd(i);
         }
         InitPanel(0);
-        titleBtn[0].localPosition = new Vector2(2300,-189);
-        titleBtn[1].localPosition = new Vector2(2300,-415);
+        titleBtn[0].localPosition = new Vector2(2300, -189);
+        titleBtn[1].localPosition = new Vector2(2300, -415);
 
         SceneManager.instance.ActiveIndex = 0;
         SceneManager.instance.ActiveLevel = 3;
         statusPentagon = new Mesh();
         meshFilter.mesh = statusPentagon;
-        pentagonInit();
+        //pentagonInit();
+        ASkillStatus[0].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[0].dmg);
+        ASkillStatus[1].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[0].range);
+        ASkillStatus[2].fillAmount = Mathf.InverseLerp(0, 130, aSkillInfos[0].coolTime);
     }
     void pentagonInit()
     {
         List<Vector3> vertices = new List<Vector3>();
-        for(float i = 0; i < 360; i += 360 / 5)
+        for (float i = 0; i < 360; i += 360 / 5)
         {
-            Vector3 vec = new Vector3(Mathf.Cos(i * Mathf.Deg2Rad),Mathf.Sin(i * Mathf.Deg2Rad));
+            Vector3 vec = new Vector3(Mathf.Cos(i * Mathf.Deg2Rad), Mathf.Sin(i * Mathf.Deg2Rad));
             vertices.Add(vec);
         }
         statusPentagon.vertices = vertices.ToArray();
         int[] triangles = new int[15];
-        for(int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++)
         {
             triangles[(i * 3) + 0] = 0;
 
@@ -76,10 +92,10 @@ public class TitleManager : MonoBehaviour
         statusPentagon.triangles = triangles;
     }
 
-    [RuntimeInitializeOnLoadMethod] 
+    [RuntimeInitializeOnLoadMethod]
     static void OnAppStart()
     {
-        instance.StartCoroutine(instance.StartMotion());  
+        instance.StartCoroutine(instance.StartMotion());
     }
 
     IEnumerator StartMotion()
@@ -92,13 +108,12 @@ public class TitleManager : MonoBehaviour
         logo.DOFade(0, 1f);
 
 
-        if(isButton) yield break;
+        if (isButton) yield break;
         isButton = true;
-        titleBtn[0].DOLocalMoveX(1600,1.5f).SetEase(Ease.InOutBack);
+        titleBtn[0].DOLocalMoveX(1600, 1.5f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.2f);
-        yield return titleBtn[1].DOLocalMoveX(1500,1.5f).SetEase(Ease.InOutBack)
-        .OnComplete(()=> isButton = false).WaitForCompletion();
-
+        yield return titleBtn[1].DOLocalMoveX(1500, 1.5f).SetEase(Ease.InOutBack)
+        .OnComplete(() => isButton = false).WaitForCompletion();
     }
 
     public void StartButton()
@@ -107,12 +122,12 @@ public class TitleManager : MonoBehaviour
     }
     IEnumerator Startbtn()
     {
-        if(isButton) yield break;
+        if (isButton) yield break;
         isButton = true;
-        titleBtn[0].DOLocalMoveX(2300,1.5f).SetEase(Ease.InOutBack);
+        titleBtn[0].DOLocalMoveX(2300, 1.5f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.2f);
-        yield return titleBtn[1].DOLocalMoveX(2300,1.5f).SetEase(Ease.InOutBack)
-        .OnComplete(()=> isButton = false).WaitForCompletion();
+        yield return titleBtn[1].DOLocalMoveX(2300, 1.5f).SetEase(Ease.InOutBack)
+        .OnComplete(() => isButton = false).WaitForCompletion();
         SelectStart();
     }
     public void SelectStart()
@@ -122,18 +137,20 @@ public class TitleManager : MonoBehaviour
     IEnumerator selectStart()
     {
         InitPanel(1);
-        Selectbg[0].DOLocalMoveY(0,0.7f);
-        yield return Selectbg[1].DOLocalMoveY(0,0.7f).WaitForCompletion();
-        
+        Selectbg[0].DOLocalMoveY(0, 0.7f);
+        yield return Selectbg[1].DOLocalMoveY(0, 0.7f).WaitForCompletion();
+
         yield return new WaitForSeconds(0.1f);
-        SelectUI[0].DOLocalMoveX(-930,1);
-        SelectUI[2].DOLocalMoveY(355,1);
-        SelectUI[3].DOLocalMoveY(-520,1);
-        SelectUI[4].DOLocalMoveX(-500,1);
+        SelectUI[0].DOLocalMoveX(-930, 1);
+        SelectUI[2].DOLocalMoveY(355, 1);
+        SelectUI[3].DOLocalMoveY(-520, 1);
+        SelectUI[4].DOLocalMoveX(-500, 1);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
         float size = 70;
         selectPanelRect.sizeDelta = new Vector2(size, 0);
-        DOTween.To(() => selectPanelRect.sizeDelta , x => selectPanelRect.sizeDelta = x, new Vector2(1000,0), 1);
+        yield return DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(1000, 0), 1).WaitForCompletion();
+        SelectSkillImage.transform.position = ASkillList[0].position;
+        graph.InitRaderGraph();
     }
     public void StageStart()
     {
@@ -145,38 +162,43 @@ public class TitleManager : MonoBehaviour
     }
     IEnumerator mainMenu()
     {
-        SelectUI[0].DOLocalMove(new Vector3(-1658,520),1);
-        SelectUI[2].DOLocalMove(new Vector3(-930,-760),1);
-        SelectUI[4].DOLocalMove(new Vector3(-1450,-383),1);
+        SelectUI[0].DOLocalMove(new Vector3(-1658, 520), 1);
+        SelectUI[2].DOLocalMove(new Vector3(-930, -760), 1);
+        SelectUI[4].DOLocalMove(new Vector3(-1450, -383), 1);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
-        DOTween.To(() => selectPanelRect.sizeDelta , x => selectPanelRect.sizeDelta = x, new Vector2(0,0), 1);
-        yield return SelectUI[3].DOLocalMove(new Vector3(930,-760),1).WaitForCompletion();
+        DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(0, 0), 1);
+        yield return SelectUI[3].DOLocalMove(new Vector3(930, -760), 1).WaitForCompletion();
         yield return new WaitForSeconds(0.1f);
 
-        Selectbg[0].DOLocalMove(new Vector3(0,-540),1);
-        Selectbg[1].DOLocalMove(new Vector3(0,540),1);
-        
-        InitPanel(0);
-        titleBtn[0].localPosition = new Vector2(2300,-189);
-        titleBtn[1].localPosition = new Vector2(2300,-415);
+        Selectbg[0].DOLocalMove(new Vector3(0, -540), 1);
+        Selectbg[1].DOLocalMove(new Vector3(0, 540), 1);
 
-        if(isButton) yield break;
+        InitPanel(0);
+        titleBtn[0].localPosition = new Vector2(2300, -189);
+        titleBtn[1].localPosition = new Vector2(2300, -415);
+
+        if (isButton) yield break;
         isButton = true;
-        titleBtn[0].DOLocalMoveX(1600,1.5f).SetEase(Ease.InOutBack);
+        titleBtn[0].DOLocalMoveX(1600, 1.5f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.2f);
-        yield return titleBtn[1].DOLocalMoveX(1500,1.5f).SetEase(Ease.InOutBack)
-        .OnComplete(()=> isButton = false).WaitForCompletion();
+        yield return titleBtn[1].DOLocalMoveX(1500, 1.5f).SetEase(Ease.InOutBack)
+        .OnComplete(() => isButton = false).WaitForCompletion();
     }
     public void ASkillButtonAdd(int i)
     {
         var p = SceneManager.instance.playerData;
         var b = Instantiate(ASkillPrefab, ASkillParent).GetComponent<Button>();
-        b.image.sprite = ASkillSprite[i];
+        ASkillList[i] = b.transform;
+        b.image.sprite = aSkillInfos[i].sprite;
         var num = i;
         b.onClick.AddListener(() =>
         {
             SceneManager.instance.ActiveIndex = num;
             SceneManager.instance.ActiveLevel = 3;
+            ASkillStatus[0].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[num].dmg);
+            ASkillStatus[1].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[num].range);
+            ASkillStatus[2].fillAmount = Mathf.InverseLerp(0, 100, aSkillInfos[num].coolTime);
+            SelectSkillImage.transform.position = b.transform.position;
         });
     }
     public void InitPanel(int index) //타이틀 패널 바꾸기
@@ -186,14 +208,14 @@ public class TitleManager : MonoBehaviour
             Panel[i].SetActive(false);
         }
         Panel[index].SetActive(true);
-        titleBtn[0].localPosition = new Vector3(1600,-189);
-        titleBtn[1].localPosition = new Vector3(1500,-415);
+        titleBtn[0].localPosition = new Vector3(1600, -189);
+        titleBtn[1].localPosition = new Vector3(1500, -415);
 
-        SelectUI[0].localPosition = new Vector3(-1658,520);
-        SelectUI[1].GetComponent<RectTransform>().sizeDelta = new Vector3(0,0);
+        SelectUI[0].localPosition = new Vector3(-1658, 520);
+        SelectUI[1].GetComponent<RectTransform>().sizeDelta = new Vector3(0, 0);
         SelectUI[2].localPosition = new Vector3(-930, 570);
-        SelectUI[3].localPosition = new Vector3(930,-800);
-        SelectUI[4].localPosition = new Vector3(-1450,-383);
+        SelectUI[3].localPosition = new Vector3(930, -800);
+        SelectUI[4].localPosition = new Vector3(-1450, -383);
 
         // Selectbg[0].localPosition = new Vector3(0,-540);
         // Selectbg[1].localPosition = new Vector3(0,540);

@@ -14,6 +14,8 @@ public class Mage5 : EnemyBase
         StartCoroutine(AttackCoroutine());
     }
 
+    List<EnemyBase> bats = new();
+
     IEnumerator AttackCoroutine()
     {
         isAttack = true;
@@ -46,6 +48,10 @@ public class Mage5 : EnemyBase
     protected override void Dead()
     {
         base.Dead();
+        foreach(EnemyBase e in bats)
+        {
+            PoolManager.Instance.PoolObject(e.EnemyTag, e.gameObject);
+        }
         anim.SetBool("Death", IsDeath());
     }
 }

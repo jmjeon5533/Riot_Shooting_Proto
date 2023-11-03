@@ -91,10 +91,10 @@ MonoBehaviour:
   ItemAddCount: 1
   isDeath: 0
   anim: {fileID: 311829893428489233}
-  cosHeight: 5
+  cosHeight: 2
   cosWeight: 0.5
   monsterCnt: 70
-  spawnCooltime: 0.1
+  spawnCooltime: 0.08
 --- !u!1001 &311829893428489237
 PrefabInstance:
   m_ObjectHideFlags: 0

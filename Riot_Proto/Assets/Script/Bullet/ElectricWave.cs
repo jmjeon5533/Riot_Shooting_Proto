@@ -27,6 +27,7 @@ public class ElectricWave : MonoBehaviour
     void Start()
     {
         player = GameManager.instance.player;
+        
     }
 
     // Update is called once per frame
@@ -69,4 +70,6 @@ public class ElectricWave : MonoBehaviour
             Destroy(gameObject);
         }
     } 
+
+
 }

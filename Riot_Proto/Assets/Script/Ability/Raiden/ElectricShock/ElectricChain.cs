@@ -30,6 +30,7 @@ public class ElectricChain : AbilityBase
     public override void Start()
     {
         Initalize();
+        originCooltime = maxCooltime;
     }
 
     // Update is called once per frame

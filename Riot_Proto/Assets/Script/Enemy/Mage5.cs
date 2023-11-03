@@ -5,7 +5,6 @@ using UnityEngine;
 public class Mage5 : EnemyBase
 {
     [SerializeField] Animator anim;
-
     protected override void Awake()
     {
         base.Awake();
@@ -15,11 +14,13 @@ public class Mage5 : EnemyBase
         StartCoroutine(AttackCoroutine());
     }
 
+    List<EnemyBase> bats = new();
+
     IEnumerator AttackCoroutine()
     {
         isAttack = true;
         anim.SetTrigger("Attack");
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.5f);
         float spawnSlimeY = 3.5f;
         int spawnPosNum = Random.Range(0, 4);
 
@@ -33,7 +34,7 @@ public class Mage5 : EnemyBase
             spawnSlimeY -= 2.5f;
         }
         yield return new WaitForSeconds(2.5f);
-        MovePos = new Vector3(Random.Range(2, 7), Random.Range(-6.5f, 3.5f));
+        MovePos = new Vector3(Random.Range(4, 9), Random.Range(-6.5f, 3.5f));
         isAttack = false;
     }
     public override void Init()
@@ -44,10 +45,13 @@ public class Mage5 : EnemyBase
     {
         base.Update();
     }
-
     protected override void Dead()
     {
         base.Dead();
+        foreach(EnemyBase e in bats)
+        {
+            PoolManager.Instance.PoolObject(e.EnemyTag, e.gameObject);
+        }
         anim.SetBool("Death", IsDeath());
     }
 }

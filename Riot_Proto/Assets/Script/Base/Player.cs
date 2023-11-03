@@ -17,7 +17,8 @@ public abstract class Player : MonoBehaviour
     public float MoveSpeed;
 
     public PlayerBullet[] bulletPrefab;
-    public bool IsShield;
+    public bool IsShield = false;
+    bool isShieldOn = false;
     Coroutine ShieldCoroutine;
     [SerializeField] GameObject ShieldObj;
 
@@ -156,6 +157,7 @@ public abstract class Player : MonoBehaviour
         {
 
         }
+        if (isShieldOn) return;
         if (ShieldCoroutine != null) StopCoroutine(ShieldCoroutine);
         ShieldCoroutine = StartCoroutine(Protect(time));
     }
@@ -163,6 +165,7 @@ public abstract class Player : MonoBehaviour
     public void ShieldOn()
     {
         IsShield = true;
+        isShieldOn = true;
         ShieldObj.SetActive(true);
         var mesh = ShieldObj.GetComponent<MeshRenderer>();
         mesh.material.SetFloat("_Dissolve", 0.75f);
@@ -179,10 +182,12 @@ public abstract class Player : MonoBehaviour
         var mesh = ShieldObj.GetComponent<MeshRenderer>();
         yield return StartCoroutine(FadeShield(true, mesh));
         IsShield = false;
+        isShieldOn = false;
     }
 
     IEnumerator Protect(float time)
     {
+
         
         IsShield = true;
         ShieldObj.SetActive(true);

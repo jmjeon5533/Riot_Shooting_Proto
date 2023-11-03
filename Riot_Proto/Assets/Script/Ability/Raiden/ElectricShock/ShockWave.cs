@@ -36,9 +36,9 @@ public class ShockWave : AbilityBase
 
     public override string GetStatText()
     {
-        return "디버프 지속 시간 " + duration + " → " + (duration + (increaseValue/3 * Mathf.Pow((1 + 0.08f), level))) +
+        return "디버프 지속 시간 " + duration + " → " + (duration + (increaseValue/3 * Mathf.Pow((1 + 0.08f), level+1))) +
             " 이동 속도 감소 " + (slowRate * 100) + "% →" + ((slowRate+0.06f) * 100) + "% " +
-            " 스킬 범위 " + range + " → " + (range + (increaseValue/2 * Mathf.Pow((1 + 0.1f), level)));
+            " 스킬 범위 " + range + " → " + (range + (increaseValue/2 * Mathf.Pow((1 + 0.1f), level+1)));
     }
 
     public override void LevelUp()
@@ -55,6 +55,12 @@ public class ShockWave : AbilityBase
         Initalize();
         maxCool = maxCooltime;
         useSkill = true;
+        originCooltime = maxCooltime;
+    }
+
+    public override void ResizingCooldown()
+    {
+        maxCooltime = originCooltime - (originCooltime * SubtractCool);
     }
 
     // Update is called once per frame

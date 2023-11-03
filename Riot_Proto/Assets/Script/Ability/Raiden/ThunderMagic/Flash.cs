@@ -78,7 +78,7 @@ public class Flash : AbilityBase
     public override void LevelUp()
     {
         base.LevelUp();
-        defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
+        defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1));
     }
 
     // Start is called before the first frame update
@@ -86,7 +86,14 @@ public class Flash : AbilityBase
     {
         maxCool = maxCooltime;
         useSkill = true;
+        originCooltime = maxCooltime;
         Initalize();
+    }
+
+    public override void ResizingCooldown()
+    {
+        maxCooltime = originCooltime - (originCooltime * SubtractCool);
+        maxCool = maxCooltime;
     }
 
     // Update is called once per frame

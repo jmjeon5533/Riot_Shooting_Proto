@@ -56,5 +56,5 @@ MonoBehaviour:
   maxCooltime: 3
   curCooltime: 0
   defaultDamage: 3
-  increaseValue: 2
+  increaseValue: 3
   damageRate: 0.4

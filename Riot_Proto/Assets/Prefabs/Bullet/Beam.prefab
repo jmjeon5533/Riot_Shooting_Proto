@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2675162008540819018}
   - component: {fileID: 2685306983772948244}
   - component: {fileID: 4378891003992046300}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: spark2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4890,7 +4890,7 @@ GameObject:
   - component: {fileID: 6247780523277808451}
   - component: {fileID: 6247780523277808449}
   - component: {fileID: 6247780523277808448}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9760,7 +9760,7 @@ GameObject:
   - component: {fileID: 6247780523553459142}
   - component: {fileID: 6247780523553459140}
   - component: {fileID: 6247780523553459143}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ray2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14630,7 +14630,7 @@ GameObject:
   - component: {fileID: 6256965065611425547}
   - component: {fileID: 6256965065611425545}
   - component: {fileID: 6256965065611425546}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ray2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19518,7 +19518,7 @@ GameObject:
   - component: {fileID: 6256965065940246708}
   - component: {fileID: 6256965065940246706}
   - component: {fileID: 6256965065940246707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: glow_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24388,7 +24388,7 @@ GameObject:
   - component: {fileID: 6256965065960061602}
   - component: {fileID: 6256965065960061600}
   - component: {fileID: 6256965065960061601}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: spark2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29267,7 +29267,7 @@ GameObject:
   - component: {fileID: 6256965066194554528}
   - component: {fileID: 6256965066194554558}
   - component: {fileID: 6256965066194554559}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34137,7 +34137,7 @@ GameObject:
   - component: {fileID: 6256965066364138704}
   - component: {fileID: 6256965066364138542}
   - component: {fileID: 6256965066364138543}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: rayMesh (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39007,7 +39007,7 @@ GameObject:
   - component: {fileID: 6256965066482838475}
   - component: {fileID: 6256965066482838473}
   - component: {fileID: 6256965066482838474}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: spark1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43886,7 +43886,7 @@ GameObject:
   - component: {fileID: 6256965066668188039}
   - component: {fileID: 6256965066668188037}
   - component: {fileID: 6256965066668188038}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BeamUV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48774,7 +48774,7 @@ GameObject:
   - component: {fileID: 6256965066882888433}
   - component: {fileID: 6256965066882888399}
   - component: {fileID: 6256965066882888432}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: sparkLong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53654,7 +53654,7 @@ GameObject:
   - component: {fileID: 6256965066993806245}
   - component: {fileID: 6256965066993806246}
   - component: {fileID: 8522612884736438309}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58570,7 +58570,7 @@ GameObject:
   - component: {fileID: 6368472874979466990}
   - component: {fileID: 6368472874979466976}
   - component: {fileID: 6368472874979466977}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Beam_Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63458,7 +63458,7 @@ GameObject:
   - component: {fileID: 6368472875927490590}
   - component: {fileID: 6368472875927490576}
   - component: {fileID: 6368472875927490577}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Beam_Lighting
   m_TagString: Untagged
   m_Icon: {fileID: 0}

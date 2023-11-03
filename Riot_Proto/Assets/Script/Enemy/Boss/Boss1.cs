@@ -302,8 +302,8 @@ public class Boss1 : BossBase
             StartCoroutine(DeadMotion());
         }
         GameManager.instance.GetMoney += Mathf.RoundToInt(damage * 0.5f);
-        var x = Random.Range(-collider.radius / 4, collider.radius / 4);
-        var y = Random.Range(-collider.height / 4, collider.height / 4);
+        var x = Random.Range(-collider.bounds.size.x / 4, collider.bounds.size.x / 4);
+        var y = Random.Range(-collider.bounds.size.y / 4, collider.bounds.size.y / 4);
 
         var rand = new Vector3(x, y, 0);
         PoolManager.Instance.GetObject("Hit", transform.position + rand, Quaternion.identity);

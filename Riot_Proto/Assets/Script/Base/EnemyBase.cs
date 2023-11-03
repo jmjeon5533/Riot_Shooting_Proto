@@ -31,9 +31,9 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected bool isAttack = false;
 
-    [SerializeField] List<BuffBase> EnemyBuffList = new List<BuffBase>();
+    [SerializeField]protected List<BuffBase> EnemyBuffList = new List<BuffBase>();
 
-    protected CapsuleCollider collider;
+    protected Collider collider;
 
     public virtual void Init()
     {
@@ -52,7 +52,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
     void Start()
     {
-        collider = GetComponent<CapsuleCollider>();
+        collider = GetComponent<Collider>();
         Init();
     }
     public void MoveVecInit(Vector3 movePos)
@@ -208,8 +208,8 @@ public abstract class EnemyBase : MonoBehaviour
             
         } else
         {
-            var x = Random.Range(-collider.radius/4,collider.radius/4);
-            var y = Random.Range(-collider.height/4,collider.height/4);
+            var x = Random.Range(-collider.bounds.size.x/4,collider.bounds.size.x/4);
+            var y = Random.Range(-collider.bounds.size.y/4,collider.bounds.size.y/4);
 
             var rand = new Vector3(x,y,0);
             PoolManager.Instance.GetObject("Hit", transform.position + rand, Quaternion.identity);

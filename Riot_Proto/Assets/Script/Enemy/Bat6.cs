@@ -32,7 +32,7 @@ public class Bat6 : EnemyBase
         }
 
         float moveValue = transform.position.x;
-        transform.position = new Vector3(moveValue, axisHorizon + Mathf.Sin(moveValue * sinLine.x) * sinLine.y, 0);
+        transform.position = new Vector3(moveValue, axisHorizon + Mathf.Cos(moveValue * sinLine.x) * sinLine.y, 0);
     }
     protected override void Dead()
     {

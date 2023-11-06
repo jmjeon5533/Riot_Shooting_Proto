@@ -91,7 +91,7 @@ MonoBehaviour:
   ItemAddCount: 1
   isDeath: 0
   anim: {fileID: 311829893428489233}
-  monsterCnt: 15
+  monsterCnt: 10
   spawnCooltime: 0.2
 --- !u!1001 &311829893428489237
 PrefabInstance:

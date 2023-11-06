@@ -35,6 +35,7 @@ public class Mage7 : EnemyBase
             enemy.axisHorizon = height;
             yield return new WaitForSeconds(spawnCooltime);
         }
+        yield return new WaitForSeconds(0.6f);
         isAttack = false;
     }
     public override void Init()

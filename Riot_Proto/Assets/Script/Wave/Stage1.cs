@@ -109,6 +109,7 @@ public class Stage1 : WaveScript
     //Extra Wave
     public override IEnumerator wave7()
     {
+        yield return new WaitForSeconds(1.8f);
         for (int i = 0; i < 2; i++)
         {
             var vecY = 4 - (i * 8);
@@ -132,6 +133,7 @@ public class Stage1 : WaveScript
     }
     public override IEnumerator wave9()
     {
+        yield return new WaitForSeconds(0.8f);
         var enemy = PoolManager.Instance.GetObject("Mage7", new Vector3(15,0,0));
         GameManager.instance.curEnemys.Add(enemy);
         enemy.GetComponent<EnemyBase>().MovePos = new Vector3(8,0,0);

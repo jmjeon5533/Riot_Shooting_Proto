@@ -639,7 +639,7 @@ MonoBehaviour:
     maxAmount: 10
   - key: Bat6
     obj: {fileID: 809993902201337144, guid: 43e84164615e0a645965b8a06a4bb99a, type: 3}
-    maxAmount: 100
+    maxAmount: 200
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

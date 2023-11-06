@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Bat6 : EnemyBase
 {
-    public Vector3 movedir;
     [SerializeField] Animator anim;
+    public Vector2 sinLine;
+    public float axisHorizon;
     protected override void Attack()
     {
-
+    
     }
     public override void Init()
     {
@@ -17,8 +18,9 @@ public class Bat6 : EnemyBase
     }
     protected override void Move()
     {
-        transform.Translate(Vector3.left * Time.deltaTime * MoveSpeed);
+        transform.Translate(Vector2.left * Time.deltaTime * MoveSpeed);
     }
+
     protected override void Update()
     {
         base.Update();
@@ -29,8 +31,8 @@ public class Bat6 : EnemyBase
             GameManager.instance.curEnemys.Remove(gameObject);
         }
 
-        float moveValue = -transform.position.y * 0.5f;
-        //transform.position = new Vector3(transform, Mathf.Sin(moveValue) * 0.5f, 0);
+        float moveValue = transform.position.x;
+        transform.position = new Vector3(moveValue, axisHorizon + Mathf.Sin(moveValue * sinLine.x) * sinLine.y, 0);
     }
     protected override void Dead()
     {

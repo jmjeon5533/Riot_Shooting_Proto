@@ -81,7 +81,7 @@ MonoBehaviour:
   baseHp: 0
   XPRate: 5
   baseXPRate: 0
-  MoveSpeed: 6
+  MoveSpeed: 6.5
   AttackCooltime: 1
   damagedMultiplier: 1
   shader: {fileID: 0}
@@ -90,8 +90,9 @@ MonoBehaviour:
   EnemyTag: Bat6
   ItemAddCount: 1
   isDeath: 0
-  movedir: {x: 0, y: 0, z: 0}
   anim: {fileID: 809993903502700854}
+  sinLine: {x: 0.5, y: 3}
+  axisHorizon: 0
 --- !u!1001 &809993903502700849
 PrefabInstance:
   m_ObjectHideFlags: 0

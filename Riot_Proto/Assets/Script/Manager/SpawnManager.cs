@@ -30,7 +30,7 @@ public class SpawnManager : MonoBehaviour
         {
             curMobSpawn = 0;
             coolMobSpawn = Random.Range(3f,8f);
-            int index = 0;
+            int index = 1; //change this value
             switch(index)
             {
                 case 0:

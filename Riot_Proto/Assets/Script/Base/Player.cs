@@ -6,6 +6,7 @@ public abstract class Player : MonoBehaviour
 {
 
     public int HP;
+    public int MaxHP = 3;
     public int damage;
 
     public int CritRate;
@@ -15,6 +16,7 @@ public abstract class Player : MonoBehaviour
     public int bulletSpeed;
 
     public float MoveSpeed;
+
 
     public PlayerBullet[] bulletPrefab;
     public bool IsShield = false;

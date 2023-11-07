@@ -21,7 +21,6 @@ public class Mage6 : EnemyBase
     {
         StartCoroutine(AttackCoroutine());
     }
-    public void batSpawn() => StartCoroutine(BatSpawn());
 
     private void OnEnable()
     {
@@ -34,30 +33,6 @@ public class Mage6 : EnemyBase
             shield.transform.position = ShieldPoint.position + (Vector3.up * 3f);
             shield = PoolManager.Instance.GetObject("Shield", ShieldPoint);
             shield.transform.position = ShieldPoint.position + ((Vector3.down * 3f) + (Vector3.left * 1.5f));
-            shield = PoolManager.Instance.GetObject("Shield", ShieldPoint);
-            shield.transform.position = ShieldPoint.position + ((Vector3.right * 3f) + (Vector3.right * 1.5f));
-    }
-    IEnumerator BatSpawn()
-    {
-        int count = 0;
-        while(gameObject.activeSelf)
-        {
-            count++;
-            for(int i = 0; i < 5; i++)
-            {
-            var rand = count % 2 == 0 ? -1 : 1;
-            var rand2 = count % 2 == 0 ? -1 : 1;
-            var Y = Random.Range(3f,3.6f) * rand;
-            var enemy = PoolManager.Instance.GetObject("Bat3",new Vector3(13,Y + (Random.Range(0.5f,4f) * rand2),0)).GetComponent<Bat3>();
-            enemy.movedir = (GameManager.instance.player.transform.position + 
-                (Vector3)Random.insideUnitCircle * 2 - enemy.transform.position).normalized;
-            enemy.XPRate = 0;
-            enemy.ItemAddCount = 0.1f;
-            yield return new WaitForSeconds(0.01f);
-            }
-            yield return new WaitForSeconds(2);
-        }
-
     }
 
     IEnumerator AttackCoroutine()

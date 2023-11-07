@@ -21,7 +21,6 @@ public class Mage6 : EnemyBase
     {
         StartCoroutine(AttackCoroutine());
     }
-    public void batSpawn() => StartCoroutine(BatSpawn());
 
     private void OnEnable()
     {

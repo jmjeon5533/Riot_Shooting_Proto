@@ -184,6 +184,7 @@ public class Stage1 : WaveScript
             GameManager.instance.curEnemys.Add(enemy2);
             yield return new WaitForSeconds(1.5f);
         }
+    }
 
     public override IEnumerator wave11()
     {

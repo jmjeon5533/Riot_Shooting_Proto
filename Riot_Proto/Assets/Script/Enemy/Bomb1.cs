@@ -29,12 +29,13 @@ public class Bomb1 : MonoBehaviour
             yield return new WaitForSeconds(.2f);
         }
 
-        for(int i = 0; i < 8; i++)
+        for(int i = 0; i < 4; i++)
         {
             var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
-            float angle = i * Mathf.Deg2Rad;
-            Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0); // 라디안 각도로 방향 벡터 생성
-            b.dir = direction;
+            //float angle = i * 45 * Mathf.Deg2Rad;
+            float angle = Random.Range(0, 360) * Mathf.Deg2Rad;
+            Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+            b.dir = direction.normalized;
             b.SetMoveSpeed(5f);
         }
 

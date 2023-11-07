@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2456542768600381220}
   m_Layer: 0
   m_Name: SpiderBomb
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9c09978a880624ab3510c19d2bcd1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 40
+  HP: 60
   baseHp: 0
   XPRate: 7
   baseXPRate: 0

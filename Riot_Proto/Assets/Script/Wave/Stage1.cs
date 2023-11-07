@@ -144,7 +144,6 @@ public class Stage1 : WaveScript
     {
         var enemy = PoolManager.Instance.GetObject("Mage6", new Vector3(15, 0, 0));
         GameManager.instance.curEnemys.Add(enemy);
-
         yield return new WaitForSeconds(1f);
     }
     public override IEnumerator wave9()

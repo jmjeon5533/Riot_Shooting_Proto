@@ -50,6 +50,7 @@ public class AbilityCard : MonoBehaviour
 
     List<GameObject> skillIcons = new List<GameObject>();
     [SerializeField] GameObject skillIconObj;
+    [SerializeField] Text clickText;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +61,8 @@ public class AbilityCard : MonoBehaviour
         AddSkill(activeSkills[SceneManager.instance.ActiveIndex]);
             
     }
+
+    Tween tween;
 
     // Update is called once per frame
     void Update()
@@ -101,6 +104,7 @@ public class AbilityCard : MonoBehaviour
         {
             panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0), 0);
             panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0.5f), 0.5f);
+            tween = clickText.DOFade(1, 1).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo).SetUpdate(true);
 
         }
 
@@ -145,6 +149,8 @@ public class AbilityCard : MonoBehaviour
             {
                 panel.SetActive(false);
                 isDuplicate = false;
+                clickText.DOFade(0, 0.5f).OnComplete(() => tween.Pause());
+                
                 Debug.Log("2");
             }
         }
@@ -393,6 +399,7 @@ public class AbilityCard : MonoBehaviour
         GameManager.instance.FadeCoroutine = null;
         GameManager.instance.SelectChance--;
             StartCoroutine(ISelect(true));
+        
     }
 
     void ShowActiveSkillButton()

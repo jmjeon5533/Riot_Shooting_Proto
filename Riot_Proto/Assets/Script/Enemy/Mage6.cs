@@ -59,6 +59,7 @@ public class Mage6 : EnemyBase
     {
         HP = baseHp;
         StatMultiplier();
+        batSpawn();
     }
     protected override void Update()
     {

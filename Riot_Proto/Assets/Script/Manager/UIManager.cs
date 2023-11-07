@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance { get; private set; }
 
     public Image XPBar;
+    public RectTransform XPRectTransform;
     public Transform canvas;
     public Transform bgCanvas;
     public Transform bgFolder;
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
     public Transform OverTab;
     public GameObject Bossbar;
     public Image BossbarImage;
+    public Image characterImage;
 
     public RectTransform hpPanel;
     public RectTransform abilityPanel;
@@ -39,7 +41,7 @@ public class UIManager : MonoBehaviour
     public int Ratevalue;
     public Text[] RateText;
     public Image curPowerCount;
-    public Transform powerPanel;
+    public RectTransform powerPanel;
 
     public Image FadeBg;
     public GameObject StagePrefab;
@@ -60,10 +62,12 @@ public class UIManager : MonoBehaviour
     {
         XPBarUpdate();
         Bossbar.SetActive(false);
-        hpPanel.transform.DOMoveX(-15, 0);
+        hpPanel.DOAnchorPosX(2000, 0);
         abilityPanel.transform.DOMoveX(-15, 0);
-        MainRateText.transform.DOMoveX(15.5f, 0);
-        powerPanel.transform.DOLocalMoveX(-1138, 0);
+        characterImage.rectTransform.DOAnchorPosX(-1435, 0);
+        MainRateText.rectTransform.DOAnchorPosY(160, 0);
+        powerPanel.DOAnchorPosX(-1200, 0);
+        XPRectTransform.DOAnchorPosX(-1200, 0);
         activeSkill.DOMoveX(15, 0);
     }
     private void Update()
@@ -95,11 +99,13 @@ public class UIManager : MonoBehaviour
 
     public void ShowImg()
     {
-        hpPanel.transform.DOMoveX(-10, 1f).SetEase(Ease.OutExpo);
+        hpPanel.DOAnchorPosX(1209, 1).SetEase(Ease.OutExpo);
+        characterImage.rectTransform.DOAnchorPosX(-628-235, 1).SetEase(Ease.OutExpo);
+        MainRateText.rectTransform.DOAnchorPosY(0, 1).SetEase(Ease.OutExpo);
+        powerPanel.DOAnchorPosX(-628, 1).SetEase(Ease.OutExpo);
+        XPRectTransform.DOAnchorPosX(-628, 1).SetEase(Ease.OutExpo);
         abilityPanel.transform.DOMoveX(-10, 1f).SetEase(Ease.OutExpo);
-        MainRateText.transform.DOMoveX(10, 1f).SetEase(Ease.OutExpo);
         activeSkill.transform.DOMoveX(9, 1f).SetEase(Ease.OutExpo);
-        powerPanel.transform.DOLocalMoveX(-790, 1f).SetEase(Ease.OutExpo);
         //StartCoroutine(ShowUI());
     }
 

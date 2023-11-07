@@ -32,6 +32,8 @@ public class UIManager : MonoBehaviour
     public Image BossbarImage;
     public Image characterImage;
 
+    public RectTransform[] iconPosList;
+
     public RectTransform hpPanel;
     public RectTransform abilityPanel;
     public Transform activeSkill;

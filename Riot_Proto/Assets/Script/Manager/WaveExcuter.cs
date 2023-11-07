@@ -22,6 +22,7 @@ public class WaveExcuter : MonoBehaviour
             waveScript.Waves.Add(waveScript.wave8);
             waveScript.Waves.Add(waveScript.wave9);
             waveScript.Waves.Add(waveScript.wave10);
+            //waveScript.Waves.Add(waveScript.wave11);
         }
     }
 

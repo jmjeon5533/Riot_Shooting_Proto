@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bat6 : EnemyBase
+public class Spider2 : EnemyBase
 {
     [SerializeField] Animator anim;
-    public Vector2 sinLine;
-    public float axisHorizon;
     protected override void Attack()
     {
-    
+        StartCoroutine(AttackCoroutine());
+    }
+    IEnumerator AttackCoroutine()
+    {
+        isAttack = true;
+        var b = PoolManager.Instance.GetObject("Bomb1", transform.position).GetComponent<Bomb1>();
+        b.Bomb();
+        yield return new WaitForSeconds(0.5f);
+        isAttack = false;
     }
     public override void Init()
     {
@@ -31,8 +37,7 @@ public class Bat6 : EnemyBase
             GameManager.instance.curEnemys.Remove(gameObject);
         }
 
-        float moveValue = transform.position.x;
-        transform.position = new Vector3(moveValue, axisHorizon + Mathf.Sin(moveValue * sinLine.x) * sinLine.y, 0);
+        transform.rotation = Quaternion.Euler(0, 0, Random.Range(-45f, 45f));
     }
     protected override void Dead()
     {

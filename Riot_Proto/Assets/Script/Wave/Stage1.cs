@@ -132,7 +132,7 @@ public class Stage1 : WaveScript
                 {
                     var enemy = PoolManager.Instance.GetObject("Bat5", new Vector3(13 + k * 5, firstspawnY, 0), Quaternion.identity);
                     enemy.GetComponent<Bat5>().HP = 100;
-                    //GameManager.instance.curEnemys.Add(enemy);
+                    GameManager.instance.curEnemys.Add(enemy);
                 }
                 firstspawnY -= 2.5f;
             }

@@ -73732,9 +73732,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1017e18ed64d044409fe78cd57835b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
+  duration: 2
   delay: 1
-  attackTime: 2
+  attackTime: 1.25
   poolTag: FireRise
 --- !u!1 &9001269578173851990
 GameObject:

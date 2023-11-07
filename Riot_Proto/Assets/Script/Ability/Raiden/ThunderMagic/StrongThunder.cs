@@ -37,7 +37,7 @@ public class StrongThunder : AbilityBase
                 //    target = null;
                 //}   
             }
-            Thunder t = Instantiate(thunders[level-1], new Vector3(0, 0, 0), Quaternion.identity).GetComponent<Thunder>();
+            Thunder t = Instantiate(thunders[level], new Vector3(0, 0, 0), Quaternion.identity).GetComponent<Thunder>();
              t.SetDamage(damage);
             t.radius = radius;
             t.transform.localScale = new Vector3(t.transform.localScale.x, t.transform.localScale.y, t.transform.localScale.z);

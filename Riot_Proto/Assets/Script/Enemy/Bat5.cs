@@ -23,7 +23,7 @@ public class Bat5 : EnemyBase
     protected override void Update()
     {
         base.Update();
-        if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 5
+        if (-transform.position.x >= GameManager.instance.MoveRange.x + 5
         || Mathf.Abs(transform.position.y) >= GameManager.instance.MoveRange.y + 5)
         {
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);

@@ -642,6 +642,11 @@ MonoBehaviour:
     maxAmount: 200
   - key: Turtle4
     obj: {fileID: 4887867709369130154, guid: fa8cf74abd9cd3d47b7b700a9c6cc746, type: 3}
+  - key: Bomb1
+    obj: {fileID: 6412851011409172485, guid: 5f73f9bee2b21614389fef70ff25fda5, type: 3}
+    maxAmount: 50
+  - key: Spider2
+    obj: {fileID: 2456542768600381216, guid: 641636adbc200e7479e30f9c03383c0b, type: 3}
     maxAmount: 50
 --- !u!1 &125394331
 GameObject:

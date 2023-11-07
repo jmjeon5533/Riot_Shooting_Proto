@@ -119,9 +119,28 @@ public class Stage1 : WaveScript
             e.GetComponent<EnemyBase>().MovePos = new Vector3(7, Random.Range(-6.5f, 3.5f), 0);
         }
         yield return new WaitForSeconds(1f);
-        var enemy = PoolManager.Instance.GetObject("Mage5", new Vector3(15, 0, 0));
-        GameManager.instance.curEnemys.Add(enemy);
-        enemy.GetComponent<EnemyBase>().MovePos = new Vector3(8, 0, 0);
+        //var enemy = PoolManager.Instance.GetObject("Mage5", new Vector3(15, 0, 0));
+        //GameManager.instance.curEnemys.Add(enemy);
+        //enemy.GetComponent<EnemyBase>().MovePos = new Vector3(8, 0, 0);
+        float firstspawnY = 3.5f;
+        for (int k = 0; k < 3; k++)
+        {
+            int spawnPosNum = Random.Range(0, 4);
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (spawnPosNum != i)
+                {
+                    var enemy = PoolManager.Instance.GetObject("Bat5", new Vector3(13 + k * 5, firstspawnY, 0), Quaternion.identity);
+                    enemy.GetComponent<Bat5>().HP = 100;
+                    //GameManager.instance.curEnemys.Add(enemy);
+                }
+                firstspawnY -= 2.5f;
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
+
         yield return new WaitForSeconds(2f);
     }
 
@@ -165,5 +184,19 @@ public class Stage1 : WaveScript
             GameManager.instance.curEnemys.Add(enemy2);
             yield return new WaitForSeconds(1.5f);
         }
+
+    public override IEnumerator wave11()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            var vecY = 4 - (i * 8);
+            var e = PoolManager.Instance.GetObject("Mage1", new Vector3(15, vecY, 0));
+            GameManager.instance.curEnemys.Add(e);
+            e.GetComponent<EnemyBase>().MovePos = new Vector3(7, Random.Range(-6.5f, 3.5f), 0);
+        }
+
+        var eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, 0, 0));
+        GameManager.instance.curEnemys.Add(eo);
+        yield return new WaitForSeconds(1f);
     }
 }

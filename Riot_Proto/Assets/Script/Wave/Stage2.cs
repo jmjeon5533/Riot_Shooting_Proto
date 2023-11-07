@@ -55,7 +55,13 @@ public class Stage2 : WaveScript
     public override IEnumerator wave9()
     {
         yield return new WaitForSeconds(3);
-        Debug.Log(18);
+        Debug.Log(19);
+    }
+
+    public override IEnumerator wave11()
+    {
+        yield return new WaitForSeconds(3);
+        Debug.Log(21);
     }
     public override IEnumerator wave10()
     {

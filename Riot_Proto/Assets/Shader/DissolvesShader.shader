@@ -5,7 +5,7 @@ Shader "Custom/DissolvesShader"
         _EC ("Color", Color) = (1,0,0,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _NoiseTex("_NoiseTex", 2D) = "white" {}
-        _DissolvePower("_DissolvePower", float) = 0
+        _DissolvePower("_DissolvePower", Range(-0.05,1)) = 0
         _Depth("Depth", float) = 0.04
     }
     SubShader

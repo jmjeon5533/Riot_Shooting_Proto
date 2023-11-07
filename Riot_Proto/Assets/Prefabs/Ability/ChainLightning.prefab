@@ -59,7 +59,7 @@ MonoBehaviour:
   curCooltime: 0
   defaultDamage: 8
   damageRate: 0.3
-  increaseValue: 2
+  increaseValue: 3
   maxAttack: 7
   bullet: {fileID: 1734367368388147868, guid: ac00b179c0ba8ed48a3b003e3bae96db, type: 3}
   target: {fileID: 0}

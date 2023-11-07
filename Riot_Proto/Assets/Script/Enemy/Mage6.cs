@@ -10,6 +10,7 @@ public class Mage6 : EnemyBase
 
     [SerializeField] Transform ShieldPoint;
     [SerializeField] float rotSpeed;
+    public void batSpawn() => StartCoroutine(BatSpawn());
 
     bool isSpawned = false;
 

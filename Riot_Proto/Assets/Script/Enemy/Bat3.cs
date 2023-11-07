@@ -22,8 +22,8 @@ public class Bat3 : EnemyBase
     protected override void Update()
     {
         base.Update();
-        if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 5
-        || Mathf.Abs(transform.position.y) >= GameManager.instance.MoveRange.y + 5)
+        if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 8
+        || Mathf.Abs(transform.position.y) >= GameManager.instance.MoveRange.y + 8)
         {
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);
             GameManager.instance.curEnemys.Remove(gameObject);

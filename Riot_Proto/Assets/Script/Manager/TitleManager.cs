@@ -46,7 +46,6 @@ public class TitleManager : MonoBehaviour
 
     [SerializeField] RadarGraph graph;
     Mesh statusPentagon;
-    Vector2[] vertices;
     private void Awake()
     {
         instance = this;

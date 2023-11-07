@@ -75,7 +75,10 @@ public class UIManager : MonoBehaviour
             Ratevalue = (int)Mathf.MoveTowards(Ratevalue,g.GetMoney,value);
         }
         MainRateText.text = (Ratevalue < 1000) ? string.Format("{0:D4}", Ratevalue) : Ratevalue.ToString();
-
+        for (int i = 0; i < RateText.Length; i++)
+        {
+            RateText[i].text = GameManager.instance.GetMoney.ToString();
+        }
     }
     public void InitHeart()
     {
@@ -133,10 +136,6 @@ public class UIManager : MonoBehaviour
     }
     public void InitRate()
     {
-        for (int i = 0; i < RateText.Length; i++)
-        {
-            RateText[i].text = GameManager.instance.GetMoney.ToString();
-        }
         if(GameManager.instance.GetMoney >= NextHPCount)
         {
             var g = GameManager.instance;

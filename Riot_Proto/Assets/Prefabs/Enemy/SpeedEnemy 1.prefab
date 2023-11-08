@@ -72,7 +72,7 @@ MonoBehaviour:
   mesh: {fileID: 892037291744836058}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Bat7
-  ItemAddCount: 0.1
+  ItemAddCount: 0.07
   isDeath: 0
   movedir: {x: 0, y: 0, z: 0}
   anim: {fileID: 8056954053229374618}

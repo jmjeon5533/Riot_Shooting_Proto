@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb1 : MonoBehaviour
+public class Bomb1 : EnemyBullet
 {
     public string EnemyTag;
     [SerializeField] Color warningColor;

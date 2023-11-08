@@ -50,8 +50,8 @@ MonoBehaviour:
   skillImage: {fileID: 21300000, guid: 48f1d4731202fb0409a9bc79e8f77fc5, type: 3}
   skillIcon: {fileID: 0}
   skillName: "\uC1C4\uB3C4"
-  skillDescription: "\uC801 \uBC29\uD5A5\uC73C\uB85C \uC804\uAE30 \uD22C\uC0AC\uCCB4\uB97C
-    \uBC1C\uC0AC\uD55C\uB2E4. \uC801\uC911\uD55C \uC801\uC740 \uBC1B\uB294 \uB370\uBBF8\uC9C0
+  skillDescription: "\uBD80\uCC44\uAF34 \uBAA8\uC591\uC73C\uB85C 3\uAC1C\uC758 \uD0C4\uD658\uC744
+    \uBC1C\uC0AC\uD558\uACE0.\n\uC801\uC911\uD55C \uC801\uC740 \uBC1B\uB294 \uB370\uBBF8\uC9C0
     \uC99D\uAC00 \uB514\uBC84\uD504\uB97C \uD68D\uB4DD\uD55C\uB2E4. "
   stats: 
   bullet: {fileID: 8658052103336013023, guid: a03f565b18fe2c643a5271a1c72c3861, type: 3}

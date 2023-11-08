@@ -29,7 +29,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2468578831772134555}
   m_Father: {fileID: 0}
@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 2045760714009854180}
   coolTimeUI: {fileID: 5589623513516650483}
+  colorImg: {fileID: 3341017112748987246}
   speed: 3
   ability: {fileID: 0}
 --- !u!1 &4813835523505672569

@@ -7,6 +7,7 @@ public class SkillIcon : MonoBehaviour
 {
     [SerializeField] Image img;
     [SerializeField] Image coolTimeUI;
+    public Image colorImg;
 
     [SerializeField] float speed = 3;
 

@@ -189,8 +189,8 @@ public class Stage1 : WaveScript
             var e = PoolManager.Instance.GetObject("Mage1", new Vector3(15, vecY, 0));
             var enemy1 = PoolManager.Instance.GetObject("Bat6", new Vector3(13, 5, 0)).GetComponent<Bat6>();
             var enemy2 = PoolManager.Instance.GetObject("Bat6", new Vector3(13, -5, 0)).GetComponent<Bat6>();
-            enemy1.sinLine.y *= -2;
-            enemy2.sinLine.y *= 2;
+            enemy1.sinLine.y *= -0.75f;
+            enemy2.sinLine.y *= 0.75f;
             enemy2.axisHorizon = 0;
             enemy1.axisHorizon = 0;
             GameManager.instance.curEnemys.Add(e);
@@ -199,7 +199,7 @@ public class Stage1 : WaveScript
             e.GetComponent<EnemyBase>().MovePos = new Vector3(7, Random.Range(-6.5f, 3.5f), 0);
         }
 
-        var eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, 0, 0));
+        var eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, 0, 0));  
         GameManager.instance.curEnemys.Add(eo);
         yield return new WaitForSeconds(1f);
     }

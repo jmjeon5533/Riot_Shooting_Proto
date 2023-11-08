@@ -344,23 +344,23 @@ public class AbilityCard : MonoBehaviour
         {
             if(img.name.Equals(abi.skillName))
             {
-                var imgColor = img.GetComponent<Image>();
+                var imgColor = img.GetComponent<SkillIcon>();
                 switch(abilityLevels[abi.skillName])
                 {
                     case 2:
-                        imgColor.color = Color.green;
+                        imgColor.colorImg.color = Color.green;
                         break;
                     case 3:
-                        imgColor.color = Color.blue;
+                        imgColor.colorImg.color = Color.blue;
                         break;
                     case 4:
-                        imgColor.color = new Color(100/255f,1 / 255f, 255 / 255f);
+                        imgColor.colorImg.color = new Color(100/255f,1 / 255f, 255 / 255f);
                         break;
                     case 5:
-                        imgColor.color = new Color(255 / 255f, 175 / 255f, 1 / 255f);
+                        imgColor.colorImg.color = new Color(255 / 255f, 175 / 255f, 1 / 255f);
                         break;
                     case 6:
-                        imgColor.color = new Color(1 / 255f, 255 / 255f, 255 / 255f);
+                        imgColor.colorImg.color = new Color(1 / 255f, 255 / 255f, 255 / 255f);
                         break;
                 }
                 break;

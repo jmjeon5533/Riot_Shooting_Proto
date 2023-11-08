@@ -1039,7 +1039,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB2E4\uC74C \uB2E8\uACC4\uB85C"
+  m_Text: "\uBA54\uC778\uBA54\uB274"
 --- !u!222 &210102544
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6748,7 +6748,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1480380333}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: NextStage
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

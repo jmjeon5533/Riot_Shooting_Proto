@@ -27,12 +27,15 @@ public class SceneManager : MonoBehaviour
     public int ActiveLevel; //액티브 스킬 레벨
     public Vector2 ScreenArea;
     public Vector2 ScreenWidth;
+    public string loadingpath = "Main"; //로딩 후 넘어갈 씬
 
     [Space(10)]
     public PlayerData playerData;
     [SerializeField] Transform OptionPanel;
     public Toggle CtrlToggle;
     bool OptionMove;
+
+    public void initPanel(int index) => TitleManager.instance.InitPanel(index);
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -63,12 +66,13 @@ public class SceneManager : MonoBehaviour
     }
     public void StageStart()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+        loadingpath = "Main";
+        UnityEngine.SceneManagement.SceneManager.LoadScene("loading");
     }
     public void MainMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
-        this.Invoke(() => TitleManager.instance.InitPanel(0), Time.deltaTime);
+        loadingpath = "Title";
+        UnityEngine.SceneManagement.SceneManager.LoadScene("loading");
     }
     public void Option(float y)
     {

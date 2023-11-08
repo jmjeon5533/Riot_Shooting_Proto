@@ -3992,7 +3992,7 @@ MonoBehaviour:
     dmg: 9
     range: 5
     coolTime: 80
-  - sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - sprite: {fileID: 21300000, guid: 25b743b2ff1a86541b7693355f611eb6, type: 3}
     name: "\uC804\uC120"
     explain: "\uB51C\uB808\uC774 \uD6C4 \uC804\uAE30 \uAD11\uC120\uC744 \uC9C0\uC18D
       \uC2DC\uAC04 \uB3D9\uC548 \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
@@ -7040,6 +7040,7 @@ MonoBehaviour:
   ActiveLevel: 0
   ScreenArea: {x: 0, y: 0}
   ScreenWidth: {x: 0, y: 0}
+  loadingpath: 
   playerData:
     PlayerMora: 0
   OptionPanel: {fileID: 1759216702}

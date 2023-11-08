@@ -70,26 +70,6 @@ public class TitleManager : MonoBehaviour
         ASkillStatus[1].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[0].range);
         ASkillStatus[2].fillAmount = Mathf.InverseLerp(0, 130, aSkillInfos[0].coolTime);
     }
-    void pentagonInit()
-    {
-        List<Vector3> vertices = new List<Vector3>();
-        for (float i = 0; i < 360; i += 360 / 5)
-        {
-            Vector3 vec = new Vector3(Mathf.Cos(i * Mathf.Deg2Rad), Mathf.Sin(i * Mathf.Deg2Rad));
-            vertices.Add(vec);
-        }
-        statusPentagon.vertices = vertices.ToArray();
-        int[] triangles = new int[15];
-        for (int i = 0; i < 5; i++)
-        {
-            triangles[(i * 3) + 0] = 0;
-
-            triangles[(i * 3) + 1] = i + 1;
-
-            triangles[(i * 3) + 2] = (i + 2 > 5) ? 1 : i + 2;
-        }
-        statusPentagon.triangles = triangles;
-    }
 
     [RuntimeInitializeOnLoadMethod]
     static void OnAppStart()
@@ -154,6 +134,7 @@ public class TitleManager : MonoBehaviour
     }
     public void StageStart()
     {
+        SceneManager.instance.loadingpath = "Main";
         UnityEngine.SceneManagement.SceneManager.LoadScene("Loading");
     }
     public void MainMenu()

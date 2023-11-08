@@ -645,10 +645,10 @@ MonoBehaviour:
     maxAmount: 0
   - key: Bomb1
     obj: {fileID: 6412851011409172485, guid: 5f73f9bee2b21614389fef70ff25fda5, type: 3}
-    maxAmount: 50
+    maxAmount: 60
   - key: Spider2
     obj: {fileID: 2456542768600381216, guid: 641636adbc200e7479e30f9c03383c0b, type: 3}
-    maxAmount: 50
+    maxAmount: 60
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

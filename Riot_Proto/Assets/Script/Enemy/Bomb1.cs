@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb1 : MonoBehaviour
+public class Bomb1 : EnemyBullet
 {
-    public string EnemyTag;
     [SerializeField] Color warningColor;
     MeshRenderer mesh;
     private void Awake()
@@ -19,6 +18,7 @@ public class Bomb1 : MonoBehaviour
 
     private IEnumerator BombCoroutine()
     {
+        transform.localScale = Vector3.one * 0.7f;
         yield return new WaitForSeconds(2f);
 
         for (int i = 0; i < 3; i++)
@@ -39,7 +39,7 @@ public class Bomb1 : MonoBehaviour
             b.SetMoveSpeed(5f);
         }
 
-        PoolManager.Instance.PoolObject(EnemyTag, gameObject);
+        PoolManager.Instance.PoolObject(BulletTag, gameObject);
         GameManager.instance.curEnemys.Remove(gameObject);
     }
 }

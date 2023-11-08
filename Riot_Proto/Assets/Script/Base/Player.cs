@@ -38,6 +38,11 @@ public abstract class Player : MonoBehaviour
     Rigidbody rigid;
     Animator anim;
     Joystick joystick;
+
+    Coroutine protect;
+    Coroutine fadeOn;
+    Coroutine fadeOff;
+
     protected virtual void Awake()
     {
         GameManager.instance.player = this;
@@ -170,6 +175,9 @@ public abstract class Player : MonoBehaviour
         isShieldOn = true;
         ShieldObj.SetActive(true);
         var mesh = ShieldObj.GetComponent<MeshRenderer>();
+        StopCoroutine(fadeOn);
+        StopCoroutine(ShieldCoroutine);
+        StopCoroutine(fadeOff);
         mesh.material.SetFloat("_Dissolve", 0.75f);
         StartCoroutine(FadeShield(false, mesh));
     }
@@ -195,9 +203,11 @@ public abstract class Player : MonoBehaviour
         ShieldObj.SetActive(true);
         var mesh = ShieldObj.GetComponent<MeshRenderer>();
         mesh.material.SetFloat("_Dissolve", 0.75f);
-        StartCoroutine(FadeShield(false, mesh));
+        
+        fadeOn = StartCoroutine(FadeShield(false, mesh));
         yield return new WaitForSeconds(time);
-        yield return StartCoroutine(FadeShield(true, mesh));
+        fadeOff = StartCoroutine(FadeShield(true, mesh));
+        yield return fadeOn;
         IsShield = false;
         
     }

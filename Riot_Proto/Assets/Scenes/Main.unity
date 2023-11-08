@@ -649,6 +649,12 @@ MonoBehaviour:
   - key: Spider2
     obj: {fileID: 2456542768600381216, guid: 641636adbc200e7479e30f9c03383c0b, type: 3}
     maxAmount: 50
+  - key: Alert
+    obj: {fileID: 6787575607755306366, guid: 32979bae94e0ca24e83548f65b0f7cf3, type: 3}
+    maxAmount: 50
+  - key: Bat7
+    obj: {fileID: 960719984618054119, guid: 7b2ff4095cde0384496861e47e9ee2cc, type: 3}
+    maxAmount: 100
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

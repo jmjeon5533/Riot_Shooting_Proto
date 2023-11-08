@@ -80,7 +80,7 @@ public class Boss1 : BossBase
                 }
         }
         pattern++;
-        if (pattern > 4) pattern = 0;
+        if (pattern >= 4) pattern = 0;
         AttackCooltime = Random.Range(1f, 2.5f);
     }
 
@@ -283,6 +283,7 @@ public class Boss1 : BossBase
             yield return new WaitForSeconds(0.3f);
             count += 5;
         }
+        isAttack = false;
     }
 
     public override void Damage(int damage, bool isCrit, string hitTag = null)
@@ -314,6 +315,7 @@ public class Boss1 : BossBase
         // DmgText.text.text = damage.ToString();
         // DmgText.timeCount = 1 + (damage * 0.01f);
         // DmgText.text.color = Color.white;
+
     }
 
 

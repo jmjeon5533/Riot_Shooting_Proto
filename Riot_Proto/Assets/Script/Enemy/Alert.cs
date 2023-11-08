@@ -61,6 +61,7 @@ public class Alert : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(spawnDelay*0.8f,spawnDelay*1.2f));
         }
         yield return null;
+        GameManager.instance.curEnemys.Remove(this.gameObject);
         PoolManager.Instance.PoolObject("Alert", this.gameObject);
     }
 }

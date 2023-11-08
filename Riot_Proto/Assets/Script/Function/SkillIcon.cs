@@ -18,8 +18,8 @@ public class SkillIcon : MonoBehaviour
 
     private void Update()
     {
-         if(ability.type == AbilityBase.AbilityType.Passive)
-            CheckCooltime();
+         
+        CheckCooltime();
     }
 
     public void ResetTimer(float value)

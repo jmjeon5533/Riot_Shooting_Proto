@@ -18,6 +18,8 @@ public class ThunderDrop : AbilityBase
     public override void Start()
     {
         Initalize();
+        curCooltime = maxCooltime-1;
+        minCool = curCooltime;
         useSkill = true;
         maxCool = maxCooltime;
         originCooltime = maxCooltime;

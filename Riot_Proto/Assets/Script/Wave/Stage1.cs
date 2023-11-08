@@ -208,7 +208,7 @@ public class Stage1 : WaveScript
     {
         GameManager.instance.curEnemys.Add(PoolManager.Instance.GetObject("Mage2", new Vector3(15, 0, 0)));
         //PoolManager.Instance.GetObject("Mage2", new Vector3(15, 0, 0));
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 1; i++)
         {
             var alert = PoolManager.Instance.GetObject("Alert", new Vector3(0, 0, 0),Quaternion.Euler(0,0,Random.Range(-150, -50))).GetComponent<Alert>();
             GameManager.instance.curEnemys.Add(alert.gameObject);

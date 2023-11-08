@@ -33,10 +33,12 @@ public class ThunderCloud : AbilityBase
     // Start is called before the first frame update
     public override void Start()
     {
-        useSkill = true;
         Initalize();
         maxCool = maxCooltime;
+        curCooltime = maxCooltime-1;
+        minCool = curCooltime;
         originCooltime = maxCooltime;
+        useSkill = true;
     }
 
     public override void ResizingCooldown()

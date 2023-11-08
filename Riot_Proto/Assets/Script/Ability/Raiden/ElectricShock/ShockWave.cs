@@ -53,6 +53,8 @@ public class ShockWave : AbilityBase
     public override void Start()
     {
         Initalize();
+        curTime = maxCooltime-1;
+        minCool = curTime;
         maxCool = maxCooltime;
         useSkill = true;
         originCooltime = maxCooltime;

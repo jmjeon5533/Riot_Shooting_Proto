@@ -57,7 +57,8 @@ public class ElectricShock : AbilityBase, IListener
     {
         EventManager.Instance.AddListener(Event_Type.PlayerAttack, this);
         Initalize();
-        
+        stack = maxStack-1;
+        minCool = stack;
         maxCool = maxStack;
         useSkill = true;
     }

@@ -65,7 +65,7 @@ public class UIManager : MonoBehaviour
         XPBarUpdate();
         Bossbar.SetActive(false);
         hpPanel.DOAnchorPosX(2000, 0);
-        abilityPanel.transform.DOMoveX(-15, 0);
+        abilityPanel.DOAnchorPosX(-300, 0); 
         characterImage.rectTransform.DOAnchorPosX(-1435, 0);
         MainRateText.rectTransform.DOAnchorPosY(160, 0);
         powerPanel.DOAnchorPosX(-1200, 0);
@@ -106,7 +106,8 @@ public class UIManager : MonoBehaviour
         MainRateText.rectTransform.DOAnchorPosY(0, 1).SetEase(Ease.OutExpo);
         powerPanel.DOAnchorPosX(-628, 1).SetEase(Ease.OutExpo);
         XPRectTransform.DOAnchorPosX(-628, 1).SetEase(Ease.OutExpo);
-        abilityPanel.transform.DOMoveX(-10, 1f).SetEase(Ease.OutExpo);
+        abilityPanel.DOAnchorPosX(0, 1).SetEase(Ease.OutExpo);
+        //abilityPanel.transform.DOMoveX(-10, 1f).SetEase(Ease.OutExpo);
         activeSkill.transform.DOMoveX(9, 1f).SetEase(Ease.OutExpo);
         //StartCoroutine(ShowUI());
     }

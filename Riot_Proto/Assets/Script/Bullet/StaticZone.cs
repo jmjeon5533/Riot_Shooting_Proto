@@ -26,6 +26,7 @@ public class StaticZone : MonoBehaviour
     void Start()
     {
         player = GameManager.instance.player;
+        
         transform.localScale = Vector3.zero;
         transform.DOScale(Vector3.one * 0.3f, 0.5f).SetEase(Ease.OutElastic);
         //transform.localScale = Vector3.one * radius;

@@ -79,6 +79,8 @@ public class ElectricRush : AbilityBase
     public override void Start()
     {
         Initalize();
+        curCooltime = maxCooltime-1;
+        minCool = maxCooltime;
         originCooltime = maxCooltime;
 
         useSkill = true;

@@ -315,7 +315,7 @@ public class AbilityCard : MonoBehaviour
 
     void AddSkillList(AbilityBase abi)
     {
-        if (abi.type == AbilityBase.AbilityType.Stats || abi.type == AbilityBase.AbilityType.Active) return;
+        if (abi.type == AbilityBase.AbilityType.Stats) return;
         var img = Instantiate(skillIconObj, skillListUI.transform).GetComponent<Image>();
         //img.transform.parent = skillListUI.transform;
         img.gameObject.name = abi.skillName;
@@ -323,7 +323,7 @@ public class AbilityCard : MonoBehaviour
         img.transform.localPosition = Vector3.zero;
         img.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 66);
         img.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 66);
-        img.GetComponent<SkillIcon>().GetImage().rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 60);
+        img.GetComponent<SkillIcon>().GetImage().rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 66);
         img.GetComponent<SkillIcon>().GetImage().rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 60);
         img.GetComponent<SkillIcon>().GetImage().sprite = abi.skillImage;
         abi.skillIcon = img.GetComponent<SkillIcon>();

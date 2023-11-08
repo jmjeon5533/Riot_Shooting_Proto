@@ -47,6 +47,8 @@ public class ElectricFlow : AbilityBase
     {
         base.Start();
         originCooltime = maxCooltime;
+        curCooltime = maxCooltime-1;
+        minCool = curCooltime;
         useSkill = true;
         maxCool = maxCooltime;
     }

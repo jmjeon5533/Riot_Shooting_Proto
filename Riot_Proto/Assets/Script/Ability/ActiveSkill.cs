@@ -25,13 +25,13 @@ public class ActiveSkill : MonoBehaviour, IPointerDownHandler
     private void Update()
     {
         AbilityBase ability = AbilityCard.Instance.GetActiveSKill();
-        if(ability.IsSkillCool())
-        {
-            coolTimeUI.fillAmount =  Mathf.MoveTowards(coolTimeUI.fillAmount, (1 - (ability.GetMinCool()/ability.GetMaxCool())), Time.deltaTime * speed);
-        } else
-        {
-            coolTimeUI.fillAmount = 0;
-        }
+        //if(ability.IsSkillCool())
+        //{
+        //    coolTimeUI.fillAmount =  Mathf.MoveTowards(coolTimeUI.fillAmount, (1 - (ability.GetMinCool()/ability.GetMaxCool())), Time.deltaTime * speed);
+        //} else
+        //{
+        //    coolTimeUI.fillAmount = 0;
+        //}
         if(Input.GetKeyDown(KeyCode.X))
         {
             OnClick();

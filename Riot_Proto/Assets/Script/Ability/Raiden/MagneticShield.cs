@@ -28,13 +28,15 @@ public class MagneticShield : AbilityBase, IListener
 
     public override string GetStatText()
     {
-        return $"��Ÿ�� {maxCooltime} �� {maxCooltime-2.5f} ����";
+        return $"쿨타임 {maxCooltime} → {maxCooltime-2.5f} 감소";
     }
 
     // Start is called before the first frame update
     public override void Start()
     {
         maxCool = maxCooltime;
+        curCooltime = maxCooltime-1;
+        minCool = curCooltime;
         useSkill = true;
         EventManager.Instance.AddListener(Event_Type.PlayerDefend, this);
         base.Start();
@@ -59,6 +61,7 @@ public class MagneticShield : AbilityBase, IListener
         base.LevelUp();
         maxCooltime -= 2.5f;
         totalMinusCooltime += 2.5f;
+        
         maxCool = maxCooltime;
     }
 

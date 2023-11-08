@@ -57,6 +57,8 @@ public class DirectLightning : AbilityBase, IListener
     public override void Start()
     {
         EventManager.Instance.AddListener(Event_Type.PlayerAttack, this);
+        stack = maxStack-1;
+        minCool = stack;
         Initalize();
         maxCool = maxStack;
         useSkill = true;

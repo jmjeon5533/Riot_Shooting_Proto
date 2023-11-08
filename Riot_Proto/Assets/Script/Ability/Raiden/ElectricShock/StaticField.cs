@@ -53,6 +53,8 @@ public class StaticField : AbilityBase
     public override void Start()
     {
         player = GameManager.instance.player;
+        curTime = maxCooltime-1;
+        minCool = curTime;
         useSkill = true;
         maxCool = maxCooltime;
         originCooltime = maxCooltime;

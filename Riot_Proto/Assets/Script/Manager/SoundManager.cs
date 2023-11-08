@@ -11,4 +11,8 @@ public class SoundManager : MonoBehaviour
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
     }
+    public void GetSound()
+    {
+        
+    }
 }

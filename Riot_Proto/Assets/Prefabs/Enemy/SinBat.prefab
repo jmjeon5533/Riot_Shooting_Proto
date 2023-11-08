@@ -77,9 +77,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a1103182c13054b982709080e24fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 40
+  HP: 30
   baseHp: 0
-  XPRate: 5
+  XPRate: 0
   baseXPRate: 0
   MoveSpeed: 4.5
   AttackCooltime: 1

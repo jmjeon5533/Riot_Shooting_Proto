@@ -107,10 +107,8 @@ public class Stage1 : WaveScript
         }
     }
 
-    //Extra Wave
     public override IEnumerator wave7()
     {
-        yield return new WaitForSeconds(1.8f);
         for (int i = 0; i < 2; i++)
         {
             var vecY = 4 - (i * 8);
@@ -131,19 +129,17 @@ public class Stage1 : WaveScript
                 {
                     var enemy = PoolManager.Instance.GetObject("Bat5", new Vector3(13 + k * 8, firstspawnY, 0), Quaternion.identity);
                     enemy.GetComponent<Bat5>().HP = 100;
+                    GameManager.instance.curEnemys.Add(enemy);
                 }
                 firstspawnY -= 2.5f;
             }
             yield return new WaitForSeconds(1f);
         }
-
-        yield return new WaitForSeconds(2f);
     }
 
     public override IEnumerator wave8()
     {
-        var enemy = PoolManager.Instance.GetObject("Mage6", new Vector3(15, 0, 0));
-        GameManager.instance.curEnemys.Add(enemy);
+        
         yield return new WaitForSeconds(1f);
     }
     public override IEnumerator wave9()
@@ -159,14 +155,15 @@ public class Stage1 : WaveScript
         float height = GameManager.instance.player.transform.position.y;
         for (int i = 0; i < 10; i++)
         {
-            var enemy = PoolManager.Instance.GetObject("Bat6", new Vector3(13, 0, 0)).GetComponent<Bat6>();
-            var e = PoolManager.Instance.GetObject("Bat6", new Vector3(13, 0, 0)).GetComponent<Bat6>();
-            e.sinLine.y *= -1;
-            e.axisHorizon = height;
-            enemy.axisHorizon = height;
+            var e1 = PoolManager.Instance.GetObject("Bat6", new Vector3(13, 0, 0)).GetComponent<Bat6>();
+            var e2 = PoolManager.Instance.GetObject("Bat6", new Vector3(13, 0, 0)).GetComponent<Bat6>();
+            e2.sinLine.y *= -1;
+            e2.axisHorizon = height;
+            e1.axisHorizon = height;
+            GameManager.instance.curEnemys.Add(e1.gameObject);
+            GameManager.instance.curEnemys.Add(e2.gameObject);
             yield return new WaitForSeconds(0.5f);
         }
-        yield return new WaitForSeconds(1f);
     }
     public override IEnumerator wave10()
     {
@@ -217,7 +214,7 @@ public class Stage1 : WaveScript
         yield return new WaitForSeconds(1f);
         PoolManager.Instance.GetObject("Mage2", new Vector3(15, 0, 0));
         for (int i = 0; i < 2; i++)
-        {
+        { 
             var alert = PoolManager.Instance.GetObject("Alert", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, Random.Range(-150, -50))).GetComponent<Alert>();
             GameManager.instance.curEnemys.Add(alert.gameObject);
             yield return new WaitForSeconds(2f);

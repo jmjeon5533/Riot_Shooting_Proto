@@ -30,6 +30,7 @@ public class ElectricFlow : AbilityBase
             useSkill = false;
             ResetTimerUI(1);
             var lazer = PoolManager.Instance.GetObject("Lazer",GameManager.instance.player.transform).GetComponent<FlowLazer>();
+            lazer.transform.localPosition = new Vector3(1,0,0); 
             lazer.transform.rotation = Quaternion.Euler(0, -90, 0);
             lazer.Init(defaultDamage + (int)(player.damage * damageRate));
             useSkill = true;

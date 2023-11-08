@@ -51,7 +51,7 @@ public class ElectricRush : AbilityBase
             for (int i = 0; i < count; i++)
             {
                 Quaternion rotation = Quaternion.Euler(0, 0, z);
-                RushBullet b = PoolManager.Instance.GetObject("RushBullet", player.transform.position, rotation).GetComponent<RushBullet>();
+                RushBullet b = PoolManager.Instance.GetObject("RushBullet", player.transform.position+(Vector3.right * 1.5f), rotation).GetComponent<RushBullet>();
                 b.Init(duration, multiplier, defaultDamage + (int)(player.damage * damageRate),speed);
                 b.transform.rotation = rotation;
                 z += amount;

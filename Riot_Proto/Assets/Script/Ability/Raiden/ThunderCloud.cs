@@ -26,7 +26,7 @@ public class ThunderCloud : AbilityBase
         {
             curCooltime=0;
             ResetTimerUI(1);
-            Instantiate(cloud,GameManager.instance.player.transform.position, Quaternion.identity).GetComponent<Cloud>().Duration(livingDuration, speed,defaultDamage);
+            Instantiate(cloud,GameManager.instance.player.transform.position+(Vector3.right * 1.5f), Quaternion.identity).GetComponent<Cloud>().Duration(livingDuration, speed,defaultDamage);
         }
     }
 

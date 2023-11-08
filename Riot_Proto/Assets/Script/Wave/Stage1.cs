@@ -207,7 +207,7 @@ public class Stage1 : WaveScript
     public override IEnumerator wave12()
     {
         PoolManager.Instance.GetObject("Mage2", new Vector3(15, 0, 0));
-        PoolManager.Instance.GetObject("Mage2", new Vector3(15, 0, 0));
+        //PoolManager.Instance.GetObject("Mage2", new Vector3(15, 0, 0));
         for (int i = 0; i < 3; i++)
         {
             var alert = PoolManager.Instance.GetObject("Alert", new Vector3(0, 0, 0),Quaternion.Euler(0,0,Random.Range(-150, -50))).GetComponent<Alert>();

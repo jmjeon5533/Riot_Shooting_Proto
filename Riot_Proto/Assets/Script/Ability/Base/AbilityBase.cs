@@ -23,7 +23,7 @@ public abstract class AbilityBase : MonoBehaviour
     public SkillIcon skillIcon;
 
     public string skillName;
-    public string skillDescription;
+    [TextArea] public string skillDescription;
 
     public string stats;
 

@@ -23,7 +23,7 @@ public class ElectricShock : AbilityBase, IListener
             ResetTimerUI(1);
             stack = 0;
             minCool = stack;
-            var b = Instantiate(bullet, player.transform.position, Quaternion.identity);
+            var b = Instantiate(bullet, player.transform.position + (Vector3.right * 2f), Quaternion.identity);
             b.GetComponent<BulletBase>().Damage = defaultDamage + (int)(player.damage * damageRate);
             useSkill = true;
         }

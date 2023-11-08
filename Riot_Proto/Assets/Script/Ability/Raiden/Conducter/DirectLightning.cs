@@ -24,7 +24,7 @@ public class DirectLightning : AbilityBase, IListener
             minCool = stack;
             ResetTimerUI(1);
             useSkill = true;
-            var b = Instantiate(bullet, player.transform.position, Quaternion.identity);
+            var b = Instantiate(bullet, player.transform.position + (Vector3.right * 1.5f), Quaternion.identity);
             b.GetComponent<BulletBase>().Damage = defaultDamage + (int)(player.damage * damageRate);
            
         }

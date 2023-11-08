@@ -28,7 +28,7 @@ public class MagneticShield : AbilityBase, IListener
 
     public override string GetStatText()
     {
-        return $"ÄðÅ¸ÀÓ {maxCooltime} ¡æ {maxCooltime-2.5f} °¨¼Ò";
+        return $"ï¿½ï¿½Å¸ï¿½ï¿½ {maxCooltime} ï¿½ï¿½ {maxCooltime-2.5f} ï¿½ï¿½ï¿½ï¿½";
     }
 
     // Start is called before the first frame update

@@ -157,7 +157,7 @@ public class Stage1 : WaveScript
         }
 
         float height = GameManager.instance.player.transform.position.y;
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 10; i++)
         {
             var enemy = PoolManager.Instance.GetObject("Bat6", new Vector3(13, 0, 0)).GetComponent<Bat6>();
             var e = PoolManager.Instance.GetObject("Bat6", new Vector3(13, 0, 0)).GetComponent<Bat6>();

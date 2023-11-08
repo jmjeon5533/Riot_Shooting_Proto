@@ -40,7 +40,6 @@ public class MagneticShield : AbilityBase, IListener
         base.Start();
         originCooltime = maxCooltime;
         Initalize();
-        curCooltime = maxCooltime;
     }
 
     public override void ResizingCooldown()

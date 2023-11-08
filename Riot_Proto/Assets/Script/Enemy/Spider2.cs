@@ -20,7 +20,6 @@ public class Spider2 : EnemyBase
     }
     public override void Init()
     {
-        HP = baseHp;
         StatMultiplier();
     }
     protected override void Move()

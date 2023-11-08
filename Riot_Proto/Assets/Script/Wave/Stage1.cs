@@ -129,7 +129,7 @@ public class Stage1 : WaveScript
             {
                 if (spawnPosNum != i)
                 {
-                    var enemy = PoolManager.Instance.GetObject("Bat5", new Vector3(13 + k * 10, firstspawnY, 0), Quaternion.identity);
+                    var enemy = PoolManager.Instance.GetObject("Bat5", new Vector3(13 + k * 8, firstspawnY, 0), Quaternion.identity);
                     enemy.GetComponent<Bat5>().HP = 100;
                 }
                 firstspawnY -= 2.5f;
@@ -157,7 +157,7 @@ public class Stage1 : WaveScript
         }
 
         float height = GameManager.instance.player.transform.position.y;
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 10; i++)
         {
             var enemy = PoolManager.Instance.GetObject("Bat6", new Vector3(13, 0, 0)).GetComponent<Bat6>();
             var e = PoolManager.Instance.GetObject("Bat6", new Vector3(13, 0, 0)).GetComponent<Bat6>();

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,7 @@ public class LoadingStarter : MonoBehaviour
     }
      IEnumerator stageStart()
     {
+        var s = SceneManager.instance;
         var time = 1.5f;
         var curtime = 0f;
         while (curtime <= time)
@@ -26,6 +28,10 @@ public class LoadingStarter : MonoBehaviour
             loadingbar.fillAmount = Mathf.Lerp(curtime, time, 0.01f);
             yield return null;
         }
-        SceneManager.instance.StageStart();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(s.loadingpath);
+        if(s.loadingpath == "Title")
+        {
+            SceneManager.instance.Invoke(() => TitleManager.instance.InitPanel(0), Time.deltaTime);
+        }
     }
 }

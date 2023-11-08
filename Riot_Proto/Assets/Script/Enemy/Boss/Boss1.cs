@@ -142,7 +142,7 @@ public class Boss1 : BossBase
     {
         yield return new WaitForSeconds(1f);
         int angle = 0;
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 30; i++)
         {
 
             for (int j = angle; j < (360 + angle); j += 360 / 20)
@@ -157,7 +157,7 @@ public class Boss1 : BossBase
             if (angle > 360) angle = angle - 360;
             Debug.Log(angle);
             if (i > 0 && i % 10 == 0) StartCoroutine(Attack3_2());
-            yield return new WaitForSeconds(0.45f);
+            yield return new WaitForSeconds(0.7f);
 
         }
         isAttack = false;
@@ -166,11 +166,11 @@ public class Boss1 : BossBase
 
     IEnumerator Attack3_2()
     {
-        Vector3 shootPos1 = transform.position + (Vector3.up * 1.7f);
+        Vector3 shootPos1 = transform.position + (Vector3.up * 1.2f);
         Vector3 shootPos2 = transform.position;
-        Vector3 shootPos3 = transform.position + (Vector3.down * 1.7f);
+        Vector3 shootPos3 = transform.position + (Vector3.down * 1.2f);
         var p = GameManager.instance.player;
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 10; i++)
         {
             var b1 = PoolManager.Instance.GetObject("EnemyBullet", shootPos1, Quaternion.identity).GetComponent<BulletBase>();
             b1.dir = GetTargetDir(shootPos1, p.transform.position);

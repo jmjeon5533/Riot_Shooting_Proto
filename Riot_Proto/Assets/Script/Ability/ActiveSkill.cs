@@ -3,18 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using DG.Tweening;
 
 public class ActiveSkill : MonoBehaviour, IPointerDownHandler
 {
     float maxCooltime;
     float cooltime = 0;
 
-    Color color;
-
     bool useSkill = false;
-
-    bool isOne = false;
 
     [SerializeField] Image coolTimeUI;
 
@@ -24,7 +19,7 @@ public class ActiveSkill : MonoBehaviour, IPointerDownHandler
     // Start is called before the first frame update
     void Start()
     {
-        color = coolTimeUI.color;
+        
     }
 
     private void Update()
@@ -37,11 +32,6 @@ public class ActiveSkill : MonoBehaviour, IPointerDownHandler
         //{
         //    coolTimeUI.fillAmount = 0;
         //}
-        if(!ability.IsSkillCool() && !isOne)
-        {
-            isOne = true;
-            coolTimeUI.DOColor(Color.white, 0.2f).OnComplete(() => { coolTimeUI.DOFade(0, 0.4f); });
-        }
         if(Input.GetKeyDown(KeyCode.X))
         {
             OnClick();
@@ -59,14 +49,12 @@ public class ActiveSkill : MonoBehaviour, IPointerDownHandler
         if (skill == null) return;
         if (!skill.IsSkillCool())
         {
-            coolTimeUI.color = color;
             coolTimeUI.fillAmount = 1;
             skill.Ability();
             if(g.curEnemys.Count > 0 )
                 Instantiate(g.Bomb,g.player.transform.position,Quaternion.identity);
             maxCooltime = skill.GetMaxCool();
             useSkill = true;
-            isOne = false;
         }
 
     }

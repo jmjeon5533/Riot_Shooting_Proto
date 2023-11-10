@@ -196,7 +196,8 @@ public class Stage1 : WaveScript
             e.GetComponent<EnemyBase>().MovePos = new Vector3(7, Random.Range(-6.5f, 3.5f), 0);
         }
 
-        var eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, Random.Range(-6f, 3f), 0));
+        Vector2 vecPlayer = GameManager.instance.player.transform.position;
+        var eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, vecPlayer.y, 0));
         GameManager.instance.curEnemys.Add(eo);
         yield return new WaitForSeconds(1f);
     }
@@ -225,7 +226,7 @@ public class Stage1 : WaveScript
     public override IEnumerator wave13()
     {
         
-            yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f);
     }
     public override IEnumerator wave14()
     {
@@ -234,6 +235,9 @@ public class Stage1 : WaveScript
 
     public override IEnumerator wave15()
     {
+        var enemy = PoolManager.Instance.GetObject("SpinTurtle", new Vector3(15, 0, 0)).GetComponent<SpinTurtle>();
+        enemy.MovePos = Vector3.zero;
+        GameManager.instance.curEnemys.Add(enemy.gameObject);
         yield return new WaitForSeconds(1f);
     }
 }

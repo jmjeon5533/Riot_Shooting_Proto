@@ -655,6 +655,9 @@ MonoBehaviour:
   - key: Bat7
     obj: {fileID: 960719984618054119, guid: 7b2ff4095cde0384496861e47e9ee2cc, type: 3}
     maxAmount: 100
+  - key: SpinTurtle
+    obj: {fileID: 2319892665446505525, guid: 3203dfe241337354391839a969af8b3b, type: 3}
+    maxAmount: 50
 --- !u!1 &125394331
 GameObject:
   m_ObjectHideFlags: 0

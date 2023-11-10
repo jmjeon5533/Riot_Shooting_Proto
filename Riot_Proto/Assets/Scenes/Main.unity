@@ -5307,7 +5307,7 @@ MonoBehaviour:
   EnemyPower: 1
   XPPrefab: {fileID: 8339991442943732091, guid: b379a882caa8ed14ba39e2a473ce3ce2, type: 3}
   MaxXP: 50
-  AddMaxXP: 20
+  AddMaxXP: 30
   XP: 0
   Level: 1
   SelectChance: 0

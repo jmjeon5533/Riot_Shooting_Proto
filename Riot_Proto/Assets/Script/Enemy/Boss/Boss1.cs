@@ -80,7 +80,7 @@ public class Boss1 : BossBase
                 }
         }
         pattern++;
-        if (pattern >= 4) pattern = 0;
+        if (pattern > 4) pattern = 0;
         AttackCooltime = Random.Range(1f, 2.5f);
     }
 
@@ -279,6 +279,7 @@ public class Boss1 : BossBase
                 float angle = i * Mathf.Deg2Rad; // 각도를 라디안으로 변환
                 Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0); // 라디안 각도로 방향 벡터 생성
                 b.dir = direction; // 방향을 총알에 할당
+                b.SetMoveSpeed(7f);
             }
             yield return new WaitForSeconds(0.3f);
             count += 5;

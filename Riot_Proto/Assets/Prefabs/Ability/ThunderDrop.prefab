@@ -51,7 +51,7 @@ MonoBehaviour:
   skillIcon: {fileID: 0}
   skillName: "\uC36C\uB354 \uBCFC\uD2B8"
   skillDescription: "\uAC15\uB825\uD55C \uBC88\uAC1C \uAE30\uB465\uC744 \uC801\uC5D0\uAC8C
-    \uC18C\uD658\uD569\uB2C8\uB2E4"
+    \uC18C\uD658\uD569\uB2C8\uB2E4. "
   stats: 
   maxCooltime: 7
   curCooltime: 0

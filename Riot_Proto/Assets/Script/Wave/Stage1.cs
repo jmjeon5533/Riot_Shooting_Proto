@@ -196,7 +196,7 @@ public class Stage1 : WaveScript
             e.GetComponent<EnemyBase>().MovePos = new Vector3(7, Random.Range(-6.5f, 3.5f), 0);
         }
 
-        var eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, 0, 0));
+        var eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, Random.Range(-6f, 3f), 0));
         GameManager.instance.curEnemys.Add(eo);
         yield return new WaitForSeconds(1f);
     }

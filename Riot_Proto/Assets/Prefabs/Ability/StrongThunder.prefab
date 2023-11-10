@@ -63,5 +63,5 @@ MonoBehaviour:
   - {fileID: 2737902857122770629, guid: a65082925c06c6040b4fa0c0b705f45a, type: 3}
   - {fileID: 2737902857122770629, guid: 28a2723980e30dc4895678b68e10e535, type: 3}
   radius: 11
-  increaseValue: 10
+  increaseValue: 25
   damageRate: 0.5

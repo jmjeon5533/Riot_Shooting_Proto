@@ -104,8 +104,8 @@ public class UIManager : MonoBehaviour
         hpPanel.DOAnchorPosX(1209, 1).SetEase(Ease.OutExpo);
         characterImage.rectTransform.DOAnchorPosX(-628-235, 1).SetEase(Ease.OutExpo);
         MainRateText.rectTransform.DOAnchorPosY(0, 1).SetEase(Ease.OutExpo);
-        powerPanel.DOAnchorPosX(-628, 1).SetEase(Ease.OutExpo);
-        XPRectTransform.DOAnchorPosX(-628, 1).SetEase(Ease.OutExpo);
+        powerPanel.DOAnchorPosX(-580, 1).SetEase(Ease.OutExpo);
+        XPRectTransform.DOAnchorPosX(-580, 1).SetEase(Ease.OutExpo);
         abilityPanel.DOAnchorPosX(0, 1).SetEase(Ease.OutExpo);
         //abilityPanel.transform.DOMoveX(-10, 1f).SetEase(Ease.OutExpo);
         activeSkill.transform.DOMoveX(9, 1f).SetEase(Ease.OutExpo);

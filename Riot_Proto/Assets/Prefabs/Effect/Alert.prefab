@@ -4890,8 +4890,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 2
-  spawnCount: 100
-  spawnDelay: 0.03
+  spawnCount: 40
+  spawnDelay: 0.06
   widthOffset: 0.7
   spawnPos: {fileID: 509027513}
   endPos: {fileID: 7539517179504323411}

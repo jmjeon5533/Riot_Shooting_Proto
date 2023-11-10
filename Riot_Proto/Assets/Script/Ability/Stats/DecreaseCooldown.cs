@@ -6,7 +6,7 @@ public class DecreaseCooldown : AbilityBase
 {
     public override void Ability()
     {
-        SetSubtractCool(SubtractCool+0.05f);
+        SetSubtractCool(SubtractCool+0.08f);
         Debug.Log(SubtractCool);
         foreach(var c in AbilityCard.Instance.curAbilityList)
         {
@@ -16,7 +16,7 @@ public class DecreaseCooldown : AbilityBase
 
     public override string GetStatText()
     {
-        return $"쿨타임 {SubtractCool * 100}% → {(SubtractCool+0.05f) * 100}% 감소";
+        return $"쿨타임 {SubtractCool * 100}% → {(SubtractCool+0.08f) * 100}% 감소";
     }
 
     // Start is called before the first frame update

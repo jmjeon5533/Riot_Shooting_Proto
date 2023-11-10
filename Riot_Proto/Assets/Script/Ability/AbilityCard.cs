@@ -321,10 +321,10 @@ public class AbilityCard : MonoBehaviour
         img.gameObject.name = abi.skillName;
         img.transform.localScale = Vector3.one;
         img.transform.localPosition = Vector3.zero;
-        img.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 66);
-        img.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 66);
-        img.GetComponent<SkillIcon>().GetImage().rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 66);
-        img.GetComponent<SkillIcon>().GetImage().rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 60);
+        img.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 90);
+        img.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 90);
+        img.GetComponent<SkillIcon>().GetImage().rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 80);
+        img.GetComponent<SkillIcon>().GetImage().rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 80);
         img.GetComponent<SkillIcon>().GetImage().sprite = abi.skillImage;
         abi.skillIcon = img.GetComponent<SkillIcon>();
         img.GetComponent<SkillIcon>().ability = abi;

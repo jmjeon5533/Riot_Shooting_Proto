@@ -56,7 +56,7 @@ MonoBehaviour:
   stats: 
   stack: 0
   maxStack: 24
-  defaultDamage: 14
+  defaultDamage: 13
   bullet: {fileID: 2522670445940068824, guid: 6e30c8f9fc01b6e4f8ca9929e2efcd96, type: 3}
-  increaseValue: 4
+  increaseValue: 3
   damageRate: 0.3

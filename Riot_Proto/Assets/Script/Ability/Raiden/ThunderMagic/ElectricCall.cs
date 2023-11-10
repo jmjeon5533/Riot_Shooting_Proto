@@ -79,6 +79,8 @@ public class ElectricCall : AbilityBase
                 t.transform.localPosition = Vector3.zero;
                 t.Play();
                 float chance = Random.Range(0, 100f);
+                if (!enemy.activeSelf) continue;
+                if (enemy.GetComponent<Alert>() != null) continue;
                 enemy.GetComponent<EnemyBase>().Damage((chance <= player.CritRate)
                         ? (int)(damage * player.CritDamage) : damage, (chance <= player.CritRate) ? true : false);
                 

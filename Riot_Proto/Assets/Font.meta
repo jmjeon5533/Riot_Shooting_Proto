@@ -1,12 +1,7 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Riot_Proto/Assets/Font.meta
-guid: ac7bc4e436782ff4e895678598bd6c1c
+guid: 1afa5c0e24e3c974bb637915deb5a0d7
 folderAsset: yes
 DefaultImporter:
-========
-guid: 3203dfe241337354391839a969af8b3b
-PrefabImporter:
->>>>>>>> origin/atomic:Riot_Proto/Assets/Prefabs/Enemy/SpinTurtle.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

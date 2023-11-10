@@ -221,4 +221,19 @@ public class Stage1 : WaveScript
         }
         yield return new WaitForSeconds(1f);
     }
+
+    public override IEnumerator wave13()
+    {
+        
+            yield return new WaitForSeconds(0.5f);
+    }
+    public override IEnumerator wave14()
+    {
+        yield return new WaitForSeconds(1f);
+    }
+
+    public override IEnumerator wave15()
+    {
+        yield return new WaitForSeconds(1f);
+    }
 }

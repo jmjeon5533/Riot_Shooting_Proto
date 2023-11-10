@@ -75,12 +75,12 @@ public class ElectricCall : AbilityBase
         {
             if (enemy != null)
             {
-                var t = Instantiate(thunderDrain, enemy.transform);
-                t.transform.localPosition = Vector3.zero;
-                t.Play();
                 float chance = Random.Range(0, 100f);
                 if (!enemy.activeSelf) continue;
                 if (enemy.GetComponent<Alert>() != null) continue;
+                var t = Instantiate(thunderDrain, enemy.transform);
+                t.transform.localPosition = Vector3.zero;
+                t.Play();
                 enemy.GetComponent<EnemyBase>().Damage((chance <= player.CritRate)
                         ? (int)(damage * player.CritDamage) : damage, (chance <= player.CritRate) ? true : false);
                 

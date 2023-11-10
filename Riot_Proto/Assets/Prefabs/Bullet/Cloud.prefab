@@ -9839,8 +9839,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.744519, y: 1.9899, z: 1.9899}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 5.93, y: 1.9899, z: 1.9899}
+  m_Center: {x: 0.5, y: 0, z: 0}
 --- !u!114 &8567824386579302845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9854,7 +9854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curAttackTime: 0
-  maxAttackTime: 0.2
+  maxAttackTime: 0.15
   radius: 10
   line: {fileID: 5570442000924275472, guid: 94c37f81566cfd742837dc77784d906a, type: 3}
   damage: 0

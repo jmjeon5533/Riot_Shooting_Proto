@@ -16,10 +16,11 @@ public class SpinTurtle : EnemyBase
             for (int i = 0; i < 360; i++)
             {
                 var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position).GetComponent<BulletBase>();
-                Vector2 direction = new Vector2(Mathf.Cos(i), Mathf.Sin(i));
+                float rad = i * Mathf.Deg2Rad;
+                Vector2 direction = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
                 b.dir = direction.normalized;
                 b.SetMoveSpeed(7);
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(1f);
             }
             //yield return new WaitForSeconds(3f);
             //for (int i = 0; i < 10; i++)

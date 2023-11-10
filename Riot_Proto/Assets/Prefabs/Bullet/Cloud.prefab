@@ -9854,7 +9854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curAttackTime: 0
-  maxAttackTime: 0.3
+  maxAttackTime: 0.2
   radius: 10
   line: {fileID: 5570442000924275472, guid: 94c37f81566cfd742837dc77784d906a, type: 3}
   damage: 0

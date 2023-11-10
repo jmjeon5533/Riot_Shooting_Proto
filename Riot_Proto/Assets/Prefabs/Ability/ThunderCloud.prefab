@@ -55,9 +55,9 @@ MonoBehaviour:
     \uC801\uC740 \uC774\uB3D9\uC18D\uB3C4\uAC00 \uAC10\uC18C\uD558\uACE0, \n\uC9E7\uC740
     \uC2DC\uAC04\uB9C8\uB2E4 \uB300\uBBF8\uC9C0\uB97C \uC785\uB294\uB2E4. "
   stats: 
-  speed: 8
+  speed: 6
   cloud: {fileID: 4425488917986869762, guid: ec92e946d49ed424e926462e10638c42, type: 3}
   defaultDamage: 3
   curCooltime: 0
   maxCooltime: 10
-  livingDuration: 4
+  livingDuration: 4.5

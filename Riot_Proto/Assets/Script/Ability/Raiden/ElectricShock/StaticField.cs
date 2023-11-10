@@ -44,7 +44,7 @@ public class StaticField : AbilityBase
     public override void LevelUp()
     {
         base.LevelUp();
-        defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
+        defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.1f), level));
         duration++;
 
     }

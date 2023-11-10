@@ -50,6 +50,7 @@ public class ThunderBolt : BulletBase
                 Destroy(gameObject);
             }
             else
+                if(target == null) Destroy(gameObject);
                 targetPos = target.position;
         }
         time += Time.deltaTime * MoveSpeed;

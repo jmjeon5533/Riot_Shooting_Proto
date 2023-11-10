@@ -55,7 +55,7 @@ MonoBehaviour:
     \uAC10\uC18C \uC601\uD5A5\uC744 \uBC1B\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4*"
   stats: 
   stack: 0
-  maxStack: 6
+  maxStack: 7
   defaultDamage: 6
   bullet: {fileID: 7488623435463272498, guid: 54bb67ef9acf8c447bf9f4f2491c8920, type: 3}
   increaseValue: 2

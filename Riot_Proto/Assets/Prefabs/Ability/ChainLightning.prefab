@@ -54,11 +54,11 @@ MonoBehaviour:
   skillDescription: "\uC5F0\uC1C4\uB418\uB294 \uC804\uB958\uB97C \uBC29\uCD9C\uD574
     \uC8FC\uBCC0 \uC801\uC5D0\uAC8C \uB300\uBBF8\uC9C0\uB97C \uC900\uB2E4"
   stats: 
-  maxCooltime: 7
+  maxCooltime: 5
   curCooltime: 0
-  defaultDamage: 8
+  defaultDamage: 5
   damageRate: 0.3
-  increaseValue: 3
+  increaseValue: 2
   maxAttack: 7
   bullet: {fileID: 1734367368388147868, guid: ac00b179c0ba8ed48a3b003e3bae96db, type: 3}
   target: {fileID: 0}

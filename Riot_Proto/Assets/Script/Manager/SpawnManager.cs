@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -8,9 +10,7 @@ public class SpawnManager : MonoBehaviour
     public int BossSpawnWave;
     public int SpawnCount;
     int StageLevel;
-
-    int rand;
-    int curWaveIndex;
+    public Queue<WaveScript> bags = new Queue<WaveScript>();
 
     public float coolMobSpawn = 10;
     float curMobSpawn;
@@ -26,26 +26,26 @@ public class SpawnManager : MonoBehaviour
     private void Update()
     {
         curMobSpawn += Time.deltaTime;
-        if(curMobSpawn >= coolMobSpawn)
+        if (curMobSpawn >= coolMobSpawn)
         {
             curMobSpawn = 0;
-            coolMobSpawn = Random.Range(3f,8f);
+            coolMobSpawn = UnityEngine.Random.Range(3f, 8f);
             int index = 1; //change this value
-            switch(index)
+            switch (index)
             {
                 case 0:
-                {
-                    var enemy1 = PoolManager.Instance.GetObject("Bat3",new Vector3(14,-6,0),Quaternion.identity).GetComponent<Bat3>();
-                    var enemy2 = PoolManager.Instance.GetObject("Bat3",new Vector3(14,6,0),Quaternion.identity).GetComponent<Bat3>();
-                    var dir1 = (GameManager.instance.player.transform.position - enemy1.transform.position).normalized;
-                    var dir2 = (GameManager.instance.player.transform.position - enemy2.transform.position).normalized;
-                    enemy1.movedir = dir1;
-                    enemy2.movedir = dir2;
+                    {
+                        var enemy1 = PoolManager.Instance.GetObject("Bat3", new Vector3(14, -6, 0), Quaternion.identity).GetComponent<Bat3>();
+                        var enemy2 = PoolManager.Instance.GetObject("Bat3", new Vector3(14, 6, 0), Quaternion.identity).GetComponent<Bat3>();
+                        var dir1 = (GameManager.instance.player.transform.position - enemy1.transform.position).normalized;
+                        var dir2 = (GameManager.instance.player.transform.position - enemy2.transform.position).normalized;
+                        enemy1.movedir = dir1;
+                        enemy2.movedir = dir2;
 
-                    enemy1.MoveSpeed = 8;
-                    enemy2.MoveSpeed = 8;
-                    break;
-                }
+                        enemy1.MoveSpeed = 8;
+                        enemy2.MoveSpeed = 8;
+                        break;
+                    }
             }
         }
     }
@@ -56,26 +56,26 @@ public class SpawnManager : MonoBehaviour
     }
     IEnumerator SpawnWave()
     {
+        List<WaveScript.Wavedelegate> randList = new List<WaveScript.Wavedelegate>(WaveExcuter.instance.waveScripts[StageLevel].Waves);
+        List<WaveScript.Wavedelegate> useList = new List<WaveScript.Wavedelegate>();
+
+        useList = randList.OrderBy(x => Guid.NewGuid()).ToList(); //randlist -> uselist로 이동 중 랜덤 조정 -> 가방 생성
+
         yield return new WaitUntil(() => GameManager.instance.IsGame);
         yield return new WaitForSeconds(2f);
+
+
         while (SpawnCount < BossSpawnWave)
         {
-            var wave = WaveExcuter.instance.waveScripts[StageLevel];
-            while(rand == curWaveIndex)
-            {
-                rand = Random.Range(0,wave.Waves.Count);
-            }
-            print($"{rand} : {curWaveIndex}");
-            curWaveIndex = rand;
-            
-            print(rand);
+            var i = SpawnCount % useList.Count;
+            print(i);
+            yield return StartCoroutine(useList[i]());
 
-            yield return StartCoroutine(wave.Waves[rand]());
-
+            yield return new WaitUntil(() => GameManager.instance.curEnemys.Count == 0 || GameManager.instance.curEnemys.Equals(null));
             SpawnCount++;
             GameManager.instance.EnemyPower += 0.15f;
-            yield return new WaitUntil(() => GameManager.instance.curEnemys.Count == 0 || GameManager.instance.curEnemys.Equals(null));
         }
+
         yield return new WaitUntil(() => GameManager.instance.curEnemys.Count == 0 || GameManager.instance.curEnemys.Equals(null));
         GameObject Boss = PoolManager.Instance.GetObject($"Boss{StageLevel + 1}", new Vector3(15, 0, 0), Quaternion.identity);
         GameManager.instance.curEnemys.Add(Boss);

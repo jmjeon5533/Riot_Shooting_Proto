@@ -46,8 +46,8 @@ public class Cloud : MonoBehaviour
                     float chance = Random.Range(0, 100f);
                     collider.GetComponent<EnemyBase>().Damage((chance <= player.CritRate)
                             ? (int)(damage * player.CritDamage) : damage, (chance <= player.CritRate) ? true : false);
-                    collider.GetComponent<EnemyBase>().AddBuff(new Slow(2, collider.gameObject, BuffBase.TargetType.Enemy, BuffList.Slow, 0.7f));
-                    Debug.Log(collider.name);
+                    //collider.GetComponent<EnemyBase>().AddBuff(new Slow(2, collider.gameObject, BuffBase.TargetType.Enemy, BuffList.Slow, 0.7f));
+                    
                 }
             }
         }

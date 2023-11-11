@@ -36,7 +36,7 @@ public class ElectricWave : MonoBehaviour
         curRadius += Time.deltaTime * speed;
         //Debug.Log(curRadius);
         //transform.localScale = Vector3.one * curRadius;
-        var bulletHit = Physics.OverlapSphere(transform.position, curRadius/3);
+        var bulletHit = Physics.OverlapSphere(transform.position, curRadius/2);
         foreach (var h in bulletHit)
         {
             var bullet = h.GetComponent<EnemyBullet>();

@@ -122,7 +122,7 @@ MonoBehaviour:
   mesh: {fileID: 0}
   MovePos: {x: 0, y: 0, z: 0}
   EnemyTag: Shield
-  ItemAddCount: 1
+  ItemAddCount: 0
   isDeath: 0
 --- !u!54 &5906104113625280685
 Rigidbody:

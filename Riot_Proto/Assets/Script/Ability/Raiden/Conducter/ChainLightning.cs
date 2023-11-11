@@ -122,7 +122,7 @@ public class ChainLightning : AbilityBase, IListener
         float distance = Mathf.Infinity;
         foreach (GameObject enemy in GameManager.instance.curEnemys)
         {
-            if (target == enemy || targets.Contains(enemy.transform)) continue;
+            if (target == enemy || targets.Contains(enemy.transform) || target.GetComponent<Alert>() != null) continue;
             float newDist = Vector3.Distance(origin.position, enemy.transform.position);
             if (newDist <= distance)
             {

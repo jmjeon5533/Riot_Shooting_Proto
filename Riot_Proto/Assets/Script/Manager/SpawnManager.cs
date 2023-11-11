@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using System.Reflection;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -60,6 +61,11 @@ public class SpawnManager : MonoBehaviour
         List<WaveScript.Wavedelegate> useList = new List<WaveScript.Wavedelegate>();
 
         useList = randList.OrderBy(x => Guid.NewGuid()).ToList(); //randlist -> uselist로 이동 중 랜덤 조정 -> 가방 생성
+        for(int i = 0; i < useList.Count; i++)
+        {
+            print(useList[i].Method.Name);
+        }
+
 
         yield return new WaitUntil(() => GameManager.instance.IsGame);
         yield return new WaitForSeconds(2f);
@@ -68,7 +74,6 @@ public class SpawnManager : MonoBehaviour
         while (SpawnCount < BossSpawnWave)
         {
             var i = SpawnCount % useList.Count;
-            print(i);
             yield return StartCoroutine(useList[i]());
 
             yield return new WaitUntil(() => GameManager.instance.curEnemys.Count == 0 || GameManager.instance.curEnemys.Equals(null));

@@ -69,7 +69,7 @@ public class Raiden : Player
 
     protected override void Attack()
     {
-        var firePivot = transform.position + new Vector3(0,0.5f,0);
+        var firePivot = transform.position + new Vector3(0,0.3f,0);
         switch(bulletLevel)
         {
             case 1:

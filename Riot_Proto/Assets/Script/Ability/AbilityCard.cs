@@ -193,7 +193,6 @@ public class AbilityCard : MonoBehaviour
             if (curPassiveList.Count >= 3 && !curPassiveDic.ContainsKey(abs[i].skillName) && abs[i].type == AbilityBase.AbilityType.Passive)
             {
                 removeToList.Add(abs[i]);
-                Debug.Log(abs[i].skillName);
             }
         }
         for (int i = 0; i < abs.Count; i++)

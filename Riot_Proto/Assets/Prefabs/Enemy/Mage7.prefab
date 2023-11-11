@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 50
   baseHp: 0
-  XPRate: 5
+  XPRate: 4
   baseXPRate: 0
   MoveSpeed: 5
   AttackCooltime: 1

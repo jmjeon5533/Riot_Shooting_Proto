@@ -6,7 +6,7 @@ public class WaveExcuter : MonoBehaviour
 {
     public static WaveExcuter instance {get; private set;}
     public WaveScript[] waveScripts;
-    void Start()
+    void Awake()
     {
         instance = this;
         foreach (var waveScript in waveScripts)

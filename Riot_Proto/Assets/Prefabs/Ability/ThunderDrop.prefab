@@ -55,6 +55,6 @@ MonoBehaviour:
   stats: 
   maxCooltime: 7
   curCooltime: 0
-  defaultDamage: 10
+  defaultDamage: 12
   thunder: {fileID: 2737902857122770629, guid: 1a7a7c422e044614ca63862516ba33a3, type: 3}
   distance: 10

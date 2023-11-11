@@ -51,7 +51,7 @@ public class ThunderBolt : BulletBase
             }
             else
                 if(target == null) Destroy(gameObject);
-                targetPos = target.position;
+                targetPos = (target.Equals(null) || !target.gameObject.activeSelf) ? transform.position : target.position;
         }
         time += Time.deltaTime * MoveSpeed;
         prevPos = targetPos;

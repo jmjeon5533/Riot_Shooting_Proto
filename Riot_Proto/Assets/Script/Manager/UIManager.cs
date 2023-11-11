@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
 
     public RectTransform hpPanel;
     public RectTransform abilityPanel;
-    public Transform activeSkill;
+    public RectTransform activeSkill;
 
     public Image[] Heart;
     public Text MainRateText;
@@ -102,13 +102,13 @@ public class UIManager : MonoBehaviour
     public void ShowImg()
     {
         hpPanel.DOAnchorPosX(-20, 1).SetEase(Ease.OutExpo);
-        characterImage.rectTransform.DOAnchorPosX(-628-235, 1).SetEase(Ease.OutExpo);
+        characterImage.rectTransform.DOAnchorPosX(-830, 1).SetEase(Ease.OutExpo);
         MainRateText.rectTransform.DOAnchorPosY(0, 1).SetEase(Ease.OutExpo);
-        powerPanel.DOAnchorPosX(-580, 1).SetEase(Ease.OutExpo);
-        XPRectTransform.DOAnchorPosX(-580, 1).SetEase(Ease.OutExpo);
+        powerPanel.DOAnchorPosX(-540, 1).SetEase(Ease.OutExpo);
+        XPRectTransform.DOAnchorPosX(-540, 1).SetEase(Ease.OutExpo);
         abilityPanel.DOAnchorPosX(0, 1).SetEase(Ease.OutExpo);
         //abilityPanel.transform.DOMoveX(-10, 1f).SetEase(Ease.OutExpo);
-        activeSkill.transform.DOMoveX(9, 1f).SetEase(Ease.OutExpo);
+        activeSkill.DOAnchorPosX(-200, 1f).SetEase(Ease.OutExpo);
         //StartCoroutine(ShowUI());
     }
 

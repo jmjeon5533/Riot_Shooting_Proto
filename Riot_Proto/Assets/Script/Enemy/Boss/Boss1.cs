@@ -145,7 +145,7 @@ public class Boss1 : BossBase
         for (int i = 0; i < 30; i++)
         {
 
-            for (int j = angle; j < (360 + angle); j += 360 / 25)
+            for (int j = angle; j < (360 + angle); j += 360 / 20)
             {
                 var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
                 b.SetMoveSpeed(4.5f);

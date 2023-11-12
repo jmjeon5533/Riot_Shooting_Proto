@@ -145,7 +145,7 @@ public class ChainLightning : AbilityBase, IListener
                 for (int i = 0; i < targets.Count; i++)
                 {
                     time = 0;
-                    while(time < 0.15f)
+                    while(time < 0.3f)
                     {
                         line.SetPosition(0, _t.position);
                         if (targets[i] == null) continue;

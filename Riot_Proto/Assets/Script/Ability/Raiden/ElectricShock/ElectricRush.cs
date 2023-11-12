@@ -63,8 +63,8 @@ public class ElectricRush : AbilityBase
     public override string GetStatText()
     {
         return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1)))
-            + "디버프 지속 시간 " + duration + " → " + (duration + (increaseValue / 4 * Mathf.Pow((1 + 0.05f), level+1))) +
-            " 받는 피해 증가 " + (multiplier * 100) + "% →" + ((multiplier + 0.03f) * 100) + "% ";
+            + "\n디버프 지속 시간 " + duration + " → " + (Mathf.Round((duration + (increaseValue / 4 * Mathf.Pow((1 + 0.05f), level+1))) * 100) / 100) +
+            "\n받는 피해 증가 " + (multiplier * 100) + "% →" + ((multiplier + 0.03f) * 100) + "% ";
     }
 
     public override void LevelUp()

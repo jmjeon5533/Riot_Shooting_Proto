@@ -3758,7 +3758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb79ed6d585384486c528eb014c5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossSpawnWave: 20
+  BossSpawnWave: 0
   SpawnCount: 0
   coolMobSpawn: 10
 --- !u!4 &1118154654

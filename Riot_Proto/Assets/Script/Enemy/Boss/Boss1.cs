@@ -81,7 +81,7 @@ public class Boss1 : BossBase
         }
         pattern++;
         if (pattern > 4) pattern = 0;
-        AttackCooltime = Random.Range(1f, 2.5f);
+        AttackCooltime = Random.Range(0.5f, 1);
     }
 
     void OnDrawGizmos()
@@ -103,6 +103,8 @@ public class Boss1 : BossBase
             spawnPos.z = 0;
             var b = PoolManager.Instance.GetObject("EnemyBullet", spawnPos, Quaternion.identity).GetComponent<BulletBase>();
             b.dir = rand.normalized;
+            var b2 = PoolManager.Instance.GetObject("EnemyBullet", spawnPos, Quaternion.identity).GetComponent<BulletBase>();
+            b2.dir = -rand.normalized;
 
         }
         isAttack = false;
@@ -142,7 +144,7 @@ public class Boss1 : BossBase
     {
         yield return new WaitForSeconds(1f);
         int angle = 0;
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 21; i++)
         {
 
             for (int j = angle; j < (360 + angle); j += 360 / 20)

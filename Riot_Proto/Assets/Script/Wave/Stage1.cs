@@ -8,6 +8,7 @@ public class Stage1 : WaveScript
 {
     public override IEnumerator wave1()
     {
+        Debug.Log(1);
         for (int i = 0; i < 20; i++)
         {
             for (int j = 0; j < Random.Range(1, 3); j++)
@@ -21,6 +22,7 @@ public class Stage1 : WaveScript
     }
     public override IEnumerator wave2()
     {
+        Debug.Log(2);
         var e = PoolManager.Instance.GetObject("Golem1", new Vector3(15, 0, 0), Quaternion.identity);
         GameManager.instance.curEnemys.Add(e);
         e.GetComponent<EnemyBase>().MovePos = new Vector3(3, 0, 0);
@@ -49,6 +51,7 @@ public class Stage1 : WaveScript
     }
     public override IEnumerator wave3()
     {
+        Debug.Log(3);
         for (int i = 0; i < 2; i++)
         {
             var vecY = 4 - (i * 8);
@@ -63,6 +66,7 @@ public class Stage1 : WaveScript
     }
     public override IEnumerator wave4()
     {
+        Debug.Log(4);
         for (int i = 0; i < 2; i++)
         {
             var vecY = 2 - (i * 4);
@@ -82,6 +86,7 @@ public class Stage1 : WaveScript
     }
     public override IEnumerator wave5()
     {
+        Debug.Log(5);
         var enemy = PoolManager.Instance.GetObject("Mage4", new Vector3(15, 0, 0));
         GameManager.instance.curEnemys.Add(enemy);
         enemy.GetComponent<EnemyBase>().MovePos = new Vector3(8, 0, 0);
@@ -90,12 +95,12 @@ public class Stage1 : WaveScript
     }
     public override IEnumerator wave6()
     {
+        Debug.Log(6);
         var enemy = PoolManager.Instance.GetObject("Golem1", new Vector3(15, 0, 0));
         GameManager.instance.curEnemys.Add(enemy);
         enemy.GetComponent<EnemyBase>().MovePos = new Vector3(8, 0, 0);
         enemy.GetComponent<Golem1>().IsShield = true;
         yield return new WaitForSeconds(3);
-        Debug.Log(6);
         for (int i = 0; i < 15; i++)
         {
             var y = Random.Range(-5f, 5f);
@@ -109,6 +114,7 @@ public class Stage1 : WaveScript
 
     public override IEnumerator wave7()
     {
+        Debug.Log(7);
         for (int i = 0; i < 2; i++)
         {
             var vecY = 4 - (i * 8);
@@ -139,11 +145,12 @@ public class Stage1 : WaveScript
 
     public override IEnumerator wave8()
     {
-        
+        Debug.Log(8);
         yield return new WaitForSeconds(1f);
     }
     public override IEnumerator wave9()
     {
+        Debug.Log(9);
         for (int i = 0; i < 2; i++)
         {
             var vecY = 4 - (i * 8);
@@ -167,6 +174,7 @@ public class Stage1 : WaveScript
     }
     public override IEnumerator wave10()
     {
+        Debug.Log(10);
         var enemy = PoolManager.Instance.GetObject("Turtle4", new Vector3(15, 0, 0));
         GameManager.instance.curEnemys.Add(enemy);
         yield return new WaitForSeconds(1.5f);
@@ -180,6 +188,7 @@ public class Stage1 : WaveScript
 
     public override IEnumerator wave11()
     {
+        Debug.Log(11);
         for (int i = 0; i < 2; i++)
         {
             var vecY = 4 - (i * 8);
@@ -204,6 +213,7 @@ public class Stage1 : WaveScript
 
     public override IEnumerator wave12()
     {
+        Debug.Log(12);
         GameManager.instance.curEnemys.Add(PoolManager.Instance.GetObject("Mage2", new Vector3(15, 0, 0)));
         //PoolManager.Instance.GetObject("Mage2", new Vector3(15, 0, 0));
         for (int i = 0; i < 1; i++)
@@ -225,16 +235,18 @@ public class Stage1 : WaveScript
 
     public override IEnumerator wave13()
     {
-        
+        Debug.Log(13);
         yield return new WaitForSeconds(0.5f);
     }
     public override IEnumerator wave14()
     {
+        Debug.Log(14);
         yield return new WaitForSeconds(1f);
     }
 
     public override IEnumerator wave15()
     {
+        Debug.Log(15);
         var enemy = PoolManager.Instance.GetObject("SpinTurtle", new Vector3(15, 0, 0)).GetComponent<SpinTurtle>();
         enemy.MovePos = Vector3.zero;
         GameManager.instance.curEnemys.Add(enemy.gameObject);

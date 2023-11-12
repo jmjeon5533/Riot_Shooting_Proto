@@ -16,7 +16,6 @@ public class PlayerBullet : BulletBase
                 h.GetComponent<EnemyBase>().Damage((chance <= CritRate)
                         ? (int)(Damage * CritDamage) : Damage, (chance <= CritRate) ? true : false);
                 if (h != null && h.GetComponent<EnemyBase>() != null && h.GetComponent<Alert>() == null)
-                    Debug.Log(h.gameObject);    
                     EventManager.Instance.PostNotification(Event_Type.PlayerAttacked, this, h.GetComponent<EnemyBase>());
                 PoolManager.Instance.PoolObject(BulletTag,gameObject);
                 break;

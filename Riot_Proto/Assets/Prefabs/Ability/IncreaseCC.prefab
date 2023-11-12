@@ -52,4 +52,4 @@ MonoBehaviour:
   skillName: "\uD06C\uB9AC\uD2F0\uCEEC \uD655\uB960 \uC99D\uAC00"
   skillDescription: "\uD06C\uB9AC\uD2F0\uCEEC \uD655\uB960\uC744 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4"
   stats: 
-  increaseValue: 10
+  increaseValue: 20

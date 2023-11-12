@@ -5,6 +5,9 @@ using UnityEngine;
 public class Bat3 : EnemyBase
 {
     public Vector3 movedir;
+
+    float time = 0;
+
     [SerializeField] Animator anim;
     protected override void Attack()
     {
@@ -22,6 +25,12 @@ public class Bat3 : EnemyBase
     protected override void Update()
     {
         base.Update();
+        time += Time.deltaTime;
+        if (time > 10)
+        {
+            time = 0;
+            PoolManager.Instance.PoolObject(EnemyTag, this.gameObject);
+        }
         if (transform.position.x <= -GameManager.instance.MoveRange.x -8
         || Mathf.Abs(transform.position.y) >= GameManager.instance.MoveRange.y + 20)
         {

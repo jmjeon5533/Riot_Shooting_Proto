@@ -219,7 +219,7 @@ public class Stage1 : WaveScript
         for (int i = 0; i < 1; i++)
         {
             var alert = PoolManager.Instance.GetObject("Alert", new Vector3(0, 0, 0),Quaternion.Euler(0,0,Random.Range(-150, -50))).GetComponent<Alert>();
-            GameManager.instance.curEnemys.Add(alert.gameObject);
+            //GameManager.instance.curEnemys.Add(alert.gameObject);
             yield return new WaitForSeconds(4f);
         }
         yield return new WaitForSeconds(1f);
@@ -227,10 +227,10 @@ public class Stage1 : WaveScript
         for (int i = 0; i < 2; i++)
         { 
             var alert = PoolManager.Instance.GetObject("Alert", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, Random.Range(-150, -50))).GetComponent<Alert>();
-            GameManager.instance.curEnemys.Add(alert.gameObject);
+            //GameManager.instance.curEnemys.Add(alert.gameObject);
             yield return new WaitForSeconds(2f);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(6f);
     }
 
     public override IEnumerator wave13()

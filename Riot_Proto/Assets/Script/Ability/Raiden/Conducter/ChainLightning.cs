@@ -99,12 +99,13 @@ public class ChainLightning : AbilityBase, IListener
             Debug.Log(target.name);
             targets.Add(target);
         }
-        line.positionCount = targets.Count + 1;
-        line.SetPosition(0, player.transform.position);
+        line.positionCount = 2;
+        //line.SetPosition(0, player.transform.position);
 
-        for (int i = 0; i < targets.Count; i++)
+        for (int i = 0; i < 1; i++)
         {
-            line.SetPosition(i + 1, target.position);
+
+            line.SetPosition(0, target.position);
             var enemy = target.GetComponent<EnemyBase>();
             float chance = Random.Range(0, 100f);
             enemy.Damage((chance <= player.CritRate)
@@ -136,22 +137,28 @@ public class ChainLightning : AbilityBase, IListener
     IEnumerator Delay()
     {
         float time = 0;
-
+        Transform _t = targets[0];
         if (targets != null && targets.Count > 0)
         {
-            while (time < 0.3f)
-            {
+            
                 int count = 0;
-                line.SetPosition(0, transform.position);
                 for (int i = 0; i < targets.Count; i++)
                 {
-                    if (targets[i] == null) continue;
-                    line.SetPosition(i + 1, targets[i].transform.position);
-
+                    time = 0;
+                    while(time < 0.15f)
+                    {
+                        line.SetPosition(0, _t.position);
+                        if (targets[i] == null) continue;
+                        line.SetPosition(1, targets[i].transform.position);
+                        _t = targets[i];
+                        time += Time.deltaTime;
+                        yield return null;
+                    }
+                    //yield return new WaitForSeconds(0.1f);
                 }
                 yield return null;
                 time += Time.deltaTime;
-            }
+            
         }
         line.positionCount = 0;
         //line.enabled = false;       

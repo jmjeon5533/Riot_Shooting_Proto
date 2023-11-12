@@ -249,7 +249,7 @@ public class Boss1 : BossBase
         {
             yield return new WaitForSeconds(risePatterns[index].riseDelay[i]);
             Debug.Log(risePatterns[index].riseDelay[i]);
-            var b = PoolManager.Instance.GetObject("FireRise", new Vector3(risePatterns[index].riseYs[i], -g.MoveRange.y, 0), Quaternion.identity);
+            var b = PoolManager.Instance.GetObject("FireRise", new Vector3(risePatterns[index].riseYs[i], -g.MoveRange.y, 0), Quaternion.Euler(270,0,0));
         }
     }
     IEnumerator Attack5()

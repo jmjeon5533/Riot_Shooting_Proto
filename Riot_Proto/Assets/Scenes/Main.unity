@@ -572,7 +572,7 @@ MonoBehaviour:
     obj: {fileID: 6828775318146200505, guid: ba1daf4b1e523944b8cd7beddb29f817, type: 3}
     maxAmount: 3
   - key: FireRise
-    obj: {fileID: 9001166172843743580, guid: 5d1c36aaffba9c54a926cc63c5a6ebf9, type: 3}
+    obj: {fileID: 2597755143810917772, guid: a094d7e509198d34c80411e3e95fa93a, type: 3}
     maxAmount: 40
   - key: Explosion
     obj: {fileID: 919622504480833353, guid: 2493e9a2ac06d0f498f056e2db8412ff, type: 3}
@@ -3758,7 +3758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb79ed6d585384486c528eb014c5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossSpawnWave: 0
+  BossSpawnWave: 20
   SpawnCount: 0
   coolMobSpawn: 10
 --- !u!4 &1118154654

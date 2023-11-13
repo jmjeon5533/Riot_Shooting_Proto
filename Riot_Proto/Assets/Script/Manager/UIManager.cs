@@ -28,6 +28,11 @@ public class UIManager : MonoBehaviour
     public Transform DmgTextParant;
     public Transform ClearTab;
     public Transform OverTab;
+    public Transform OptionTab;
+    public bool isOption = false;
+    Tween OptionTween;
+    public Slider BGMS,SFXS;
+
     public GameObject Bossbar;
     public Image BossbarImage;
     public Image characterImage;
@@ -55,7 +60,7 @@ public class UIManager : MonoBehaviour
     public int NextHPCount = 200000;
 
     public void StageStart() => SceneManager.instance.StageStart();
-    
+
     private void Awake()
     {
         instance = this;
@@ -65,26 +70,41 @@ public class UIManager : MonoBehaviour
         XPBarUpdate();
         Bossbar.SetActive(false);
         hpPanel.DOAnchorPosX(500, 0);
-        abilityPanel.DOAnchorPosX(-300, 0); 
+        abilityPanel.DOAnchorPosX(-300, 0);
         characterImage.rectTransform.DOAnchorPosX(-1435, 0);
         MainRateText.rectTransform.DOAnchorPosY(160, 0);
         powerPanel.DOAnchorPosX(-1200, 0);
         XPRectTransform.DOAnchorPosX(-1200, 0);
         activeSkill.DOMoveX(15, 0);
+        BGMS.value = SoundManager.instance.BGMVolume;
+        SFXS.value = SoundManager.instance.SFXVolume;
     }
     private void Update()
     {
         var g = GameManager.instance;
-        if(Ratevalue <= g.GetMoney)
+        if (Ratevalue <= g.GetMoney)
         {
-            var value = 1 + Mathf.Clamp(g.GetMoney - Ratevalue,0,1000);
-            Ratevalue = (int)Mathf.MoveTowards(Ratevalue,g.GetMoney,value);
+            var value = 1 + Mathf.Clamp(g.GetMoney - Ratevalue, 0, 1000);
+            Ratevalue = (int)Mathf.MoveTowards(Ratevalue, g.GetMoney, value);
         }
         MainRateText.text = (Ratevalue < 1000) ? string.Format("{0:D4}", Ratevalue) : Ratevalue.ToString();
         for (int i = 0; i < RateText.Length; i++)
         {
             RateText[i].text = GameManager.instance.GetMoney.ToString();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Option();
+        }
+        SoundManager.instance.BGMVolume = BGMS.value;
+        SoundManager.instance.SFXVolume = SFXS.value;
+    }
+    public void Option()
+    {
+        isOption = !isOption;
+        Time.timeScale = isOption ? 0 : 1;
+        if(OptionTween != null) OptionTween.Kill();
+        OptionTween = OptionTab.DOLocalMoveY(isOption ? 0 : 800,0.5f).SetUpdate(true);
     }
     public void InitHeart()
     {
@@ -95,7 +115,7 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < GameManager.instance.player.HP; i++)
         {
             Heart[i].enabled = true;
-           
+
         }
     }
 
@@ -112,7 +132,7 @@ public class UIManager : MonoBehaviour
         //StartCoroutine(ShowUI());
     }
 
-    
+
 
     public void XPBarUpdate()
     {
@@ -140,15 +160,16 @@ public class UIManager : MonoBehaviour
     }
     public void MainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.instance.playerData.PlayerMora += GameManager.instance.GetMoney;
         SceneManager.instance.MainMenu();
     }
     public void InitRate()
     {
-        if(GameManager.instance.GetMoney >= NextHPCount)
+        if (GameManager.instance.GetMoney >= NextHPCount)
         {
             var g = GameManager.instance;
-            var pos = new Vector3(15,Random.Range(-g.MoveRange.y + g.MovePivot.y, g.MoveRange.y + g.MovePivot.y),0);
+            var pos = new Vector3(15, Random.Range(-g.MoveRange.y + g.MovePivot.y, g.MoveRange.y + g.MovePivot.y), 0);
             PoolManager.Instance.GetObject("HP", pos, Quaternion.identity);
             NextHPCount += 300000;
         }

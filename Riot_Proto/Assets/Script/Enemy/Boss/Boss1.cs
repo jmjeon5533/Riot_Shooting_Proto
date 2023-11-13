@@ -147,7 +147,7 @@ public class Boss1 : BossBase
         for (int i = 0; i < 21; i++)
         {
 
-            for (int j = angle; j < (360 + angle); j += 360 / 20)
+            for (int j = angle; j < (360 + angle); j += 360 / ((HP <= maxHP) ? 23 : 20))
             {
                 var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
                 b.SetMoveSpeed(4.5f);
@@ -180,6 +180,12 @@ public class Boss1 : BossBase
             b2.dir = GetTargetDir(shootPos2, p.transform.position);
             var b3 = PoolManager.Instance.GetObject("EnemyBullet", shootPos3, Quaternion.identity).GetComponent<BulletBase>();
             b3.dir = GetTargetDir(shootPos3, p.transform.position);
+            if(HP <= maxHP)
+            {
+                b1.SetMoveSpeed(12);
+                b2.SetMoveSpeed(12);
+                b3.SetMoveSpeed(12);
+            }
             yield return new WaitForSeconds(0.1f);
         }
 

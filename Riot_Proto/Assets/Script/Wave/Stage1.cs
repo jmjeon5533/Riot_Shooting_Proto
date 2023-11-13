@@ -236,7 +236,17 @@ public class Stage1 : WaveScript
     public override IEnumerator wave13()
     {
         Debug.Log(13);
-        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < 2; i++)
+        {
+            var vecY = 4 - (i * 8);
+            var enemy = PoolManager.Instance.GetObject("Mage3", new Vector3(15, vecY, 0));
+            GameManager.instance.curEnemys.Add(enemy);
+            enemy.GetComponent<EnemyBase>().MovePos = new Vector3(8, vecY, 0);
+        }
+        Vector2 vecPlayer = GameManager.instance.player.transform.position;
+        var eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, vecPlayer.y, 0));
+        GameManager.instance.curEnemys.Add(eo);
+        yield return new WaitForSeconds(1f);
     }
     public override IEnumerator wave14()
     {

@@ -46,6 +46,12 @@ public class TitleManager : MonoBehaviour
 
     [SerializeField] RadarGraph graph;
     Mesh statusPentagon;
+
+    public Transform OptionTab;
+    public bool isOption = false;
+    Tween OptionTween;
+    public Slider BGMS, SFXS;
+
     private void Awake()
     {
         instance = this;
@@ -69,6 +75,26 @@ public class TitleManager : MonoBehaviour
         ASkillStatus[0].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[0].dmg);
         ASkillStatus[1].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[0].range);
         ASkillStatus[2].fillAmount = Mathf.InverseLerp(0, 130, aSkillInfos[0].coolTime);
+
+        BGMS.value = SoundManager.instance.BGMVolume;
+        SFXS.value = SoundManager.instance.SFXVolume;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Option();
+        }
+        SoundManager.instance.BGMVolume = BGMS.value;
+        SoundManager.instance.SFXVolume = SFXS.value;
+    }
+
+    public void Option()
+    {
+        isOption = !isOption;
+        if(OptionTween != null) OptionTween.Kill();
+        OptionTween = OptionTab.DOLocalMoveY(isOption ? 0 : 900,0.5f).SetUpdate(true);
     }
 
     [RuntimeInitializeOnLoadMethod]
@@ -119,7 +145,7 @@ public class TitleManager : MonoBehaviour
         graph.ResetRadar();
         Selectbg[0].DOLocalMoveY(0, 0.7f);
         yield return Selectbg[1].DOLocalMoveY(0, 0.7f).WaitForCompletion();
-        
+
         yield return new WaitForSeconds(0.1f);
         SelectUI[0].DOLocalMoveX(-930, 1);
         SelectUI[2].DOLocalMoveY(355, 1);
@@ -146,17 +172,17 @@ public class TitleManager : MonoBehaviour
         SelectUI[0].DOLocalMove(new Vector3(-1658, 520), 1);
         SelectUI[2].DOLocalMove(new Vector3(-930, -760), 1);
         SelectUI[4].DOLocalMove(new Vector3(-1450, -383), 1);
-        SelectSkillImage.rectTransform.anchoredPosition = new Vector2(-355,0);
+        SelectSkillImage.rectTransform.anchoredPosition = new Vector2(-355, 0);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
         DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(0, 0), 1);
         graph.DisableRadar();
         yield return SelectUI[3].DOLocalMove(new Vector3(930, -760), 1).WaitForCompletion();
-        
+
         yield return new WaitForSeconds(0.1f);
 
         Selectbg[0].DOLocalMove(new Vector3(0, -540), 1);
         Selectbg[1].DOLocalMove(new Vector3(0, 540), 1);
-        
+
         InitPanel(0);
         titleBtn[0].localPosition = new Vector2(2300, -189);
         titleBtn[1].localPosition = new Vector2(2300, -415);

@@ -260,7 +260,7 @@ public class Boss1 : BossBase
     }
     IEnumerator Attack5()
     {
-        for (int i = 0; i < 720; i += 720 / 50)
+        for (int i = 0; i < 720; i += 720 / 60)
         {
             var b1 = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
             var b2 = PoolManager.Instance.GetObject("EnemyBullet2", transform.position, Quaternion.identity).GetComponent<BulletBase>();
@@ -274,7 +274,7 @@ public class Boss1 : BossBase
             yield return new WaitForSeconds(0.01f);
         }
         yield return new WaitForSeconds(0.5f);
-        var count = 30;
+        var count = 20;
         for (int j = 0; j < 3; j++)
         {
             string bulletTag;

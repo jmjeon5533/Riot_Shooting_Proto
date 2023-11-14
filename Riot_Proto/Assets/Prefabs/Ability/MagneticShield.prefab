@@ -55,5 +55,5 @@ MonoBehaviour:
   stats: 
   isDamaged: 1
   curCooltime: 0
-  maxCooltime: 40
+  maxCooltime: 60
   increaseValue: 0

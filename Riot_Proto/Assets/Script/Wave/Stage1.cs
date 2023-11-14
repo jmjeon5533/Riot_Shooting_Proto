@@ -154,11 +154,12 @@ public class Stage1 : WaveScript
         for (int i = 0; i < 2; i++)
         {
             var vecY = 4 - (i * 8);
-            var e = PoolManager.Instance.GetObject("Mage1", new Vector3(15, vecY, 0));
+            var e = PoolManager.Instance.GetObject("Mage2", new Vector3(15, vecY, 0));
             GameManager.instance.curEnemys.Add(e);
             e.GetComponent<EnemyBase>().MovePos = new Vector3(7, Random.Range(-6.5f, 3.5f), 0);
+            yield return new WaitForSeconds(1f);
         }
-
+        
         float height = GameManager.instance.player.transform.position.y;
         for (int i = 0; i < 10; i++)
         {
@@ -203,6 +204,7 @@ public class Stage1 : WaveScript
             GameManager.instance.curEnemys.Add(enemy1.gameObject);
             GameManager.instance.curEnemys.Add(enemy2.gameObject);
             e.GetComponent<EnemyBase>().MovePos = new Vector3(7, Random.Range(-6.5f, 3.5f), 0);
+            yield return new WaitForSeconds(1f);
         }
 
         Vector2 vecPlayer = GameManager.instance.player.transform.position;
@@ -236,7 +238,7 @@ public class Stage1 : WaveScript
     public override IEnumerator wave13()
     {
         Debug.Log(13);
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
             var vecY = 4 - (i * 8);
             var enemy = PoolManager.Instance.GetObject("Mage3", new Vector3(15, vecY, 0));
@@ -244,7 +246,9 @@ public class Stage1 : WaveScript
             enemy.GetComponent<EnemyBase>().MovePos = new Vector3(8, vecY, 0);
         }
         Vector2 vecPlayer = GameManager.instance.player.transform.position;
-        var eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, vecPlayer.y, 0));
+        var eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, vecPlayer.y+1, 0));
+        GameManager.instance.curEnemys.Add(eo);
+        eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, vecPlayer.y-1, 0));
         GameManager.instance.curEnemys.Add(eo);
         yield return new WaitForSeconds(1f);
     }

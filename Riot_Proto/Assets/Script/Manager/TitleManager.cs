@@ -39,6 +39,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] GameObject ASkillPrefab;
     [SerializeField] Image[] ASkillStatus;
     [SerializeField] RawImage SelectSkillImage;
+    bool canSelect = false; //
 
     [SerializeField] Image startPanel;
     [SerializeField] Image logo;
@@ -93,8 +94,8 @@ public class TitleManager : MonoBehaviour
     public void Option()
     {
         isOption = !isOption;
-        if(OptionTween != null) OptionTween.Kill();
-        OptionTween = OptionTab.DOLocalMoveY(isOption ? 0 : 900,0.5f).SetUpdate(true);
+        if (OptionTween != null) OptionTween.Kill();
+        OptionTween = OptionTab.DOLocalMoveY(isOption ? 0 : 900, 0.5f).SetUpdate(true);
     }
 
     [RuntimeInitializeOnLoadMethod]
@@ -141,6 +142,7 @@ public class TitleManager : MonoBehaviour
     }
     IEnumerator selectStart()
     {
+        canSelect = false;
         InitPanel(1);
         graph.ResetRadar();
         Selectbg[0].DOLocalMoveY(0, 0.7f);
@@ -156,6 +158,7 @@ public class TitleManager : MonoBehaviour
         selectPanelRect.sizeDelta = new Vector2(size, 0);
         yield return DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(1000, 0), 1).WaitForCompletion();
         SelectSkillImage.transform.position = ASkillList[0].position;
+        canSelect = true;
         graph.InitRaderGraph();
     }
     public void StageStart()
@@ -203,12 +206,15 @@ public class TitleManager : MonoBehaviour
         var num = i;
         b.onClick.AddListener(() =>
         {
-            SceneManager.instance.ActiveIndex = num;
-            SceneManager.instance.ActiveLevel = 3;
-            ASkillStatus[0].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[num].dmg);
-            ASkillStatus[1].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[num].range);
-            ASkillStatus[2].fillAmount = Mathf.InverseLerp(0, 100, aSkillInfos[num].coolTime);
-            SelectSkillImage.transform.position = b.transform.position;
+            if (canSelect)
+            {
+                SceneManager.instance.ActiveIndex = num;
+                SceneManager.instance.ActiveLevel = 3;
+                ASkillStatus[0].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[num].dmg);
+                ASkillStatus[1].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[num].range);
+                ASkillStatus[2].fillAmount = Mathf.InverseLerp(0, 100, aSkillInfos[num].coolTime);
+                SelectSkillImage.transform.position = b.transform.position;
+            }
         });
     }
     public void InitPanel(int index) //타이틀 패널 바꾸기

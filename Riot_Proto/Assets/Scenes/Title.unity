@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0007387176, g: 0.000811749, b: 0.00069838576, a: 1}
+  m_IndirectSpecularColor: {r: 0.0007387253, g: 0.00081176683, b: 0.0006983741, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4890,8 +4890,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2beca2a00fdacb84ea28d021e0996007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundObject: {fileID: 0}
-  BGM: []
+  SoundObject: {fileID: 6986884222326890546, guid: 3af56dbf77ac8224e8f1d7bff87b7ff7, type: 3}
+  Sounds:
+  - name: Hit
+    clip: {fileID: 8300000, guid: 0fce30410881ca64ebc384d5b61179b0, type: 3}
   BGMVolume: 0.5
   SFXVolume: 0.5
 --- !u!4 &1031782239

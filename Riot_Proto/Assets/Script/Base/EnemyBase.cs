@@ -203,6 +203,7 @@ public abstract class EnemyBase : MonoBehaviour
             Item();
         }
         GameManager.instance.GetMoney += Mathf.RoundToInt(damage * 50f);
+        SoundManager.instance.SetAudio("Hit",SoundManager.SoundState.SFX,false);
         if(hitTag != null) {
             PoolManager.Instance.GetObject(hitTag, transform.position, Quaternion.identity);
             
@@ -214,15 +215,6 @@ public abstract class EnemyBase : MonoBehaviour
             var rand = new Vector3(x,y,0);
             PoolManager.Instance.GetObject("Hit", transform.position + rand, Quaternion.identity);
         }
-        // var DamageTextPos = (Vector2)transform.position + (Random.insideUnitCircle * 2);
-        // var DmgText = PoolManager.Instance.GetObject("DamageText", UIManager.instance.DmgTextParant)
-        //     .GetComponent<DamageText>();
-        // DmgText.rect.position = DamageTextPos;
-        // DmgText.text.text = damage.ToString();
-        // DmgText.timeCount = 1 + (damage * ((isCrit) ? 0.02f : 0.01f));
-        // DmgText.color = (isCrit) ? Color.red : Color.white;
-        // if (isCrit) DmgText.text.fontStyle = FontStyle.Bold;
-        // else DmgText.text.fontStyle = FontStyle.Normal;
     }
     protected virtual void Item()
     {

@@ -90,6 +90,13 @@ public class PoolManager : MonoBehaviour
         else
         {
             pools[key].queue.Enqueue(obj);
+            if(obj.GetComponent<EnemyBase>() != null)
+            {
+                if(GameManager.instance.curEnemys.Contains(obj))
+                {
+                    GameManager.instance.curEnemys.Remove(obj);
+                }
+            }
             obj.SetActive(false);
             obj.transform.SetParent(pools[key].parent);
         }

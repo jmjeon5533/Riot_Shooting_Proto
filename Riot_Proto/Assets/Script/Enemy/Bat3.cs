@@ -34,8 +34,8 @@ public class Bat3 : EnemyBase
         if (transform.position.x <= -GameManager.instance.MoveRange.x -8
         || Mathf.Abs(transform.position.y) >= GameManager.instance.MoveRange.y + 20)
         {
-            PoolManager.Instance.PoolObject(EnemyTag, gameObject);
             GameManager.instance.curEnemys.Remove(gameObject);
+            PoolManager.Instance.PoolObject(EnemyTag, gameObject);
         }
     }
     protected override void Dead()

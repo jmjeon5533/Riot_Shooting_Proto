@@ -147,12 +147,12 @@ public class TitleManager : MonoBehaviour
         canSelect = false;
         InitPanel(1);
         graph.ResetRadar();
-        Selectbg[0].DOLocalMoveY(0, 0.7f);
-        yield return Selectbg[1].DOLocalMoveY(0, 0.7f).WaitForCompletion();
+        Selectbg[0].DOLocalMoveY(1, 0.7f);
+        yield return Selectbg[1].DOLocalMoveY(-1, 0.7f).WaitForCompletion();
 
         yield return new WaitForSeconds(0.1f);
         SelectUI[0].DOLocalMoveX(-850, 1);
-        SelectUI[2].DOLocalMoveY(355, 1);
+        SelectUI[2].DOLocalMoveY(429, 1);
         SelectUI[4].DOLocalMoveX(-750, 1);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
         float size = 70;
@@ -174,13 +174,13 @@ public class TitleManager : MonoBehaviour
     IEnumerator mainMenu()
     {
         SelectUI[0].DOLocalMove(new Vector3(-1658, 530), 1);
-        SelectUI[2].DOLocalMove(new Vector3(-930, -760), 1);
+        SelectUI[2].DOLocalMove(new Vector3(-960, 550), 1);
         SelectUI[4].DOLocalMove(new Vector3(-1450, 0), 1);
         SelectSkillImage.rectTransform.anchoredPosition = new Vector2(-355, 0);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
-        DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(0, 0), 1).WaitForCompletion();
+        DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(0, 1080), 1).WaitForCompletion();
         graph.DisableRadar();
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
 
         Selectbg[0].DOLocalMove(new Vector3(0, -540), 1);
         Selectbg[1].DOLocalMove(new Vector3(0, 540), 1);
@@ -228,7 +228,7 @@ public class TitleManager : MonoBehaviour
 
         SelectUI[0].localPosition = new Vector3(-1658, 530);
         SelectUI[1].GetComponent<RectTransform>().sizeDelta = new Vector3(0, 1080);
-        SelectUI[2].localPosition = new Vector3(-930, 570);
+        SelectUI[2].localPosition = new Vector3(-960, 570);
         SelectUI[4].localPosition = new Vector3(-1450, 0);
 
         // Selectbg[0].localPosition = new Vector3(0,-540);

@@ -50,6 +50,7 @@ public class ThunderDrop : AbilityBase
             Transform target = nearbyEnemies[Random.Range(0, nearbyEnemies.Count)].transform;
             if (target == null) return;
             ResetTimerUI(1);
+            SoundManager.instance.SetAudio("ThunderBolt", SoundManager.SoundState.SFX, false);
             Instantiate(thunder, new Vector3(target.position.x, 0, target.position.z), Quaternion.identity).GetComponent<Thunder>()
                 .SetDamage(defaultDamage);
 

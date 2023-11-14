@@ -153,6 +153,7 @@ public class TitleManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         SelectUI[0].DOLocalMoveX(-850, 1);
         SelectUI[2].DOLocalMoveY(429, 1);
+        SelectUI[3].DOLocalMoveY(350, 1);
         SelectUI[4].DOLocalMoveX(-750, 1);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
         float size = 70;
@@ -175,6 +176,7 @@ public class TitleManager : MonoBehaviour
     {
         SelectUI[0].DOLocalMove(new Vector3(-1658, 530), 1);
         SelectUI[2].DOLocalMove(new Vector3(-960, 550), 1);
+        SelectUI[2].DOLocalMove(new Vector3(-118, 740), 1);
         SelectUI[4].DOLocalMove(new Vector3(-1450, 0), 1);
         SelectSkillImage.rectTransform.anchoredPosition = new Vector2(-355, 0);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
@@ -226,10 +228,11 @@ public class TitleManager : MonoBehaviour
         titleBtn[0].localPosition = new Vector3(1600, -189);
         titleBtn[1].localPosition = new Vector3(1500, -415);
 
-        SelectUI[0].localPosition = new Vector3(-1658, 530);
+        SelectUI[0].localPosition = new Vector3(-1658, 470);
         SelectUI[1].GetComponent<RectTransform>().sizeDelta = new Vector3(0, 1080);
         SelectUI[2].localPosition = new Vector3(-960, 570);
-        SelectUI[4].localPosition = new Vector3(-1450, 0);
+        SelectUI[3].localPosition = new Vector3(-118, 740);
+        SelectUI[4].localPosition = new Vector3(-1550, 0);
 
         // Selectbg[0].localPosition = new Vector3(0,-540);
         // Selectbg[1].localPosition = new Vector3(0,540);

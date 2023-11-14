@@ -12,6 +12,7 @@ public class Power : ItemBase
     }
     protected override void GetItem()
     {
+        base.GetItem();
         var b = GameManager.instance.player.bulletLevel;
         if(b <= 4) GameManager.instance.player.bulletLevel++; 
         GameManager.instance.GetMoney += 150;

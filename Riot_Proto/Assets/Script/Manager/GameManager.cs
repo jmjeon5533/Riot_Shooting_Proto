@@ -42,11 +42,11 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        Camera[] camera = { MainCamera, EffectCamera, UICamera, BackCamera};
+        SceneManager.instance.SetResolution(camera);
     }
     void Start()
     {
-        Camera[] camera = { MainCamera, EffectCamera, UICamera, BackCamera};
-        SceneManager.instance.SetResolution(camera);
         Instantiate(playerPrefab[SceneManager.instance.CharIndex], new Vector3(-12f, 0, 0), Quaternion.identity);
         UIManager.instance.InitBackGround(SceneManager.instance.StageIndex,false);
         UIManager.instance.FadeBg.transform.SetAsLastSibling();

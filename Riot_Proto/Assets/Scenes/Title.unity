@@ -4894,6 +4894,8 @@ MonoBehaviour:
   Sounds:
   - name: Hit
     clip: {fileID: 8300000, guid: 0fce30410881ca64ebc384d5b61179b0, type: 3}
+  - name: Fire
+    clip: {fileID: 8300000, guid: a7d46d4fb6a84ca4aac3546321302400, type: 3}
   BGMVolume: 0.5
   SFXVolume: 0.5
 --- !u!4 &1031782239

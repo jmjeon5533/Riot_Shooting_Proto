@@ -107,5 +107,6 @@ public class Raiden : Player
                 break;
             }
         }
+        SoundManager.instance.SetAudio("Fire",SoundManager.SoundState.SFX,false);
     }
 }

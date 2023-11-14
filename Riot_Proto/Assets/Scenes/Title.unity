@@ -4659,7 +4659,7 @@ MonoBehaviour:
   - name: ElectricShoot_Flow
     clip: {fileID: 8300000, guid: 501f945aa52004d479c81e1ff3df58ce, type: 3}
   - name: XP
-    clip: {fileID: 8300000, guid: ed12f06f9625aba4482be37f48f73253, type: 3}
+    clip: {fileID: 8300000, guid: a67365ca834d01c4fa9ae4aef79820cc, type: 3}
   BGMVolume: 0.5
   SFXVolume: 0.5
 --- !u!4 &1031782239

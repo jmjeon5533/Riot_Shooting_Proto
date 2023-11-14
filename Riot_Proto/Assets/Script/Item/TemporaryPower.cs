@@ -12,6 +12,7 @@ public class TemporaryPower : ItemBase
     }
     protected override void GetItem()
     {
+        base.GetItem();
         UIManager.instance.InitRate();
     }
 }

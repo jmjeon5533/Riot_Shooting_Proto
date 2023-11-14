@@ -13,6 +13,7 @@ public class HpItem : ItemBase
     }
     protected override void GetItem()
     {
+        base.GetItem();
         if(GameManager.instance.player.HP < GameManager.instance.player.MaxHP) GameManager.instance.player.HP++;
         GameManager.instance.GetMoney += 150;
         Instantiate(getEffect,GameManager.instance.player.transform);

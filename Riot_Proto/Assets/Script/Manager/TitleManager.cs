@@ -79,6 +79,8 @@ public class TitleManager : MonoBehaviour
 
         BGMS.value = SoundManager.instance.BGMVolume;
         SFXS.value = SoundManager.instance.SFXVolume;
+
+        SoundManager.instance.SetAudio("Title1",SoundManager.SoundState.BGM,true);
     }
 
     private void Update()

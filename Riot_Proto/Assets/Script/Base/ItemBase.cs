@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ItemBase : MonoBehaviour
+public class ItemBase : MonoBehaviour
 {
     [SerializeField] string itemTag;
     void Start()
     {
 
     }
-    protected abstract void GetItem();
+    protected virtual void GetItem()
+    {
+        SoundManager.instance.SetAudio("GetItem",SoundManager.SoundState.SFX,false);
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))

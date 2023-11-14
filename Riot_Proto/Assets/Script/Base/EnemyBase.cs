@@ -203,7 +203,7 @@ public abstract class EnemyBase : MonoBehaviour
             Item();
         }
         GameManager.instance.GetMoney += Mathf.RoundToInt(damage * 50f);
-        SoundManager.instance.SetAudio("Hit",SoundManager.SoundState.SFX,false,Random.Range(-0.7f,-1.4f));
+        SoundManager.instance.SetAudio("Hit",SoundManager.SoundState.SFX,false,Random.Range(0.3f,0.7f));
         if(hitTag != null) {
             PoolManager.Instance.GetObject(hitTag, transform.position, Quaternion.identity);
             

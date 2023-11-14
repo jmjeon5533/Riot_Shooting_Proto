@@ -119,14 +119,20 @@ public class Boss1 : BossBase
         b.transform.localScale = Vector3.one;
         Vector3 originPos = b.transform.position;
         yield return b.transform.DOMove(originPos + (Vector3.left * 3.5f), 1.5f).WaitForCompletion();
+        
         yield return b.transform.DOScale(Vector3.zero, 0.1f).WaitForCompletion();
+        if(!b.gameObject.activeSelf)
+        {
+            isAttack = false;
+            yield break;
+        }
         for (int i = 0; i < 15; i++)
         {
             for (int j = 0; j < 7; j++)
             {
 
                 var tempB = PoolManager.Instance.GetObject("EnemyBullet", b.transform.position, Quaternion.identity).GetComponent<EnemyBullet>();
-                tempB.SetMoveSpeed(Random.Range(3.3f, 4.8f));
+                tempB.SetMoveSpeed(Random.Range(4f, 5.5f));
                 tempB.dir = Vector3.left;
                 float _angle = (j % 2 == 0 ? Random.Range(-60, 240f) : Random.Range(120, 420f)) * Mathf.Deg2Rad; // ������ �������� ��ȯ
                 Vector3 direction = new Vector3(Mathf.Cos(_angle), Mathf.Sin(_angle), 0); // ���� ������ ���� ���� ����

@@ -19,9 +19,10 @@ public class MagneticShield : AbilityBase, IListener
         if(curCooltime >= maxCooltime)
         {
             curCooltime = 0;
-            SoundManager.instance.SetAudio("Shield_On", SoundManager.SoundState.SFX, false);
+            
             isDamaged = false;
             GameManager.instance.player.ShieldOn();
+            SoundManager.instance.SetAudio("Shield_On", SoundManager.SoundState.SFX, false);
             useSkill = false;
             ResetTimerUI(0);
         }

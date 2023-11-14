@@ -6630,6 +6630,7 @@ MonoBehaviour:
   Bomb: {fileID: 2598661049487990157, guid: 51fc12e8a22fa614bae17a70058e9bbf, type: 3}
   dissolveShader: {fileID: 4800000, guid: cd6876df32c00e04a90de8e642631c9f, type: 3}
   dissolveSprite: {fileID: 2800000, guid: 105f727177d6088478cbf9817caa623b, type: 3}
+  curBGM: {fileID: 0}
   IsGame: 0
   itemCoolCount: 0
 --- !u!114 &1679633663
@@ -6656,7 +6657,6 @@ MonoBehaviour:
   - {fileID: 1260307834432912256, guid: bb22ea6c177d33e4b8c9aade8c7d1000, type: 3}
   - {fileID: 444332447070250323, guid: 0475cc144f31fa0478358727f12243e1, type: 3}
   - {fileID: 8018033854734518954, guid: d30b87bbd815aeb43b1af5bc96956fea, type: 3}
-  - {fileID: 1091152062516125674, guid: dc4517977c91c0a49b517ebc5d89a0bd, type: 3}
   - {fileID: 6429657059573211761, guid: 09645bf7f68cbd24885b1ebbc34f7693, type: 3}
   - {fileID: 2920288409773848556, guid: 882422c1d6c07d84c866f9d52bf664c8, type: 3}
   - {fileID: 2107807676094443317, guid: a2a657d80aed5d24c89c930f55fd62e2, type: 3}

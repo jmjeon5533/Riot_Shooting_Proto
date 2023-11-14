@@ -141,19 +141,26 @@ public class ChainLightning : AbilityBase, IListener
         if (targets != null && targets.Count > 0)
         {
             
+                bool isSound = false;
                 int count = 0;
                 for (int i = 0; i < targets.Count; i++)
                 {
                     time = 0;
-                    while(time < 0.3f)
+                    while(time < 0.55f)
                     {
                         line.SetPosition(0, _t.position);
                         if (targets[i] == null) continue;
+                        if(!isSound)
+                        {
+                            //SoundManager.instance.SetAudio("ChainLightning_Contact",SoundManager.SoundState.SFX,false); isSound = true;
+
+                        }
                         line.SetPosition(1, targets[i].transform.position);
                         _t = targets[i];
                         time += Time.deltaTime;
                         yield return null;
                     }
+                    isSound = false;
                     //yield return new WaitForSeconds(0.1f);
                 }
                 yield return null;

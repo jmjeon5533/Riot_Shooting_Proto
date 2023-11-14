@@ -28,7 +28,8 @@ public class Flash : AbilityBase
             Destroy(Instantiate(explosion, targetPos, Quaternion.identity),0.7f);
             var hit = Physics.OverlapSphere(targetPos, radius);
             player = GameManager.instance.player;
-            int damage = defaultDamage + (int)(player.damage * damageRate); 
+            int damage = defaultDamage + (int)(player.damage * damageRate);
+            SoundManager.instance.SetAudio("Flash", SoundManager.SoundState.SFX, false);
             foreach (var h in hit)
             {
                 if (h.CompareTag("Enemy"))

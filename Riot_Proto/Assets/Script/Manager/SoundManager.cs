@@ -42,7 +42,7 @@ public class SoundManager : MonoBehaviour
     {
 
     }
-    public void SetAudio(AudioClip audio,SoundState soundState, bool looping)
+    public GameObject SetAudio(AudioClip audio,SoundState soundState, bool looping)
     {
         var sound = Instantiate(SoundObject,Camera.main.transform.position,Quaternion.identity)
         .GetComponent<AudioSource>();
@@ -52,8 +52,9 @@ public class SoundManager : MonoBehaviour
         sound.loop = looping;
         sound.Play();
         if(!looping) Destroy(sound.gameObject,audio.length);
+        return sound.gameObject;
     }
-    public void SetAudio(string audioPath ,SoundState soundState, bool looping)
+    public GameObject SetAudio(string audioPath ,SoundState soundState, bool looping)
     {
         var sound = Instantiate(SoundObject,Camera.main.transform.position,Quaternion.identity)
         .GetComponent<AudioSource>();
@@ -63,5 +64,6 @@ public class SoundManager : MonoBehaviour
         sound.loop = looping;
         sound.Play();
         if(!looping) Destroy(sound.gameObject,SoundDic[audioPath].length);
+        return sound.gameObject;
     } 
 }

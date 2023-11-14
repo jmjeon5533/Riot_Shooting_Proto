@@ -32,7 +32,7 @@ public class ElectricFlow : AbilityBase
             var lazer = PoolManager.Instance.GetObject("Lazer",GameManager.instance.player.transform).GetComponent<FlowLazer>();
             SoundManager.instance.SetAudio("ElectricFlow_Shoot", SoundManager.SoundState.SFX, false);
             lazer.transform.localPosition = new Vector3(1,0,0); 
-            //lazer.transform.rotation = Quaternion.Euler(0, -90, 0);
+            lazer.transform.rotation = Quaternion.Euler(0, -90, 0);
             lazer.Init(defaultDamage + (int)(player.damage * damageRate));
             useSkill = true;
         }

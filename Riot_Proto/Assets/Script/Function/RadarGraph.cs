@@ -58,6 +58,8 @@ public class RadarGraph : MonoBehaviour
 
     }
 
+   
+
     IEnumerator RemoveRader(int index)
     {
         //float plus = stats[index] / 60;
@@ -73,6 +75,7 @@ public class RadarGraph : MonoBehaviour
             yield return null;
         }
         
+
     }
 
     public void ResetRadar()

@@ -146,6 +146,7 @@ public class TitleManager : MonoBehaviour
     {
         canSelect = false;
         InitPanel(1);
+        //graph.GetComponent<CanvasRenderer>().SetAlpha(1);
         graph.ResetRadar();
         Selectbg[0].DOLocalMoveY(1, 0.7f);
         yield return Selectbg[1].DOLocalMoveY(-1, 0.7f).WaitForCompletion();
@@ -183,6 +184,7 @@ public class TitleManager : MonoBehaviour
         DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(0, 1080), 1).WaitForCompletion();
         graph.DisableRadar();
         yield return new WaitForSeconds(1f);
+        graph.GetComponent<CanvasRenderer>().SetMesh(null);
 
         Selectbg[0].DOLocalMove(new Vector3(0, -540), 1);
         Selectbg[1].DOLocalMove(new Vector3(0, 540), 1);

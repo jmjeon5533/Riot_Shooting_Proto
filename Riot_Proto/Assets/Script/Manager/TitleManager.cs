@@ -151,14 +151,13 @@ public class TitleManager : MonoBehaviour
         yield return Selectbg[1].DOLocalMoveY(0, 0.7f).WaitForCompletion();
 
         yield return new WaitForSeconds(0.1f);
-        SelectUI[0].DOLocalMoveX(-930, 1);
+        SelectUI[0].DOLocalMoveX(-850, 1);
         SelectUI[2].DOLocalMoveY(355, 1);
-        SelectUI[3].DOLocalMoveY(-520, 1);
-        SelectUI[4].DOLocalMoveX(-500, 1);
+        SelectUI[4].DOLocalMoveX(-750, 1);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
         float size = 70;
-        selectPanelRect.sizeDelta = new Vector2(size, 0);
-        yield return DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(1000, 0), 1).WaitForCompletion();
+        selectPanelRect.sizeDelta = new Vector2(size, 1080);
+        yield return DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(800, 1080), 1).WaitForCompletion();
         SelectSkillImage.transform.position = ASkillList[0].position;
         canSelect = true;
         graph.InitRaderGraph();
@@ -174,15 +173,13 @@ public class TitleManager : MonoBehaviour
     }
     IEnumerator mainMenu()
     {
-        SelectUI[0].DOLocalMove(new Vector3(-1658, 520), 1);
+        SelectUI[0].DOLocalMove(new Vector3(-1658, 530), 1);
         SelectUI[2].DOLocalMove(new Vector3(-930, -760), 1);
-        SelectUI[4].DOLocalMove(new Vector3(-1450, -383), 1);
+        SelectUI[4].DOLocalMove(new Vector3(-1450, 0), 1);
         SelectSkillImage.rectTransform.anchoredPosition = new Vector2(-355, 0);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
-        DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(0, 0), 1);
+        DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(0, 0), 1).WaitForCompletion();
         graph.DisableRadar();
-        yield return SelectUI[3].DOLocalMove(new Vector3(930, -760), 1).WaitForCompletion();
-
         yield return new WaitForSeconds(0.1f);
 
         Selectbg[0].DOLocalMove(new Vector3(0, -540), 1);
@@ -229,11 +226,10 @@ public class TitleManager : MonoBehaviour
         titleBtn[0].localPosition = new Vector3(1600, -189);
         titleBtn[1].localPosition = new Vector3(1500, -415);
 
-        SelectUI[0].localPosition = new Vector3(-1658, 520);
-        SelectUI[1].GetComponent<RectTransform>().sizeDelta = new Vector3(0, 0);
+        SelectUI[0].localPosition = new Vector3(-1658, 530);
+        SelectUI[1].GetComponent<RectTransform>().sizeDelta = new Vector3(0, 1080);
         SelectUI[2].localPosition = new Vector3(-930, 570);
-        SelectUI[3].localPosition = new Vector3(930, -800);
-        SelectUI[4].localPosition = new Vector3(-1450, -383);
+        SelectUI[4].localPosition = new Vector3(-1450, 0);
 
         // Selectbg[0].localPosition = new Vector3(0,-540);
         // Selectbg[1].localPosition = new Vector3(0,540);

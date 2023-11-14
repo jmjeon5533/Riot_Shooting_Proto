@@ -26,6 +26,7 @@ public class XP : ItemBase
     }
     protected override void GetItem()
     {
+        SoundManager.instance.SetAudio("XP",SoundManager.SoundState.SFX,false);
         GameManager.instance.AddXP(AddValue);
     }
 }

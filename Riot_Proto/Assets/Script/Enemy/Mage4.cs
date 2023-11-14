@@ -52,7 +52,7 @@ public class Mage4 : EnemyBase
             enemy.movedir = Vector3.left;
             enemy.XPRate = 0;
             enemy.ItemAddCount = 0;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.1f);
         }
 
     }

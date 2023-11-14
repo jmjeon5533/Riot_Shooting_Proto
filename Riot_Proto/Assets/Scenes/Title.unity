@@ -2204,7 +2204,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -308.99994, y: -923}
+  m_AnchoredPosition: {x: -308.99997, y: -923}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472772460
@@ -4908,6 +4908,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 501f945aa52004d479c81e1ff3df58ce, type: 3}
   - name: ThunderBolt
     clip: {fileID: 8300000, guid: f53c0a942027e664baf85fcd01f9134e, type: 3}
+  - name: Shield_On
+    clip: {fileID: 8300000, guid: cb34c5579236fb7479f5fe622086f034, type: 3}
   BGMVolume: 0.5
   SFXVolume: 0.5
 --- !u!4 &1031782239

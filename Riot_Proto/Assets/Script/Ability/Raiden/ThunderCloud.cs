@@ -68,7 +68,7 @@ public class ThunderCloud : AbilityBase
     public override string GetStatText()
     {
         return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(2 * Mathf.Pow((1 + 0.15f), level+1)))
-            + "\n스킬 쿨타임 " + maxCooltime + " → " + (Mathf.Round((maxCooltime - (0.4f * Mathf.Pow((1 + 0.1f), level+1))) * 100) / 100);
+            + "\n스킬 쿨타임 " + maxCooltime + " → " + (maxCooltime - Mathf.Round(((0.4f * Mathf.Pow((1 + 0.1f), level+1))) * 100) / 100);
         
 
     }

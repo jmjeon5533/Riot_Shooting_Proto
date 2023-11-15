@@ -74,7 +74,7 @@ public class ElectricBeam : MonoBehaviour
             Attack();
             if (!isSound)
             {
-                SoundManager.instance.SetAudio("ElectricLine_Shoot", SoundManager.SoundState.SFX, false);
+                //SoundManager.instance.SetAudio("ElectricLine_Shoot", SoundManager.SoundState.SFX, false);
                 isSound = true;
             }
         }

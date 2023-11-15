@@ -59,10 +59,10 @@ MonoBehaviour:
   damageRate: 0.4
   angle: 15
   count: 3
-  maxCooltime: 10
+  maxCooltime: 7
   curCooltime: 0
   defRate: 0.3
   increaseValue: 3
-  duration: 6
+  duration: 4
   multiplier: 0.3
-  speed: 9
+  speed: 12

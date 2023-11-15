@@ -29,6 +29,7 @@ public class ShockBullet : BulletBase
         if(other.CompareTag("Enemy"))
         {
             float chance = Random.Range(0, 100f);
+            SoundManager.instance.SetAudio("ThunderCloud_Hit", SoundManager.SoundState.SFX, false);
             other.GetComponent<EnemyBase>().Damage((chance <= player.CritRate)
                     ? (int)(Damage * player.CritDamage) : Damage, (chance <= player.CritRate) ? true : false, "ShockHit");
             

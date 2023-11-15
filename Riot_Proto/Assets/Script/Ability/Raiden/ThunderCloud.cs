@@ -25,6 +25,7 @@ public class ThunderCloud : AbilityBase
         if(curCooltime > maxCooltime)
         {
             curCooltime=0;
+            SoundManager.instance.SetAudio("ThunderCloud", SoundManager.SoundState.SFX, false);
             ResetTimerUI(1);
             Instantiate(cloud,GameManager.instance.player.transform.position+(Vector3.right * 1.5f), Quaternion.identity).GetComponent<Cloud>().Duration(livingDuration, speed,defaultDamage);
         }

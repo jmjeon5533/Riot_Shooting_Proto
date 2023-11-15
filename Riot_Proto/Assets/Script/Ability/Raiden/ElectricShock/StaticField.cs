@@ -28,6 +28,7 @@ public class StaticField : AbilityBase
             curTime = 0;
             minCool = curTime;
             ResetTimerUI(1);
+            SoundManager.instance.SetAudio("StaticField", SoundManager.SoundState.SFX, false, 1f);
             var b = Instantiate(field,player.transform.position,Quaternion.identity).GetComponent<StaticZone>();
             b.Init(defaultDamage + (int)(player.damage * damageRate), range, duration, delay);
             useSkill = true;

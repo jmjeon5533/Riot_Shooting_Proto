@@ -28,6 +28,7 @@ public class ShockWave : AbilityBase
             curTime = 0;
             useSkill = false;
             ResetTimerUI(1);
+            SoundManager.instance.SetAudio("ElectricWave", SoundManager.SoundState.SFX, false, 1f);
             var b = Instantiate(wave, player.transform.position, Quaternion.identity).GetComponent<ElectricWave>();
             b.Init(range, speed, duration, 1 - slowRate);
             useSkill = true;

@@ -38,11 +38,13 @@ public class ElectricCall : AbilityBase
     IEnumerator Attack()
     {
         ThunderDrain();
+        SoundManager.instance.SetAudio("ElectricCall", SoundManager.SoundState.SFX, false, 1f);
         yield return new WaitForSeconds(1.5f);
         if (attackCount > 7) attackCount = 7; 
         for(int i=0;i<attackCount;i++)
         {
             ThunderDrop();
+            SoundManager.instance.SetAudio("ThunderBolt", SoundManager.SoundState.SFX, false, 1f);
             yield return new WaitForSeconds(delay);
         }
         attackCount = 0;
@@ -91,7 +93,7 @@ public class ElectricCall : AbilityBase
 
     public override string GetStatText()
     {
-        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level)));
+        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1)));
     }
 
     // Start is called before the first frame update
@@ -103,7 +105,7 @@ public class ElectricCall : AbilityBase
     public override void LevelUp()
     {
         base.LevelUp();
-        defaultDamage+= defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1));
+        defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
     }
 
     // Update is called once per frame

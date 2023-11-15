@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0007387253, g: 0.00081176683, b: 0.0006983741, a: 1}
+  m_IndirectSpecularColor: {r: 0.00071193185, g: 0.000790513, b: 0.00068174367, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2278,7 +2278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -308.99997, y: -923}
+  m_AnchoredPosition: {x: -308.99994, y: -923}
   m_SizeDelta: {x: 175, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472772460
@@ -4662,7 +4662,7 @@ MonoBehaviour:
   - name: XP
     clip: {fileID: 8300000, guid: af8eed3828f25b749a94623121ae4173, type: 3}
   - name: ThunderBolt
-    clip: {fileID: 8300000, guid: f53c0a942027e664baf85fcd01f9134e, type: 3}
+    clip: {fileID: 8300000, guid: 969d39a7d673c404095017abdd05bf85, type: 3}
   - name: Shield_On
     clip: {fileID: 8300000, guid: cb97271cdd4c5fb4eb430bdc7a089f77, type: 3}
   - name: Flash
@@ -4671,6 +4671,20 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: e9309a02ce4c4d045a507cbabd4bdebd, type: 3}
   - name: FireUp
     clip: {fileID: 8300000, guid: b22b720a7f65dca4c80043307d58800b, type: 3}
+  - name: StrongThunder
+    clip: {fileID: 8300000, guid: f53c0a942027e664baf85fcd01f9134e, type: 3}
+  - name: StaticField
+    clip: {fileID: 8300000, guid: b82f6df72e374704283d5a9c0af67399, type: 3}
+  - name: Kaisa
+    clip: {fileID: 8300000, guid: c82292b298d49284a8d57028cc584e18, type: 3}
+  - name: ElectricWave
+    clip: {fileID: 8300000, guid: e07b63e495e706147a60433789f86742, type: 3}
+  - name: ElectricShock
+    clip: {fileID: 8300000, guid: d4ab90a21adca454ab9206df013125c3, type: 3}
+  - name: ElectricCall
+    clip: {fileID: 8300000, guid: d71c49aa5e386f44d97e55f5ba406bc9, type: 3}
+  - name: ThunderCloud
+    clip: {fileID: 8300000, guid: 8b111425e36bc1448a44570ece1f1a2a, type: 3}
   BGMVolume: 0.5
   SFXVolume: 0.5
 --- !u!4 &1031782239

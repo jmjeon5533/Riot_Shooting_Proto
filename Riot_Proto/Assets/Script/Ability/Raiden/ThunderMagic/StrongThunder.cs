@@ -37,6 +37,7 @@ public class StrongThunder : AbilityBase
                 //    target = null;
                 //}   
             }
+            SoundManager.instance.SetAudio("StrongThunder", SoundManager.SoundState.SFX, false, 1f);
             Thunder t = Instantiate(thunders[level], new Vector3(0, 0, 0), Quaternion.identity).GetComponent<Thunder>();
              t.SetDamage(damage);
             t.radius = radius;
@@ -47,15 +48,8 @@ public class StrongThunder : AbilityBase
 
     public override string GetStatText()
     {
-        if((level+1) ==3 || (level + 1) == 5)
-        {
-            return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level))) +
-            " 스킬 범위 " + radius + " → " + (radius + 0.5);
-        } else
-        {
-            return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level)));
-          
-        }
+        
+            return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1)));
         
     }
 

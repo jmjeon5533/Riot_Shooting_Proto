@@ -24,6 +24,7 @@ public class DirectLightning : AbilityBase, IListener
             minCool = stack;
             ResetTimerUI(1);
             useSkill = true;
+            SoundManager.instance.SetAudio("Kaisa", SoundManager.SoundState.SFX, false, 1f);
             var b = Instantiate(bullet, player.transform.position + (Vector3.right * 1.5f), Quaternion.identity);
             b.GetComponent<BulletBase>().Damage = defaultDamage + (int)(player.damage * damageRate);
            
@@ -32,7 +33,7 @@ public class DirectLightning : AbilityBase, IListener
 
     public override string GetStatText()
     {
-        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level))) +
+        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1))) +
             " 필요 공격 횟수 " + maxStack + " → " + (maxStack-1);
     }
 

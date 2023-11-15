@@ -49,7 +49,7 @@ public class Flash : AbilityBase
 
     public override string GetStatText()
     {
-        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level)));  
+        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1)));  
     }
 
     Vector3 GetEnemyPos()
@@ -79,7 +79,7 @@ public class Flash : AbilityBase
     public override void LevelUp()
     {
         base.LevelUp();
-        defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1));
+        defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
     }
 
     // Start is called before the first frame update

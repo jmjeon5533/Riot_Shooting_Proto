@@ -40,7 +40,7 @@ public class ElectricFlow : AbilityBase
 
     public override string GetStatText()
     {
-        return $"데미지 {defaultDamage} → {defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level))}";
+        return $"데미지 {defaultDamage} → {defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1))}";
     }
 
     // Start is called before the first frame update

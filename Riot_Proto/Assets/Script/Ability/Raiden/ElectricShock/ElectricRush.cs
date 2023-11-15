@@ -48,6 +48,7 @@ public class ElectricRush : AbilityBase
             float amount = radius / (count - 1);
             float z = (radius) / -2f;
 
+            SoundManager.instance.SetAudio("Kaisa", SoundManager.SoundState.SFX, false, 0.9f);
             for (int i = 0; i < count; i++)
             {
                 Quaternion rotation = Quaternion.Euler(0, 0, z);

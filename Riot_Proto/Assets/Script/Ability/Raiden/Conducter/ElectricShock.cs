@@ -23,6 +23,7 @@ public class ElectricShock : AbilityBase, IListener
             ResetTimerUI(1);
             stack = 0;
             minCool = stack;
+            SoundManager.instance.SetAudio("ElectricShock", SoundManager.SoundState.SFX, false, 1f);
             var b = Instantiate(bullet, player.transform.position + (Vector3.right * 2f), Quaternion.identity);
             b.GetComponent<BulletBase>().Damage = defaultDamage + (int)(player.damage * damageRate);
             useSkill = true;
@@ -31,7 +32,7 @@ public class ElectricShock : AbilityBase, IListener
 
     public override string GetStatText()
     {
-        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level))) +
+        return "스킬 데미지 " + defaultDamage + " → " + (defaultDamage + (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1))) +
             " 필요 공격 횟수 " + maxStack + " → " + (maxStack - 1);
     }
 
@@ -47,7 +48,7 @@ public class ElectricShock : AbilityBase, IListener
     public override void LevelUp()
     {
         base.LevelUp();
-        defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level+1));
+        defaultDamage += (int)(increaseValue * Mathf.Pow((1 + 0.2f), level));
         maxStack--;
         maxCool = maxStack;
     }

@@ -38,20 +38,20 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         var y = Mathf.Abs(s.ScreenArea.y - s.ScreenWidth.y) / 2;
         minusVec = new Vector2(x, y);
         
-        Stick.anchoredPosition = eventData.position - minusVec - (Stick.sizeDelta / 2);
-        input = eventData.position - Stick.anchoredPosition - minusVec - (Stick.sizeDelta / 2);
+        Stick.localPosition = eventData.position - minusVec - (Stick.sizeDelta / 2);
+        input = eventData.position - (Vector2)Stick.localPosition - minusVec - (Stick.sizeDelta / 2);
         Input = input.normalized;
         Input *= input.magnitude / (Stick.rect.width * 0.5f);
-        Lever.anchoredPosition = Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f);
+        Lever.localPosition = Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f);
         AlphaTarget = 0.5f;
         //print($"{eventData.position} : {Stick.anchoredPosition} : {minusVec}");
     }
     public void OnDrag(PointerEventData eventData)
     {
-        input = eventData.position - Stick.anchoredPosition - minusVec - (Stick.sizeDelta / 2);
+        input = eventData.position - (Vector2)Stick.localPosition - minusVec - (Stick.sizeDelta / 2);
         Input = input.normalized;
         Input *= Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f).magnitude / (Stick.rect.width * 0.5f);
-        Lever.anchoredPosition = Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f);
+        Lever.localPosition = Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f);
         //print($"{eventData.position} : {Stick.anchoredPosition} : {minusVec}\n{s.ScreenArea.x}-{s.ScreenWidth.x}");
         AlphaTarget = 0.5f;
     }

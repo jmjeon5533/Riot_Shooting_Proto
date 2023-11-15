@@ -118,9 +118,10 @@ public class TitleManager : MonoBehaviour
 
         if (isButton) yield break;
         isButton = true;
-        titleBtn[0].DOLocalMoveX(1600, 1.5f).SetEase(Ease.InOutBack);
+        titleBtn[0].DOLocalMoveX(600, 1.5f).SetEase(Ease.InOutBack);
+        titleBtn[2].DOLocalMoveY(-206,1.5f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.2f);
-        yield return titleBtn[1].DOLocalMoveX(1500, 1.5f).SetEase(Ease.InOutBack)
+        yield return titleBtn[1].DOLocalMoveX(600, 1.5f).SetEase(Ease.InOutBack)
         .OnComplete(() => isButton = false).WaitForCompletion();
     }
 
@@ -133,6 +134,7 @@ public class TitleManager : MonoBehaviour
         if (isButton) yield break;
         isButton = true;
         titleBtn[0].DOLocalMoveX(2300, 1.5f).SetEase(Ease.InOutBack);
+        titleBtn[2].DOLocalMoveY(-800,1.5f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.2f);
         yield return titleBtn[1].DOLocalMoveX(2300, 1.5f).SetEase(Ease.InOutBack)
         .OnComplete(() => isButton = false).WaitForCompletion();
@@ -190,8 +192,9 @@ public class TitleManager : MonoBehaviour
         Selectbg[1].DOLocalMove(new Vector3(0, 540), 1);
 
         InitPanel(0);
-        titleBtn[0].localPosition = new Vector2(2300, -189);
-        titleBtn[1].localPosition = new Vector2(2300, -415);
+        titleBtn[0].localPosition = new Vector2(1250, -189);
+        titleBtn[1].localPosition = new Vector2(1250, -415);
+        titleBtn[2].localPosition = new Vector2(-353, -810);
 
         if (isButton) yield break;
         isButton = true;
@@ -229,6 +232,7 @@ public class TitleManager : MonoBehaviour
         Panel[index].SetActive(true);
         titleBtn[0].localPosition = new Vector3(1600, -189);
         titleBtn[1].localPosition = new Vector3(1500, -415);
+        titleBtn[2].localPosition = new Vector3(-353, -810);
 
         SelectUI[0].localPosition = new Vector3(-1658, 470);
         SelectUI[1].GetComponent<RectTransform>().sizeDelta = new Vector3(0, 1080);

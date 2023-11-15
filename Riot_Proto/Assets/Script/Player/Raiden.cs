@@ -18,6 +18,7 @@ public class Raiden : Player
         if(curCooltime >= maxCooltime && bulletLevel >= 3 && GameManager.instance.curEnemys.Count > 0)
         {
             curCooltime = 0;
+            SoundManager.instance.SetAudio("Kaisa", SoundManager.SoundState.SFX, false);
             List<Transform> list = FindClosestEnemies();
 
             for(int i = 0; i < 1 * (bulletLevel-2) + ((bulletLevel >= 3) ? 1 : 0); i++)

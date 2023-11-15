@@ -154,7 +154,7 @@ public class Stage1 : WaveScript
         for (int i = 0; i < 2; i++)
         {
             var vecY = 4 - (i * 8);
-            var e = PoolManager.Instance.GetObject("Mage2", new Vector3(15, vecY, 0));
+            var e = PoolManager.Instance.GetObject("Mage1", new Vector3(15, vecY, 0));
             GameManager.instance.curEnemys.Add(e);
             e.GetComponent<EnemyBase>().MovePos = new Vector3(7, Random.Range(-6.5f, 3.5f), 0);
             yield return new WaitForSeconds(1f);

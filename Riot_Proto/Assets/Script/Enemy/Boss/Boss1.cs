@@ -289,7 +289,7 @@ public class Boss1 : BossBase
             yield return new WaitForSeconds(0.01f);
         }
         yield return new WaitForSeconds(0.5f);
-        var count = 20;
+        var count = 30;
         for (int j = 0; j < 3; j++)
         {
             string bulletTag;

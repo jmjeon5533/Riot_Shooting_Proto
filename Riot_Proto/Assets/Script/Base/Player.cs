@@ -130,6 +130,7 @@ public abstract class Player : MonoBehaviour
         {
             UIManager.instance.InitRate();
             UIManager.instance.UseOverTab();
+            GameManager.instance.IsGame = false;
         }
         else
         {

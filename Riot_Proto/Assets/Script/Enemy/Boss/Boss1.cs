@@ -155,7 +155,7 @@ public class Boss1 : BossBase
         for (int i = 0; i < 21; i++)
         {
 
-            for (int j = angle; j < (360 + angle); j += 360 / 24)
+            for (int j = angle; j < (360 + angle); j += 360 / 20)
             {
                 var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
                 b.SetMoveSpeed(4.5f);
@@ -276,7 +276,7 @@ public class Boss1 : BossBase
     }
     IEnumerator Attack5()
     {
-        for (int i = 0; i < 720; i += 720 / 60)
+        for (int i = 0; i < 720; i += 720 / 65)
         {
             var b1 = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
             var b2 = PoolManager.Instance.GetObject("EnemyBullet2", transform.position, Quaternion.identity).GetComponent<BulletBase>();
@@ -297,7 +297,7 @@ public class Boss1 : BossBase
             if (j % 2 == 0) bulletTag = "EnemyBullet";
             else bulletTag = "EnemyBullet2";
 
-            for (int i = 0; i < 360; i += 360 / count)
+            for (int i = 5; i < 365; i += 360 / count)
             {
                 var b = PoolManager.Instance.GetObject(bulletTag, transform.position, Quaternion.identity).GetComponent<BulletBase>();
                 float angle = i * Mathf.Deg2Rad; // 각도를 라디안으로 변환
@@ -307,6 +307,7 @@ public class Boss1 : BossBase
             }
             yield return new WaitForSeconds(0.3f);
             count += 5;
+            Debug.Log(count); 
         }
         isAttack = false;
     }

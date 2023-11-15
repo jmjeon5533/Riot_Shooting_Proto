@@ -128,6 +128,7 @@ public class TitleManager : MonoBehaviour
     public void StartButton()
     {
         StartCoroutine(Startbtn());
+        SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
     }
     IEnumerator Startbtn()
     {
@@ -143,6 +144,7 @@ public class TitleManager : MonoBehaviour
     public void SelectStart()
     {
         StartCoroutine(selectStart());
+        //SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
     }
     IEnumerator selectStart()
     {
@@ -168,11 +170,13 @@ public class TitleManager : MonoBehaviour
     }
     public void StageStart()
     {
+        SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
         SceneManager.instance.loadingpath = "Main";
         UnityEngine.SceneManagement.SceneManager.LoadScene("Loading");
     }
     public void MainMenu()
     {
+        SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
         StartCoroutine(mainMenu());
     }
     IEnumerator mainMenu()
@@ -214,6 +218,8 @@ public class TitleManager : MonoBehaviour
         {
             if (canSelect)
             {
+                SoundManager.instance.SetAudio("XP", SoundManager.SoundState.SFX, false);
+
                 SceneManager.instance.ActiveIndex = num;
                 SceneManager.instance.ActiveLevel = 3;
                 ASkillStatus[0].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[num].dmg);

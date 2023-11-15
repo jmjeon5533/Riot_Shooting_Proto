@@ -14,6 +14,8 @@ public class ElectricBeam : MonoBehaviour
     Player player;
     public int damage;
 
+    bool isSound = false;
+
     [SerializeField] Vector3 size;
     [SerializeField] Vector3 offset;
     [SerializeField] Vector3 pos;
@@ -68,6 +70,13 @@ public class ElectricBeam : MonoBehaviour
         UpdateLivingTime();
         transform.position = player.transform.position + pos;
         if(curTime > delay)
+        {
             Attack();
+            if (!isSound)
+            {
+                SoundManager.instance.SetAudio("ElectricLine_Shoot", SoundManager.SoundState.SFX, false);
+                isSound = true;
+            }
+        }
     }
 }

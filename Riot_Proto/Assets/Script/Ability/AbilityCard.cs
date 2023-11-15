@@ -93,6 +93,7 @@ public class AbilityCard : MonoBehaviour
     public void Select()
     {
         StartCoroutine(ISelect(false));
+        SoundManager.instance.SetAudio("LevelUp", SoundManager.SoundState.SFX, false);
     }
 
     //ī�忡 �ɷ��� �����ϰ� �����Ű�� �Լ�

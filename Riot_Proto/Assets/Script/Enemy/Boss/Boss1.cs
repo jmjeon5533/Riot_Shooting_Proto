@@ -314,7 +314,7 @@ public class Boss1 : BossBase
 
     public override void Damage(int damage, bool isCrit, string hitTag = null)
     {
-        if (IsSpawning()) return;
+        if (IsSpawning() || !GameManager.instance.IsGame) return;
         HP -= damage * damagedMultiplier;
         if (HP <= 0 && !isDeadMotionPlay)
         {
@@ -323,7 +323,7 @@ public class Boss1 : BossBase
             {
                 Dead();
             }
-            if(GameManager.instance.IsGame) GameManager.instance.GetMoney += (int)(XPRate * 25);
+            GameManager.instance.GetMoney += (int)(XPRate * 25);
             UIManager.instance.InitRate();
             StopAllCoroutines();
             StartCoroutine(DeadMotion());

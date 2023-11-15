@@ -178,7 +178,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     public virtual void Damage(int damage, bool isCrit, string hitTag = null)
     {
-        if (IsSpawning() || IsDeath() || !IsInScreen()) return;
+        if (IsSpawning() || IsDeath() || !IsInScreen() || !GameManager.instance.IsGame) return;
         HP -= damage * damagedMultiplier;
         if (HP <= 0)
         {

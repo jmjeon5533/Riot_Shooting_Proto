@@ -21,6 +21,11 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         StickImg = Stick.GetComponent<Image>();
         LeverImg = Lever.GetComponent<Image>();
+
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        
+        var s = SceneManager.instance;
+        rectTransform.sizeDelta = s.ScreenWidth*2;
     }
     private void Update()
     {

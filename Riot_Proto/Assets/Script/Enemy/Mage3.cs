@@ -9,7 +9,6 @@ public class Mage3 : EnemyBase
 
     protected override void Attack()
     {
-        print("Attack!");
         StartCoroutine(AttackCoroutine());
     }
     public override void Init()

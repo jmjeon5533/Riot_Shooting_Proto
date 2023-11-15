@@ -61,11 +61,11 @@ public class SpawnManager : MonoBehaviour
         List<WaveScript.Wavedelegate> useList = new List<WaveScript.Wavedelegate>();
 
         //useList = randList.OrderBy(x => Guid.NewGuid()).ToList(); //randlist -> uselist로 이동 중 랜덤 조정 -> 가방 생성
-        for(int i = 0; i < 11; i++)
+        for(int i = 0; i < WaveExcuter.instance.waveScripts[StageLevel].Waves.Count; i++)
         {
-            var rand = UnityEngine.Random.Range(0,randList.Count);
-            useList.Add(randList[rand]);
-            randList.RemoveAt(rand);
+            var wave = randList[UnityEngine.Random.Range(0,randList.Count)];
+            useList.Add(wave);
+            randList.Remove(wave);
         }
         string waveName = "";
         for(int i = 0; i < useList.Count; i++)

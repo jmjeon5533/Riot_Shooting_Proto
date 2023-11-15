@@ -144,7 +144,6 @@ public class AbilityCard : MonoBehaviour
                 isDuplicate = true;
                 panel.GetComponent<Image>().DOColor(new Color(0, 0, 0, 0.5f), 0.5f);
                 GameManager.instance.AddXP(0);
-                Debug.Log("1");
             }
             else
             {
@@ -152,7 +151,6 @@ public class AbilityCard : MonoBehaviour
                 isDuplicate = false;
                 clickText.DOFade(0, 0.5f).OnComplete(() => tween.Pause());
                 
-                Debug.Log("2");
             }
         }
         // isSelect = !end;

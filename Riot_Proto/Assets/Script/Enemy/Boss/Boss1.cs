@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using DG.Tweening;
+using Unity.VisualScripting;
 
 [System.Serializable]
 class RisePattern
@@ -321,7 +322,7 @@ public class Boss1 : BossBase
             {
                 Dead();
             }
-            GameManager.instance.GetMoney += (int)(XPRate * 25);
+            if(GameManager.instance.IsGame) GameManager.instance.GetMoney += (int)(XPRate * 25);
             UIManager.instance.InitRate();
             StopAllCoroutines();
             StartCoroutine(DeadMotion());

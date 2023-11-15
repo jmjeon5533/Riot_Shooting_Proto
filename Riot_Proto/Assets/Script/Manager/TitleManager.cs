@@ -176,14 +176,15 @@ public class TitleManager : MonoBehaviour
     }
     public void MainMenu()
     {
+        if(!canSelect) return;
         SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
         StartCoroutine(mainMenu());
     }
     IEnumerator mainMenu()
     {
         SelectUI[0].DOLocalMove(new Vector3(-1658, 530), 1);
-        SelectUI[2].DOLocalMove(new Vector3(-960, 550), 1);
-        SelectUI[2].DOLocalMove(new Vector3(-118, 740), 1);
+        SelectUI[2].DOLocalMove(new Vector3(-960, 570), 1);
+        SelectUI[3].DOLocalMove(new Vector3(-118, 740), 1);
         SelectUI[4].DOLocalMove(new Vector3(-1450, 0), 1);
         SelectSkillImage.rectTransform.anchoredPosition = new Vector2(-355, 0);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
@@ -196,15 +197,16 @@ public class TitleManager : MonoBehaviour
         Selectbg[1].DOLocalMove(new Vector3(0, 540), 1);
 
         InitPanel(0);
-        titleBtn[0].localPosition = new Vector2(1250, -189);
-        titleBtn[1].localPosition = new Vector2(1250, -415);
+        titleBtn[0].localPosition = new Vector2(1600, -189);
+        titleBtn[1].localPosition = new Vector2(1600, -415);
         titleBtn[2].localPosition = new Vector2(-353, -810);
 
         if (isButton) yield break;
         isButton = true;
-        titleBtn[0].DOLocalMoveX(1600, 1.5f).SetEase(Ease.InOutBack);
+        titleBtn[0].DOLocalMoveX(600, 1.5f).SetEase(Ease.InOutBack);
+        titleBtn[2].DOLocalMoveY(-206,1.5f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.2f);
-        yield return titleBtn[1].DOLocalMoveX(1500, 1.5f).SetEase(Ease.InOutBack)
+        yield return titleBtn[1].DOLocalMoveX(600, 1.5f).SetEase(Ease.InOutBack)
         .OnComplete(() => isButton = false).WaitForCompletion();
     }
     public void ASkillButtonAdd(int i)
@@ -237,7 +239,7 @@ public class TitleManager : MonoBehaviour
         }
         Panel[index].SetActive(true);
         titleBtn[0].localPosition = new Vector3(1600, -189);
-        titleBtn[1].localPosition = new Vector3(1500, -415);
+        titleBtn[1].localPosition = new Vector3(1600, -415);
         titleBtn[2].localPosition = new Vector3(-353, -810);
 
         SelectUI[0].localPosition = new Vector3(-1658, 470);

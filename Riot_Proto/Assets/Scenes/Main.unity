@@ -6061,7 +6061,7 @@ MonoBehaviour:
   - {fileID: 6332685398307081435, guid: c63eed9c18d0ed34f8f2d208ba702ad0, type: 3}
   ItemList: []
   curEnemys: []
-  Bomb: {fileID: 2598661049487990157, guid: 51fc12e8a22fa614bae17a70058e9bbf, type: 3}
+  Bomb: {fileID: 2564067382446415423, guid: 75361d5311719ee42b409c9bb83258cb, type: 3}
   dissolveShader: {fileID: 4800000, guid: cd6876df32c00e04a90de8e642631c9f, type: 3}
   dissolveSprite: {fileID: 2800000, guid: 105f727177d6088478cbf9817caa623b, type: 3}
   curBGM: {fileID: 0}

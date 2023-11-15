@@ -34,7 +34,7 @@ public abstract class AbilityBase : MonoBehaviour
 
     public static float SubtractCool { get { return subtractCool; } private set { subtractCool = value; } }
 
-    protected static void SetSubtractCool(float value)
+    public   static void SetSubtractCool(float value)
     {
         SubtractCool = value;
     }

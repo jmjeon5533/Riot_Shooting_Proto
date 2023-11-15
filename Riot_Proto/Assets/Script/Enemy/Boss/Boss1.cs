@@ -9,6 +9,7 @@ class RisePattern
 {
     public float[] riseYs;
     public float[] riseDelay;
+    bool isDuplicate = false;
 }
 public class Boss1 : BossBase
 {
@@ -153,7 +154,7 @@ public class Boss1 : BossBase
         for (int i = 0; i < 21; i++)
         {
 
-            for (int j = angle; j < (360 + angle); j += 360 / ((HP <= maxHP) ? 23 : 20))
+            for (int j = angle; j < (360 + angle); j += 360 / 24)
             {
                 var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
                 b.SetMoveSpeed(4.5f);
@@ -255,13 +256,21 @@ public class Boss1 : BossBase
 
     IEnumerator SpawnFireRise(int index)
     {
-
+        bool isDupe = false;
         var g = GameManager.instance;
         for (int i = 0; i < risePatterns[index].riseYs.Length; i++)
         {
+            if(risePatterns[index].riseDelay[i] != 0)
+            {
+                isDupe = false;
+            }
             yield return new WaitForSeconds(risePatterns[index].riseDelay[i]);
             Debug.Log(risePatterns[index].riseDelay[i]);
-            var b = PoolManager.Instance.GetObject("FireRise", new Vector3(risePatterns[index].riseYs[i], -g.MoveRange.y, 0), Quaternion.Euler(270,0,0));
+            var b = PoolManager.Instance.GetObject("FireRise", new Vector3(risePatterns[index].riseYs[i], -g.MoveRange.y, 0), Quaternion.Euler(270,0,0)).GetComponent<BossSkillBullet>();
+            if(!isDupe) {
+                b.isSound = true;
+                isDupe = true;
+            }
         }
     }
     IEnumerator Attack5()

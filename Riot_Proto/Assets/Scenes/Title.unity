@@ -2278,7 +2278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -308.99994, y: -923}
+  m_AnchoredPosition: {x: -308.99997, y: -923}
   m_SizeDelta: {x: 175, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472772460
@@ -4669,6 +4669,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 8c326526b676acf48a7fd27937808d27, type: 3}
   - name: ChainLightning_Contact
     clip: {fileID: 8300000, guid: e9309a02ce4c4d045a507cbabd4bdebd, type: 3}
+  - name: FireUp
+    clip: {fileID: 8300000, guid: b22b720a7f65dca4c80043307d58800b, type: 3}
   BGMVolume: 0.5
   SFXVolume: 0.5
 --- !u!4 &1031782239

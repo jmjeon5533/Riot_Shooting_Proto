@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Instantiate(playerPrefab[SceneManager.instance.CharIndex], new Vector3(-12f, 0, 0), Quaternion.identity);
+        AbilityBase.SetSubtractCool(0);
         UIManager.instance.InitBackGround(SceneManager.instance.StageIndex,false);
         UIManager.instance.FadeBg.transform.SetAsLastSibling();
         InitBGM("Stage1");

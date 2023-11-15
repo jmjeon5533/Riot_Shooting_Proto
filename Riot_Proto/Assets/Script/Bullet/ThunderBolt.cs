@@ -39,7 +39,7 @@ public class ThunderBolt : BulletBase
     protected override void Update()
     {
         base.Update();
-        Vector3 targetPos;
+        Vector3 targetPos = default;
         if(target != null) targetPos = target.position;
         else
         {
@@ -49,9 +49,17 @@ public class ThunderBolt : BulletBase
                 targetPos = (prevPos - transform.position).normalized;
                 Destroy(gameObject);
             }
-            else
+            else { 
                 if(target == null) Destroy(gameObject);
-                targetPos = (target.Equals(null) || !target.gameObject.activeSelf) ? transform.position : target.position;
+                try
+                {
+                    targetPos = (ReferenceEquals(null, target) || !target.gameObject.activeSelf) ? transform.position : target.position;
+
+                } catch (MissingReferenceException)
+                {
+                    Destroy(gameObject);
+                } 
+            }
         }
         time += Time.deltaTime * MoveSpeed;
         prevPos = targetPos;

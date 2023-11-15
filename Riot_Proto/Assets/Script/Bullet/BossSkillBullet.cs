@@ -12,11 +12,13 @@ public class BossSkillBullet : MonoBehaviour
 
     float time = 0;
 
-
+    bool isUp = false;
+    public bool isSound = false;
 
     private void OnEnable()
     {
         time = 0;
+        isUp = false;
     }
 
     // Start is called before the first frame update
@@ -29,7 +31,12 @@ public class BossSkillBullet : MonoBehaviour
     void Update()
     {
         time+=Time.deltaTime;
-        if(time >= duration) {
+        if (time > delay && time <= attackTime && !isUp && isSound)
+        {
+            isUp = true;
+            SoundManager.instance.SetAudio("FireUp", SoundManager.SoundState.SFX, false);
+        }
+        if (time >= duration) {
             PoolManager.Instance.PoolObject(poolTag,this.gameObject);
         }
         

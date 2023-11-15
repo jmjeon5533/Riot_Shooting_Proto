@@ -53,15 +53,17 @@ public class ElectricCall : AbilityBase
 
     void ThunderDrop()
     {
-        List<GameObject> list = GameManager.instance.curEnemys.ToList();
-        if (list.Count == 0) return;
+        Collider[] list = Physics.OverlapBox(Vector3.zero, new Vector3(GameManager.instance.MoveRange.x, GameManager.instance.MoveRange.y, 1), Quaternion.identity, LayerMask.GetMask("Enemy"));
+        //List<GameObject> list = GameManager.instance.curEnemys.ToList();
+        if (list.Length == 0) return;
         int damage = defaultDamage + (int)(player.damage * damageRate);
         
-            Transform target = list[Random.Range(0, list.Count)].transform;
-            while(target == null)
+            Transform target = list[Random.Range(0, list.Length)].transform;
+            while(target == null || !target.gameObject.activeSelf)
             {
-                list = GameManager.instance.curEnemys;
-                target = list[Random.Range(0, list.Count)].transform;
+            
+                list = Physics.OverlapBox(Vector3.zero, new Vector3(GameManager.instance.MoveRange.x, GameManager.instance.MoveRange.y, 1), Quaternion.identity, LayerMask.GetMask("Enemy"));
+                target = list[Random.Range(0, list.Length)].transform;
             }
             Instantiate(thunder, new Vector3(target.position.x, 0, target.position.z), Quaternion.identity).GetComponent<Thunder>()
                .SetDamage(damage);
@@ -70,16 +72,18 @@ public class ElectricCall : AbilityBase
 
     void ThunderDrain()
     {
-        List<GameObject> list = new List<GameObject>(GameManager.instance.curEnemys);
-        if (list.Count == 0) return;
+
+        Collider[] hits = Physics.OverlapBox(Vector3.zero, new Vector3(GameManager.instance.MoveRange.x, GameManager.instance.MoveRange.y, 1),Quaternion.identity, LayerMask.GetMask("Enemy"));
+        //List<GameObject> list = new List<GameObject>(GameManager.instance.curEnemys);
+        if (hits.Length == 0) return;
         int damage = defaultDamage/2 + (int)(player.damage * damageRate);
-        foreach (var enemy in list)
+        foreach (var enemy in hits)
         {
             if (enemy != null)
             {
                 float chance = Random.Range(0, 100f);
-                if (!enemy.activeSelf) continue;
-                if (enemy.GetComponent<Alert>() != null) continue;
+                if (!enemy.gameObject.activeSelf) continue;
+                if (enemy.GetComponent<Alert>() != null || enemy.GetComponent<EnemyBase>() == null) continue;
                 var t = Instantiate(thunderDrain, enemy.transform);
                 t.transform.localPosition = Vector3.zero;
                 

@@ -45,7 +45,7 @@ public class FlowLazer : MonoBehaviour
                 if(hit.CompareTag("Enemy"))
                 {
                     float chance = Random.Range(0, 100f);
-
+                    
                     var e = hit.GetComponent<EnemyBase>();
                     Debug.Log(e.name);
                     e.Damage((chance <= player.CritRate)

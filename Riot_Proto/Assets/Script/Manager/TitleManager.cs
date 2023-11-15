@@ -67,6 +67,7 @@ public class TitleManager : MonoBehaviour
         InitPanel(0);
         titleBtn[0].localPosition = new Vector2(2300, -189);
         titleBtn[1].localPosition = new Vector2(2300, -415);
+        titleBtn[2].localPosition = new Vector2(-353, -800);
 
         SceneManager.instance.ActiveIndex = 0;
         SceneManager.instance.ActiveLevel = 3;
@@ -238,9 +239,9 @@ public class TitleManager : MonoBehaviour
             Panel[i].SetActive(false);
         }
         Panel[index].SetActive(true);
-        titleBtn[0].localPosition = new Vector3(1600, -189);
-        titleBtn[1].localPosition = new Vector3(1600, -415);
-        titleBtn[2].localPosition = new Vector3(-353, -810);
+        titleBtn[0].localPosition = new Vector3(600, -189);
+        titleBtn[1].localPosition = new Vector3(600, -415);
+        titleBtn[2].localPosition = new Vector3(-353, -206);
 
         SelectUI[0].localPosition = new Vector3(-1658, 470);
         SelectUI[1].GetComponent<RectTransform>().sizeDelta = new Vector3(0, 1080);

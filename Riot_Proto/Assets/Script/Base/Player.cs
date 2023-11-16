@@ -105,6 +105,7 @@ public abstract class Player : MonoBehaviour
         }
 
         StartCoroutine(Dead());
+        Instantiate(g.Bomb,g.player.transform.position,Quaternion.Euler(-90,0,0));
         UIManager.instance.InitHeart();
     }
 
@@ -240,6 +241,7 @@ public abstract class Player : MonoBehaviour
     void Movement()
     {
         Vector2 input = joystick.Input;
+        input = input.magnitude >= 0.3f ? input.normalized : Vector3.zero;
 
         anim.SetInteger("MoveState", Mathf.RoundToInt(input.x));
 

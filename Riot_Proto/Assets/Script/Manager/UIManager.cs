@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
     {
         XPBarUpdate();
         Bossbar.SetActive(false);
-        hpPanel.DOAnchorPosX(500, 0);
+        hpPanel.DOAnchorPosX(612, 0);
         abilityPanel.DOAnchorPosX(-300, 0);
         characterImage.rectTransform.DOAnchorPosX(-1435, 0);
         MainRateText.rectTransform.DOAnchorPosY(160, 0);

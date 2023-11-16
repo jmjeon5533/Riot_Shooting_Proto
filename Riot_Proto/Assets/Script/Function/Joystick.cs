@@ -9,7 +9,7 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public RectTransform Stick;
     public RectTransform Lever;
 
-    Image StickImg, LeverImg;
+    [HideInInspector] public Image StickImg, LeverImg;
 
     public Vector2 input;
     float AlphaTarget;
@@ -29,15 +29,21 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
     private void Update()
     {
+        if(!GameManager.instance.IsGame) return;
         if(Mathf.Abs(StickImg.color.a - AlphaTarget) > 0f)
         {
             var a = Mathf.MoveTowards(StickImg.color.a,AlphaTarget,Time.deltaTime * 5f);
             StickImg.color = new Color(1,1,1,a);
-            LeverImg.color = new Color(0,0,0,a);
+        }
+        if(LeverImg.color.a < 0.5f)
+        {
+            var b = Mathf.MoveTowards(LeverImg.color.a,0.5f, Time.deltaTime * 5f);
+            LeverImg.color = new Color(1,1,1,b);
         }
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if(!GameManager.instance.IsGame) return;
         var s = SceneManager.instance;
         var x = Mathf.Abs(s.ScreenArea.x - s.ScreenWidth.x) / 2;
         var y = Mathf.Abs(s.ScreenArea.y - s.ScreenWidth.y) / 2;
@@ -53,6 +59,7 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
     public void OnDrag(PointerEventData eventData)
     {
+        if(!GameManager.instance.IsGame) return;
         input = eventData.position - Stick.anchoredPosition - minusVec - (Stick.sizeDelta / 2);
         Input = input.normalized;
         Input *= Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f).magnitude / (Stick.rect.width * 0.5f);
@@ -62,6 +69,7 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
     public void OnEndDrag(PointerEventData eventData)
     {
+        if(!GameManager.instance.IsGame) return;
         input = Vector2.zero;
         Input = Vector2.zero;
         Lever.anchoredPosition = input;

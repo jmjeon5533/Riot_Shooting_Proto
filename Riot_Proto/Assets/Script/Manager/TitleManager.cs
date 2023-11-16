@@ -39,6 +39,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] GameObject ASkillPrefab;
     [SerializeField] Image[] ASkillStatus;
     [SerializeField] RawImage SelectSkillImage;
+    [SerializeField] Text ASkillExplain;
     bool canSelect = false; //
 
     [SerializeField] Image startPanel;
@@ -77,6 +78,8 @@ public class TitleManager : MonoBehaviour
         ASkillStatus[0].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[0].dmg);
         ASkillStatus[1].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[0].range);
         ASkillStatus[2].fillAmount = Mathf.InverseLerp(0, 130, aSkillInfos[0].coolTime);
+        ASkillExplain.text = aSkillInfos[0].explain;
+
 
         BGMS.value = SoundManager.instance.BGMVolume;
         SFXS.value = SoundManager.instance.SFXVolume;
@@ -229,6 +232,7 @@ public class TitleManager : MonoBehaviour
                 ASkillStatus[1].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[num].range);
                 ASkillStatus[2].fillAmount = Mathf.InverseLerp(0, 100, aSkillInfos[num].coolTime);
                 SelectSkillImage.transform.position = b.transform.position;
+                ASkillExplain.text = aSkillInfos[num].explain;
             }
         });
     }

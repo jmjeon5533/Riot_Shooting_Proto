@@ -49,6 +49,7 @@ public class UIManager : MonoBehaviour
     public Text[] RateText;
     public Image curPowerCount;
     public RectTransform powerPanel;
+    public RectTransform OptionButton;
 
     public Image FadeBg;
     public GameObject StagePrefab;
@@ -76,6 +77,7 @@ public class UIManager : MonoBehaviour
         powerPanel.DOAnchorPosX(-1200, 0);
         XPRectTransform.DOAnchorPosX(-1200, 0);
         activeSkill.DOMoveX(15, 0);
+        OptionButton.DOAnchorPosX(100,0);
         BGMS.value = SoundManager.instance.BGMVolume;
         SFXS.value = SoundManager.instance.SFXVolume;
     }
@@ -90,7 +92,7 @@ public class UIManager : MonoBehaviour
         MainRateText.text = (Ratevalue < 1000) ? string.Format("{0:D4}", Ratevalue) : Ratevalue.ToString();
         for (int i = 0; i < RateText.Length; i++)
         {
-            RateText[i].text = GameManager.instance.GetMoney.ToString();
+            RateText[i].text = GameManager.instance.GetMoney.ToString() + "점\n" + (g.GetMoney >= 300000 ? "잘하시는데요?" : "좀 더 노력해봐요...");
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -129,6 +131,7 @@ public class UIManager : MonoBehaviour
         abilityPanel.DOAnchorPosX(0, 1).SetEase(Ease.OutExpo);
         //abilityPanel.transform.DOMoveX(-10, 1f).SetEase(Ease.OutExpo);
         activeSkill.DOAnchorPosX(-200, 1f).SetEase(Ease.OutExpo);
+        OptionButton.DOAnchorPosX(-25,1).SetEase(Ease.OutExpo);
         //StartCoroutine(ShowUI());
     }
 

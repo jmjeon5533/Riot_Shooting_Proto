@@ -53,6 +53,7 @@ public class TitleManager : MonoBehaviour
     public bool isOption = false;
     Tween OptionTween;
     public Slider BGMS, SFXS;
+    public Toggle DetailCtrlToggle;
 
     private void Awake()
     {
@@ -83,6 +84,7 @@ public class TitleManager : MonoBehaviour
 
         BGMS.value = SoundManager.instance.BGMVolume;
         SFXS.value = SoundManager.instance.SFXVolume;
+        DetailCtrlToggle.isOn = SceneManager.instance.DetailCtrl;
 
         SoundManager.instance.SetAudio("Title1",SoundManager.SoundState.BGM,true);
     }
@@ -95,6 +97,7 @@ public class TitleManager : MonoBehaviour
         }
         SoundManager.instance.BGMVolume = BGMS.value;
         SoundManager.instance.SFXVolume = SFXS.value;
+        SceneManager.instance.DetailCtrl = DetailCtrlToggle.isOn;
     }
 
     public void Option()

@@ -54,7 +54,7 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         Input = input.normalized;
         Input *= input.magnitude / (Stick.rect.width * 0.5f);
         Lever.localPosition = Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f);
-        AlphaTarget = 0.5f;
+        AlphaTarget = 0.3f;
         //print($"{eventData.position} : {Stick.anchoredPosition} : {minusVec}");
     }
     public void OnDrag(PointerEventData eventData)
@@ -65,7 +65,7 @@ public class Joystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         Input *= Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f).magnitude / (Stick.rect.width * 0.5f);
         Lever.anchoredPosition = Vector2.ClampMagnitude(input, Stick.rect.width * 0.5f);
         //print($"{eventData.position} : {Stick.anchoredPosition} : {minusVec}\n{s.ScreenArea.x}-{s.ScreenWidth.x}");
-        AlphaTarget = 0.5f;
+        AlphaTarget = 0.3f;
     }
     public void OnEndDrag(PointerEventData eventData)
     {

@@ -50,6 +50,7 @@ public class UIManager : MonoBehaviour
     public Image curPowerCount;
     public RectTransform powerPanel;
     public RectTransform OptionButton;
+    public Toggle DetailCtrlToggle;
 
     public Image FadeBg;
     public GameObject StagePrefab;
@@ -80,6 +81,7 @@ public class UIManager : MonoBehaviour
         OptionButton.DOAnchorPosX(100,0);
         BGMS.value = SoundManager.instance.BGMVolume;
         SFXS.value = SoundManager.instance.SFXVolume;
+        DetailCtrlToggle.isOn = SceneManager.instance.DetailCtrl;
     }
     private void Update()
     {
@@ -92,7 +94,7 @@ public class UIManager : MonoBehaviour
         MainRateText.text = (Ratevalue < 1000) ? string.Format("{0:D4}", Ratevalue) : Ratevalue.ToString();
         for (int i = 0; i < RateText.Length; i++)
         {
-            RateText[i].text = GameManager.instance.GetMoney.ToString() + "점\n" + (g.GetMoney >= 300000 ? "잘하시는데요?" : "좀 더 노력해봐요...");
+            RateText[i].text = GameManager.instance.GetMoney.ToString() + "점\n" + (g.GetMoney >= 500000 ? "잘하시는데요?" : "좀 더 노력해봐요...");
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -100,6 +102,7 @@ public class UIManager : MonoBehaviour
         }
         SoundManager.instance.BGMVolume = BGMS.value;
         SoundManager.instance.SFXVolume = SFXS.value;
+        SceneManager.instance.DetailCtrl = DetailCtrlToggle.isOn;
     }
     public void Option()
     {

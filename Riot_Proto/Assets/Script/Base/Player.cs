@@ -241,7 +241,7 @@ public abstract class Player : MonoBehaviour
     void Movement()
     {
         Vector2 input = joystick.Input;
-        input = input.magnitude >= 0.3f ? input.normalized : Vector3.zero;
+        input = SceneManager.instance.DetailCtrl ? input : input.normalized ;
 
         anim.SetInteger("MoveState", Mathf.RoundToInt(input.x));
 

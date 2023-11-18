@@ -28,11 +28,12 @@ public class SceneManager : MonoBehaviour
     public Vector2 ScreenArea;
     public Vector2 ScreenWidth;
     public string loadingpath = "Main"; //로딩 후 넘어갈 씬
+    [Header("Option")]
+    public bool DetailCtrl = false;
 
     [Space(10)]
     public PlayerData playerData;
     [SerializeField] Transform OptionPanel;
-    public Toggle CtrlToggle;
     bool OptionMove;
 
     public void initPanel(int index) => TitleManager.instance.InitPanel(index);

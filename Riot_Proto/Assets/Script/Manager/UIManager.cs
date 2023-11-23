@@ -21,7 +21,6 @@ public class UIManager : MonoBehaviour
     public static UIManager instance { get; private set; }
 
     public Image XPBar;
-    public RectTransform XPRectTransform;
     public Transform canvas;
     public Transform bgCanvas;
     public Transform bgFolder;
@@ -47,8 +46,6 @@ public class UIManager : MonoBehaviour
     public Text MainRateText;
     public int Ratevalue;
     public Text[] RateText;
-    public Image curPowerCount;
-    public RectTransform powerPanel;
     public RectTransform OptionButton;
     public Toggle DetailCtrlToggle;
 
@@ -71,12 +68,10 @@ public class UIManager : MonoBehaviour
     {
         XPBarUpdate();
         Bossbar.SetActive(false);
-        hpPanel.DOAnchorPosX(612, 0);
+        hpPanel.DOAnchorPosX(-390, 0);
         abilityPanel.DOAnchorPosX(-300, 0);
         characterImage.rectTransform.DOAnchorPosX(-1435, 0);
-        MainRateText.rectTransform.DOAnchorPosY(160, 0);
-        powerPanel.DOAnchorPosX(-1200, 0);
-        XPRectTransform.DOAnchorPosX(-1200, 0);
+        MainRateText.rectTransform.DOAnchorPosY(160, -15f);
         activeSkill.DOMoveX(15, 0);
         OptionButton.DOAnchorPosX(100,0);
         BGMS.value = SoundManager.instance.BGMVolume;
@@ -126,11 +121,9 @@ public class UIManager : MonoBehaviour
 
     public void ShowImg()
     {
-        hpPanel.DOAnchorPosX(-20, 1).SetEase(Ease.OutExpo);
-        characterImage.rectTransform.DOAnchorPosX(-830, 1).SetEase(Ease.OutExpo);
-        MainRateText.rectTransform.DOAnchorPosY(0, 1).SetEase(Ease.OutExpo);
-        powerPanel.DOAnchorPosX(-540, 1).SetEase(Ease.OutExpo);
-        XPRectTransform.DOAnchorPosX(-540, 1).SetEase(Ease.OutExpo);
+        hpPanel.DOAnchorPosX(194, 1).SetEase(Ease.OutExpo);
+        characterImage.rectTransform.DOAnchorPosX(-860, 1).SetEase(Ease.OutExpo);
+        MainRateText.rectTransform.DOAnchorPosY(-15f, 1).SetEase(Ease.OutExpo);
         abilityPanel.DOAnchorPosX(0, 1).SetEase(Ease.OutExpo);
         //abilityPanel.transform.DOMoveX(-10, 1f).SetEase(Ease.OutExpo);
         activeSkill.DOAnchorPosX(-200, 1f).SetEase(Ease.OutExpo);

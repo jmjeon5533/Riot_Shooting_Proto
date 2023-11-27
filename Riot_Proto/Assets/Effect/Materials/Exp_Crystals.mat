@@ -58,6 +58,6 @@ Material:
     - _VFlowSpeed: 2
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 0.21406753, g: 1, b: 0.19339621, a: 0}
+    - _Color: {r: 0.09512416, g: 0.33962262, b: 0.08778922, a: 0}
     - _Color0: {r: 0.14593075, g: 1, b: 0.0141509175, a: 0}
   m_BuildTextureStacks: []

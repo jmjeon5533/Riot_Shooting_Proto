@@ -38,7 +38,32 @@ public class GameManager : MonoBehaviour
     public Coroutine FadeCoroutine;
 
     [SerializeField] public float itemCoolCount;
+    [SerializeField] public readonly int clearBonus = 150000;
 
+    private int earnedXp = 0;
+    private int killedEnemyCount = 0;
+
+    
+    void AddExpValue(int value)
+    {
+        earnedXp += value;
+    }
+
+    public void AddKillCount()
+    {
+        killedEnemyCount++;
+    }
+
+    public int GetKilledEnemyCount()
+    {
+        return killedEnemyCount;
+    }
+
+    public int GetEarnedXP()
+    {
+        return earnedXp;    
+    }
+    
     void Awake()
     {
         instance = this;
@@ -69,6 +94,7 @@ public class GameManager : MonoBehaviour
         if(!IsGame) return;
         var ab = AbilityCard.Instance;
         XP += Value;
+        AddExpValue(Value);
         while(XP >= MaxXP)
         {
             SelectChance++;

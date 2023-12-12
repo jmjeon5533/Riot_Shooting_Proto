@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using DG.Tweening;
 
 [System.Serializable]
@@ -57,6 +58,26 @@ public class UIManager : MonoBehaviour
     [Space(10)]
     [Header("Item")]
     public int NextHPCount = 200000;
+
+    [Header("Result UI")]
+    [SerializeField] Image ResultPanel;
+
+    [SerializeField] GameObject mainText;
+    [SerializeField] GameObject bar;
+
+    [SerializeField] TextMeshProUGUI totalScoreText;
+    [SerializeField] TextMeshProUGUI waveCountText;
+    [SerializeField] TextMeshProUGUI enemyKilledText;
+    [SerializeField] TextMeshProUGUI expEarnText;
+    [SerializeField] TextMeshProUGUI clearBonusText;
+
+    [SerializeField] Image rankImg;
+    [SerializeField] TextMeshProUGUI rankText;
+
+    [SerializeField] Button gotoMain;
+
+    int totalScore = 0;
+
 
     public void StageStart() => SceneManager.instance.StageStart();
 
@@ -131,7 +152,7 @@ public class UIManager : MonoBehaviour
         //StartCoroutine(ShowUI());
     }
 
-
+    
 
     public void XPBarUpdate()
     {
@@ -146,7 +167,8 @@ public class UIManager : MonoBehaviour
         GameManager.instance.IsGame = false;
         isUseTab = true;
         InitRate();
-        ClearTab.DOLocalMoveY(0, 1).SetEase(Ease.OutQuad).OnComplete(() => isUseTab = false);
+        ShowResult(false);
+        //ClearTab.DOLocalMoveY(0, 1).SetEase(Ease.OutQuad).OnComplete(() => isUseTab = false);
     }
     public void UseOverTab()
     {
@@ -155,11 +177,145 @@ public class UIManager : MonoBehaviour
         GameManager.instance.IsGame = false;
         isUseTab = true;
         InitRate();
-        OverTab.DOLocalMoveY(0, 1).SetEase(Ease.OutQuad).OnComplete(() => isUseTab = false);
+        ShowResult(false);
+        //OverTab.DOLocalMoveY(0, 1).SetEase(Ease.OutQuad).OnComplete(() => isUseTab = false);
     }
+
+    void ShowResult(bool isClear)
+    {
+        StartCoroutine(CalulateResult(isClear));
+        
+    }
+
+    void CloseResult()
+    {
+        mainText.gameObject.SetActive(false);
+        totalScoreText.gameObject.SetActive(false);
+        bar.SetActive(false);
+        waveCountText.gameObject.SetActive(false);
+        enemyKilledText.gameObject.SetActive(false);
+        expEarnText.gameObject.SetActive(false);
+        clearBonusText.gameObject.SetActive(false);
+        rankImg.gameObject.SetActive(false);
+        rankText.gameObject.SetActive(false);
+        gotoMain.gameObject.SetActive(false);
+        ResultPanel.gameObject.SetActive(false);
+
+
+    }
+
+    void SetText(string text, TextMeshProUGUI textObj)
+    {
+        if(!textObj.gameObject.activeSelf) textObj.gameObject.SetActive(true);
+        textObj.text = text;
+    }
+
+    IEnumerator CalulateResult(bool isClear)
+    {
+        var showTextDelay = new WaitForSeconds(1f);
+        var calulateDelay = new WaitForSeconds(1.5f);
+
+        ResultPanel.gameObject.SetActive(true);
+
+        ResultPanel.DOFade(0, 0);
+        yield return ResultPanel.DOFade(0.75f,1).WaitForCompletion();
+
+        mainText.gameObject.SetActive(true);
+        yield return showTextDelay;
+        bar.SetActive(true);
+        SetText($"총합 점수 : ", totalScoreText);
+        yield return calulateDelay;
+        SetText($"총합 점수 : {0}", totalScoreText);
+
+        yield return showTextDelay;
+        SetText($"획득 점수 : ", waveCountText);
+        yield return calulateDelay;
+        yield return StartCoroutine(CalulateScore(0, Ratevalue, waveCountText, 2f));
+
+        yield return showTextDelay;
+        SetText($"처치한 적 : ", enemyKilledText);
+        yield return calulateDelay;
+        yield return StartCoroutine(CalulateScore(0, GameManager.instance.GetKilledEnemyCount(), enemyKilledText, 2f, 1000));
+
+        yield return showTextDelay;
+        SetText($"얻은 경험치 : ", expEarnText);
+        yield return calulateDelay;
+        yield return StartCoroutine(CalulateScore(0, GameManager.instance.GetEarnedXP(), expEarnText, 2f,100));
+
+        if(isClear)
+        {
+            yield return showTextDelay;
+            SetText($"클리어 보너스 : ", clearBonusText);
+            yield return calulateDelay;
+            yield return StartCoroutine(CalulateScore(0, GameManager.instance.clearBonus, clearBonusText, 2f));
+        }
+        yield return calulateDelay;
+        rankImg.gameObject.SetActive(true);
+        rankText.gameObject.SetActive(true);
+        rankText.text = CalCulateRank();
+        yield return calulateDelay;
+
+        gotoMain.gameObject.SetActive(true);
+    }
+
+    string CalCulateRank()
+    {
+        string rank = "Error";
+        if(totalScore <= 200000)
+        {
+            rank = "E";
+        }
+        else if (totalScore <= 400000)
+        {
+            rank = "D";
+        }
+        else if (totalScore <= 600000)
+        {
+            rank = "C";
+        }
+        else if (totalScore <= 800000)
+        {
+            rank = "B";
+        }
+        else if (totalScore <= 1000000)
+        {
+            rank = "A";
+        } 
+        else if(totalScore <= 1499999)
+        {
+            rank = "S";
+        } 
+        else if(totalScore >= 1500000)
+        {
+            rank  = "SS";
+        }
+        return rank;
+    }
+
+    IEnumerator CalulateScore(int value ,int newValue,TextMeshProUGUI text, float time, float multiply = 1)
+    {
+        float elapsedTime = 0;
+        string explain = text.text.Split(':')[0];
+        int prevValue = totalScore;
+
+        while (elapsedTime <= time)
+        {
+            elapsedTime += Time.deltaTime;
+            value = Mathf.CeilToInt(Mathf.Lerp(value, newValue, (elapsedTime / time)));
+            text.text = explain + $": {value}";
+            totalScore = prevValue + (int)(value * multiply);
+            totalScoreText.text = $"총합 점수 : {totalScore}";
+            yield return null;
+        }
+        value = newValue;
+        text.text = explain + $": {value}";
+        totalScoreText.text = $"총합 점수 : {totalScore}";
+    }
+
     public void MainMenu()
     {
         Time.timeScale = 1;
+        CloseResult();
         SceneManager.instance.playerData.PlayerMora += GameManager.instance.GetMoney;
         SceneManager.instance.MainMenu();
     }
@@ -176,6 +332,7 @@ public class UIManager : MonoBehaviour
     public void NextStage()
     {
         if (isUseTab) return;
+        CloseResult();
 
         isUseTab = true;
         ClearTab.DOLocalMoveY(800, 1).SetEase(Ease.OutQuad).OnComplete(() => isUseTab = false);

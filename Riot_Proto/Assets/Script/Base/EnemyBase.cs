@@ -262,7 +262,7 @@ public abstract class EnemyBase : MonoBehaviour
                 yield return null;
             }
             yield return new WaitForSeconds(0.05f);
-
+            GameManager.instance.AddKillCount();
             //Debug.Log("Test");
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);
         }

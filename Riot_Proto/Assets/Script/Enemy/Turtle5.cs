@@ -51,7 +51,7 @@ public class Turtle5 : EnemyBase
         base.Update();
 
         anim.transform.Rotate(new Vector3(0, 650f, 0) * Time.deltaTime);
-        rotateTransform.Rotate(new Vector3(0,0,Time.deltaTime * 250));
+        rotateTransform.Rotate(new Vector3(0,0,Time.deltaTime * 400));
         if (Mathf.Abs(transform.position.x) >= GameManager.instance.MoveRange.x + 5)
         {
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);

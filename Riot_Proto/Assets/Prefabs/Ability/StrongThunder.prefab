@@ -54,7 +54,7 @@ MonoBehaviour:
     \uB192\uC740 \uB370\uBBF8\uC9C0\uB97C \uC90D\uB2C8\uB2E4"
   stats: 
   curCooltime: 0
-  maxCooltime: 70
+  maxCooltime: 40
   defaultDamage: 80
   thunders:
   - {fileID: 2737902857122770629, guid: 3bb024124139c214b9aab48dbc267812, type: 3}

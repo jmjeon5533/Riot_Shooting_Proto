@@ -14224,7 +14224,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.25
-  m_Height: 1
+  m_Height: 0.6
   m_Direction: 1
   m_Center: {x: 0, y: 0.35, z: 0}
 --- !u!54 &5139616172709451010
@@ -14262,7 +14262,7 @@ MonoBehaviour:
   CritDamage: 1.5
   bulletLevel: 1
   bulletSpeed: 35
-  MoveSpeed: 8
+  MoveSpeed: 10
   bulletPrefab:
   - {fileID: 7488623435463272499, guid: b7c2e428f26f83343a39d3baa0b35720, type: 3}
   IsShield: 0

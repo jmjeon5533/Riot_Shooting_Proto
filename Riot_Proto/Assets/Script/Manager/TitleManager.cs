@@ -134,10 +134,10 @@ public class TitleManager : MonoBehaviour
 
     public void StartButton()
     {
-        StartCoroutine(Startbtn());
+        StartCoroutine(DisappearBtn());
         SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
     }
-    IEnumerator Startbtn()
+    IEnumerator DisappearBtn()
     {
         if (isButton) yield break;
         isButton = true;
@@ -146,14 +146,24 @@ public class TitleManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         yield return titleBtn[1].DOLocalMoveX(2300, 1.5f).SetEase(Ease.InOutBack)
         .OnComplete(() => isButton = false).WaitForCompletion();
-        SelectStart();
+        StartCoroutine(SelectStart());
     }
-    public void SelectStart()
+    IEnumerator appearBtn()
     {
-        StartCoroutine(selectStart());
-        //SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
+        InitPanel(0);
+        titleBtn[0].localPosition = new Vector2(1600, -189);
+        titleBtn[1].localPosition = new Vector2(1600, -415);
+        titleBtn[2].localPosition = new Vector2(-353, -810);
+
+        if (isButton) yield break;
+        isButton = true;
+        titleBtn[0].DOLocalMoveX(600, 1.5f).SetEase(Ease.InOutBack);
+        titleBtn[2].DOLocalMoveY(-206,1.5f).SetEase(Ease.InOutBack);
+        yield return new WaitForSeconds(0.2f);
+        yield return titleBtn[1].DOLocalMoveX(600, 1.5f).SetEase(Ease.InOutBack)
+        .OnComplete(() => isButton = false).WaitForCompletion();
     }
-    IEnumerator selectStart()
+    IEnumerator SelectStart()
     {
         canSelect = false;
         InitPanel(1);
@@ -164,7 +174,7 @@ public class TitleManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
         SelectUI[0].DOLocalMoveX(-850, 1);
-        SelectUI[2].DOLocalMoveY(429, 1);
+        SelectUI[2].DOLocalMoveY(-429, 1);
         SelectUI[3].DOLocalMoveY(350, 1);
         SelectUI[4].DOLocalMoveX(-750, 1);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
@@ -190,7 +200,7 @@ public class TitleManager : MonoBehaviour
     IEnumerator mainMenu()
     {
         SelectUI[0].DOLocalMove(new Vector3(-1658, 530), 1);
-        SelectUI[2].DOLocalMove(new Vector3(-960, 570), 1);
+        SelectUI[2].DOLocalMove(new Vector3(-960, -570), 1);
         SelectUI[3].DOLocalMove(new Vector3(-118, 740), 1);
         SelectUI[4].DOLocalMove(new Vector3(-1450, 0), 1);
         SelectSkillImage.rectTransform.anchoredPosition = new Vector2(-355, 0);
@@ -203,18 +213,7 @@ public class TitleManager : MonoBehaviour
         Selectbg[0].DOLocalMove(new Vector3(0, -540), 1);
         Selectbg[1].DOLocalMove(new Vector3(0, 540), 1);
 
-        InitPanel(0);
-        titleBtn[0].localPosition = new Vector2(1600, -189);
-        titleBtn[1].localPosition = new Vector2(1600, -415);
-        titleBtn[2].localPosition = new Vector2(-353, -810);
-
-        if (isButton) yield break;
-        isButton = true;
-        titleBtn[0].DOLocalMoveX(600, 1.5f).SetEase(Ease.InOutBack);
-        titleBtn[2].DOLocalMoveY(-206,1.5f).SetEase(Ease.InOutBack);
-        yield return new WaitForSeconds(0.2f);
-        yield return titleBtn[1].DOLocalMoveX(600, 1.5f).SetEase(Ease.InOutBack)
-        .OnComplete(() => isButton = false).WaitForCompletion();
+        StartCoroutine(appearBtn());
     }
     public void ASkillButtonAdd(int i)
     {
@@ -233,7 +232,7 @@ public class TitleManager : MonoBehaviour
                 SceneManager.instance.ActiveLevel = 3;
                 ASkillStatus[0].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[num].dmg);
                 ASkillStatus[1].fillAmount = Mathf.InverseLerp(0, 10, aSkillInfos[num].range);
-                ASkillStatus[2].fillAmount = Mathf.InverseLerp(0, 100, aSkillInfos[num].coolTime);
+                ASkillStatus[2].fillAmount = Mathf.InverseLerp(80, 10, aSkillInfos[num].coolTime);
                 SelectSkillImage.transform.position = b.transform.position;
                 ASkillExplain.text = aSkillInfos[num].explain;
             }
@@ -252,7 +251,7 @@ public class TitleManager : MonoBehaviour
 
         SelectUI[0].localPosition = new Vector3(-1658, 470);
         SelectUI[1].GetComponent<RectTransform>().sizeDelta = new Vector3(0, 1080);
-        SelectUI[2].localPosition = new Vector3(-960, 570);
+        SelectUI[2].localPosition = new Vector3(-960, -570);
         SelectUI[3].localPosition = new Vector3(-118, 740);
         SelectUI[4].localPosition = new Vector3(-1550, 0);
 

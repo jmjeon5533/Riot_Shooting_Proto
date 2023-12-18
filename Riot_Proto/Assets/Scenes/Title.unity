@@ -2649,7 +2649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -308.99994, y: -923}
+  m_AnchoredPosition: {x: -308.99997, y: -923}
   m_SizeDelta: {x: 175, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472772460
@@ -4775,6 +4775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Panel:
   - {fileID: 1522254379}
+  - {fileID: 1609942655}
   - {fileID: 607789008}
   Mcamera:
   - {fileID: 25026221}

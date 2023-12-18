@@ -134,10 +134,10 @@ public class TitleManager : MonoBehaviour
 
     public void StartButton()
     {
-        StartCoroutine(DisappearBtn());
+        StartCoroutine(titleDisappearBtn());
         SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
     }
-    IEnumerator DisappearBtn()
+    IEnumerator titleDisappearBtn()
     {
         if (isButton) yield break;
         isButton = true;
@@ -148,7 +148,7 @@ public class TitleManager : MonoBehaviour
         .OnComplete(() => isButton = false).WaitForCompletion();
         StartCoroutine(SelectStart());
     }
-    IEnumerator appearBtn()
+    IEnumerator titleAppearBtn()
     {
         InitPanel(0);
         titleBtn[0].localPosition = new Vector2(1600, -189);
@@ -166,7 +166,7 @@ public class TitleManager : MonoBehaviour
     IEnumerator SelectStart()
     {
         canSelect = false;
-        InitPanel(1);
+        InitPanel(2);
         //graph.GetComponent<CanvasRenderer>().SetAlpha(1);
         graph.ResetRadar();
         Selectbg[0].DOLocalMoveY(1, 0.7f);
@@ -213,7 +213,7 @@ public class TitleManager : MonoBehaviour
         Selectbg[0].DOLocalMove(new Vector3(0, -540), 1);
         Selectbg[1].DOLocalMove(new Vector3(0, 540), 1);
 
-        StartCoroutine(appearBtn());
+        StartCoroutine(titleAppearBtn());
     }
     public void ASkillButtonAdd(int i)
     {
@@ -260,11 +260,6 @@ public class TitleManager : MonoBehaviour
 
         CharImage.color = Color.clear;
         CharImage.transform.localScale = new Vector3(1, 1, 1);
-    }
-    public void GetMora()
-    {
-        SceneManager.instance.playerData.PlayerMora += 1000;
-        InitPanel(2);
     }
     public void Exit()
     {

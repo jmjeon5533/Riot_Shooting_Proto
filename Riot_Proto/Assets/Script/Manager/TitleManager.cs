@@ -22,33 +22,36 @@ public class TitleManager : MonoBehaviour
 {
     public static TitleManager instance { get; private set; }
     public GameObject[] Panel;
-
+    [SerializeField] Transform[] Selectbg;
     [SerializeField] Camera[] Mcamera;
-    [Space(10)]
-    [SerializeField] RawImage CharImage;
     [SerializeField] Transform[] titleBtn;
     bool isButton;
+    [Space(10)]
+    [Header("메인 탭")]
+    [SerializeField] Transform[] MainUI;
+    [Space(10)]
+    [Header("선택 탭")]
+    [SerializeField] RawImage CharImage;
+    [SerializeField] RadarGraph graph;
+    [SerializeField] MeshFilter meshFilter;
     [SerializeField] Transform[] SelectUI;
-    [SerializeField] Transform[] Selectbg;
+    Mesh statusPentagon;
     [Space(10)]
-    [Header("ActiveSkill")]
+    [Header("스킬 정보")]
     public ASkillInfo[] aSkillInfos;
-    [Space(10)]
     [SerializeField] Transform[] ASkillList = new Transform[3];
+    [SerializeField] Image[] ASkillStatus;
     [SerializeField] Transform ASkillParent;
     [SerializeField] GameObject ASkillPrefab;
-    [SerializeField] Image[] ASkillStatus;
     [SerializeField] RawImage SelectSkillImage;
     [SerializeField] Text ASkillExplain;
-    bool canSelect = false; //
+    bool canSelect = false;
 
+    [Header("로고 & 첫 타이틀")]
     [SerializeField] Image startPanel;
     [SerializeField] Image logo;
-    [SerializeField] MeshFilter meshFilter;
 
-    [SerializeField] RadarGraph graph;
-    Mesh statusPentagon;
-
+    [Header("옵션 탭")]
     public Transform OptionTab;
     public bool isOption = false;
     Tween OptionTween;
@@ -137,7 +140,7 @@ public class TitleManager : MonoBehaviour
         StartCoroutine(titleDisappearBtn());
         SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
     }
-    IEnumerator titleDisappearBtn()
+    IEnumerator titleDisappearBtn() //시작 시 타이틀 사라짐
     {
         if (isButton) yield break;
         isButton = true;
@@ -146,9 +149,18 @@ public class TitleManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         yield return titleBtn[1].DOLocalMoveX(2300, 1.5f).SetEase(Ease.InOutBack)
         .OnComplete(() => isButton = false).WaitForCompletion();
-        StartCoroutine(SelectStart());
+        StartCoroutine(MainMenuStart());
     }
-    IEnumerator titleAppearBtn()
+    IEnumerator MainMenuStart()
+    {
+        canSelect = false;
+        InitPanel(1);
+        Selectbg[0].DOLocalMoveY(1, 0.7f);
+        yield return Selectbg[1].DOLocalMoveY(-1, 0.7f).WaitForCompletion();
+
+        
+    }
+    IEnumerator titleAppearBtn() //되돌아갈 시 타이틀 나타남
     {
         InitPanel(0);
         titleBtn[0].localPosition = new Vector2(1600, -189);
@@ -163,14 +175,14 @@ public class TitleManager : MonoBehaviour
         yield return titleBtn[1].DOLocalMoveX(600, 1.5f).SetEase(Ease.InOutBack)
         .OnComplete(() => isButton = false).WaitForCompletion();
     }
-    IEnumerator SelectStart()
+    IEnumerator SelectStart() //선택 시작 시 선택 탭 나타남
     {
         canSelect = false;
         InitPanel(2);
         //graph.GetComponent<CanvasRenderer>().SetAlpha(1);
         graph.ResetRadar();
-        Selectbg[0].DOLocalMoveY(1, 0.7f);
-        yield return Selectbg[1].DOLocalMoveY(-1, 0.7f).WaitForCompletion();
+        // Selectbg[0].DOLocalMoveY(1, 0.7f);
+        // yield return Selectbg[1].DOLocalMoveY(-1, 0.7f).WaitForCompletion();
 
         yield return new WaitForSeconds(0.1f);
         SelectUI[0].DOLocalMoveX(-850, 1);
@@ -191,13 +203,13 @@ public class TitleManager : MonoBehaviour
         SceneManager.instance.loadingpath = "Main";
         UnityEngine.SceneManagement.SceneManager.LoadScene("Loading");
     }
-    public void MainMenu()
+    public void MainMenu() //메인메뉴로 이동
     {
         if(!canSelect) return;
         SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
         StartCoroutine(mainMenu());
     }
-    IEnumerator mainMenu()
+    IEnumerator mainMenu() //메인메뉴로
     {
         SelectUI[0].DOLocalMove(new Vector3(-1658, 530), 1);
         SelectUI[2].DOLocalMove(new Vector3(-960, -570), 1);
@@ -213,7 +225,8 @@ public class TitleManager : MonoBehaviour
         Selectbg[0].DOLocalMove(new Vector3(0, -540), 1);
         Selectbg[1].DOLocalMove(new Vector3(0, 540), 1);
 
-        StartCoroutine(titleAppearBtn());
+        // StartCoroutine(titleAppearBtn());
+        InitPanel(1);
     }
     public void ASkillButtonAdd(int i)
     {

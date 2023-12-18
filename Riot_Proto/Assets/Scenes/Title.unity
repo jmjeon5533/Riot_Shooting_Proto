@@ -2649,7 +2649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -308.99997, y: -923}
+  m_AnchoredPosition: {x: -308.99994, y: -923}
   m_SizeDelta: {x: 175, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472772460
@@ -3287,7 +3287,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &607789009
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4777,23 +4777,25 @@ MonoBehaviour:
   - {fileID: 1522254379}
   - {fileID: 1609942655}
   - {fileID: 607789008}
+  Selectbg:
+  - {fileID: 1896550251}
+  - {fileID: 975241934}
   Mcamera:
   - {fileID: 25026221}
   - {fileID: 1155367638}
-  CharImage: {fileID: 686289009}
   titleBtn:
   - {fileID: 1681930823}
   - {fileID: 1220304390}
   - {fileID: 1881454318}
+  CharImage: {fileID: 686289009}
+  graph: {fileID: 1921254565}
+  meshFilter: {fileID: 530235166}
   SelectUI:
   - {fileID: 1732121904}
   - {fileID: 48916382}
   - {fileID: 860003848}
   - {fileID: 224751751}
   - {fileID: 1121905746}
-  Selectbg:
-  - {fileID: 1896550251}
-  - {fileID: 975241934}
   aSkillInfos:
   - sprite: {fileID: 21300000, guid: c82c8612bae4f764891bab3be6226ba9, type: 3}
     name: "\uC6B0\uB808"
@@ -4827,8 +4829,6 @@ MonoBehaviour:
   ASkillExplain: {fileID: 966263056}
   startPanel: {fileID: 1753677206}
   logo: {fileID: 698070941}
-  meshFilter: {fileID: 530235166}
-  graph: {fileID: 1921254565}
   OptionTab: {fileID: 23969797}
   isOption: 0
   BGMS: {fileID: 1191645267}
@@ -6156,7 +6156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1522254380
 RectTransform:
   m_ObjectHideFlags: 0

@@ -29,6 +29,7 @@ public class TitleManager : MonoBehaviour
     [Space(10)]
     [Header("메인 탭")]
     [SerializeField] Transform[] MainUI;
+    [SerializeField] Text MoneyText;
     [Space(10)]
     [Header("선택 탭")]
     [SerializeField] RawImage CharImage;
@@ -89,7 +90,10 @@ public class TitleManager : MonoBehaviour
         SFXS.value = SoundManager.instance.SFXVolume;
         DetailCtrlToggle.isOn = SceneManager.instance.DetailCtrl;
 
-        SoundManager.instance.SetAudio("Title1",SoundManager.SoundState.BGM,true);
+        SoundManager.instance.SetAudio("Title1", SoundManager.SoundState.BGM, true);
+        SceneManager.instance.JsonSave();
+
+        MoneyText.text = SceneManager.instance.playerData.PlayerMoney.ToString();
     }
 
     private void Update()
@@ -115,8 +119,9 @@ public class TitleManager : MonoBehaviour
     {
         instance.StartCoroutine(instance.StartMotion());
     }
+    #region MainPlot
 
-    IEnumerator StartMotion()
+    IEnumerator StartMotion() //처음 시작 타이틀 움직임
     {
         startPanel.DOFade(1, 0);
         yield return new WaitForSeconds(1);
@@ -129,82 +134,89 @@ public class TitleManager : MonoBehaviour
         if (isButton) yield break;
         isButton = true;
         titleBtn[0].DOLocalMoveX(600, 1.5f).SetEase(Ease.InOutBack);
-        titleBtn[2].DOLocalMoveY(-206,1.5f).SetEase(Ease.InOutBack);
+        titleBtn[2].DOLocalMoveY(-206, 1.5f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.2f);
         yield return titleBtn[1].DOLocalMoveX(600, 1.5f).SetEase(Ease.InOutBack)
         .OnComplete(() => isButton = false).WaitForCompletion();
     }
 
-    public void StartButton()
+    public void StartButton() //타이틀에서 시작 버튼 누를 시 움직임
     {
-        StartCoroutine(titleDisappearBtn());
+        StartCoroutine(MainMenuStart());
         SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
     }
-    IEnumerator titleDisappearBtn() //시작 시 타이틀 사라짐
+    
+    IEnumerator MainMenuStart()
+    {
+        yield return StartCoroutine(titleDisappearBtn());
+        canSelect = false;
+        InitPanel(1);
+        Selectbg[0].DOLocalMoveY(1, 0.7f);
+        yield return Selectbg[1].DOLocalMoveY(-1, 0.7f).WaitForCompletion();
+
+        MainUI[0].DOLocalMoveX(910, 0.7f);
+        MainUI[1].DOLocalMoveX(-910, 0.7f);
+        MainUI[2].DOLocalMoveY(520, 0.7f);
+        yield return MainUI[3].DOLocalMoveX(-910, 0.7f).WaitForCompletion();
+        canSelect = true;
+    }
+    IEnumerator titleDisappearBtn()
     {
         if (isButton) yield break;
         isButton = true;
         titleBtn[0].DOLocalMoveX(2300, 1.5f).SetEase(Ease.InOutBack);
-        titleBtn[2].DOLocalMoveY(-800,1.5f).SetEase(Ease.InOutBack);
+        titleBtn[2].DOLocalMoveY(-800, 1.5f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.2f);
         yield return titleBtn[1].DOLocalMoveX(2300, 1.5f).SetEase(Ease.InOutBack)
         .OnComplete(() => isButton = false).WaitForCompletion();
-        StartCoroutine(MainMenuStart());
     }
-    IEnumerator MainMenuStart()
+    public void ExitButton() //메인 화면에서 타이틀로 이동
     {
-        canSelect = false;
-        InitPanel(1);
-        Selectbg[0].DOLocalMoveY(1, 0.7f);
-        yield return Selectbg[1].DOLocalMoveY(-1, 0.7f).WaitForCompletion();    
-
-        MainUI[0].DOLocalMoveX(910,0.7f);
-        MainUI[1].DOLocalMoveX(-910,0.7f);
-        yield return MainUI[2].DOLocalMoveY(520,0.7f).WaitForCompletion();
-        canSelect = true;
-    }
-    public void ExitButton()
-    {
-        StartCoroutine(MainMenuExit());
+        StartCoroutine(TitleMove());
         SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
     }
-    public void SelectStart()
+    IEnumerator TitleMove()
     {
-        StartCoroutine(selectStart());
+        yield return StartCoroutine(MainMenuExit());
+        yield return StartCoroutine(titleAppearBtn());
     }
     IEnumerator MainMenuExit()
     {
         canSelect = false;
-        MainUI[0].DOLocalMoveX(1500,0.7f);
-        MainUI[1].DOLocalMoveX(-1500,0.7f);
-        yield return MainUI[2].DOLocalMoveY(620,0.7f).WaitForCompletion();
-
-        StartCoroutine(titleAppearBtn());
+        MainUI[0].DOLocalMoveX(1500, 0.7f);
+        MainUI[1].DOLocalMoveX(-1500, 0.7f);
+        MainUI[2].DOLocalMoveY(620, 0.7f);
+        yield return MainUI[3].DOLocalMoveX(-1500, 0.7f).WaitForCompletion();
     }
-    IEnumerator titleAppearBtn() //되돌아갈 시 타이틀 나타남
+    IEnumerator titleAppearBtn()
     {
         InitPanel(0);
         titleBtn[0].localPosition = new Vector2(1600, -189);
         titleBtn[1].localPosition = new Vector2(1600, -415);
         titleBtn[2].localPosition = new Vector2(-353, -810);
-        
+
         Selectbg[0].DOLocalMove(new Vector3(0, -540), 1);
         yield return Selectbg[1].DOLocalMove(new Vector3(0, 540), 1).WaitForCompletion();
 
         if (isButton) yield break;
         isButton = true;
         titleBtn[0].DOLocalMoveX(600, 1.5f).SetEase(Ease.InOutBack);
-        titleBtn[2].DOLocalMoveY(-206,1.5f).SetEase(Ease.InOutBack);
+        titleBtn[2].DOLocalMoveY(-206, 1.5f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.2f);
         yield return titleBtn[1].DOLocalMoveX(600, 1.5f).SetEase(Ease.InOutBack)
         .OnComplete(() => isButton = false).WaitForCompletion();
     }
+    public void SelectStart() //메인 화면에서 선택 화면으로 이동
+    {
+        StartCoroutine(selectStart());
+    }
     IEnumerator selectStart() //선택 시작 시 선택 탭 나타남
     {
         canSelect = false;
-        MainUI[0].DOLocalMoveX(1500,0.7f);
-        MainUI[1].DOLocalMoveX(-1500,0.7f);
-        yield return MainUI[2].DOLocalMoveY(620,0.7f).WaitForCompletion();
+        MainUI[0].DOLocalMoveX(1500, 0.7f);
+        MainUI[1].DOLocalMoveX(-1500, 0.7f);
+        MainUI[2].DOLocalMoveY(620, 0.7f);
+        yield return MainUI[3].DOLocalMoveX(-1500, 0.7f).WaitForCompletion();
 
         InitPanel(2);
         //graph.GetComponent<CanvasRenderer>().SetAlpha(1);
@@ -231,13 +243,13 @@ public class TitleManager : MonoBehaviour
         SceneManager.instance.loadingpath = "Main";
         UnityEngine.SceneManagement.SceneManager.LoadScene("Loading");
     }
-    public void MainMenu() //메인메뉴로 이동
+    public void MainMenu() //선택화면에서 메인화면으로 이동
     {
-        if(!canSelect) return;
+        if (!canSelect) return;
         SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
         StartCoroutine(mainMenu());
     }
-    IEnumerator mainMenu() //메인메뉴로
+    IEnumerator mainMenu()
     {
         SelectUI[0].DOLocalMove(new Vector3(-1658, 530), 1);
         SelectUI[2].DOLocalMove(new Vector3(-960, -570), 1);
@@ -252,6 +264,24 @@ public class TitleManager : MonoBehaviour
 
         StartCoroutine(MainMenuStart());
     }
+    #endregion
+
+    #region ShopPlot
+
+    public void ShopButton()
+    {
+        StartCoroutine(ShopAppearBtn());
+    }
+    IEnumerator ShopAppearBtn()
+    {
+        yield return StartCoroutine(MainMenuExit());
+
+        InitPanel(3);
+
+    }
+
+    #endregion
+
     public void ASkillButtonAdd(int i)
     {
         var p = SceneManager.instance.playerData;
@@ -292,9 +322,10 @@ public class TitleManager : MonoBehaviour
         SelectUI[3].localPosition = new Vector3(-118, 740);
         SelectUI[4].localPosition = new Vector3(-1550, 0);
 
-        MainUI[0].localPosition = new Vector3(1500,-490);
-        MainUI[1].localPosition = new Vector3(-1500,-490);
-        MainUI[2].localPosition = new Vector3(-940,620);
+        MainUI[0].localPosition = new Vector3(1500, -490);
+        MainUI[1].localPosition = new Vector3(-1500, -490);
+        MainUI[2].localPosition = new Vector3(-940, 620);
+        MainUI[3].localPosition = new Vector3(-1500, -255);
 
         CharImage.color = Color.clear;
         CharImage.transform.localScale = new Vector3(1, 1, 1);

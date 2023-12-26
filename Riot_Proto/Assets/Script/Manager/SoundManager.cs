@@ -38,6 +38,9 @@ public class SoundManager : MonoBehaviour
     }
     void Start()
     {
+        var playerData = SceneManager.instance.playerData;
+        BGMVolume = playerData.BGMVolume;
+        SFXVolume = playerData.SFXVolume;
     }
     void Update()
     {

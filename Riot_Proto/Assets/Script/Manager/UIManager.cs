@@ -254,7 +254,7 @@ public class UIManager : MonoBehaviour
         rankText.gameObject.SetActive(true);
         rankText.text = CalCulateRank();
         yield return calulateDelay;
-        SceneManager.instance.playerData.PlayerMora += Mathf.RoundToInt(totalScore / 100);
+        SceneManager.instance.playerData.PlayerMoney += Mathf.RoundToInt(totalScore / 100);
         gotoMain.gameObject.SetActive(true);
     }
 
@@ -333,7 +333,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         CloseResult();
-        SceneManager.instance.playerData.PlayerMora += GameManager.instance.GetMoney;
+        SceneManager.instance.playerData.PlayerMoney += GameManager.instance.GetMoney;
         SceneManager.instance.MainMenu();
     }
     public void InitRate()

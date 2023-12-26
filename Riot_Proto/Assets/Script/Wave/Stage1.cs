@@ -255,7 +255,11 @@ public class Stage1 : WaveScript
     public override IEnumerator wave14()
     {
         Debug.Log(14);
-        yield return new WaitForSeconds(1f);
+        var enemy = PoolManager.Instance.GetObject("Golem4", new Vector3(15, 0, 0));
+        enemy.GetComponent<Golem4>().MovePos = new Vector3(7, -1, 0);
+        enemy.GetComponent<Golem4>().batSpawn();
+        GameManager.instance.curEnemys.Add(enemy);
+        yield return null;
     }
 
     public override IEnumerator wave15()

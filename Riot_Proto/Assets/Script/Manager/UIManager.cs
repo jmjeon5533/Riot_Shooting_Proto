@@ -256,7 +256,7 @@ public class UIManager : MonoBehaviour
         rankImg.gameObject.SetActive(true);
         rankText.gameObject.SetActive(true);
         rankText.text = CalCulateRank();
-        yield return calulateDelay;
+        yield return StartCoroutine(Delay(calculateDelay));
         SceneManager.instance.playerData.PlayerMoney += Mathf.RoundToInt(totalScore / 100);
         gotoMain.gameObject.SetActive(true);
     }

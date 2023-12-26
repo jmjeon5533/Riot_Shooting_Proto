@@ -31,7 +31,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected bool isAttack = false;
 
-    [SerializeField]protected List<BuffBase> EnemyBuffList = new List<BuffBase>();
+    [SerializeField] protected List<BuffBase> EnemyBuffList = new List<BuffBase>();
 
     protected Collider collider;
 
@@ -184,10 +184,7 @@ public abstract class EnemyBase : MonoBehaviour
         {
             isDeath = true;
             GameManager.instance.curEnemys.Remove(this.gameObject);
-            for (int i = 0; i < XPRate; i++)
-            {
-                DeadEffect();
-            }
+            StartCoroutine(DeadEffect());
             Dead();
             if (GameManager.instance.IsGame) GameManager.instance.GetMoney += (int)(XPRate * 1000);
             UIManager.instance.InitRate();
@@ -203,16 +200,18 @@ public abstract class EnemyBase : MonoBehaviour
             Item();
         }
         GameManager.instance.GetMoney += Mathf.RoundToInt(damage * 50f);
-        SoundManager.instance.SetAudio("Hit",SoundManager.SoundState.SFX,false,Random.Range(0.3f,0.7f));
-        if(hitTag != null) {
-            PoolManager.Instance.GetObject(hitTag, transform.position, Quaternion.identity);
-            
-        } else
+        SoundManager.instance.SetAudio("Hit", SoundManager.SoundState.SFX, false, Random.Range(0.3f, 0.7f));
+        if (hitTag != null)
         {
-            var x = Random.Range(-collider.bounds.size.x/4,collider.bounds.size.x/4);
-            var y = Random.Range(-collider.bounds.size.y/4,collider.bounds.size.y/4);
+            PoolManager.Instance.GetObject(hitTag, transform.position, Quaternion.identity);
 
-            var rand = new Vector3(x,y,0);
+        }
+        else
+        {
+            var x = Random.Range(-collider.bounds.size.x / 4, collider.bounds.size.x / 4);
+            var y = Random.Range(-collider.bounds.size.y / 4, collider.bounds.size.y / 4);
+
+            var rand = new Vector3(x, y, 0);
             PoolManager.Instance.GetObject("Hit", transform.position + rand, Quaternion.identity);
         }
     }
@@ -271,10 +270,14 @@ public abstract class EnemyBase : MonoBehaviour
 
     }
 
-    protected virtual void DeadEffect()
+    protected virtual IEnumerator DeadEffect()
     {
-        var xp = PoolManager.Instance.GetObject("XP", transform.position, Quaternion.identity).GetComponent<XP>();
-        xp.curtime = 0;
+        for (int i = 0; i < XPRate; i++)
+        {
+            var xp = PoolManager.Instance.GetObject("XP", transform.position, Quaternion.identity).GetComponent<XP>();
+            xp.curtime = 0;
+            yield return new WaitForSeconds(0.015f);
+        }
     }
     protected abstract void Attack();
 

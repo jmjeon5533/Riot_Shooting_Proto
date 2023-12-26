@@ -60,8 +60,8 @@ public class Golem3 : EnemyBase
         base.Move();
     }
 
-    protected override void DeadEffect()
+    protected override IEnumerator DeadEffect()
     {
-        base.DeadEffect();
+        yield return base.DeadEffect();
     }
 }

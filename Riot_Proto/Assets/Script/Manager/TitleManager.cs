@@ -156,9 +156,30 @@ public class TitleManager : MonoBehaviour
         canSelect = false;
         InitPanel(1);
         Selectbg[0].DOLocalMoveY(1, 0.7f);
-        yield return Selectbg[1].DOLocalMoveY(-1, 0.7f).WaitForCompletion();
+        yield return Selectbg[1].DOLocalMoveY(-1, 0.7f).WaitForCompletion();    
 
-        
+        MainUI[0].DOLocalMoveX(910,0.7f);
+        MainUI[1].DOLocalMoveX(-910,0.7f);
+        yield return MainUI[2].DOLocalMoveY(520,0.7f).WaitForCompletion();
+        canSelect = true;
+    }
+    public void ExitButton()
+    {
+        StartCoroutine(MainMenuExit());
+        SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
+    }
+    public void SelectStart()
+    {
+        StartCoroutine(selectStart());
+    }
+    IEnumerator MainMenuExit()
+    {
+        canSelect = false;
+        MainUI[0].DOLocalMoveX(1500,0.7f);
+        MainUI[1].DOLocalMoveX(-1500,0.7f);
+        yield return MainUI[2].DOLocalMoveY(620,0.7f).WaitForCompletion();
+
+        StartCoroutine(titleAppearBtn());
     }
     IEnumerator titleAppearBtn() //되돌아갈 시 타이틀 나타남
     {
@@ -166,6 +187,9 @@ public class TitleManager : MonoBehaviour
         titleBtn[0].localPosition = new Vector2(1600, -189);
         titleBtn[1].localPosition = new Vector2(1600, -415);
         titleBtn[2].localPosition = new Vector2(-353, -810);
+        
+        Selectbg[0].DOLocalMove(new Vector3(0, -540), 1);
+        yield return Selectbg[1].DOLocalMove(new Vector3(0, 540), 1).WaitForCompletion();
 
         if (isButton) yield break;
         isButton = true;
@@ -175,9 +199,13 @@ public class TitleManager : MonoBehaviour
         yield return titleBtn[1].DOLocalMoveX(600, 1.5f).SetEase(Ease.InOutBack)
         .OnComplete(() => isButton = false).WaitForCompletion();
     }
-    IEnumerator SelectStart() //선택 시작 시 선택 탭 나타남
+    IEnumerator selectStart() //선택 시작 시 선택 탭 나타남
     {
         canSelect = false;
+        MainUI[0].DOLocalMoveX(1500,0.7f);
+        MainUI[1].DOLocalMoveX(-1500,0.7f);
+        yield return MainUI[2].DOLocalMoveY(620,0.7f).WaitForCompletion();
+
         InitPanel(2);
         //graph.GetComponent<CanvasRenderer>().SetAlpha(1);
         graph.ResetRadar();
@@ -222,11 +250,7 @@ public class TitleManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         graph.GetComponent<CanvasRenderer>().SetMesh(null);
 
-        Selectbg[0].DOLocalMove(new Vector3(0, -540), 1);
-        Selectbg[1].DOLocalMove(new Vector3(0, 540), 1);
-
-        // StartCoroutine(titleAppearBtn());
-        InitPanel(1);
+        StartCoroutine(MainMenuStart());
     }
     public void ASkillButtonAdd(int i)
     {
@@ -268,8 +292,9 @@ public class TitleManager : MonoBehaviour
         SelectUI[3].localPosition = new Vector3(-118, 740);
         SelectUI[4].localPosition = new Vector3(-1550, 0);
 
-        // Selectbg[0].localPosition = new Vector3(0,-540);
-        // Selectbg[1].localPosition = new Vector3(0,540);
+        MainUI[0].localPosition = new Vector3(1500,-490);
+        MainUI[1].localPosition = new Vector3(-1500,-490);
+        MainUI[2].localPosition = new Vector3(-940,620);
 
         CharImage.color = Color.clear;
         CharImage.transform.localScale = new Vector3(1, 1, 1);

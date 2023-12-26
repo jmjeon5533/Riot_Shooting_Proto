@@ -9,7 +9,12 @@ using System.IO;
 [System.Serializable]
 public class PlayerData
 {
-    public int PlayerMora;
+    public int PlayerMoney;
+
+    [Header("Option")]
+    public float BGMVolume;
+    public float SFXVolume;
+    public bool DetailCtrl;
 }
 [System.Serializable]
 public class Ability
@@ -46,7 +51,7 @@ public class SceneManager : MonoBehaviour
     }
     private void Start()
     {
-
+        DetailCtrl = playerData.DetailCtrl;
     }
     public void JsonLoad()
     {
@@ -57,7 +62,11 @@ public class SceneManager : MonoBehaviour
     public void JsonSave()
     {
         PlayerData saveData = new PlayerData();
-        saveData.PlayerMora = playerData.PlayerMora;
+        saveData.PlayerMoney = playerData.PlayerMoney;
+        saveData.BGMVolume = playerData.BGMVolume;
+        saveData.SFXVolume = playerData.SFXVolume;
+        saveData.DetailCtrl = playerData.DetailCtrl;
+
         string data = JsonUtility.ToJson(saveData);
         PlayerPrefs.SetString("savedata", data);
     }

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using System;
+using Random = UnityEngine.Random;
 
 [System.Serializable]
 public class BG
@@ -212,8 +214,8 @@ public class UIManager : MonoBehaviour
 
     IEnumerator CalulateResult(bool isClear)
     {
-        var showTextDelay = new WaitForSeconds(1f);
-        var calulateDelay = new WaitForSeconds(1.5f);
+        var showTextDelay = 1f;
+        var calculateDelay = 1.5f;
 
         ResultPanel.gameObject.SetActive(true);
 
@@ -221,35 +223,36 @@ public class UIManager : MonoBehaviour
         yield return ResultPanel.DOFade(0.75f,1).WaitForCompletion();
 
         mainText.gameObject.SetActive(true);
-        yield return showTextDelay;
+        yield return StartCoroutine(Delay(showTextDelay));
         bar.SetActive(true);
         SetText($"총합 점수 : ", totalScoreText);
-        yield return calulateDelay;
+        yield return StartCoroutine(Delay(calculateDelay));
+        
         SetText($"총합 점수 : {0}", totalScoreText);
 
-        yield return showTextDelay;
+        yield return StartCoroutine(Delay(showTextDelay));
         SetText($"획득 점수 : ", waveCountText);
-        yield return calulateDelay;
-        yield return StartCoroutine(CalulatingScore(0, Ratevalue, waveCountText, 2f));
+        yield return StartCoroutine(Delay(calculateDelay));
+        yield return StartCoroutine(CalculatingScore(0, Ratevalue, waveCountText, 2f));
 
-        yield return showTextDelay;
+        yield return StartCoroutine(Delay(showTextDelay));
         SetText($"처치한 적 : ", enemyKilledText);
-        yield return calulateDelay;
-        yield return StartCoroutine(CalulatingScore(0, GameManager.instance.GetKilledEnemyCount(), enemyKilledText, 2f, 1000));
+        yield return StartCoroutine(Delay(calculateDelay));
+        yield return StartCoroutine(CalculatingScore(0, GameManager.instance.GetKilledEnemyCount(), enemyKilledText, 2f, 1000));
 
-        yield return showTextDelay;
+        yield return StartCoroutine(Delay(showTextDelay));
         SetText($"얻은 경험치 : ", expEarnText);
-        yield return calulateDelay;
-        yield return StartCoroutine(CalulatingScore(0, GameManager.instance.GetEarnedXP(), expEarnText, 2f,100));
+        yield return StartCoroutine(Delay(calculateDelay));
+        yield return StartCoroutine(CalculatingScore(0, GameManager.instance.GetEarnedXP(), expEarnText, 2f,100));
 
         if(isClear)
         {
-            yield return showTextDelay;
+            yield return StartCoroutine(Delay(showTextDelay));
             SetText($"클리어 보너스 : ", clearBonusText);
-            yield return calulateDelay;
-            yield return StartCoroutine(CalulatingScore(0, GameManager.instance.clearBonus, clearBonusText, 2f));
+            yield return StartCoroutine(Delay(calculateDelay));
+            yield return StartCoroutine(CalculatingScore(0, GameManager.instance.clearBonus, clearBonusText, 2f));
         }
-        yield return calulateDelay;
+        yield return StartCoroutine(Delay(calculateDelay));
         rankImg.gameObject.SetActive(true);
         rankText.gameObject.SetActive(true);
         rankText.text = CalCulateRank();
@@ -292,7 +295,31 @@ public class UIManager : MonoBehaviour
         return rank;
     }
 
-    IEnumerator CalulatingScore(int value ,int newValue,TextMeshProUGUI text, float time, float multiply = 1)
+    IEnumerator Delay(float time, Action act = null) 
+    {
+        float elapsedTime = 0;
+        while(elapsedTime <= time)
+        {
+            if(IsSkipped())
+            {
+                if(act != null)
+                    act();
+                yield break;
+            }
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    void CalculateScore(int value, int newValue, TextMeshProUGUI text, float time, float multiply = 1)
+    {
+        string explain = text.text.Split(':')[0];
+        value = newValue;
+        text.text = explain + $": {value}";
+        totalScoreText.text = $"총합 점수 : {totalScore}";
+    }
+
+    IEnumerator CalculatingScore(int value ,int newValue,TextMeshProUGUI text, float time, float multiply = 1)
     {
         float elapsedTime = 0;
         string explain = text.text.Split(':')[0];
@@ -300,6 +327,11 @@ public class UIManager : MonoBehaviour
 
         while (elapsedTime <= time)
         {
+            if(IsSkipped())
+            {
+                CalculateScore(value, newValue, text, time, multiply);
+                yield break;
+            }
             elapsedTime += Time.deltaTime;
             value = Mathf.CeilToInt(Mathf.Lerp(value, newValue, (elapsedTime / time)));
             text.text = explain + $": {value}";
@@ -314,6 +346,7 @@ public class UIManager : MonoBehaviour
 
     bool IsSkipped()
     {
+        //Mobile
         if (Input.touchCount > 0)
         {
             for(int i = 0; i < Input.touchCount; i++)
@@ -325,7 +358,11 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
-        
+        //PC
+        if(Input.GetMouseButtonDown(0))
+        {
+            return true;
+        }
         return false;
     }
 

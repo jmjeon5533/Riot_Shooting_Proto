@@ -230,31 +230,31 @@ public class UIManager : MonoBehaviour
         yield return showTextDelay;
         SetText($"획득 점수 : ", waveCountText);
         yield return calulateDelay;
-        yield return StartCoroutine(CalulateScore(0, Ratevalue, waveCountText, 2f));
+        yield return StartCoroutine(CalulatingScore(0, Ratevalue, waveCountText, 2f));
 
         yield return showTextDelay;
         SetText($"처치한 적 : ", enemyKilledText);
         yield return calulateDelay;
-        yield return StartCoroutine(CalulateScore(0, GameManager.instance.GetKilledEnemyCount(), enemyKilledText, 2f, 1000));
+        yield return StartCoroutine(CalulatingScore(0, GameManager.instance.GetKilledEnemyCount(), enemyKilledText, 2f, 1000));
 
         yield return showTextDelay;
         SetText($"얻은 경험치 : ", expEarnText);
         yield return calulateDelay;
-        yield return StartCoroutine(CalulateScore(0, GameManager.instance.GetEarnedXP(), expEarnText, 2f,100));
+        yield return StartCoroutine(CalulatingScore(0, GameManager.instance.GetEarnedXP(), expEarnText, 2f,100));
 
         if(isClear)
         {
             yield return showTextDelay;
             SetText($"클리어 보너스 : ", clearBonusText);
             yield return calulateDelay;
-            yield return StartCoroutine(CalulateScore(0, GameManager.instance.clearBonus, clearBonusText, 2f));
+            yield return StartCoroutine(CalulatingScore(0, GameManager.instance.clearBonus, clearBonusText, 2f));
         }
         yield return calulateDelay;
         rankImg.gameObject.SetActive(true);
         rankText.gameObject.SetActive(true);
         rankText.text = CalCulateRank();
         yield return calulateDelay;
-
+        SceneManager.instance.playerData.PlayerMora += Mathf.RoundToInt(totalScore / 100);
         gotoMain.gameObject.SetActive(true);
     }
 
@@ -292,7 +292,7 @@ public class UIManager : MonoBehaviour
         return rank;
     }
 
-    IEnumerator CalulateScore(int value ,int newValue,TextMeshProUGUI text, float time, float multiply = 1)
+    IEnumerator CalulatingScore(int value ,int newValue,TextMeshProUGUI text, float time, float multiply = 1)
     {
         float elapsedTime = 0;
         string explain = text.text.Split(':')[0];
@@ -310,6 +310,23 @@ public class UIManager : MonoBehaviour
         value = newValue;
         text.text = explain + $": {value}";
         totalScoreText.text = $"총합 점수 : {totalScore}";
+    }
+
+    bool IsSkipped()
+    {
+        if (Input.touchCount > 0)
+        {
+            for(int i = 0; i < Input.touchCount; i++)
+            {
+                var tempTouch = Input.GetTouch(i);
+                if (tempTouch.phase == TouchPhase.Began)
+                {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
     }
 
     public void MainMenu()

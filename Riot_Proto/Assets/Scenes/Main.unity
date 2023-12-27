@@ -790,6 +790,9 @@ MonoBehaviour:
   - key: Bat7
     obj: {fileID: 960719984618054119, guid: 7b2ff4095cde0384496861e47e9ee2cc, type: 3}
     maxAmount: 100
+  - key: Golem4
+    obj: {fileID: 5332363043279848901, guid: a9390a992986df44b8700ff4551dfdfc, type: 3}
+    maxAmount: 30
 --- !u!1 &95141016
 GameObject:
   m_ObjectHideFlags: 0

@@ -158,11 +158,16 @@ public class TitleManager : MonoBehaviour
     IEnumerator MainMenuStart()
     {
         yield return StartCoroutine(titleDisappearBtn());
+
         canSelect = false;
         InitPanel(1);
         Selectbg[0].DOLocalMoveY(1, 0.7f);
         yield return Selectbg[1].DOLocalMoveY(-1, 0.7f).WaitForCompletion();
 
+        yield return StartCoroutine(MainMenuAppear());
+    }
+    IEnumerator MainMenuAppear()
+    {
         MainUI[0].DOLocalMoveX(910, 0.7f);
         MainUI[1].DOLocalMoveX(-910, 0.7f);
         MainUI[2].DOLocalMoveY(520, 0.7f);
@@ -181,15 +186,15 @@ public class TitleManager : MonoBehaviour
     }
     public void ExitButton() //메인 화면에서 타이틀로 이동
     {
-        StartCoroutine(TitleMove());
+        StartCoroutine(MainMenuExit());
         SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
     }
-    IEnumerator TitleMove()
+    IEnumerator MainMenuExit()
     {
-        yield return StartCoroutine(MainMenuExit());
+        yield return StartCoroutine(MainMenuDisappear());
         yield return StartCoroutine(titleAppearBtn());
     }
-    IEnumerator MainMenuExit()
+    IEnumerator MainMenuDisappear()
     {
         canSelect = false;
         MainUI[0].DOLocalMoveX(1500, 0.7f);
@@ -277,16 +282,26 @@ public class TitleManager : MonoBehaviour
 
     #region ShopPlot
 
-    public void ShopButton()
+    public void ShopStart()
     {
         StartCoroutine(ShopAppearBtn());
     }
     IEnumerator ShopAppearBtn()
     {
-        yield return StartCoroutine(MainMenuExit());
+        yield return StartCoroutine(MainMenuDisappear());
 
         InitPanel(3);
+    }
+    public void ShopExit()
+    {
+        StartCoroutine(ShopDisappearBtn());
+    }
+    IEnumerator ShopDisappearBtn()
+    {
 
+        InitPanel(1);
+
+        yield return StartCoroutine(MainMenuAppear());
     }
 
     #endregion

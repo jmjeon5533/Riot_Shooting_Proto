@@ -30,6 +30,9 @@ public class TitleManager : MonoBehaviour
     [Header("메인 탭")]
     [SerializeField] Transform[] MainUI;
     [SerializeField] Text MoneyText;
+    [Header("상점 탭")]
+    [SerializeField] Transform[] ShopUI;
+    [SerializeField] Text MoneyText2;
     [Space(10)]
     [Header("선택 탭")]
     [SerializeField] RawImage CharImage;
@@ -92,10 +95,15 @@ public class TitleManager : MonoBehaviour
 
         SoundManager.instance.SetAudio("Title1", SoundManager.SoundState.BGM, true);
         SceneManager.instance.JsonSave();
-
-        MoneyText.text = SceneManager.instance.playerData.PlayerMoney.ToString();
+        
+        MoneyUpdate();
     }
-
+    public void MoneyUpdate()
+    {
+        var money = SceneManager.instance.playerData.PlayerMoney.ToString();
+        MoneyText.text = money;
+        MoneyText2.text = money;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -142,6 +150,7 @@ public class TitleManager : MonoBehaviour
 
     public void StartButton() //타이틀에서 시작 버튼 누를 시 움직임
     {
+        if(isButton) return;
         StartCoroutine(MainMenuStart());
         SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
     }

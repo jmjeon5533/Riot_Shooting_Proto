@@ -18,6 +18,14 @@ public class ASkillInfo
     [Range(0, 10)] public float range;
     public int coolTime;
 }
+[System.Serializable]
+public class UpgradeInfo
+{
+    public string name;
+    public Sprite Icon;
+    public int UpgradeValue; //레벨당 추가값
+    public int Cost;
+}
 public class TitleManager : MonoBehaviour
 {
     public static TitleManager instance { get; private set; }
@@ -28,8 +36,13 @@ public class TitleManager : MonoBehaviour
     bool isButton;
     [Space(10)]
     [Header("상점 탭")]
+    public UpgradeInfo[] upgradeInfos;
     [SerializeField] Transform[] ShopUI;
     [SerializeField] Text MoneyText;
+    [SerializeField] Text Name;
+    [SerializeField] Image Icon;
+    [SerializeField] Text value;
+    [SerializeField] Text Cost;
     [Space(10)]
     [Header("선택 탭")]
     [SerializeField] RawImage CharImage;

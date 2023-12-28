@@ -329,11 +329,14 @@ public class Boss1 : BossBase
             StartCoroutine(DeadMotion());
         }
         GameManager.instance.GetMoney += Mathf.RoundToInt(damage * 0.5f);
+        SoundManager.instance.SetAudio("Hit", SoundManager.SoundState.SFX, false, Random.Range(0.3f, 0.7f));
+
         var x = Random.Range(-collider.bounds.size.x / 4, collider.bounds.size.x / 4);
         var y = Random.Range(-collider.bounds.size.y / 4, collider.bounds.size.y / 4);
 
         var rand = new Vector3(x, y, 0);
-        PoolManager.Instance.GetObject("Hit", transform.position + rand, Quaternion.identity);
+        if(isCrit) PoolManager.Instance.GetObject("CritHit", transform.position + rand, Quaternion.identity);
+            else PoolManager.Instance.GetObject("Hit", transform.position + rand, Quaternion.identity);
         // var DamageTextPos = (Vector2)transform.position + (Random.insideUnitCircle * 2);
         // var DmgText = PoolManager.Instance.GetObject("DamageText", UIManager.instance.canvas)
         //     .GetComponent<DamageText>();

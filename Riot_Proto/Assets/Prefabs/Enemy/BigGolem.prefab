@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5332363043279848902}
   - component: {fileID: 5332363043279848903}
   - component: {fileID: 5332363043279848953}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BigGolem
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -94,6 +94,7 @@ MonoBehaviour:
   anim1: {fileID: 553305227690895083}
   anim2: {fileID: 3946636423402511619}
   ShieldMaterial: {fileID: 6302107744314671143}
+  ShieldPoint: {fileID: 0}
   IsShield: 1
 --- !u!1001 &6338171512264644833
 PrefabInstance:

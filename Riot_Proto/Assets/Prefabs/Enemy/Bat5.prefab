@@ -52,7 +52,7 @@ MonoBehaviour:
   XPRate: 1
   baseXPRate: 0
   MoveSpeed: 8
-  AttackCooltime: 1
+  AttackCooltime: 0
   damagedMultiplier: 1
   shader: {fileID: 0}
   mesh: {fileID: 951067939544076833}
@@ -61,7 +61,7 @@ MonoBehaviour:
   ItemAddCount: 1
   isDeath: 0
   anim: {fileID: 2638758462668147766}
-  BulletTag: 
+  waitTime: 1
 --- !u!54 &2638758462304634177
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -77,11 +77,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a1103182c13054b982709080e24fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 30
+  HP: 10
   baseHp: 0
-  XPRate: 0
+  XPRate: 5
   baseXPRate: 0
-  MoveSpeed: 4.5
+  MoveSpeed: 6.5
   AttackCooltime: 1
   damagedMultiplier: 1
   shader: {fileID: 0}
@@ -91,7 +91,7 @@ MonoBehaviour:
   ItemAddCount: 1
   isDeath: 0
   anim: {fileID: 809993903502700854}
-  sinLine: {x: 0.25, y: 5}
+  sinLine: {x: 0.25, y: 6.5}
   axisHorizon: 0
 --- !u!1001 &809993903502700849
 PrefabInstance:

@@ -105,6 +105,14 @@ public class TitleManager : MonoBehaviour
         SoundManager.instance.BGMVolume = BGMS.value;
         SoundManager.instance.SFXVolume = SFXS.value;
         SceneManager.instance.DetailCtrl = DetailCtrlToggle.isOn;
+
+        //BACKDOOR!
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SoundManager.instance.BGMVolume = 0;
+            SoundManager.instance.SFXVolume = 0;
+            StageStart();
+        }
     }
 
     public void Option()

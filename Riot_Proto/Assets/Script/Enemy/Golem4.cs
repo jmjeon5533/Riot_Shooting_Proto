@@ -21,6 +21,7 @@ public class Golem4 : EnemyBase
     IEnumerator AttackCoroutine()
     {
         isAttack = true;
+        float o = 0;
         for (int c = 0; c < 3; c++)
         {
             anim1.SetTrigger("Attack");
@@ -31,11 +32,12 @@ public class Golem4 : EnemyBase
             for (int i = 0; i < 20; i++)
             {
                 var b = PoolManager.Instance.GetObject("EnemyBullet", transform.position, Quaternion.identity).GetComponent<BulletBase>();
-                float angle = (i * 18) * Mathf.Deg2Rad;
+                float angle = ((i + o) * 18) * Mathf.Deg2Rad;
                 Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0);
                 b.dir = direction;
                 b.SetMoveSpeed(5f);
             }
+            o += 0.5f;
         }
         anim1.speed = anim2.speed = 1f;
         isAttack = false;

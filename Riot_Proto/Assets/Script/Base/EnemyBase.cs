@@ -204,7 +204,6 @@ public abstract class EnemyBase : MonoBehaviour
         if (hitTag != null)
         {
             PoolManager.Instance.GetObject(hitTag, transform.position, Quaternion.identity);
-
         }
         else
         {
@@ -212,7 +211,8 @@ public abstract class EnemyBase : MonoBehaviour
             var y = Random.Range(-collider.bounds.size.y / 4, collider.bounds.size.y / 4);
 
             var rand = new Vector3(x, y, 0);
-            PoolManager.Instance.GetObject("Hit", transform.position + rand, Quaternion.identity);
+            if(isCrit) PoolManager.Instance.GetObject("CritHit", transform.position + rand, Quaternion.identity);
+            else PoolManager.Instance.GetObject("Hit", transform.position + rand, Quaternion.identity);
         }
     }
     protected virtual void Item()

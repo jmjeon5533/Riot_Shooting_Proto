@@ -37,7 +37,8 @@ public class TitleManager : MonoBehaviour
     [Space(10)]
     [Header("상점 탭")]
     [SerializeField] Transform[] ShopUI;
-    [SerializeField] Button[] ShopButton = new Button[8];
+    [SerializeField] Button[] ShopButton;
+    [SerializeField] Button[] StatusButton = new Button[8];
     [SerializeField] Text[] StatusLevel = new Text[8];
     [SerializeField] Text MoneyText;
     [SerializeField] Text Name;
@@ -61,7 +62,6 @@ public class TitleManager : MonoBehaviour
     [SerializeField] GameObject ASkillPrefab;
     [SerializeField] RawImage SelectSkillImage;
     [SerializeField] Text ASkillExplain;
-    bool canSelect = false;
 
     [Header("로고 & 첫 타이틀")]
     [SerializeField] Image startPanel;
@@ -85,10 +85,18 @@ public class TitleManager : MonoBehaviour
         {
             ASkillButtonAdd(i);
         }
-        for(int i = 0; i < ShopButton.Length; i++)
+        for (int i = 0; i < StatusButton.Length; i++)
         {
-            StatusLevel[i] = ShopButton[i].transform.GetChild(0).GetComponent<Text>();
+            StatusLevel[i] = StatusButton[i].transform.GetChild(0).GetComponent<Text>();
             StatusLevel[i].text = SceneManager.instance.playerData.StatusLevel[i].ToString();
+        }
+        for (int i = 0; i < ShopUI.Length; i++)
+        {
+            var num = i;
+            ShopButton[num].onClick.AddListener(() =>
+            {
+                InitShopPanel(num);
+            });
         }
         InitShopBtn();
         InitShopPanel(0);
@@ -116,6 +124,15 @@ public class TitleManager : MonoBehaviour
         SceneManager.instance.JsonSave();
 
         InitMoney();
+    }
+    void InitShopPanel(int index)
+    {
+        for (int j = 0; j < ShopUI.Length; j++)
+        {
+            ShopUI[j].gameObject.SetActive(false);
+        }
+        ShopUI[index].gameObject.SetActive(true);
+        InitShopStatus(0);
     }
     public void InitMoney()
     {
@@ -185,7 +202,7 @@ public class TitleManager : MonoBehaviour
     {
         yield return StartCoroutine(titleDisappearBtn());
 
-        canSelect = false;
+        isButton = true;
         InitPanel(1);
         Selectbg[0].DOLocalMoveY(1, 0.7f);
         yield return Selectbg[1].DOLocalMoveY(-1, 0.7f).WaitForCompletion();
@@ -196,14 +213,15 @@ public class TitleManager : MonoBehaviour
     {
         if (isButton) yield break;
         isButton = true;
-        titleBtn[0].DOLocalMoveX(2300, 1.25f).SetEase(Ease.InOutBack);
-        titleBtn[2].DOLocalMoveY(-800, 1.25f).SetEase(Ease.InOutBack);
+        titleBtn[0].DOLocalMoveX(2300, 1f).SetEase(Ease.InOutBack);
+        titleBtn[2].DOLocalMoveY(-800, 1f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.2f);
-        yield return titleBtn[1].DOLocalMoveX(2300, 1.25f).SetEase(Ease.InOutBack)
+        yield return titleBtn[1].DOLocalMoveX(2300, 1f).SetEase(Ease.InOutBack)
         .OnComplete(() => isButton = false).WaitForCompletion();
     }
     public void ExitButton() //메인 화면에서 타이틀로 이동
     {
+        if(isButton) return;
         StartCoroutine(exitButton());
         SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
     }
@@ -224,14 +242,15 @@ public class TitleManager : MonoBehaviour
 
         if (isButton) yield break;
         isButton = true;
-        titleBtn[0].DOLocalMoveX(600, 1.25f).SetEase(Ease.InOutBack);
-        titleBtn[2].DOLocalMoveY(-206, 1.25f).SetEase(Ease.InOutBack);
+        titleBtn[0].DOLocalMoveX(600, 1f).SetEase(Ease.InOutBack);
+        titleBtn[2].DOLocalMoveY(-206, 1f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.2f);
-        yield return titleBtn[1].DOLocalMoveX(600, 1.25f).SetEase(Ease.InOutBack)
+        yield return titleBtn[1].DOLocalMoveX(600, 1f).SetEase(Ease.InOutBack)
         .OnComplete(() => isButton = false).WaitForCompletion();
     }
     IEnumerator selectStart() //선택 시작 시 선택 탭 나타남
     {
+        isButton = true;
         InitPanel(1);
         //graph.GetComponent<CanvasRenderer>().SetAlpha(1);
         graph.ResetRadar();
@@ -239,16 +258,16 @@ public class TitleManager : MonoBehaviour
         // yield return Selectbg[1].DOLocalMoveY(-1, 0.7f).WaitForCompletion();
 
         yield return new WaitForSeconds(0.1f);
-        SelectUI[0].DOLocalMoveX(-850, 1);
-        SelectUI[2].DOLocalMoveY(-429, 1);
-        SelectUI[3].DOLocalMoveY(350, 1);
-        SelectUI[4].DOLocalMoveX(-750, 1);
+        SelectUI[0].DOLocalMoveX(-850, 0.75f);
+        SelectUI[2].DOLocalMoveY(-429, 0.75f);
+        SelectUI[3].DOLocalMoveY(350, 0.75f);
+        SelectUI[4].DOLocalMoveX(-750, 0.75f);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
         float size = 70;
         selectPanelRect.sizeDelta = new Vector2(size, 1080);
-        yield return DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(800, 1080), 1).WaitForCompletion();
+        yield return DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(800, 1080), 0.75f).WaitForCompletion();
         SelectSkillImage.transform.position = ASkillList[0].position;
-        canSelect = true;
+        isButton = false;
         graph.InitRaderGraph();
     }
     public void StageStart()
@@ -259,13 +278,13 @@ public class TitleManager : MonoBehaviour
     }
     IEnumerator mainMenu()
     {
-        SelectUI[0].DOLocalMove(new Vector3(-1658, 530), 1);
-        SelectUI[2].DOLocalMove(new Vector3(-960, -570), 1);
-        SelectUI[3].DOLocalMove(new Vector3(-118, 740), 1);
-        SelectUI[4].DOLocalMove(new Vector3(-1450, 0), 1);
+        SelectUI[0].DOLocalMove(new Vector3(-1658, 530), 0.75f);
+        SelectUI[2].DOLocalMove(new Vector3(-960, -570), 0.75f);
+        SelectUI[3].DOLocalMove(new Vector3(-118, 740), 0.75f);
+        SelectUI[4].DOLocalMove(new Vector3(-1450, 0), 0.75f);
         SelectSkillImage.rectTransform.anchoredPosition = new Vector2(-355, 0);
         var selectPanelRect = SelectUI[1].GetComponent<RectTransform>();
-        DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(0, 1080), 1).WaitForCompletion();
+        DOTween.To(() => selectPanelRect.sizeDelta, x => selectPanelRect.sizeDelta = x, new Vector2(0, 1080), 0.75f).WaitForCompletion();
         graph.DisableRadar();
         yield return new WaitForSeconds(0.75f);
         graph.GetComponent<CanvasRenderer>().SetMesh(null);
@@ -276,6 +295,7 @@ public class TitleManager : MonoBehaviour
 
     public void ShopStart()
     {
+        if(isButton) return;
         StartCoroutine(ShopAppearBtn());
     }
     IEnumerator ShopAppearBtn()
@@ -305,7 +325,7 @@ public class TitleManager : MonoBehaviour
         var num = i;
         b.onClick.AddListener(() =>
         {
-            if (canSelect)
+            if (!isButton)
             {
                 SoundManager.instance.SetAudio("XP", SoundManager.SoundState.SFX, false);
 
@@ -321,16 +341,16 @@ public class TitleManager : MonoBehaviour
     }
     void InitShopBtn()
     {
-        for (int i = 0; i < ShopButton.Length; i++)
+        for (int i = 0; i < StatusButton.Length; i++)
         {
             var num = i;
-            ShopButton[num].onClick.AddListener(() =>
+            StatusButton[num].onClick.AddListener(() =>
             {
-                InitShopPanel(num);
+                InitShopStatus(num);
             });
         }
     }
-    void InitShopPanel(int index)
+    void InitShopStatus(int index)
     {
         var s = SceneManager.instance;
         Name.text = $"{s.upgradeInfos[index].name} + {s.upgradeInfos[index].UpgradeValue}";
@@ -348,7 +368,7 @@ public class TitleManager : MonoBehaviour
         {
             s.playerData.StatusLevel[SelectStatus]++;
             s.playerData.PlayerMoney -= cost;
-            InitShopPanel(SelectStatus);
+            InitShopStatus(SelectStatus);
         }
         StatusLevel[SelectStatus].text = s.playerData.StatusLevel[SelectStatus].ToString();
         InitMoney();

@@ -54,14 +54,4 @@ public class Golem3 : EnemyBase
         base.Dead();
         anim1.SetBool("Death", IsDeath());
     }
-
-    protected override void Move()
-    {
-        base.Move();
-    }
-
-    protected override IEnumerator DeadEffect()
-    {
-        yield return base.DeadEffect();
-    }
 }

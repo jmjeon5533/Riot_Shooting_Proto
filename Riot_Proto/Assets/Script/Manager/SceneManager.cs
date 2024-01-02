@@ -11,6 +11,8 @@ public class PlayerData
 {
     public int PlayerMoney;
 
+    public int[] StatusLevel = new int[8];
+
     [Header("Option")]
     public float BGMVolume;
     public float SFXVolume;
@@ -38,6 +40,7 @@ public class SceneManager : MonoBehaviour
 
     [Space(10)]
     public PlayerData playerData;
+    public UpgradeInfo[] upgradeInfos;
     [SerializeField] Transform OptionPanel;
     bool OptionMove;
 
@@ -66,6 +69,11 @@ public class SceneManager : MonoBehaviour
         saveData.BGMVolume = playerData.BGMVolume;
         saveData.SFXVolume = playerData.SFXVolume;
         saveData.DetailCtrl = playerData.DetailCtrl;
+
+        for(int i = 0; i < saveData.StatusLevel.Length; i++)
+        {
+            saveData.StatusLevel[i] = playerData.StatusLevel[i];
+        }
 
         string data = JsonUtility.ToJson(saveData);
         PlayerPrefs.SetString("savedata", data);

@@ -272,7 +272,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual IEnumerator DeadEffect()
     {
-        for (int i = 0; i < XPRate; i++)
+        for (int i = 0; i < XPRate + GameManager.instance.CalculateAddValue(6); i++)
         {
             var xp = PoolManager.Instance.GetObject("XP", transform.position, Quaternion.identity).GetComponent<XP>();
             xp.curtime = 0;

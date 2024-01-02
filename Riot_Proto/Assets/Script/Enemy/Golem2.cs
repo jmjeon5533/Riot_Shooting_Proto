@@ -31,25 +31,9 @@ public class Golem2 : EnemyBase
         MovePos = new Vector3(Random.Range(2,g.MoveRange.x-2), Random.Range(-g.MoveRange.y + 2, g.MoveRange.y -2), 0);
         isAttack = false;
     }
-
-   
-
-
-
-
     protected override void Dead()
     {
         base.Dead();
         anim1.SetBool("Death", IsDeath());
-    }
-
-    protected override void Move()
-    {
-        base.Move();
-    }
-
-    protected override IEnumerator DeadEffect()
-    {
-        yield return base.DeadEffect();
     }
 }

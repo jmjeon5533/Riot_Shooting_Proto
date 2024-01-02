@@ -23,7 +23,7 @@ public class UpgradeInfo
 {
     public string name;
     public Sprite Icon;
-    public int UpgradeValue; //레벨당 추가값
+    public float UpgradeValue; //레벨당 추가값
     public int Cost;
 }
 public class TitleManager : MonoBehaviour
@@ -36,13 +36,15 @@ public class TitleManager : MonoBehaviour
     bool isButton;
     [Space(10)]
     [Header("상점 탭")]
-    public UpgradeInfo[] upgradeInfos;
     [SerializeField] Transform[] ShopUI;
+    [SerializeField] Button[] ShopButton = new Button[8];
+    [SerializeField] Text[] StatusLevel = new Text[8];
     [SerializeField] Text MoneyText;
     [SerializeField] Text Name;
+    [SerializeField] Text CurValue;
     [SerializeField] Image Icon;
-    [SerializeField] Text value;
     [SerializeField] Text Cost;
+    int SelectStatus;
     [Space(10)]
     [Header("선택 탭")]
     [SerializeField] RawImage CharImage;
@@ -83,6 +85,13 @@ public class TitleManager : MonoBehaviour
         {
             ASkillButtonAdd(i);
         }
+        for(int i = 0; i < ShopButton.Length; i++)
+        {
+            StatusLevel[i] = ShopButton[i].transform.GetChild(0).GetComponent<Text>();
+            StatusLevel[i].text = SceneManager.instance.playerData.StatusLevel[i].ToString();
+        }
+        InitShopBtn();
+        InitShopPanel(0);
         InitPanel(0);
         titleBtn[0].localPosition = new Vector2(2300, -189);
         titleBtn[1].localPosition = new Vector2(2300, -415);
@@ -105,10 +114,10 @@ public class TitleManager : MonoBehaviour
 
         SoundManager.instance.SetAudio("Title1", SoundManager.SoundState.BGM, true);
         SceneManager.instance.JsonSave();
-        
-        MoneyUpdate();
+
+        InitMoney();
     }
-    public void MoneyUpdate()
+    public void InitMoney()
     {
         var money = SceneManager.instance.playerData.PlayerMoney.ToString();
         MoneyText.text = money;
@@ -167,11 +176,11 @@ public class TitleManager : MonoBehaviour
 
     public void StartButton() //타이틀에서 시작 버튼 누를 시 움직임
     {
-        if(isButton) return;
+        if (isButton) return;
         StartCoroutine(MainMenuStart());
         SoundManager.instance.SetAudio("UIClick", SoundManager.SoundState.SFX, false);
     }
-    
+
     IEnumerator MainMenuStart()
     {
         yield return StartCoroutine(titleDisappearBtn());
@@ -309,6 +318,40 @@ public class TitleManager : MonoBehaviour
                 ASkillExplain.text = aSkillInfos[num].explain;
             }
         });
+    }
+    void InitShopBtn()
+    {
+        for (int i = 0; i < ShopButton.Length; i++)
+        {
+            var num = i;
+            ShopButton[num].onClick.AddListener(() =>
+            {
+                InitShopPanel(num);
+            });
+        }
+    }
+    void InitShopPanel(int index)
+    {
+        var s = SceneManager.instance;
+        Name.text = $"{s.upgradeInfos[index].name} + {s.upgradeInfos[index].UpgradeValue}";
+        Icon.sprite = s.upgradeInfos[index].Icon;
+        Cost.text = $"{s.upgradeInfos[index].Cost * (s.playerData.StatusLevel[index] + 1)}";
+        CurValue.text = $"현재 + {s.upgradeInfos[index].UpgradeValue * s.playerData.StatusLevel[index]}";
+        SelectStatus = index;
+    }
+    public void UpgradeStat()
+    {
+        var s = SceneManager.instance;
+        var money = s.playerData.PlayerMoney;
+        var cost = s.upgradeInfos[SelectStatus].Cost * (s.playerData.StatusLevel[SelectStatus] + 1);
+        if (money >= cost)
+        {
+            s.playerData.StatusLevel[SelectStatus]++;
+            s.playerData.PlayerMoney -= cost;
+            InitShopPanel(SelectStatus);
+        }
+        StatusLevel[SelectStatus].text = s.playerData.StatusLevel[SelectStatus].ToString();
+        InitMoney();
     }
     public void InitPanel(int index) //타이틀 패널 바꾸기
     {

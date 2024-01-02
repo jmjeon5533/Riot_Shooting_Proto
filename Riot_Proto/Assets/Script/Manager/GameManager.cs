@@ -72,11 +72,27 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        Instantiate(playerPrefab[SceneManager.instance.CharIndex], new Vector3(-12f, 0, 0), Quaternion.identity);
+        InitPlayer();
         AbilityBase.SetSubtractCool(0);
         UIManager.instance.InitBackGround(SceneManager.instance.StageIndex,false);
         UIManager.instance.FadeBg.transform.SetAsLastSibling();
         InitBGM("Stage1");
+    }
+    void InitPlayer()
+    {
+        var info = SceneManager.instance.upgradeInfos;
+        var player = Instantiate(playerPrefab[SceneManager.instance.CharIndex], new Vector3(-12f, 0, 0), Quaternion.identity).GetComponent<Player>();
+        player.damage += (int)CalculateAddValue(0);
+        player.AttackCooltime -= CalculateAddValue(1);
+        player.MoveSpeed += CalculateAddValue(2);
+        player.CritRate += (int)CalculateAddValue(3);
+        player.CritDamage += (int)CalculateAddValue(4);
+        player.bulletLevel += (int)CalculateAddValue(7);
+    }
+    public float CalculateAddValue(int index)
+    {
+        var info = SceneManager.instance;
+        return info.upgradeInfos[index].UpgradeValue * info.playerData.StatusLevel[index];   
     }
     public void InitBGM(string BGMPath)
     {

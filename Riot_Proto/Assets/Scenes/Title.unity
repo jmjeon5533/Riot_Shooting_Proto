@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0007387176, g: 0.000811749, b: 0.00069838576, a: 1}
+  m_IndirectSpecularColor: {r: 0.0007119874, g: 0.0007904166, b: 0.00068168563, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14566,7 +14566,7 @@ MonoBehaviour:
   upgradeInfos:
   - name: "\uACF5\uACA9\uB825"
     Icon: {fileID: 0}
-    UpgradeValue: 2
+    UpgradeValue: 0.5
     Cost: 1500
   - name: "\uACF5\uACA9\uC18D\uB3C4"
     Icon: {fileID: 0}

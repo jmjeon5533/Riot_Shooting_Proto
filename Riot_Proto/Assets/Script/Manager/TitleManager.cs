@@ -87,7 +87,6 @@ public class TitleManager : MonoBehaviour
         }
         for (int i = 0; i < StatusButton.Length; i++)
         {
-            StatusLevel[i] = StatusButton[i].transform.GetChild(0).GetComponent<Text>();
             StatusLevel[i].text = SceneManager.instance.playerData.StatusLevel[i].ToString();
         }
         for (int i = 0; i < ShopUI.Length; i++)

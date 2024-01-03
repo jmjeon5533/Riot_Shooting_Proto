@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System.IO;
 using GoogleMobileAds.Api;
+using System;
 
 [System.Serializable]
 public class PlayerData
@@ -150,5 +151,17 @@ public class SceneManager : MonoBehaviour
             }
         }
         Application.targetFrameRate = 60;
+    }
+    public void ShowAds(Action<Reward> action)
+    {
+        var s = SceneManager.instance;
+        if(s.rewardedAd.CanShowAd())
+        {
+            s.rewardedAd.Show(action);
+        }
+        else
+        {
+            Debug.Log("광고 재생 실패");
+        }
     }
 }

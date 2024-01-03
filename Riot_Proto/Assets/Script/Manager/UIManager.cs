@@ -57,6 +57,7 @@ public class UIManager : MonoBehaviour
     public GameObject StagePrefab;
     public List<BG> BGList = new();
     bool isUseTab = false;
+    bool isWatchAD = false;
     List<GameObject> curBGObj = new();
     [Space(10)]
     [Header("Item")]
@@ -78,6 +79,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI rankText;
 
     [SerializeField] Button gotoMain;
+    [SerializeField] Button ADButton;
 
     int totalScore = 0;
 
@@ -101,6 +103,10 @@ public class UIManager : MonoBehaviour
         BGMS.value = SoundManager.instance.BGMVolume;
         SFXS.value = SoundManager.instance.SFXVolume;
         DetailCtrlToggle.isOn = SceneManager.instance.DetailCtrl;
+        isWatchAD = false;
+
+        ADButton.onClick.AddListener(DoubleReward);
+        CloseResult();
     }
     private void Update()
     {
@@ -203,8 +209,7 @@ public class UIManager : MonoBehaviour
         rankText.gameObject.SetActive(false);
         gotoMain.gameObject.SetActive(false);
         ResultPanel.gameObject.SetActive(false);
-
-
+        ADButton.gameObject.SetActive(false);
     }
 
     void SetText(string text, TextMeshProUGUI textObj)
@@ -258,11 +263,8 @@ public class UIManager : MonoBehaviour
         rankText.gameObject.SetActive(true);
         rankText.text = CalCulateRank();
         yield return StartCoroutine(Delay(calculateDelay));
-        var a = totalScore / 100;
-        var b = 1 + GameManager.instance.CalculateAddValue(5) / 100;
-        SceneManager.instance.playerData.PlayerMoney += Mathf.RoundToInt(a * b);
-        print($"{a},{b}");
         gotoMain.gameObject.SetActive(true);
+        ADButton.gameObject.SetActive(true);
     }
 
     string CalCulateRank()
@@ -374,7 +376,9 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         CloseResult();
-        SceneManager.instance.playerData.PlayerMoney += GameManager.instance.GetMoney;
+        var a = totalScore / 100;
+        var b = 1 + GameManager.instance.CalculateAddValue(5) / 100;
+        SceneManager.instance.playerData.PlayerMoney += Mathf.RoundToInt(a * b) * (isWatchAD ? 2 : 1);
         SceneManager.instance.MainMenu();
     }
     public void InitRate()
@@ -459,25 +463,15 @@ public class UIManager : MonoBehaviour
             SpawnManager.instance.Spawn();
         }
     }
-    public void ShowAds()
+    public void DoubleReward()
     {
-        var s = SceneManager.instance;
-        if(s.rewardedAd.CanShowAd())
-        {
-            s.rewardedAd.Show(GetReward);
-        }
-        else
-        {
-            Debug.Log("광고 재생 실패");
-        }
+        SceneManager.instance.ShowAds(GetReward);
     }
-
-    //보상 함수
+        //보상 함수
     public void GetReward(Reward reward)
     {
-        var a = totalScore / 100;
-        var b = 1 + GameManager.instance.CalculateAddValue(5) / 100;
-        SceneManager.instance.playerData.PlayerMoney += Mathf.RoundToInt(a * b);
+        isWatchAD = true;
+        ADButton.gameObject.SetActive(false);
         SceneManager.instance.InitAds();
     }
 }

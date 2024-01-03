@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 using System;
+using GoogleMobileAds.Api;
 using Random = UnityEngine.Random;
 
 [System.Serializable]
@@ -457,5 +458,26 @@ public class UIManager : MonoBehaviour
             GameManager.instance.IsGame = true;
             SpawnManager.instance.Spawn();
         }
+    }
+    public void ShowAds()
+    {
+        var s = SceneManager.instance;
+        if(s.rewardedAd.CanShowAd())
+        {
+            s.rewardedAd.Show(GetReward);
+        }
+        else
+        {
+            Debug.Log("광고 재생 실패");
+        }
+    }
+
+    //보상 함수
+    public void GetReward(Reward reward)
+    {
+        var a = totalScore / 100;
+        var b = 1 + GameManager.instance.CalculateAddValue(5) / 100;
+        SceneManager.instance.playerData.PlayerMoney += Mathf.RoundToInt(a * b);
+        SceneManager.instance.InitAds();
     }
 }

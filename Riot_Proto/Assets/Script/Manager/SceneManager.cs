@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
 using System.IO;
+using GoogleMobileAds.Api;
 
 [System.Serializable]
 public class PlayerData
@@ -43,6 +44,7 @@ public class SceneManager : MonoBehaviour
     public UpgradeInfo[] upgradeInfos;
     [SerializeField] Transform OptionPanel;
     bool OptionMove;
+    public RewardedAd rewardedAd; //광고
 
     public void initPanel(int index) => TitleManager.instance.InitPanel(index);
     private void Awake()
@@ -51,6 +53,7 @@ public class SceneManager : MonoBehaviour
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
         JsonLoad();
+        InitAds();
     }
     private void Start()
     {
@@ -70,13 +73,42 @@ public class SceneManager : MonoBehaviour
         saveData.SFXVolume = playerData.SFXVolume;
         saveData.DetailCtrl = playerData.DetailCtrl;
 
-        for(int i = 0; i < saveData.StatusLevel.Length; i++)
+        for (int i = 0; i < saveData.StatusLevel.Length; i++)
         {
             saveData.StatusLevel[i] = playerData.StatusLevel[i];
         }
 
         string data = JsonUtility.ToJson(saveData);
         PlayerPrefs.SetString("savedata", data);
+    }
+    public void InitAds()
+    {
+        string adUnitId;
+
+#if UNITY_ANDROID
+        adUnitId = "ca-app-pub-3940256099942544/5224354917";
+#elif UNITY_IPHONE
+            adUnitId = "ca-app-pub-3940256099942544/1712485313";
+#else
+            adUnitId = "unexpected_platform";
+#endif
+
+        RewardedAd.Load(adUnitId, new AdRequest.Builder().Build(), LoadCallback);
+    }
+
+    //로드 콜백 함수
+    public void LoadCallback(RewardedAd rewardedAd, LoadAdError loadAdError)
+    {
+        if (rewardedAd != null)
+        {
+            this.rewardedAd = rewardedAd;
+            Debug.Log("로드성공");
+        }
+        else
+        {
+            Debug.Log(loadAdError.GetMessage());
+        }
+
     }
     void OnApplicationQuit()
     {

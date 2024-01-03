@@ -154,10 +154,9 @@ public class SceneManager : MonoBehaviour
     }
     public void ShowAds(Action<Reward> action)
     {
-        var s = SceneManager.instance;
-        if(s.rewardedAd.CanShowAd())
+        if (rewardedAd.CanShowAd())
         {
-            s.rewardedAd.Show(action);
+            rewardedAd.Show(action);
         }
         else
         {

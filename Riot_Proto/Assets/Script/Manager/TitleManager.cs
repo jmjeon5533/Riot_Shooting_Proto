@@ -372,6 +372,24 @@ public class TitleManager : MonoBehaviour
         StatusLevel[SelectStatus].text = s.playerData.StatusLevel[SelectStatus].ToString();
         InitMoney();
     }
+    public void ResetStat()
+    {
+        var s = SceneManager.instance;
+        for(int i = 0; i < s.playerData.StatusLevel.Length; i++)
+        {
+            var returnMoney = 0;
+            for(int j = 0; j < s.playerData.StatusLevel[i]; j++)
+            {
+                returnMoney += s.upgradeInfos[i].Cost * (j + 1);
+            }
+            //s.playerData.PlayerMoney += s.playerData.StatusLevel[i] * s.upgradeInfos[i].Cost;
+            s.playerData.PlayerMoney += returnMoney;
+            s.playerData.StatusLevel[i] = 0;
+            StatusLevel[i].text = s.playerData.StatusLevel[i].ToString();
+        }
+        InitMoney();
+        InitShopStatus(SelectStatus);
+    }
     public void InitPanel(int index) //타이틀 패널 바꾸기
     {
         for (int i = 0; i < Panel.Length; i++)

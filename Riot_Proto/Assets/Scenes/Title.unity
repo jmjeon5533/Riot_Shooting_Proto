@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0007119874, g: 0.0007904166, b: 0.00068168563, a: 1}
+  m_IndirectSpecularColor: {r: 0.0007119626, g: 0.0007905214, b: 0.00068172155, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1879,7 +1879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -8884,6 +8884,7 @@ MonoBehaviour:
   - {fileID: 2024180337}
   - {fileID: 4801038}
   - {fileID: 2042670562}
+  UpgradeButton: {fileID: 974550924}
   MoneyText: {fileID: 1427371473}
   Name: {fileID: 117945315}
   CurValue: {fileID: 1748485527}
@@ -14073,7 +14074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -15858,36 +15859,52 @@ MonoBehaviour:
   upgradeInfos:
   - name: "\uACF5\uACA9\uB825"
     Icon: {fileID: 21300000, guid: 63b8b76c66aff6b43bb90140a6f95e79, type: 3}
-    UpgradeValue: 0.5
+    UpgradeValue: 3
     Cost: 1500
+    unit: 
+    MaxLevel: 10
   - name: "\uACF5\uACA9\uC18D\uB3C4"
     Icon: {fileID: 21300000, guid: eb2d65799dea4a847854039d9ea9589e, type: 3}
-    UpgradeValue: 0.01
+    UpgradeValue: 10
     Cost: 3000
+    unit: '%'
+    MaxLevel: 10
   - name: "\uC774\uB3D9\uC18D\uB3C4"
     Icon: {fileID: 21300000, guid: df79ef74d3d070446ae9a5457c0dec81, type: 3}
-    UpgradeValue: 2
+    UpgradeValue: 0.5
     Cost: 5000
+    unit: 
+    MaxLevel: 10
   - name: "\uCE58\uBA85 \uD655\uB960"
     Icon: {fileID: 21300000, guid: c3558d12a1bf27348bdb09c91505c22b, type: 3}
     UpgradeValue: 5
     Cost: 10000
+    unit: '%'
+    MaxLevel: 10
   - name: "\uCE58\uBA85 \uD53C\uD574"
     Icon: {fileID: 21300000, guid: 62d1ea04edc546748884e14d952c5b54, type: 3}
     UpgradeValue: 10
     Cost: 10000
+    unit: '%'
+    MaxLevel: 10
   - name: "\uC7AC\uD654 \uD68D\uB4DD\uB7C9"
     Icon: {fileID: 21300000, guid: 7e8e71ad4bc1fc3458067d6d45ef51af, type: 3}
     UpgradeValue: 2
     Cost: 2000
+    unit: "\uC6D0"
+    MaxLevel: 10
   - name: "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9"
     Icon: {fileID: 21300000, guid: 7f0f4fe37f13a084cab8848d30e0a5c9, type: 3}
     UpgradeValue: 1
-    Cost: 5000
-  - name: "\uAE30\uBCF8 \uBB34\uAE30 \uB808\uBCA8"
+    Cost: 7500
+    unit: "\uAC1C"
+    MaxLevel: 10
+  - name: "\uAE30\uBCF8 \uB808\uBCA8"
     Icon: {fileID: 21300000, guid: 0be22d785dc522348ba35469154d9b4b, type: 3}
     UpgradeValue: 1
     Cost: 50000
+    unit: "\uB808\uBCA8"
+    MaxLevel: 4
   OptionPanel: {fileID: 1759216702}
 --- !u!1 &2005781550
 GameObject:

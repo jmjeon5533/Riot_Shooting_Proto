@@ -7700,7 +7700,7 @@ MonoBehaviour:
   joystick: {fileID: 1044799010}
   MoveRange: {x: 10, y: 5}
   MovePivot: {x: 0, y: -0.5}
-  EnemyPower: 1
+  EnemyPower: 2
   XPPrefab: {fileID: 8339991442943732091, guid: b379a882caa8ed14ba39e2a473ce3ce2, type: 3}
   MaxXP: 45
   AddMaxXP: 30

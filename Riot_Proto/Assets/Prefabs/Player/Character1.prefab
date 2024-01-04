@@ -14257,7 +14257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 3
   MaxHP: 3
-  damage: 4
+  damage: 8
   CritRate: 20
   CritDamage: 1.5
   bulletLevel: 1
@@ -14267,7 +14267,7 @@ MonoBehaviour:
   - {fileID: 7488623435463272499, guid: b7c2e428f26f83343a39d3baa0b35720, type: 3}
   IsShield: 0
   ShieldObj: {fileID: 596910838836457825}
-  AttackCooltime: 0.13
+  AttackCooltime: 0.2
   maxCooltime: 2
   curCooltime: 0
   autoTargetBullet: {fileID: 2819709690657902326, guid: ac4605118bfab0c4e8af565366249595, type: 3}

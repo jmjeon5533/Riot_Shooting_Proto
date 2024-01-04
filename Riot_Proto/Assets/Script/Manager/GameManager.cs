@@ -80,13 +80,12 @@ public class GameManager : MonoBehaviour
     }
     void InitPlayer()
     {
-        var info = SceneManager.instance.upgradeInfos;
         var player = Instantiate(playerPrefab[SceneManager.instance.CharIndex], new Vector3(-12f, 0, 0), Quaternion.identity).GetComponent<Player>();
         player.damage += (int)CalculateAddValue(0);
-        player.AttackCooltime -= CalculateAddValue(1);
+        player.AttackCooltime -= Mathf.Lerp(0,player.AttackCooltime * 0.5f,CalculateAddValue(1) / 100);
         player.MoveSpeed += CalculateAddValue(2);
         player.CritRate += (int)CalculateAddValue(3);
-        player.CritDamage += (int)CalculateAddValue(4);
+        player.CritDamage += (int)CalculateAddValue(4) / 100;
         player.bulletLevel += (int)CalculateAddValue(7);
     }
     public float CalculateAddValue(int index)

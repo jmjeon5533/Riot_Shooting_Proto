@@ -56,7 +56,7 @@ MonoBehaviour:
   stats: 
   curTime: 0
   maxCooltime: 10
-  defaultDamage: 1
+  defaultDamage: 3
   duration: 4
   delay: 0.1
   range: 6

@@ -25,6 +25,8 @@ public class UpgradeInfo
     public Sprite Icon;
     public float UpgradeValue; //레벨당 추가값
     public int Cost;
+    public string unit; //단위
+    public int MaxLevel = 10; //최대 레벨
 }
 public class TitleManager : MonoBehaviour
 {
@@ -40,6 +42,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Button[] ShopButton;
     [SerializeField] Button[] StatusButton = new Button[8];
     [SerializeField] Text[] StatusLevel = new Text[8];
+    [SerializeField] Button UpgradeButton;
     [SerializeField] Text MoneyText;
     [SerializeField] Text Name;
     [SerializeField] Text CurValue;
@@ -87,7 +90,7 @@ public class TitleManager : MonoBehaviour
         }
         for (int i = 0; i < StatusButton.Length; i++)
         {
-            StatusLevel[i].text = SceneManager.instance.playerData.StatusLevel[i].ToString();
+            InitShopStatus(i);
         }
         for (int i = 0; i < ShopUI.Length; i++)
         {
@@ -135,7 +138,7 @@ public class TitleManager : MonoBehaviour
     }
     public void InitMoney()
     {
-        var money = SceneManager.instance.playerData.PlayerMoney.ToString();
+        var money = string.Format("{0:#,###}",SceneManager.instance.playerData.PlayerMoney);
         MoneyText.text = money;
     }
     private void Update()
@@ -352,15 +355,26 @@ public class TitleManager : MonoBehaviour
     void InitShopStatus(int index)
     {
         var s = SceneManager.instance;
-        Name.text = $"{s.upgradeInfos[index].name} + {s.upgradeInfos[index].UpgradeValue}";
-        Icon.sprite = s.upgradeInfos[index].Icon;
-        Cost.text = $"{s.upgradeInfos[index].Cost * (s.playerData.StatusLevel[index] + 1)}";
-        CurValue.text = $"현재 + {s.upgradeInfos[index].UpgradeValue * s.playerData.StatusLevel[index]}";
         SelectStatus = index;
+        bool isMaxLv = s.playerData.StatusLevel[SelectStatus] >= s.upgradeInfos[SelectStatus].MaxLevel;
+        Name.text = $"{s.upgradeInfos[index].name} + {s.upgradeInfos[index].UpgradeValue}{s.upgradeInfos[index].unit}";
+        Icon.sprite = s.upgradeInfos[index].Icon;
+        Cost.text = $"{string.Format("{0:#,###}",s.upgradeInfos[index].Cost * (s.playerData.StatusLevel[index] + 1))}원";
+        CurValue.text = $"현재 + {Mathf.Round(s.upgradeInfos[index].UpgradeValue * s.playerData.StatusLevel[index] * 10) * 0.1f}{s.upgradeInfos[index].unit}";
+        UpgradeButton.gameObject.SetActive(!isMaxLv);
+        if(isMaxLv)
+        {
+            StatusLevel[index].text = "M";
+        }
+        else
+        {
+            StatusLevel[index].text = s.playerData.StatusLevel[index].ToString();
+        }
     }
     public void UpgradeStat()
     {
         var s = SceneManager.instance;
+        if(s.playerData.StatusLevel[SelectStatus] >= s.upgradeInfos[SelectStatus].MaxLevel) return;
         var money = s.playerData.PlayerMoney;
         var cost = s.upgradeInfos[SelectStatus].Cost * (s.playerData.StatusLevel[SelectStatus] + 1);
         if (money >= cost)
@@ -369,7 +383,6 @@ public class TitleManager : MonoBehaviour
             s.playerData.PlayerMoney -= cost;
             InitShopStatus(SelectStatus);
         }
-        StatusLevel[SelectStatus].text = s.playerData.StatusLevel[SelectStatus].ToString();
         InitMoney();
     }
     public void ResetStat()

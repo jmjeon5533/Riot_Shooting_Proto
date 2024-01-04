@@ -56,7 +56,7 @@ MonoBehaviour:
   stats: 
   speed: 6
   cloud: {fileID: 4425488917986869762, guid: ec92e946d49ed424e926462e10638c42, type: 3}
-  defaultDamage: 3
+  defaultDamage: 6
   curCooltime: 0
   maxCooltime: 10
   livingDuration: 4.5

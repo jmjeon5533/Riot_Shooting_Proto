@@ -55,7 +55,7 @@ MonoBehaviour:
   stats: 
   curCooltime: 48
   maxCooltime: 48
-  defaultDamage: 15
+  defaultDamage: 25
   duration: 0
   beams:
   - {fileID: 3480814663897831589, guid: 8237d5bab7dd62a4db982f09fd12960f, type: 3}

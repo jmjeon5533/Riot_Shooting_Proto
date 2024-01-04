@@ -321,6 +321,7 @@ public class UIManager : MonoBehaviour
     {
         string explain = text.text.Split(':')[0];
         value = newValue;
+        totalScore += (int)(newValue * multiply);
         text.text = explain + $": {value}";
         totalScoreText.text = $"총합 점수 : {totalScore}";
     }
@@ -330,21 +331,23 @@ public class UIManager : MonoBehaviour
         float elapsedTime = 0;
         string explain = text.text.Split(':')[0];
         int prevValue = totalScore;
-
+        int curValue = 0;
         while (elapsedTime <= time)
         {
             if(IsSkipped())
             {
+                totalScore = prevValue;
                 CalculateScore(value, newValue, text, time, multiply);
                 yield break;
             }
             elapsedTime += Time.deltaTime;
             value = Mathf.CeilToInt(Mathf.Lerp(value, newValue, (elapsedTime / time)));
             text.text = explain + $": {value}";
-            totalScore = prevValue + (int)(value * multiply);
-            totalScoreText.text = $"총합 점수 : {totalScore}";
+            curValue = prevValue + (int)(value * multiply);
+            totalScoreText.text = $"총합 점수 : {curValue}";
             yield return null;
         }
+        totalScore = curValue;
         value = newValue;
         text.text = explain + $": {value}";
         totalScoreText.text = $"총합 점수 : {totalScore}";

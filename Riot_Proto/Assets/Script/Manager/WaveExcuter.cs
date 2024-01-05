@@ -11,6 +11,8 @@ public class WaveExcuter : MonoBehaviour
         instance = this;
         foreach (var waveScript in waveScripts)
         {
+            waveScript.Waves.Clear();
+
             waveScript.Waves.Add(waveScript.wave1);
             waveScript.Waves.Add(waveScript.wave2);
             waveScript.Waves.Add(waveScript.wave3);

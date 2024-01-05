@@ -60,6 +60,7 @@ public class SpawnManager : MonoBehaviour
         List<WaveScript.Wavedelegate> randList = new List<WaveScript.Wavedelegate>(WaveExcuter.instance.waveScripts[StageLevel].Waves);
         List<WaveScript.Wavedelegate> useList = new List<WaveScript.Wavedelegate>();
 
+        useList.Clear();
         //useList = randList.OrderBy(x => Guid.NewGuid()).ToList(); //randlist -> uselist로 이동 중 랜덤 조정 -> 가방 생성
         for(int i = 0; i < WaveExcuter.instance.waveScripts[StageLevel].Waves.Count; i++)
         {

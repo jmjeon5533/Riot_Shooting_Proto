@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0404991f93c504da86025e8b0b9b0e, type: 3}
+  m_Name: Test 2
+  m_EditorClassIdentifier: 
+  questName: "\uC561\uD2F0\uBE0C \uC2A4\uD0AC 10\uBC88 \uC4F0\uAE30"
+  eventType: 7
+  clear: 10
+  target: 
+  reward: 10000

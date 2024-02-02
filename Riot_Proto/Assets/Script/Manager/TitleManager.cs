@@ -70,6 +70,14 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Image startPanel;
     [SerializeField] Image logo;
 
+    [Header("퀘스트 탭")]
+    [SerializeField] RectTransform questTab;
+    [SerializeField] private QuestPanel[] questPanels = new QuestPanel[3];
+    [SerializeField] private Text timeText;
+
+    bool isPopUp = false;
+
+
     [Header("옵션 탭")]
     public Transform OptionTab;
     public bool isOption = false;
@@ -100,6 +108,7 @@ public class TitleManager : MonoBehaviour
                 InitShopPanel(num);
             });
         }
+        questTab.DOAnchorPosY(1500, 0);
         InitShopBtn();
         InitShopPanel(0);
         InitPanel(0);
@@ -136,17 +145,52 @@ public class TitleManager : MonoBehaviour
         ShopUI[index].gameObject.SetActive(true);
         InitShopStatus(0);
     }
+
+    public QuestPanel[] GetQuestPanels()
+    {
+        return questPanels;
+    }
+
     public void InitMoney()
     {
         var money = string.Format("{0:#,###}",SceneManager.instance.playerData.PlayerMoney);
         MoneyText.text = money;
     }
+
+    public void OnOffQuestTab()
+    {
+        if (isPopUp) return;
+        if(questTab.gameObject.activeSelf)
+        {
+            isPopUp = true;
+            questTab.DOAnchorPosY(1500, 0.5f).OnComplete(() => { questTab.gameObject.SetActive(false); isPopUp = false;  });
+        } else
+        {
+            isPopUp = true;
+            questTab.gameObject.SetActive(true);
+            questTab.DOAnchorPosY(0, 0.5f).OnComplete(() => { isPopUp = false; });
+            QuestManager.Instance.InitPanel();
+        }
+    }
+
+    private void ResetTimer()
+    {
+        var text = TimeUtils.GetCurrentDate();
+        text = text.Split(' ')[2];
+        string[] times = text.Split(':');
+        int second = 60 - int.Parse(times[2]);
+        int minute = 60 - int.Parse(times[1]) - ((second > 0) ? 1 : 0);
+        int hour = 24 - int.Parse(times[0]) - ((minute > 0) ? 1 : 0);
+        timeText.text = $"{hour}:{minute}:{second}";
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Option();
         }
+        ResetTimer();
         SoundManager.instance.BGMVolume = BGMS.value;
         SoundManager.instance.SFXVolume = SFXS.value;
         SceneManager.instance.DetailCtrl = DetailCtrlToggle.isOn;

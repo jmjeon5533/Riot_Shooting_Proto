@@ -180,6 +180,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (IsSpawning() || IsDeath() || !IsInScreen() || !GameManager.instance.IsGame) return;
         HP -= damage * damagedMultiplier;
+        EventManager.Instance.PostNotification(Event_Type.EnemyDamaged, this);
         if (HP <= 0)
         {
             isDeath = true;
@@ -263,6 +264,7 @@ public abstract class EnemyBase : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
             GameManager.instance.AddKillCount();
             //Debug.Log("Test");
+            EventManager.Instance.PostNotification(Event_Type.EnemyDeath,this);
             PoolManager.Instance.PoolObject(EnemyTag, gameObject);
         }
         isDeath = false;

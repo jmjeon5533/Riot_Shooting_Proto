@@ -32,6 +32,7 @@ public class EventManager : MonoBehaviour
     public void AddListener(Event_Type type, IListener Listener)
     {
         List<IListener> ListenerList = null;
+        
         if(Listeners.TryGetValue(type, out ListenerList))
         {
             ListenerList.Add(Listener);
@@ -40,6 +41,7 @@ public class EventManager : MonoBehaviour
 
         ListenerList = new List<IListener>();
         ListenerList.Add(Listener);
+        
         Listeners.Add(type, ListenerList);  
     }
 

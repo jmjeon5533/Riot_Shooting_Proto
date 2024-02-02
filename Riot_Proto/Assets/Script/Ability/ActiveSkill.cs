@@ -65,6 +65,7 @@ public class ActiveSkill : MonoBehaviour, IPointerDownHandler
             if(g.curEnemys.Count > 0 )
                 Instantiate(g.Bomb,g.player.transform.position,Quaternion.Euler(-90,0,0));
             maxCooltime = skill.GetMaxCool();
+            EventManager.Instance.PostNotification(Event_Type.ActiveSkillUse, this);
             useSkill = true;
             isOne = false;
         }

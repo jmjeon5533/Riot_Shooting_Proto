@@ -27,6 +27,13 @@ public class Ability
     public int level = 1;
 }
 
+[System.Serializable]
+public class QuestSaveData
+{
+    public List<QuestData> showData = new List<QuestData>();
+    public string date = "";
+}
+
 public class SceneManager : MonoBehaviour
 {
     public static SceneManager instance { get; private set; }
@@ -42,6 +49,7 @@ public class SceneManager : MonoBehaviour
 
     [Space(10)]
     public PlayerData playerData;
+    public QuestSaveData questData;
     public UpgradeInfo[] upgradeInfos;
     [SerializeField] Transform OptionPanel;
     bool OptionMove;
@@ -65,6 +73,9 @@ public class SceneManager : MonoBehaviour
         string data = PlayerPrefs.GetString("savedata", "null");
         //print(data);
         playerData = data.Equals("null") || string.IsNullOrEmpty(data) ? new PlayerData() : JsonUtility.FromJson<PlayerData>(data);
+        data = PlayerPrefs.GetString("QuestData", "null");
+        questData = data.Equals("null") || string.IsNullOrEmpty(data) ? new QuestSaveData() : JsonUtility.FromJson<QuestSaveData>(data);
+        
     }
     public void JsonSave()
     {
@@ -78,21 +89,34 @@ public class SceneManager : MonoBehaviour
         {
             saveData.StatusLevel[i] = playerData.StatusLevel[i];
         }
-
+        QuestSaveData questData = new QuestSaveData();
+        questData.date = TimeUtils.GetCurrentDate();
+        questData.showData = QuestManager.Instance.GetCurrentQuests();
         string data = JsonUtility.ToJson(saveData);
         PlayerPrefs.SetString("savedata", data);
+        data = JsonUtility.ToJson(questData);
+        PlayerPrefs.SetString("QuestData", data);
+
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayerPrefs.SetString("QuestData", "");
+        }
     }
     public void InitAds()
     {
         string adUnitId;
 
-#if UNITY_ANDROID
+        #if UNITY_ANDROID
         adUnitId = "ca-app-pub-3940256099942544/5224354917";
-#elif UNITY_IPHONE
+        #elif UNITY_IPHONE
             adUnitId = "ca-app-pub-3940256099942544/1712485313";
-#else
+        #else
             adUnitId = "unexpected_platform";
-#endif
+        #endif
 
         RewardedAd.Load(adUnitId, new AdRequest.Builder().Build(), LoadCallback);
     }

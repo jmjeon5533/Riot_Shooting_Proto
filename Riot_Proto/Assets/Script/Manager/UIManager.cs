@@ -380,7 +380,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         CloseResult();
         var a = totalScore / 100;
-        var b = 1 + GameManager.instance.CalculateAddValue(5) / 100;
+        var b = 1 + GameManager.instance.CalculateAddValue(5);
         SceneManager.instance.playerData.PlayerMoney += Mathf.RoundToInt(a * b) * (isWatchAD ? 2 : 1);
         SceneManager.instance.MainMenu();
     }

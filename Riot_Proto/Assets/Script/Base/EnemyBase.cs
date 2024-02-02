@@ -76,7 +76,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         var p = GameManager.instance.EnemyPower;
         HP = Mathf.Round(p * baseHp);
-        XPRate = Mathf.Round(p * baseXPRate);
+        XPRate = Mathf.Round(p/2 * baseXPRate);
     }
 
     public void AddBuff(BuffBase buff)
@@ -274,7 +274,13 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual IEnumerator DeadEffect()
     {
-        for (int i = 0; i < XPRate + GameManager.instance.CalculateAddValue(6); i++)
+        float XPcount;
+        if(XPRate > 0)
+        {
+            XPcount = XPRate + GameManager.instance.CalculateAddValue(6);
+        }
+        else XPcount = 0;
+        for (int i = 0; i < XPcount; i++)
         {
             var xp = PoolManager.Instance.GetObject("XP", transform.position, Quaternion.identity).GetComponent<XP>();
             xp.curtime = 0;

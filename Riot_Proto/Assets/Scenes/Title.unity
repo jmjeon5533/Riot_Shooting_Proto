@@ -925,10 +925,10 @@ RectTransform:
   m_Father: {fileID: 1011895667}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 500, y: -485}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &40718766
 MonoBehaviour:
@@ -1633,10 +1633,10 @@ RectTransform:
   m_Father: {fileID: 1011895667}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 500, y: -185}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &98637748
 MonoBehaviour:
@@ -4911,10 +4911,10 @@ RectTransform:
   m_Father: {fileID: 1011895667}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 200, y: -185}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &503406729
 MonoBehaviour:
@@ -5542,10 +5542,10 @@ RectTransform:
   m_Father: {fileID: 1011895667}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1100, y: -485}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &575719138
 MonoBehaviour:
@@ -5957,7 +5957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &607789009
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9771,10 +9771,10 @@ RectTransform:
   m_Father: {fileID: 1011895667}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 200, y: -485}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1113273367
 MonoBehaviour:
@@ -12200,10 +12200,10 @@ RectTransform:
   m_Father: {fileID: 1011895667}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 800, y: -485}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1488615435
 MonoBehaviour:
@@ -13504,10 +13504,10 @@ RectTransform:
   m_Father: {fileID: 1011895667}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1100, y: -185}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1712885114
 MonoBehaviour:
@@ -15034,10 +15034,10 @@ RectTransform:
   m_Father: {fileID: 1011895667}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 800, y: -185}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1835654020
 MonoBehaviour:
@@ -15859,22 +15859,22 @@ MonoBehaviour:
   upgradeInfos:
   - name: "\uACF5\uACA9\uB825"
     Icon: {fileID: 21300000, guid: 63b8b76c66aff6b43bb90140a6f95e79, type: 3}
-    UpgradeValue: 3
-    Cost: 1500
+    UpgradeValue: 1
+    Cost: 5000
     unit: 
-    MaxLevel: 10
+    MaxLevel: 20
   - name: "\uACF5\uACA9\uC18D\uB3C4"
     Icon: {fileID: 21300000, guid: eb2d65799dea4a847854039d9ea9589e, type: 3}
-    UpgradeValue: 10
-    Cost: 3000
+    UpgradeValue: 7.5
+    Cost: 5000
     unit: '%'
     MaxLevel: 10
   - name: "\uC774\uB3D9\uC18D\uB3C4"
     Icon: {fileID: 21300000, guid: df79ef74d3d070446ae9a5457c0dec81, type: 3}
-    UpgradeValue: 0.5
-    Cost: 5000
+    UpgradeValue: 0.25
+    Cost: 7500
     unit: 
-    MaxLevel: 10
+    MaxLevel: 20
   - name: "\uCE58\uBA85 \uD655\uB960"
     Icon: {fileID: 21300000, guid: c3558d12a1bf27348bdb09c91505c22b, type: 3}
     UpgradeValue: 5
@@ -15884,21 +15884,21 @@ MonoBehaviour:
   - name: "\uCE58\uBA85 \uD53C\uD574"
     Icon: {fileID: 21300000, guid: 62d1ea04edc546748884e14d952c5b54, type: 3}
     UpgradeValue: 10
-    Cost: 10000
+    Cost: 15000
     unit: '%'
     MaxLevel: 10
   - name: "\uC7AC\uD654 \uD68D\uB4DD\uB7C9"
     Icon: {fileID: 21300000, guid: 7e8e71ad4bc1fc3458067d6d45ef51af, type: 3}
-    UpgradeValue: 2
-    Cost: 2000
-    unit: "\uC6D0"
+    UpgradeValue: 2.5
+    Cost: 5000
+    unit: '%'
     MaxLevel: 10
   - name: "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9"
     Icon: {fileID: 21300000, guid: 7f0f4fe37f13a084cab8848d30e0a5c9, type: 3}
     UpgradeValue: 1
-    Cost: 7500
+    Cost: 75000
     unit: "\uAC1C"
-    MaxLevel: 10
+    MaxLevel: 3
   - name: "\uAE30\uBCF8 \uB808\uBCA8"
     Icon: {fileID: 21300000, guid: 0be22d785dc522348ba35469154d9b4b, type: 3}
     UpgradeValue: 1
@@ -21722,7 +21722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2132513852
 RectTransform:
   m_ObjectHideFlags: 0

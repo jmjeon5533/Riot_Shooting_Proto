@@ -109,6 +109,7 @@ public class TitleManager : MonoBehaviour
             });
         }
         questTab.DOAnchorPosY(1500, 0);
+        questTab.gameObject.SetActive(false);
         InitShopBtn();
         InitShopPanel(0);
         InitPanel(0);
@@ -176,11 +177,13 @@ public class TitleManager : MonoBehaviour
     private void ResetTimer()
     {
         var text = TimeUtils.GetCurrentDate();
+        var afternoon = text.Split(' ')[1];
+        var extraTimer = (afternoon == "오후") ? 12 : 0;
         text = text.Split(' ')[2];
         string[] times = text.Split(':');
         int second = 60 - int.Parse(times[2]);
         int minute = 60 - int.Parse(times[1]) - ((second > 0) ? 1 : 0);
-        int hour = 24 - int.Parse(times[0]) - ((minute > 0) ? 1 : 0);
+        int hour = 24 - int.Parse(times[0]) - ((minute > 0) ? 1 : 0) - (extraTimer);
         timeText.text = $"{hour}:{minute}:{second}";
     }
 

@@ -145,6 +145,13 @@ public class QuestManager : MonoBehaviour
 
     public void InitPanel()
     {
+        questPanels = TitleManager.instance.GetQuestPanels();
+        //var data = SceneManager.instance.questData;
+        for (int i = 0; i < questPanelDatas.Length; i++)
+        {
+            //Debug.Log(questPanelDatas[i].questName + " " + questPanelDatas[i].progress);
+            questPanels[i].Init(questPanelDatas[i]);
+        }
         for (int i = 0; i < 3; i++)
         {
             var panel = questPanels[i].GetComponent<RectTransform>();
@@ -158,8 +165,11 @@ public class QuestManager : MonoBehaviour
         StartCoroutine(ShowQuestPanels());
         IEnumerator ShowQuestPanels()
         {
+            questPanels = TitleManager.instance.GetQuestPanels();
+            //var data = SceneManager.instance.questData;
             for (int i = 0; i < questPanelDatas.Length; i++)
             {
+                Debug.Log(questPanelDatas[i].questName + " " + questPanelDatas[i].progress);
                 questPanels[i].Init(questPanelDatas[i]);
             }
             for (int i = 0; i < 3; i++)

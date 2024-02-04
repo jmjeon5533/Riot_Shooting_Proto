@@ -81,6 +81,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button gotoMain;
     [SerializeField] Button ADButton;
 
+    [SerializeField] GameObject earnMoneyUI;
+    [SerializeField] Text earnMoneyText;
+
     int totalScore = 0;
 
 
@@ -210,6 +213,7 @@ public class UIManager : MonoBehaviour
         gotoMain.gameObject.SetActive(false);
         ResultPanel.gameObject.SetActive(false);
         ADButton.gameObject.SetActive(false);
+        earnMoneyUI.SetActive(false);
     }
 
     void SetText(string text, TextMeshProUGUI textObj)
@@ -262,6 +266,10 @@ public class UIManager : MonoBehaviour
         rankImg.gameObject.SetActive(true);
         rankText.gameObject.SetActive(true);
         rankText.text = CalCulateRank();
+        earnMoneyUI.SetActive(true);
+        var a = totalScore / 100;
+        var b = 1 + GameManager.instance.CalculateAddValue(5);
+        earnMoneyText.text = $"{Mathf.RoundToInt(a * b) * (isWatchAD ? 2 : 1)}";
         yield return StartCoroutine(Delay(calculateDelay));
         gotoMain.gameObject.SetActive(true);
         ADButton.gameObject.SetActive(true);
@@ -355,6 +363,7 @@ public class UIManager : MonoBehaviour
 
     bool IsSkipped()
     {
+
         //Mobile
         if (Input.touchCount > 0)
         {
@@ -367,6 +376,7 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+
         //PC
         if(Input.GetMouseButtonDown(0))
         {
@@ -474,6 +484,10 @@ public class UIManager : MonoBehaviour
     public void GetReward(Reward reward)
     {
         isWatchAD = true;
+        earnMoneyUI.SetActive(true);
+        var a = totalScore / 100;
+        var b = 1 + GameManager.instance.CalculateAddValue(5);
+        earnMoneyText.text = $"{Mathf.RoundToInt(a * b) * (isWatchAD ? 2 : 1)}";
         ADButton.gameObject.SetActive(false);
         SceneManager.instance.InitAds();
     }

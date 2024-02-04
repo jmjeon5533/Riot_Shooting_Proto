@@ -72,14 +72,14 @@ public class QuestManager : MonoBehaviour
 
     public List<QuestData> GetCurrentQuests()
     {
-        List<QuestData> list = new();
-        for(int i = 0; i < 3; i++)
-        {
-            if(questPanels[i].QuestData != null)
-            {
-                list.Add(questPanels[i].QuestData);
-            }
-        }
+        //List<QuestData> list = new();
+        //for(int i = 0; i < 3; i++)
+        //{
+        //    if(questPanels[i].QuestData != null)
+        //    {
+        //        list.Add(questPanels[i].QuestData);
+        //    }
+        //}
         return questPanelDatas.ToList();
     }
 

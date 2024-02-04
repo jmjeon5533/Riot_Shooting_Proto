@@ -27,8 +27,8 @@ public class QuestPanel : MonoBehaviour
         questData = data;
         questText.text = data.questName;
         rewardText.text = $"{data.Reward}";
-        if (questData.IsEarn())
-            clearTab.SetActive(true);
+        clearTab.SetActive(questData.IsEarn());
+        
     }
     
     public void QuestSelect()

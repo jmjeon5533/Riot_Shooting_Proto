@@ -255,10 +255,10 @@ public class Stage1 : WaveScript
             GameManager.instance.curEnemys.Add(enemy);
             enemy.GetComponent<EnemyBase>().MovePos = new Vector3(8, vecY, 0);
         }
-        Vector2 vecPlayer = GameManager.instance.player.transform.position;
-        var eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, vecPlayer.y+1, 0));
+        //Vector2 vecPlayer = GameManager.instance.player.transform.position;
+        var eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, 5, 0));
         GameManager.instance.curEnemys.Add(eo);
-        eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, vecPlayer.y-1, 0));
+        eo = PoolManager.Instance.GetObject("Spider2", new Vector3(15, -5, 0));
         GameManager.instance.curEnemys.Add(eo);
         yield return new WaitForSeconds(1f);
     }

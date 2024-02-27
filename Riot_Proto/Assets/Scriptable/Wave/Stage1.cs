@@ -275,8 +275,9 @@ public class Stage1 : WaveScript
     public override IEnumerator wave15()
     {
         Debug.Log(15);
-        var enemy = PoolManager.Instance.GetObject("SpinTurtle", new Vector3(15, 0, 0)).GetComponent<SpinTurtle>();
-        enemy.MovePos = Vector3.zero;
+        var enemy = PoolManager.Instance.GetObject("GiantSlime", new Vector3(15, 0, 0)).GetComponent<GiantSlime>();
+        enemy.MovePos = new Vector3(7, 1.4f, 0);
+        enemy.batSpawn();
         GameManager.instance.curEnemys.Add(enemy.gameObject);
         yield return new WaitForSeconds(1f);
     }

@@ -85,18 +85,19 @@ public class QuestManager : MonoBehaviour
 
     private void Initialize()
     {
+        //string newYear,newMonth,newDay;
+        //string oldYear,oldMonth,oldDay;
         //Debug.Log(TimeUtils.GetCurrentDate().Split(' ')[0].Split('-')[2]);
         var data = SceneManager.instance.questData;
         var date = data.date;
         if(string.IsNullOrEmpty(date)) date = TimeUtils.GetCurrentDate();
         Debug.Log(date);
         date = date.Split(' ')[0];
-        date = date.Split('-')[2];
+        //oldYear = date.Split('-')[0];oldMonth = date.Split('-')[1];oldDay = date.Split('-')[2];
         //questList = data.selectData;
         var newDate = TimeUtils.GetCurrentDate();
         newDate = newDate.Split(' ')[0];
-        newDate = newDate.Split('-')[2];
-        
+        //newYear = newDate.Split('-')[0]; newMonth = newDate.Split('-')[1]; newDay = newDate.Split('-')[2];
         Debug.Log(data.showData.Count);
         
         for (int i = 0; i < data.showData.Count; i++)
@@ -115,8 +116,8 @@ public class QuestManager : MonoBehaviour
         {
             GenerateData();
         }
-        Debug.Log(int.Parse(date) + " " + int.Parse(newDate));
-        if (int.Parse(date) != int.Parse(newDate))
+        Debug.Log(date + " " + newDate);
+        if (date != newDate)
         {
             GenerateData(true);
         }

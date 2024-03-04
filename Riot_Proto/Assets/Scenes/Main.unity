@@ -802,6 +802,12 @@ MonoBehaviour:
   - key: Spider3
     obj: {fileID: 1291402000568573404, guid: 133224b263932d44ba8f6f72fe5bb908, type: 3}
     maxAmount: 30
+  - key: GiantSlime
+    obj: {fileID: 5972006504065811330, guid: e11cb0b15c3fd60469bacb351492b242, type: 3}
+    maxAmount: 30
+  - key: SmallSlime
+    obj: {fileID: 4527953030383376462, guid: 8c06910ccdc907046aa83806c7d8cf37, type: 3}
+    maxAmount: 60
 --- !u!1 &95141016
 GameObject:
   m_ObjectHideFlags: 0

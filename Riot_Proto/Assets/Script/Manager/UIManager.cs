@@ -65,6 +65,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Result UI")]
     [SerializeField] Image ResultPanel;
+    [SerializeField] Image ResultBox;
 
     [SerializeField] GameObject mainText;
     [SerializeField] GameObject bar;
@@ -76,6 +77,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI clearBonusText;
 
     [SerializeField] Image rankImg;
+    [SerializeField] List<Sprite> rankSprites = new();
     [SerializeField] TextMeshProUGUI rankText;
 
     [SerializeField] Button gotoMain;
@@ -209,9 +211,10 @@ public class UIManager : MonoBehaviour
         expEarnText.gameObject.SetActive(false);
         clearBonusText.gameObject.SetActive(false);
         rankImg.gameObject.SetActive(false);
-        rankText.gameObject.SetActive(false);
+        //rankText.gameObject.SetActive(false);
         gotoMain.gameObject.SetActive(false);
         ResultPanel.gameObject.SetActive(false);
+        ResultBox.gameObject.SetActive(false);
         ADButton.gameObject.SetActive(false);
         earnMoneyUI.SetActive(false);
     }
@@ -231,14 +234,14 @@ public class UIManager : MonoBehaviour
 
         ResultPanel.DOFade(0, 0);
         yield return ResultPanel.DOFade(0.75f,1).WaitForCompletion();
-
+        ResultBox.gameObject.SetActive(true);
+        bar.SetActive(true);
         mainText.gameObject.SetActive(true);
         yield return StartCoroutine(Delay(showTextDelay));
-        bar.SetActive(true);
-        SetText($"총합 점수 : ", totalScoreText);
+        SetText($"", totalScoreText);
         yield return StartCoroutine(Delay(calculateDelay));
         
-        SetText($"총합 점수 : {0}", totalScoreText);
+        SetText($"{0}", totalScoreText);
 
         yield return StartCoroutine(Delay(showTextDelay));
         SetText($"획득 점수 : ", waveCountText);
@@ -264,8 +267,9 @@ public class UIManager : MonoBehaviour
         }
         yield return StartCoroutine(Delay(calculateDelay));
         rankImg.gameObject.SetActive(true);
-        rankText.gameObject.SetActive(true);
-        rankText.text = CalCulateRank();
+        rankImg.sprite = CalCulateRank();
+        //rankText.gameObject.SetActive(true);
+        //rankText.text = CalCulateRank();
         earnMoneyUI.SetActive(true);
         var a = totalScore / 100;
         var b = 1 + GameManager.instance.CalculateAddValue(5);
@@ -275,38 +279,39 @@ public class UIManager : MonoBehaviour
         ADButton.gameObject.SetActive(true);
     }
 
-    string CalCulateRank()
+    private Sprite CalCulateRank()
     {
-        string rank = "Error";
+        //string rank = "Error";
+        Sprite sprite = null;
         if(totalScore <= 200000)
         {
-            rank = "E";
+            sprite = rankSprites[0];
         }
         else if (totalScore <= 400000)
         {
-            rank = "D";
+            sprite = rankSprites[1];
         }
         else if (totalScore <= 600000)
         {
-            rank = "C";
+            sprite = rankSprites[2];
         }
         else if (totalScore <= 800000)
         {
-            rank = "B";
+            sprite = rankSprites[3];
         }
         else if (totalScore <= 1000000)
         {
-            rank = "A";
+            sprite = rankSprites[4];
         } 
         else if(totalScore <= 1499999)
         {
-            rank = "S";
+            sprite = rankSprites[5];
         } 
         else if(totalScore >= 1500000)
         {
-            rank  = "SS";
+            sprite = rankSprites[6];
         }
-        return rank;
+        return sprite;
     }
 
     IEnumerator Delay(float time, Action act = null) 
@@ -331,7 +336,7 @@ public class UIManager : MonoBehaviour
         value = newValue;
         totalScore += (int)(newValue * multiply);
         text.text = explain + $": {value}";
-        totalScoreText.text = $"총합 점수 : {totalScore}";
+        totalScoreText.text = $"{totalScore}";
     }
 
     IEnumerator CalculatingScore(int value ,int newValue,TextMeshProUGUI text, float time, float multiply = 1)
@@ -352,13 +357,13 @@ public class UIManager : MonoBehaviour
             value = Mathf.CeilToInt(Mathf.Lerp(value, newValue, (elapsedTime / time)));
             text.text = explain + $": {value}";
             curValue = prevValue + (int)(value * multiply);
-            totalScoreText.text = $"총합 점수 : {curValue}";
+            totalScoreText.text = $"{curValue}";
             yield return null;
         }
         totalScore = curValue;
         value = newValue;
         text.text = explain + $": {value}";
-        totalScoreText.text = $"총합 점수 : {totalScore}";
+        totalScoreText.text = $"{totalScore}";
     }
 
     bool IsSkipped()

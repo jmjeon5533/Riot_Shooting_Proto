@@ -39,7 +39,6 @@ public class TitleManager : MonoBehaviour
     [Space(10)]
     [Header("상점 탭")]
     [SerializeField] Transform[] ShopUI;
-    [SerializeField] Button[] ShopButton;
     [SerializeField] Button[] StatusButton = new Button[8];
     [SerializeField] Text[] StatusLevel = new Text[8];
     [SerializeField] Button UpgradeButton;
@@ -99,14 +98,6 @@ public class TitleManager : MonoBehaviour
         for (int i = 0; i < StatusButton.Length; i++)
         {
             InitShopStatus(i);
-        }
-        for (int i = 0; i < ShopUI.Length; i++)
-        {
-            var num = i;
-            ShopButton[num].onClick.AddListener(() =>
-            {
-                InitShopPanel(num);
-            });
         }
         questTab.DOAnchorPosY(1500, 0);
         questTab.gameObject.SetActive(false);
